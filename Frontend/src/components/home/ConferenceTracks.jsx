@@ -1,55 +1,55 @@
 import { 
-  Beaker, 
-  Settings, 
-  Shield,
-  Brain,
-  Target,
-  Gauge,
+  Leaf, 
+  Zap, 
+  Droplets,
+  Wind,
+  Recycle,
+  Beaker,
   Factory,
-  BarChart3
+  Sun
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const tracks = [
   {
-    icon: Beaker,
-    title: "Process Modeling",
-    description: "Mathematical modeling and simulation of chemical processes",
+    icon: Sun,
+    title: "Sustainable Alternative Energies",
+    description: "Bioenergy, Solar, Wind and other renewable sources",
   },
   {
-    icon: Settings,
-    title: "Process Intensification",
-    description: "Advanced techniques for process optimization and efficiency",
-  },
-  {
-    icon: Target,
-    title: "Multiobjective Optimization",
-    description: "Optimization strategies for complex process systems",
-  },
-  {
-    icon: Gauge,
-    title: "Plantwide Control",
-    description: "Integrated control strategies for entire plant operations",
-  },
-  {
-    icon: Shield,
-    title: "Safety & Hazards",
-    description: "Safety analysis and hazard prevention in process industry",
-  },
-  {
-    icon: Brain,
-    title: "Machine Learning",
-    description: "ML tools for process modeling and optimization",
+    icon: Zap,
+    title: "Hydrogen Energy & Fuel Cells",
+    description: "Clean energy technologies and hydrogen economy",
   },
   {
     icon: Factory,
-    title: "Controllability Analysis",
-    description: "Holistic techniques for controllability assessment",
+    title: "Energy Conservation",
+    description: "Innovative technologies for energy management",
   },
   {
-    icon: BarChart3,
-    title: "Case Studies",
-    description: "Real-world applications and computational practice",
+    icon: Leaf,
+    title: "Biological Interventions",
+    description: "Clean energy and environment through biotechnology",
+  },
+  {
+    icon: Beaker,
+    title: "Innovative Materials",
+    description: "Advanced materials for energy and environment",
+  },
+  {
+    icon: Droplets,
+    title: "Water Treatment",
+    description: "Water and wastewater treatment technologies",
+  },
+  {
+    icon: Wind,
+    title: "Climate Change",
+    description: "Mitigation strategies and sustainability solutions",
+  },
+  {
+    icon: Recycle,
+    title: "Waste Management",
+    description: "Solid waste treatment and utilization",
   },
 ];
 
@@ -58,12 +58,12 @@ export function ConferenceTracks() {
     <section className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <p className="text-conference-gold font-medium mb-2">THEMATIC AREAS</p>
+          <p className="text-conference-gold font-medium mb-2">THRUST AREAS</p>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Program Topics
+            Conference Topics
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            The FDP covers cutting-edge topics in chemical process optimization and control
+            Explore the key themes of sustainable energy, environment, and innovation
           </p>
         </div>
 

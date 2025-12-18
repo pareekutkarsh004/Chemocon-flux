@@ -8,12 +8,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Event Info */}
           <div>
-            <h3 className="font-display text-xl font-bold mb-4 text-conference-gold">FDP 2026</h3>
+            <h3 className="font-display text-xl font-bold mb-4 text-conference-gold">CHEM-CONFLUX²⁶</h3>
             <p className="text-sm text-primary-foreground/80 leading-relaxed">
-              Faculty Development Program on Intelligent Optimization and Control of Chemical Processes
+              International Conference on Sustainable Environment & Energy Innovations
             </p>
             <p className="text-sm text-primary-foreground/80 mt-2">
-              January 05-09, 2026
+              October 22-24, 2026
             </p>
           </div>
 
@@ -24,7 +24,7 @@ export function Footer() {
               <li><Link to="/" className="hover:text-conference-gold transition-colors">Home</Link></li>
               <li><Link to="/about" className="hover:text-conference-gold transition-colors">About</Link></li>
               <li><Link to="/committee" className="hover:text-conference-gold transition-colors">Committee</Link></li>
-              <li><Link to="/speakers" className="hover:text-conference-gold transition-colors">Speakers</Link></li>
+              <li><Link to="/registration" className="hover:text-conference-gold transition-colors">Registration</Link></li>
               <li><Link to="/contact" className="hover:text-conference-gold transition-colors">Contact</Link></li>
             </ul>
           </div>
@@ -40,9 +40,13 @@ export function Footer() {
                 </span>
               </li>
               <li className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-conference-gold" />
+                <span className="text-primary-foreground/80">+91-532-2271581</span>
+              </li>
+              <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-conference-gold" />
-                <a href="mailto:amverma@mnnit.ac.in" className="hover:text-conference-gold transition-colors">
-                  amverma@mnnit.ac.in
+                <a href="mailto:chemconflux26@gmail.com" className="hover:text-conference-gold transition-colors">
+                  chemconflux26@gmail.com
                 </a>
               </li>
             </ul>
@@ -69,7 +73,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-sm text-primary-foreground/60">
-          <p>© 2026 FDP - MNNIT Allahabad | ANRF Sponsored</p>
+          <p>© 2026 CHEM-CONFLUX²⁶ - MNNIT Allahabad | Department of Chemical Engineering</p>
         </div>
       </div>
     </footer>

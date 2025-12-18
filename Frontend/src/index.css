@@ -1,20 +1,10 @@
-/* --------------------------------------------------------- */
-/* Google Fonts (MUST be first) */
-/* --------------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-
-
-/* --------------------------------------------------------- */
-/* Tailwind Base / Components / Utilities */
-/* --------------------------------------------------------- */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
-/* --------------------------------------------------------- */
-/* ROOT VARIABLES (Light + Dark Mode) */
-/* --------------------------------------------------------- */
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -107,18 +97,13 @@
   }
 }
 
-
-/* --------------------------------------------------------- */
-/* BASE STYLES (including body margin reset) */
-/* --------------------------------------------------------- */
 @layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply m-0 p-0 bg-background text-foreground font-sans;
-    /* Removing default white strip caused by browser default margin */
+    @apply bg-background text-foreground font-sans;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -126,10 +111,6 @@
   }
 }
 
-
-/* --------------------------------------------------------- */
-/* UTILITIES */
-/* --------------------------------------------------------- */
 @layer utilities {
   .font-display {
     font-family: 'Playfair Display', serif;

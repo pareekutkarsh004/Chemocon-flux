@@ -13,7 +13,7 @@ const Contact = () => {
         <div className="container mx-auto px-4">
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
           <p className="text-primary-foreground/80 text-lg max-w-2xl">
-            Get in touch with the FDP 2026 organizing committee
+            Get in touch with the CHEM-CONFLUX²⁶ organizing committee
           </p>
         </div>
       </section>
@@ -23,11 +23,11 @@ const Contact = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-display text-2xl font-bold mb-4">Ready to Register?</h2>
           <p className="text-muted-foreground mb-6">
-            Registration is FREE and open to all faculty members and scientists.
+            Join us for the International Conference on Sustainable Environment & Energy Innovations.
           </p>
           <Button 
             asChild
-            size="lg" 
+            // size="lg" 
             className="bg-conference-gold hover:bg-conference-gold-light text-primary font-semibold"
           >
             <a href="https://forms.gle/w2xclc8rz1LQvusH7" target="_blank" rel="noopener noreferrer">
@@ -89,7 +89,24 @@ const Contact = () => {
                         Department of Chemical Engineering<br />
                         Motilal Nehru National Institute of Technology<br />
                         Allahabad, Prayagraj<br />
-                        Uttar Pradesh, India - 211004
+                        Uttar Pradesh (U.P.) - 211004
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="flex items-start gap-4 pt-6">
+                    <div className="w-12 h-12 rounded-full gradient-navy flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-6 h-6 text-conference-gold" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">Phone</h3>
+                      <p className="text-muted-foreground text-sm">
+                        Office: +91-532-2271581<br />
+                        Mobile: +91-9003670402<br />
+                        Mobile: +91-9455421398<br />
+                        Mobile: +91-8248954090
                       </p>
                     </div>
                   </CardContent>
@@ -103,9 +120,12 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
                       <p className="text-muted-foreground text-sm">
-                        <a href="mailto:amverma@mnnit.ac.in" className="text-conference-gold hover:underline">
-                          amverma@mnnit.ac.in
+                        <a href="mailto:chemconflux26@gmail.com" className="text-conference-gold hover:underline">
+                          chemconflux26@gmail.com
                         </a>
+                      </p>
+                      <p className="text-muted-foreground text-xs mt-1">
+                        For details visit: <a href="https://www.mnnit.ac.in" target="_blank" rel="noopener noreferrer" className="text-conference-gold hover:underline">www.mnnit.ac.in</a>
                       </p>
                     </div>
                   </CardContent>
@@ -117,9 +137,9 @@ const Contact = () => {
                       <Clock className="w-6 h-6 text-conference-gold" />
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-1">Program Dates</h3>
+                      <h3 className="font-semibold mb-1">Conference Dates</h3>
                       <p className="text-muted-foreground text-sm">
-                        January 05-09, 2026<br />
+                        October 22-24, 2026<br />
                         9:00 AM - 5:00 PM (IST)
                       </p>
                     </div>

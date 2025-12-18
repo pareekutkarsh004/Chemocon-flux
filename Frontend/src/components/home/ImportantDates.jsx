@@ -3,23 +3,23 @@ import { Calendar, CheckCircle, Clock, Users } from "lucide-react";
 const dates = [
   {
     icon: Calendar,
-    date: "Dec 29, 2025",
-    event: "Last Date of Registration",
+    date: "August 15, 2026",
+    event: "Submission of Abstract",
   },
   {
     icon: CheckCircle,
-    date: "Dec 31, 2025",
-    event: "Registration Confirmation",
+    date: "August 30, 2026",
+    event: "Intimation of Acceptance",
   },
   {
     icon: Clock,
-    date: "Jan 05-09, 2026",
-    event: "FDP Program",
+    date: "September 25, 2026",
+    event: "Registration Deadline",
   },
   {
     icon: Users,
-    date: "Certificate",
-    event: "Upon Completion",
+    date: "October 22-24, 2026",
+    event: "CHEM-CONFLUX²⁶ Conference",
   },
 ];
 
