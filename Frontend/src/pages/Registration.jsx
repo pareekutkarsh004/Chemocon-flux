@@ -1,6 +1,23 @@
+import { useRef, useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { FileText, CreditCard, Send, Calendar, ExternalLink, CheckCircle } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  FileText,
+  CreditCard,
+  Send,
+  Calendar,
+  ExternalLink,
+  CheckCircle,
+  User,
+  Mail,
+  Phone,
+  Building,
+  GraduationCap,
+  MapPin,
+} from "lucide-react";
 
 const registrationFees = [
   { category: "Delegates from academics/Industries/Govt. org", earlyBird: "₹ 5900/-", standard: "₹ 7080/-" },
@@ -10,13 +27,153 @@ const registrationFees = [
   { category: "Foreign accompanying person", earlyBird: "$ 118/-", standard: "$ 118/-" },
 ];
 
+// Category options with QR placeholders (add your QR image paths)
+const CATEGORY_OPTIONS = [
+  {
+    key: "delegates",
+    label: "Delegates from academics/Industries/Govt. org",
+    amount: "₹ 7080/- (standard)",
+    paymentType: "qr",
+    qrSrc: "/qr/delegates-7080.png", // place image at Frontend/public/qr/delegates-7080.png
+  },
+  {
+    key: "pg",
+    label: "PG Students/Research Scholars",
+    amount: "₹ 4130/- (standard)",
+    paymentType: "qr",
+    qrSrc: "/qr/pg-4130.png",
+  },
+  {
+    key: "ug",
+    label: "UG students",
+    amount: "₹ 2360/- (standard)",
+    paymentType: "qr",
+    qrSrc: "/qr/ug-2360.png",
+  },
+  {
+    key: "foreign",
+    label: "Foreign Delegates/participants",
+    amount: "$ 354/- (standard)",
+    paymentType: "bank",
+  },
+  {
+    key: "accompanying",
+    label: "Foreign accompanying person",
+    amount: "$ 118/-",
+    paymentType: "bank",
+  },
+];
+
+// Bank details for foreign categories
+const BANK_DETAILS = {
+  accountName: "ChemConflux26",
+  accountNumber: "000000000000", // TODO: replace
+  ifsc: "IFSC0000000", // TODO: replace
+  micr: "MICR0000000", // TODO: replace
+  branch: "Your Branch, City", // TODO: replace
+  swift: "SWIFT0000", // Optional: add if available
+};
+
 const importantDates = [
   { event: "Submission of Abstract", date: "August 15, 2026" },
   { event: "Intimation of Acceptance", date: "August 30, 2026" },
   { event: "Registration Deadline", date: "September 25, 2026" },
 ];
 
+// Google Form endpoints (same FORM_ID in both)
+// view (for reference): https://docs.google.com/forms/d/e/<FORM_ID>/viewform
+// submission (hidden POST): https://docs.google.com/forms/d/e/<FORM_ID>/formResponse
+const GOOGLE_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeDQQTmndmPkEo3NoORwrensrXW7eeYoWfa30Sjdkx7A4taJg/viewform";
+const GOOGLE_FORM_RESPONSE_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeDQQTmndmPkEo3NoORwrensrXW7eeYoWfa30Sjdkx7A4taJg/formResponse";
+
+// TODO: replace entry.* values with the field entry IDs from your Google Form
+// You can find them by opening the form, right-clicking each field, Inspect,
+// and copying the `name` attribute (e.g., entry.123456789).
+const GOOGLE_FORM_ENTRIES = {
+  fullName: "entry.82591335",
+  email: "entry.875258813",
+  phone: "entry.1219509344",
+  affiliation: "entry.1014504476",
+  designation: "entry.1428949176",
+  address: "entry.597901852",
+  category: "entry.262280136",
+  paperTitle: "entry.26866841",
+  abstract: "entry.850816242",
+};
+
 const Registration = () => {
+  const hiddenIframeRef = useRef(null);
+  const [selectedCategoryKey, setSelectedCategoryKey] = useState("");
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    affiliation: "",
+    designation: "",
+    address: "",
+    category: "",
+    paperTitle: "",
+    abstract: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (field) => (e) => {
+    setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+  };
+
+  const handleCategoryChange = (e) => {
+    const key = e.target.value;
+    const found = CATEGORY_OPTIONS.find((c) => c.key === key);
+    setSelectedCategoryKey(key);
+    // Send the human-readable label to Google Form
+    setFormData((prev) => ({ ...prev, category: found ? found.label : "" }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    if (
+      !GOOGLE_FORM_URL.includes("docs.google.com/forms/d/e/") ||
+      GOOGLE_FORM_URL.includes("YOUR_FORM_ID") ||
+      GOOGLE_FORM_RESPONSE_URL.includes("YOUR_FORM_ID")
+    ) {
+      alert("Please configure GOOGLE_FORM_URL/GOOGLE_FORM_RESPONSE_URL and entry IDs with your real Google Form.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Build a hidden HTML form to post directly to Google Forms (avoids showing the Google Form UI)
+    const tempForm = document.createElement("form");
+    tempForm.action = GOOGLE_FORM_RESPONSE_URL;
+    tempForm.method = "POST";
+    tempForm.target = "hidden-google-form-frame";
+    tempForm.style.display = "none";
+
+    Object.entries(GOOGLE_FORM_ENTRIES).forEach(([key, entryId]) => {
+      const value = formData[key];
+      if (value && entryId.startsWith("entry.")) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = entryId;
+        input.value = value;
+        tempForm.appendChild(input);
+      }
+    });
+
+    document.body.appendChild(tempForm);
+    tempForm.submit();
+    document.body.removeChild(tempForm);
+
+    setTimeout(() => {
+      setIsSubmitting(false);
+      alert("Registration submitted! We received your details.");
+    }, 600);
+  };
+
   return (
     <Layout>
       {/* Page Header */}
@@ -29,6 +186,261 @@ const Registration = () => {
             Register for CHEM-CONFLUX²⁶ - International Conference on
             Sustainable Environment & Energy Innovations
           </p>
+        </div>
+      </section>
+
+      {/* Register Now Form */}
+      <section className="py-16 bg-background" id="register-now">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto bg-card border border-border rounded-xl shadow-sm">
+            <div className="border-b border-border px-6 py-4 flex items-center justify-between gap-4">
+              <div>
+                <h2 className="font-display text-2xl font-bold flex items-center gap-2">
+                  <User className="w-5 h-5 text-conference-gold" />
+                  Register Now
+                </h2>
+                <p className="text-muted-foreground text-sm">
+                  Fill the details below. We will open the Google Form with these values pre-filled for quick submission.
+                </p>
+              </div>
+              <ExternalLink className="w-5 h-5 text-muted-foreground" />
+            </div>
+
+            <form onSubmit={handleSubmit} className="p-6 space-y-6">
+              {/* Hidden iframe to swallow Google Form response so users stay on this page */}
+              <iframe
+                name="hidden-google-form-frame"
+                ref={hiddenIframeRef}
+                title="Hidden Google Form submission"
+                style={{ display: "none" }}
+              />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="fullName" className="flex items-center gap-2">
+                    <User className="w-4 h-4 text-conference-gold" />
+                    Full Name
+                    <span className="text-destructive">*</span>
+                  </Label>
+                  <Input
+                    id="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange("fullName")}
+                    placeholder="Enter your full name"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="flex items-center gap-2">
+                    <Mail className="w-4 h-4 text-conference-gold" />
+                    Email
+                    <span className="text-destructive">*</span>
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange("email")}
+                    placeholder="your.email@example.com"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="phone" className="flex items-center gap-2">
+                    <Phone className="w-4 h-4 text-conference-gold" />
+                    Phone
+                    <span className="text-destructive">*</span>
+                  </Label>
+                  <Input
+                    id="phone"
+                    value={formData.phone}
+                    onChange={handleChange("phone")}
+                    placeholder="+91-XXXXXXXXXX"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="affiliation" className="flex items-center gap-2">
+                    <Building className="w-4 h-4 text-conference-gold" />
+                    Affiliation / Organization
+                  </Label>
+                  <Input
+                    id="affiliation"
+                    value={formData.affiliation}
+                    onChange={handleChange("affiliation")}
+                    placeholder="Institute / Company"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="designation" className="flex items-center gap-2">
+                    <GraduationCap className="w-4 h-4 text-conference-gold" />
+                    Designation
+                  </Label>
+                  <Input
+                    id="designation"
+                    value={formData.designation}
+                    onChange={handleChange("designation")}
+                    placeholder="Professor / Student / Researcher"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="category" className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-conference-gold" />
+                    Registration Category
+                  </Label>
+                  <select
+                    id="category"
+                    value={selectedCategoryKey}
+                    onChange={handleCategoryChange}
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    <option value="">Select category</option>
+                    {CATEGORY_OPTIONS.map((c) => (
+                      <option key={c.key} value={c.key}>
+                        {c.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* Category-specific payment instructions */}
+              {selectedCategoryKey && (
+                <div className="bg-muted/50 rounded-lg border border-border/60 p-4 space-y-3">
+                  {(() => {
+                    const cat = CATEGORY_OPTIONS.find((c) => c.key === selectedCategoryKey);
+                    if (!cat) return null;
+                    return (
+                      <>
+                        <div className="flex items-center justify-between gap-4 flex-wrap">
+                          <div>
+                            <p className="text-sm text-muted-foreground">Payment QR for</p>
+                            <p className="font-display text-lg font-semibold text-foreground">{cat.label}</p>
+                            {cat.amount && <p className="text-sm text-muted-foreground">Amount: {cat.amount}</p>}
+                          </div>
+                          <Button
+                            asChild
+                            variant="outline"
+                            className="border-conference-gold text-conference-gold hover:bg-conference-gold/10"
+                          >
+                            <a href="#registration-fees">Check fee details</a>
+                          </Button>
+                        </div>
+                        {cat.paymentType === "qr" ? (
+                          cat.qrSrc ? (
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                              <div className="w-40 h-40 border border-border rounded-lg overflow-hidden bg-white flex items-center justify-center">
+                                <img src={cat.qrSrc} alt={`${cat.label} payment QR`} className="w-full h-full object-contain" />
+                              </div>
+                              <p className="text-sm text-muted-foreground">
+                                Scan this QR to pay the category fee. After payment, keep the transaction reference for your records.
+                              </p>
+                            </div>
+                          ) : (
+                            <p className="text-sm text-muted-foreground">
+                              QR not uploaded yet. Add an image at {cat.qrSrc || "/qr/<category>.png"} in `Frontend/public/qr/`.
+                            </p>
+                          )
+                        ) : (
+                          <div className="space-y-2">
+                            <p className="text-sm text-muted-foreground">
+                              Pay via bank transfer using the details below. Share your transaction reference after payment.
+                            </p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm bg-card/60 border border-border rounded-lg p-3">
+                              <div>
+                                <p className="text-muted-foreground">Account Name</p>
+                                <p className="font-semibold text-foreground">{BANK_DETAILS.accountName}</p>
+                              </div>
+                              <div>
+                                <p className="text-muted-foreground">Account Number</p>
+                                <p className="font-semibold text-foreground">{BANK_DETAILS.accountNumber}</p>
+                              </div>
+                              <div>
+                                <p className="text-muted-foreground">IFSC Code</p>
+                                <p className="font-semibold text-foreground">{BANK_DETAILS.ifsc}</p>
+                              </div>
+                              <div>
+                                <p className="text-muted-foreground">MICR Code</p>
+                                <p className="font-semibold text-foreground">{BANK_DETAILS.micr}</p>
+                              </div>
+                              <div>
+                                <p className="text-muted-foreground">Branch</p>
+                                <p className="font-semibold text-foreground">{BANK_DETAILS.branch}</p>
+                              </div>
+                              {BANK_DETAILS.swift && (
+                                <div>
+                                  <p className="text-muted-foreground">SWIFT</p>
+                                  <p className="font-semibold text-foreground">{BANK_DETAILS.swift}</p>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </>
+                    );
+                  })()}
+                </div>
+              )}
+
+              <div className="space-y-2">
+                <Label htmlFor="address" className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-conference-gold" />
+                  Address
+                </Label>
+                <Textarea
+                  id="address"
+                  value={formData.address}
+                  onChange={handleChange("address")}
+                  placeholder="Mailing address"
+                  rows={3}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="paperTitle" className="flex items-center gap-2">
+                  <FileText className="w-4 h-4 text-conference-gold" />
+                  Paper Title (if submitting)
+                </Label>
+                <Input
+                  id="paperTitle"
+                  value={formData.paperTitle}
+                  onChange={handleChange("paperTitle")}
+                  placeholder="Your paper title"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="abstract" className="flex items-center gap-2">
+                  <Send className="w-4 h-4 text-conference-gold" />
+                  Abstract (optional)
+                </Label>
+                <Textarea
+                  id="abstract"
+                  value={formData.abstract}
+                  onChange={handleChange("abstract")}
+                  placeholder="Paste your abstract here"
+                  rows={4}
+                />
+              </div>
+
+              <div className="flex items-center justify-between gap-4 flex-wrap">
+                <p className="text-sm text-muted-foreground">
+                  On submit, we will open the official Google Form with these values pre-filled for you to confirm and submit.
+                </p>
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-conference-gold hover:bg-conference-gold/90 text-conference-navy font-semibold"
+                >
+                  {isSubmitting ? "Preparing..." : "Open Google Form"}
+                </Button>
+              </div>
+            </form>
+          </div>
         </div>
       </section>
 
