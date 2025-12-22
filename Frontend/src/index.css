@@ -135,7 +135,6 @@
     background-clip: text;
   }
 }
-<<<<<<< HEAD
 /* Add this to the end of your file */
 html {
   scroll-behavior: smooth;
@@ -150,8 +149,3 @@ img {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-=======
-html {
-  scroll-behavior: smooth;
-}
->>>>>>> a78633a464e86f0d85684bb6d1b0f5bb82049dbe
