@@ -9,8 +9,12 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "Details", path: "/about" },
   { name: "Committee", path: "/committee" },
-  { name: "Registration", path: "/registration" }, // <-- This stays
   { name: "Contact", path: "/contact" },
+  {
+    name: "Registration",
+    path: "/registration",
+    isPrimary: true, // highlighted link
+  },
 ];
 
 export function Header() {
@@ -39,21 +43,31 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={cn(
-                  "px-4 py-2 rounded-md text-sm font-medium transition-colors",
-                  location.pathname === link.path
-                    ? "bg-primary-foreground/20 text-conference-gold"
-                    : "hover:bg-primary-foreground/10"
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
+          <nav className="hidden md:flex items-center gap-2">
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.path;
+
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={cn(
+                    "px-4 py-2 rounded-md text-sm font-medium transition-all",
+                    link.isPrimary
+                      ? cn(
+                          "border border-conference-gold text-conference-gold shadow-sm",
+                          "hover:bg-conference-gold hover:text-conference-navy",
+                          isActive && "bg-conference-gold text-conference-navy"
+                        )
+                      : isActive
+                      ? "bg-primary-foreground/20 text-conference-gold"
+                      : "hover:bg-primary-foreground/10"
+                  )}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
 
             <ThemeToggle />
           </nav>
@@ -77,22 +91,32 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden pb-4 animate-fade-in">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsMenuOpen(false)}
-                className={cn(
-                  "block px-4 py-3 rounded-md text-sm font-medium transition-colors",
-                  location.pathname === link.path
-                    ? "bg-primary-foreground/20 text-conference-gold"
-                    : "hover:bg-primary-foreground/10"
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
+          <nav className="md:hidden pb-4 animate-fade-in space-y-1">
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.path;
+
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={cn(
+                    "block px-4 py-3 rounded-md text-sm font-medium transition-all",
+                    link.isPrimary
+                      ? cn(
+                          "border border-conference-gold text-conference-gold",
+                          "hover:bg-conference-gold hover:text-conference-navy",
+                          isActive && "bg-conference-gold text-conference-navy"
+                        )
+                      : isActive
+                      ? "bg-primary-foreground/20 text-conference-gold"
+                      : "hover:bg-primary-foreground/10"
+                  )}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </nav>
         )}
       </div>

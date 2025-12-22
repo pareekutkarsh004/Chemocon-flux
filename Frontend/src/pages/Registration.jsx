@@ -34,21 +34,21 @@ const CATEGORY_OPTIONS = [
     label: "Delegates from academics/Industries/Govt. org",
     amount: "₹ 7080/- (standard)",
     paymentType: "qr",
-    qrSrc: "Frontend/public/delegates-7080.jpeg" ,// place image at Frontend/public/qr/delegates-7080.png
+    qrSrc: "/delegates-7080.jpeg" ,// place image at Frontend/public/qr/delegates-7080.png
   },
   {
     key: "pg",
     label: "PG Students/Research Scholars",
     amount: "₹ 4130/- (standard)",
     paymentType: "qr",
-    qrSrc: "Frontend/public/pg-4130.jpeg",
+    qrSrc: "/pg-4130.jpeg",
   },
   {
     key: "ug",
     label: "UG students",
     amount: "₹ 2360/- (standard)",
     paymentType: "qr",
-    qrSrc: "Frontend/public/ug-2360.jpeg",
+    qrSrc: "/ug-2360.jpeg",
   },
   {
     key: "foreign",
@@ -200,7 +200,8 @@ const Registration = () => {
                   Register Now
                 </h2>
                 <p className="text-muted-foreground text-sm">
-                  Fill the details below. We will open the Google Form with these values pre-filled for quick submission.
+                  Fill the details below. We will open the Google Form with
+                  these values pre-filled for quick submission.
                 </p>
               </div>
               <ExternalLink className="w-5 h-5 text-muted-foreground" />
@@ -262,7 +263,10 @@ const Registration = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="affiliation" className="flex items-center gap-2">
+                  <Label
+                    htmlFor="affiliation"
+                    className="flex items-center gap-2"
+                  >
                     <Building className="w-4 h-4 text-conference-gold" />
                     Affiliation / Organization
                   </Label>
@@ -275,7 +279,10 @@ const Registration = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="designation" className="flex items-center gap-2">
+                  <Label
+                    htmlFor="designation"
+                    className="flex items-center gap-2"
+                  >
                     <GraduationCap className="w-4 h-4 text-conference-gold" />
                     Designation
                   </Label>
@@ -312,15 +319,25 @@ const Registration = () => {
               {selectedCategoryKey && (
                 <div className="bg-muted/50 rounded-lg border border-border/60 p-4 space-y-3">
                   {(() => {
-                    const cat = CATEGORY_OPTIONS.find((c) => c.key === selectedCategoryKey);
+                    const cat = CATEGORY_OPTIONS.find(
+                      (c) => c.key === selectedCategoryKey
+                    );
                     if (!cat) return null;
                     return (
                       <>
                         <div className="flex items-center justify-between gap-4 flex-wrap">
                           <div>
-                            <p className="text-sm text-muted-foreground">Payment QR for</p>
-                            <p className="font-display text-lg font-semibold text-foreground">{cat.label}</p>
-                            {cat.amount && <p className="text-sm text-muted-foreground">Amount: {cat.amount}</p>}
+                            <p className="text-sm text-muted-foreground">
+                              Payment QR for
+                            </p>
+                            <p className="font-display text-lg font-semibold text-foreground">
+                              {cat.label}
+                            </p>
+                            {cat.amount && (
+                              <p className="text-sm text-muted-foreground">
+                                Amount: {cat.amount}
+                              </p>
+                            )}
                           </div>
                           <Button
                             asChild
@@ -334,47 +351,76 @@ const Registration = () => {
                           cat.qrSrc ? (
                             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                               <div className="w-40 h-40 border border-border rounded-lg overflow-hidden bg-white flex items-center justify-center">
-                                <img src={cat.qrSrc} alt={`${cat.label} payment QR`} className="w-full h-full object-contain" />
+                                <img
+                                  src={cat.qrSrc}
+                                  alt={`${cat.label} payment QR`}
+                                  className="w-full h-full object-contain"
+                                />
                               </div>
                               <p className="text-sm text-muted-foreground">
-                                Scan this QR to pay the category fee. After payment, keep the transaction reference for your records.
+                                Scan this QR to pay the category fee. After
+                                payment, keep the transaction reference for your
+                                records.
                               </p>
                             </div>
                           ) : (
                             <p className="text-sm text-muted-foreground">
-                              QR not uploaded yet. Add an image at {cat.qrSrc || "/qr/<category>.png"} in `Frontend/public/qr/`.
+                              QR not uploaded yet. Add an image at{" "}
+                              {cat.qrSrc || "/qr/<category>.png"} in
+                              `Frontend/public/qr/`.
                             </p>
                           )
                         ) : (
                           <div className="space-y-2">
                             <p className="text-sm text-muted-foreground">
-                              Pay via bank transfer using the details below. Share your transaction reference after payment.
+                              Pay via bank transfer using the details below.
+                              Share your transaction reference after payment.
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm bg-card/60 border border-border rounded-lg p-3">
                               <div>
-                                <p className="text-muted-foreground">Account Name</p>
-                                <p className="font-semibold text-foreground">{BANK_DETAILS.accountName}</p>
+                                <p className="text-muted-foreground">
+                                  Account Name
+                                </p>
+                                <p className="font-semibold text-foreground">
+                                  {BANK_DETAILS.accountName}
+                                </p>
                               </div>
                               <div>
-                                <p className="text-muted-foreground">Account Number</p>
-                                <p className="font-semibold text-foreground">{BANK_DETAILS.accountNumber}</p>
+                                <p className="text-muted-foreground">
+                                  Account Number
+                                </p>
+                                <p className="font-semibold text-foreground">
+                                  {BANK_DETAILS.accountNumber}
+                                </p>
                               </div>
                               <div>
-                                <p className="text-muted-foreground">IFSC Code</p>
-                                <p className="font-semibold text-foreground">{BANK_DETAILS.ifsc}</p>
+                                <p className="text-muted-foreground">
+                                  IFSC Code
+                                </p>
+                                <p className="font-semibold text-foreground">
+                                  {BANK_DETAILS.ifsc}
+                                </p>
                               </div>
                               <div>
-                                <p className="text-muted-foreground">MICR Code</p>
-                                <p className="font-semibold text-foreground">{BANK_DETAILS.micr}</p>
+                                <p className="text-muted-foreground">
+                                  MICR Code
+                                </p>
+                                <p className="font-semibold text-foreground">
+                                  {BANK_DETAILS.micr}
+                                </p>
                               </div>
                               <div>
                                 <p className="text-muted-foreground">Branch</p>
-                                <p className="font-semibold text-foreground">{BANK_DETAILS.branch}</p>
+                                <p className="font-semibold text-foreground">
+                                  {BANK_DETAILS.branch}
+                                </p>
                               </div>
                               {BANK_DETAILS.swift && (
                                 <div>
                                   <p className="text-muted-foreground">SWIFT</p>
-                                  <p className="font-semibold text-foreground">{BANK_DETAILS.swift}</p>
+                                  <p className="font-semibold text-foreground">
+                                    {BANK_DETAILS.swift}
+                                  </p>
                                 </div>
                               )}
                             </div>
@@ -429,7 +475,8 @@ const Registration = () => {
 
               <div className="flex items-center justify-between gap-4 flex-wrap">
                 <p className="text-sm text-muted-foreground">
-                  On submit, we will open the official Google Form with these values pre-filled for you to confirm and submit.
+                  On submit, we will open the official Google Form with these
+                  values pre-filled for you to confirm and submit.
                 </p>
                 <Button
                   type="submit"
@@ -568,12 +615,13 @@ const Registration = () => {
                 payment portal
               </p>
               <Button
-                size=""
                 className="bg-conference-gold hover:bg-conference-gold/90 text-conference-navy font-bold"
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               >
                 <ExternalLink className="w-5 h-5 mr-2" />
                 Pay Registration Fee Online
               </Button>
+
               <p className="text-xs text-muted-foreground mt-4">
                 You will be redirected to a secure payment gateway
               </p>
@@ -681,7 +729,12 @@ const Registration = () => {
                       The extended abstract can be submitted through:
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
-                      <Button className="bg-conference-gold hover:bg-conference-gold/90 text-conference-navy font-bold">
+                      <Button
+                        className="bg-conference-gold hover:bg-conference-gold/90 text-conference-navy font-bold"
+                        onClick={() =>
+                          window.scrollTo({ top: 0, behavior: "smooth" })
+                        }
+                      >
                         <ExternalLink className="w-4 h-4 mr-2" />
                         Submit via Online Portal
                       </Button>
