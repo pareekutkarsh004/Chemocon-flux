@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Mail, Phone, MapPin, Clock, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,16 +10,21 @@ const Contact = () => {
   return (
     <Layout>
       {/* Page Header */}
-      <section className="gradient-navy text-primary-foreground py-20">
+      <motion.section 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="gradient-navy text-primary-foreground py-20"
+      >
         <div className="container mx-auto px-4">
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-primary-foreground/80 text-lg max-w-2xl">
+          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4 text-white">Contact Us</h1>
+          <p className="text-white/80 text-lg max-w-2xl">
             Get in touch with the CHEM-CONFLUX²⁶ organizing committee
           </p>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Registration CTA */}
+      {/* Registration CTA - Fixed Button with Arrow at End */}
       <section className="py-12 bg-conference-gold/10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-display text-2xl font-bold mb-4">Ready to Register?</h2>
@@ -27,22 +33,26 @@ const Contact = () => {
           </p>
           <Button 
             asChild
-            // size="lg" 
-            className="bg-conference-gold hover:bg-conference-gold-light text-primary font-semibold"
+            className="bg-conference-gold hover:bg-conference-gold-light text-primary font-semibold py-6 px-8 h-auto flex items-center gap-2 mx-auto w-fit"
           >
             <a href="https://forms.gle/w2xclc8rz1LQvusH7" target="_blank" rel="noopener noreferrer">
-              Register Now <ExternalLink className="w-4 h-4 ml-2" />
+              <span>Register Now</span>
+              <ExternalLink className="w-4 h-4" />
             </a>
           </Button>
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Section - Restored original grid and content */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
               <h2 className="font-display text-2xl font-bold mb-6">Send us a Message</h2>
               <form className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -67,17 +77,17 @@ const Contact = () => {
                   <label className="block text-sm font-medium mb-2">Message</label>
                   <Textarea placeholder="Your message..." rows={5} />
                 </div>
-                <Button className="w-full bg-conference-gold hover:bg-conference-gold-light text-primary">
+                <Button className="w-full bg-conference-gold hover:bg-conference-gold-light text-primary py-6 h-auto font-bold">
                   Send Message
                 </Button>
               </form>
-            </div>
+            </motion.div>
 
-            {/* Contact Information */}
-            <div>
+            {/* Contact Information - Restored all 4 original cards */}
+            <div className="space-y-6">
               <h2 className="font-display text-2xl font-bold mb-6">Contact Information</h2>
               
-              <div className="space-y-6">
+              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
                 <Card>
                   <CardContent className="flex items-start gap-4 pt-6">
                     <div className="w-12 h-12 rounded-full gradient-navy flex items-center justify-center flex-shrink-0">
@@ -94,7 +104,9 @@ const Contact = () => {
                     </div>
                   </CardContent>
                 </Card>
+              </motion.div>
 
+              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
                 <Card>
                   <CardContent className="flex items-start gap-4 pt-6">
                     <div className="w-12 h-12 rounded-full gradient-navy flex items-center justify-center flex-shrink-0">
@@ -111,7 +123,9 @@ const Contact = () => {
                     </div>
                   </CardContent>
                 </Card>
+              </motion.div>
 
+              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
                 <Card>
                   <CardContent className="flex items-start gap-4 pt-6">
                     <div className="w-12 h-12 rounded-full gradient-navy flex items-center justify-center flex-shrink-0">
@@ -130,7 +144,9 @@ const Contact = () => {
                     </div>
                   </CardContent>
                 </Card>
+              </motion.div>
 
+              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
                 <Card>
                   <CardContent className="flex items-start gap-4 pt-6">
                     <div className="w-12 h-12 rounded-full gradient-navy flex items-center justify-center flex-shrink-0">
@@ -145,14 +161,19 @@ const Contact = () => {
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="py-16 bg-muted/50">
+      {/* Map Section - Restored original MNNIT Map iframe */}
+      <motion.section 
+        initial={{ opacity: 0 }} 
+        whileInView={{ opacity: 1 }} 
+        viewport={{ once: true }}
+        className="py-16 bg-muted/50"
+      >
         <div className="container mx-auto px-4">
           <h2 className="font-display text-2xl font-bold mb-8 text-center">Location</h2>
           <div className="aspect-video max-w-4xl mx-auto rounded-lg overflow-hidden border border-border">
@@ -168,7 +189,7 @@ const Contact = () => {
             />
           </div>
         </div>
-      </section>
+      </motion.section>
     </Layout>
   );
 };

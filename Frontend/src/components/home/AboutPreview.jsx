@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, Users, Award, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,20 +10,36 @@ export function AboutPreview() {
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
-          <div className="relative">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
             <img
               src={mnnitCampus}
               alt="MNNIT Allahabad Campus"
               className="rounded-lg shadow-xl"
             />
-            <div className="absolute -bottom-6 -right-6 bg-conference-gold text-primary p-6 rounded-lg shadow-lg hidden md:block">
+            <motion.div 
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ delay: 0.5, type: "spring" }}
+              className="absolute -bottom-6 -right-6 bg-conference-gold text-primary p-6 rounded-lg shadow-lg hidden md:block"
+            >
               <p className="font-display text-3xl font-bold">3</p>
               <p className="text-sm">Days Conference</p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Content */}
-          <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <p className="text-conference-gold font-medium mb-2">ABOUT THE CONFERENCE</p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
               Sustainable Energy & Environment
@@ -73,12 +90,14 @@ export function AboutPreview() {
               </div>
             </div>
 
-            <Button asChild className="bg-primary hover:bg-primary/90">
-              <Link to="/about">
-                Details <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
-            </Button>
-          </div>
+            <motion.div whileHover={{ x: 5 }}>
+              <Button asChild className="bg-primary hover:bg-primary/90">
+                <Link to="/about" className="flex items-center">
+                  Details <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

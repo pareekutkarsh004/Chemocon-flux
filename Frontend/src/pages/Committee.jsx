@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -44,58 +45,72 @@ const committeeData = {
 };
 
 const Committee = () => {
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.05, duration: 0.5 }
+    })
+  };
+
   return (
     <Layout>
-      {/* Page Header */}
       <section className="gradient-navy text-primary-foreground py-20">
         <div className="container mx-auto px-4">
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">Organizing Committee</h1>
-          <p className="text-primary-foreground/80 text-lg max-w-2xl">
+          <motion.h1 
+            initial={{ opacity: 0, x: -20 }} 
+            animate={{ opacity: 1, x: 0 }} 
+            className="font-display text-4xl md:text-5xl font-bold mb-4"
+          >
+            Organizing Committee
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            transition={{ delay: 0.2 }} 
+            className="text-primary-foreground/80 text-lg max-w-2xl"
+          >
             Meet the organizing team behind CHEM-CONFLUX²⁶
-          </p>
+          </motion.p>
         </div>
       </section>
 
-      {/* Patron & Chairperson */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {/* Patron */}
             <div>
               <h2 className="font-display text-2xl font-bold mb-6 text-center text-conference-gold">Patron</h2>
-              {committeeData.patron.map((member) => (
-                <Card key={member.name} className="text-center">
-                  <CardHeader>
-                    <div className="w-20 h-20 rounded-full bg-conference-navy/10 mx-auto mb-3 flex items-center justify-center">
-                      <span className="text-2xl font-display font-bold text-conference-navy">
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </span>
-                    </div>
-                    <CardTitle className="text-base">{member.name}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground text-sm">{member.role}</p>
-                  </CardContent>
-                </Card>
+              {committeeData.patron.map((member, i) => (
+                <motion.div key={member.name} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
+                  <Card className="text-center">
+                    <CardHeader>
+                      <div className="w-20 h-20 rounded-full bg-conference-navy/10 mx-auto mb-3 flex items-center justify-center">
+                        <span className="text-2xl font-display font-bold text-conference-navy">{member.name.split(' ').map(n => n[0]).join('')}</span>
+                      </div>
+                      <CardTitle className="text-base">{member.name}</CardTitle>
+                    </CardHeader>
+                    <CardContent><p className="text-muted-foreground text-sm">{member.role}</p></CardContent>
+                  </Card>
+                </motion.div>
               ))}
             </div>
             {/* Chairperson */}
             <div>
               <h2 className="font-display text-2xl font-bold mb-6 text-center text-conference-gold">Chairperson</h2>
-              {committeeData.chairperson.map((member) => (
-                <Card key={member.name} className="text-center">
-                  <CardHeader>
-                    <div className="w-20 h-20 rounded-full bg-conference-navy/10 mx-auto mb-3 flex items-center justify-center">
-                      <span className="text-2xl font-display font-bold text-conference-navy">
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </span>
-                    </div>
-                    <CardTitle className="text-base">{member.name}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground text-sm">{member.role}</p>
-                  </CardContent>
-                </Card>
+              {committeeData.chairperson.map((member, i) => (
+                <motion.div key={member.name} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
+                  <Card className="text-center">
+                    <CardHeader>
+                      <div className="w-20 h-20 rounded-full bg-conference-navy/10 mx-auto mb-3 flex items-center justify-center">
+                        <span className="text-2xl font-display font-bold text-conference-navy">{member.name.split(' ').map(n => n[0]).join('')}</span>
+                      </div>
+                      <CardTitle className="text-base">{member.name}</CardTitle>
+                    </CardHeader>
+                    <CardContent><p className="text-muted-foreground text-sm">{member.role}</p></CardContent>
+                  </Card>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -107,20 +122,18 @@ const Committee = () => {
         <div className="container mx-auto px-4">
           <h2 className="font-display text-2xl font-bold mb-8 text-center text-conference-gold">Conveners / Technical Chairs</h2>
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {committeeData.conveners.map((member) => (
-              <Card key={member.name} className="text-center">
-                <CardHeader>
-                  <div className="w-20 h-20 rounded-full bg-muted mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-2xl font-display font-bold text-muted-foreground">
-                      {member.name.split(' ').map(n => n[0]).join('')}
-                    </span>
-                  </div>
-                  <CardTitle className="text-lg">{member.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-sm">{member.role}</p>
-                </CardContent>
-              </Card>
+            {committeeData.conveners.map((member, i) => (
+              <motion.div key={member.name} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
+                <Card className="text-center">
+                  <CardHeader>
+                    <div className="w-20 h-20 rounded-full bg-muted mx-auto mb-4 flex items-center justify-center">
+                      <span className="text-2xl font-display font-bold text-muted-foreground">{member.name.split(' ').map(n => n[0]).join('')}</span>
+                    </div>
+                    <CardTitle className="text-lg">{member.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent><p className="text-muted-foreground text-sm">{member.role}</p></CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -131,16 +144,16 @@ const Committee = () => {
         <div className="container mx-auto px-4">
           <h2 className="font-display text-2xl font-bold mb-8 text-center text-conference-gold">Organizing Secretaries</h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {committeeData.organizingSecretaries.map((member) => (
-              <Card key={member.name} className="text-center p-4">
-                <div className="w-14 h-14 rounded-full bg-conference-navy/10 mx-auto mb-3 flex items-center justify-center">
-                  <span className="text-lg font-display font-bold text-conference-navy">
-                    {member.name.split(' ').slice(-1)[0][0]}
-                  </span>
-                </div>
-                <p className="font-medium text-sm">{member.name}</p>
-                <p className="text-muted-foreground text-xs">{member.role}</p>
-              </Card>
+            {committeeData.organizingSecretaries.map((member, i) => (
+              <motion.div key={member.name} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
+                <Card className="text-center p-4 hover:border-conference-gold transition-colors">
+                  <div className="w-14 h-14 rounded-full bg-conference-navy/10 mx-auto mb-3 flex items-center justify-center">
+                    <span className="text-lg font-display font-bold text-conference-navy">{member.name.split(' ').slice(-1)[0][0]}</span>
+                  </div>
+                  <p className="font-medium text-sm">{member.name}</p>
+                  <p className="text-muted-foreground text-xs">{member.role}</p>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -151,36 +164,26 @@ const Committee = () => {
         <div className="container mx-auto px-4">
           <h2 className="font-display text-2xl font-bold mb-8 text-center text-conference-gold">Advisory Committee</h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
-            {committeeData.advisory.map((member) => (
-              <Card key={member.name} className="text-center p-4">
-                <p className="font-medium text-sm">{member.name}</p>
-                <p className="text-muted-foreground text-xs">{member.role}</p>
-              </Card>
+            {committeeData.advisory.map((member, i) => (
+              <motion.div key={member.name} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
+                <Card className="text-center p-4 hover:shadow-md transition-shadow">
+                  <p className="font-medium text-sm">{member.name}</p>
+                  <p className="text-muted-foreground text-xs">{member.role}</p>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Info */}
+      {/* Contact Section remains at bottom */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-display text-2xl font-bold mb-4">Contact</h2>
-          <p className="text-muted-foreground mb-4">
-            For any queries, please contact:
-          </p>
           <div className="space-y-2">
-            <a 
-              href="mailto:chemconflux26@gmail.com" 
-              className="text-conference-gold hover:underline text-lg font-medium block"
-            >
-              chemconflux26@gmail.com
-            </a>
-            <p className="text-muted-foreground text-sm">
-              Phone: +91-532-2271581 (O)
-            </p>
-            <p className="text-muted-foreground text-sm">
-              Mobile: +91-9003670402, +91-9455421398, +91-8248954090
-            </p>
+            <a href="mailto:chemconflux26@gmail.com" className="text-conference-gold hover:underline text-lg font-medium block">chemconflux26@gmail.com</a>
+            <p className="text-muted-foreground text-sm">Phone: +91-532-2271581 (O)</p>
+            <p className="text-muted-foreground text-sm">Mobile: +91-9003670402, +91-9455421398, +91-8248954090</p>
           </div>
         </div>
       </section>

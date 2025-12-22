@@ -135,3 +135,17 @@
     background-clip: text;
   }
 }
+/* Add this to the end of your file */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optional: Subtle fade-in for images when they load */
+img {
+  animation: fadeInImg 1.5s ease;
+}
+
+@keyframes fadeInImg {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Award, BookOpen, Target, Globe, CheckCircle, Building, Home, GraduationCap, FileText, CreditCard, Users, Send } from "lucide-react";
 import mnnitCampus1 from "@/assets/mnnit-campus-1.jpeg";
@@ -33,12 +34,23 @@ const About = () => {
   return (
     <Layout>
       {/* Page Header */}
-      <section className="gradient-navy text-primary-foreground py-20">
+      <section className="gradient-navy text-primary-foreground py-20 overflow-hidden">
         <div className="container mx-auto px-4">
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">About CHEM-CONFLUX²⁶</h1>
-          <p className="text-primary-foreground/80 text-lg max-w-2xl">
+          <motion.h1 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="font-display text-4xl md:text-5xl font-bold mb-4"
+          >
+            About CHEM-CONFLUX²⁶
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-primary-foreground/80 text-lg max-w-2xl"
+          >
             International Conference on Sustainable Environment & Energy Innovations
-          </p>
+          </motion.p>
         </div>
       </section>
 
@@ -46,7 +58,12 @@ const About = () => {
       <section className="py-16 bg-background" id="about">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <p className="text-conference-gold font-medium mb-2">CONFERENCE OVERVIEW</p>
               <h2 className="font-display text-3xl font-bold mb-6">About the Conference</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
@@ -64,14 +81,19 @@ const About = () => {
               <p className="text-muted-foreground leading-relaxed">
                 The Inaugural function and Keynote address will be held in Institute Seminar Hall.
               </p>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
               <img
                 src={mnnitCampus3}
                 alt="MNNIT Allahabad Campus"
                 className="rounded-lg shadow-xl"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -87,10 +109,17 @@ const About = () => {
           <div className="max-w-3xl mx-auto">
             <div className="grid gap-4">
               {objectives.map((objective, index) => (
-                <div key={index} className="flex items-start gap-3 bg-card p-4 rounded-lg border border-border">
+                <motion.div 
+                  key={index} 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-start gap-3 bg-card p-4 rounded-lg border border-border"
+                >
                   <CheckCircle className="w-6 h-6 text-conference-gold flex-shrink-0 mt-0.5" />
                   <p className="text-foreground">{objective}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -107,10 +136,17 @@ const About = () => {
           
           <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
             {participants.map((participant, index) => (
-              <div key={index} className="flex items-center gap-2 bg-card px-4 py-3 rounded-full border border-border">
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="flex items-center gap-2 bg-card px-4 py-3 rounded-full border border-border"
+              >
                 <Users className="w-4 h-4 text-conference-gold" />
                 <span className="text-foreground font-medium">{participant}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -124,7 +160,12 @@ const About = () => {
             <h2 className="font-display text-3xl font-bold mb-4">Paper Submission Guidelines</h2>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
             <div className="bg-card rounded-lg p-8 border border-border mb-8">
               <div className="flex items-start gap-4">
                 <div className="w-14 h-14 rounded-full gradient-navy flex items-center justify-center flex-shrink-0">
@@ -159,7 +200,7 @@ const About = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -172,7 +213,12 @@ const About = () => {
             <p className="text-muted-foreground">Early Bird deadline: August 30, 2026</p>
           </div>
           
-          <div className="max-w-4xl mx-auto overflow-x-auto">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto overflow-x-auto"
+          >
             <table className="w-full border-collapse">
               <thead>
                 <tr className="gradient-navy text-primary-foreground">
@@ -194,37 +240,24 @@ const About = () => {
             <p className="text-sm text-muted-foreground mt-4 text-center">
               * All fees include GST
             </p>
-          </div>
-
-          {/* Payment Methods */}
-          <div className="max-w-3xl mx-auto mt-8">
-            <div className="bg-card rounded-lg p-6 border border-border">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full gradient-navy flex items-center justify-center flex-shrink-0">
-                  <CreditCard className="w-6 h-6 text-conference-gold" />
-                </div>
-                <div>
-                  <h3 className="font-display text-lg font-bold mb-2">Payment Methods</h3>
-                  <ul className="text-muted-foreground space-y-1 text-sm">
-                    <li>• Local Cheque or Demand Draft in favor of <strong>"CHEMCONFLUX26"</strong>, payable at Prayagraj</li>
-                    <li>• Net Banking (visit event website for details)</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* About Prayagraj */}
-      <section className="py-16 bg-muted/50">
+      <section className="py-16 bg-muted/50 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <p className="text-conference-gold font-medium mb-2">HOST CITY</p>
             <h2 className="font-display text-3xl font-bold mb-4">About Prayagraj</h2>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
             <div className="bg-card rounded-lg p-8 border border-border mb-8">
               <div className="flex items-start gap-4">
                 <div className="w-14 h-14 rounded-full gradient-navy flex items-center justify-center flex-shrink-0">
@@ -243,7 +276,7 @@ const About = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -255,8 +288,13 @@ const About = () => {
             <h2 className="font-display text-3xl font-bold mb-4">About MNNIT Allahabad</h2>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-card rounded-lg p-8 border border-border mb-8">
+          <div className="max-w-4xl mx-auto space-y-6">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-card rounded-lg p-8 border border-border"
+            >
               <div className="flex items-start gap-4">
                 <div className="w-14 h-14 rounded-full gradient-navy flex items-center justify-center flex-shrink-0">
                   <GraduationCap className="w-7 h-7 text-conference-gold" />
@@ -277,10 +315,14 @@ const About = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* About the Department */}
-            <div className="bg-card rounded-lg p-8 border border-border">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-card rounded-lg p-8 border border-border"
+            >
               <div className="flex items-start gap-4">
                 <div className="w-14 h-14 rounded-full gradient-navy flex items-center justify-center flex-shrink-0">
                   <Building className="w-7 h-7 text-conference-gold" />
@@ -298,7 +340,7 @@ const About = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -311,7 +353,12 @@ const About = () => {
             <h2 className="font-display text-3xl font-bold mb-4">Accommodation</h2>
           </div>
 
-          <div className="max-w-3xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto"
+          >
             <div className="bg-card rounded-lg p-8 border border-border text-center">
               <div className="w-16 h-16 rounded-full gradient-navy flex items-center justify-center mx-auto mb-6">
                 <Home className="w-8 h-8 text-conference-gold" />
@@ -326,7 +373,7 @@ const About = () => {
                 For accommodation queries, contact: <a href="mailto:chemconflux26@gmail.com" className="text-conference-gold hover:underline">chemconflux26@gmail.com</a>
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -339,21 +386,18 @@ const About = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <img
-              src={mnnitCampus1}
-              alt="MNNIT Campus View 1"
-              className="rounded-lg shadow-lg h-64 w-full object-cover"
-            />
-            <img
-              src={mnnitCampus2}
-              alt="MNNIT Campus View 2"
-              className="rounded-lg shadow-lg h-64 w-full object-cover"
-            />
-            <img
-              src={mnnitCampus3}
-              alt="MNNIT Campus View 3"
-              className="rounded-lg shadow-lg h-64 w-full object-cover"
-            />
+            {[mnnitCampus1, mnnitCampus2, mnnitCampus3].map((img, idx) => (
+              <motion.img
+                key={idx}
+                src={img}
+                alt={`MNNIT Campus View ${idx + 1}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.2 }}
+                className="rounded-lg shadow-lg h-64 w-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            ))}
           </div>
         </div>
       </section>
