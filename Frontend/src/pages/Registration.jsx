@@ -34,21 +34,21 @@ const CATEGORY_OPTIONS = [
     label: "Delegates from academics/Industries/Govt. org",
     amount: "₹ 7080/- (standard)",
     paymentType: "qr",
-    qrSrc: "/qr/delegates-7080.png", // place image at Frontend/public/qr/delegates-7080.png
+    qrSrc: "Frontend/public/delegates-7080.jpeg" ,// place image at Frontend/public/qr/delegates-7080.png
   },
   {
     key: "pg",
     label: "PG Students/Research Scholars",
     amount: "₹ 4130/- (standard)",
     paymentType: "qr",
-    qrSrc: "/qr/pg-4130.png",
+    qrSrc: "Frontend/public/pg-4130.jpeg",
   },
   {
     key: "ug",
     label: "UG students",
     amount: "₹ 2360/- (standard)",
     paymentType: "qr",
-    qrSrc: "/qr/ug-2360.png",
+    qrSrc: "Frontend/public/ug-2360.jpeg",
   },
   {
     key: "foreign",
