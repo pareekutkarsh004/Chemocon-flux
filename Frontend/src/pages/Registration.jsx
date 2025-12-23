@@ -17,6 +17,7 @@ import {
   Building,
   GraduationCap,
   MapPin,
+  Hash,
 } from "lucide-react";
 
 const registrationFees = [
@@ -101,6 +102,7 @@ const GOOGLE_FORM_ENTRIES = {
   category: "entry.262280136",
   paperTitle: "entry.26866841",
   abstract: "entry.850816242",
+  utrNo: "entry.764707765",
 };
 
 const Registration = () => {
@@ -116,6 +118,7 @@ const Registration = () => {
     category: "",
     paperTitle: "",
     abstract: "",
+    utrNo: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -153,20 +156,67 @@ const Registration = () => {
     tempForm.target = "hidden-google-form-frame";
     tempForm.style.display = "none";
 
+    // Add all form fields to the submission
     Object.entries(GOOGLE_FORM_ENTRIES).forEach(([key, entryId]) => {
       const value = formData[key];
+      // Only add fields that have values (skip empty optional fields)
       if (value && entryId.startsWith("entry.")) {
         const input = document.createElement("input");
         input.type = "hidden";
         input.name = entryId;
-        input.value = value;
+        input.value = String(value).trim();
         tempForm.appendChild(input);
       }
     });
 
+    // Ensure iframe exists before submitting
+    if (!hiddenIframeRef.current) {
+      alert("Error: Form submission failed. Please refresh the page and try again.");
+      setIsSubmitting(false);
+      return;
+    }
+
     document.body.appendChild(tempForm);
-    tempForm.submit();
-    document.body.removeChild(tempForm);
+    
+    // Submit the form
+    try {
+      tempForm.submit();
+    } catch (error) {
+      console.error("Form submission error:", error);
+      document.body.removeChild(tempForm);
+      setIsSubmitting(false);
+      alert("There was an error submitting the form. Please try again.");
+      return;
+    }
+    
+    // Wait longer before removing the form and resetting to ensure submission completes
+    setTimeout(() => {
+      try {
+        if (document.body.contains(tempForm)) {
+          document.body.removeChild(tempForm);
+        }
+      } catch (e) {
+        // Form might already be removed, ignore
+      }
+      
+      setIsSubmitting(false);
+      alert("Registration submitted! We received your details.");
+      
+      // Reset form after submission
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        affiliation: "",
+        designation: "",
+        address: "",
+        category: "",
+        paperTitle: "",
+        abstract: "",
+        utrNo: "",
+      });
+      setSelectedCategoryKey("");
+    }, 1500);
 
     setTimeout(() => {
       setIsSubmitting(false);
@@ -432,6 +482,29 @@ const Registration = () => {
                 </div>
               )}
 
+              {/* UTR NO - shown after category selection */}
+              {selectedCategoryKey && (
+                <div className="border-t border-border pt-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="utrNo" className="flex items-center gap-2">
+                      <Hash className="w-4 h-4 text-conference-gold" />
+                      UTR NO
+                      <span className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id="utrNo"
+                      value={formData.utrNo}
+                      onChange={handleChange("utrNo")}
+                      placeholder="Enter UTR/Transaction Reference Number"
+                      required
+                    />
+                    <p className="text-xs text-muted-foreground">
+                      Enter the UTR number from your payment transaction
+                    </p>
+                  </div>
+                </div>
+              )}
+
               <div className="space-y-2">
                 <Label htmlFor="address" className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-conference-gold" />
@@ -475,15 +548,14 @@ const Registration = () => {
 
               <div className="flex items-center justify-between gap-4 flex-wrap">
                 <p className="text-sm text-muted-foreground">
-                  On submit, we will open the official Google Form with these
-                  values pre-filled for you to confirm and submit.
+                  Please fill all required fields and submit your registration.
                 </p>
                 <Button
                   type="submit"
                   disabled={isSubmitting}
                   className="bg-conference-gold hover:bg-conference-gold/90 text-conference-navy font-semibold"
                 >
-                  {isSubmitting ? "Preparing..." : "Open Google Form"}
+                  {isSubmitting ? "Submitting..." : "Submit"}
                 </Button>
               </div>
             </form>
