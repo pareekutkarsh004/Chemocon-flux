@@ -35,21 +35,21 @@ const CATEGORY_OPTIONS = [
     label: "Delegates from academics/Industries/Govt. org",
     amount: "₹ 7080/- (standard)",
     paymentType: "qr",
-    qrSrc: "/delegates-7080.jpeg" ,// place image at Frontend/public/qr/delegates-7080.png
+    qrSrc: "/image.png",// place image at Frontend/public/qr/delegates-7080.png
   },
   {
     key: "pg",
     label: "PG Students/Research Scholars",
     amount: "₹ 4130/- (standard)",
     paymentType: "qr",
-    qrSrc: "/pg-4130.jpeg",
+    qrSrc: "/image.png",
   },
   {
     key: "ug",
     label: "UG students",
     amount: "₹ 2360/- (standard)",
     paymentType: "qr",
-    qrSrc: "/ug-2360.jpeg",
+    qrSrc: "/image.png",
   },
   {
     key: "foreign",
@@ -67,12 +67,12 @@ const CATEGORY_OPTIONS = [
 
 // Bank details for foreign categories
 const BANK_DETAILS = {
-  accountName: "ChemConflux26",
-  accountNumber: "000000000000", // TODO: replace
-  ifsc: "IFSC0000000", // TODO: replace
-  micr: "MICR0000000", // TODO: replace
-  branch: "Your Branch, City", // TODO: replace
-  swift: "SWIFT0000", // Optional: add if available
+  accountName: "SNFCE MNNIT Allahabad",
+  accountNumber: "10424975574", // TODO: replace
+  ifsc: "SBIN0002580", // TODO: replace
+  micr: "211002016", // TODO: replace
+  branch: "SBI, MNNIT Allahabad", // TODO: replace
+  swift: "SBININBB828", // Optional: add if available
 };
 
 const importantDates = [
