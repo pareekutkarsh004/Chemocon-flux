@@ -37,26 +37,41 @@ export function Hero() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="max-w-3xl"
         >
-          <motion.p variants={itemVariants} className="text-conference-gold font-medium mb-4 tracking-wide">
+          <motion.p
+            variants={itemVariants}
+            className="text-conference-gold font-medium mb-4 tracking-wide"
+          >
             INTERNATIONAL CONFERENCE
           </motion.p>
-          <motion.h1 variants={itemVariants} className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6">
+          <motion.h1
+            variants={itemVariants}
+            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6"
+          >
             CHEM-CONFLUX²⁶
           </motion.h1>
-          <motion.p variants={itemVariants} className="text-xl text-primary-foreground/90 font-display mb-2">
+          <motion.p
+            variants={itemVariants}
+            className="text-xl text-primary-foreground/90 font-display mb-2"
+          >
             Sustainable Environment & Energy Innovations
           </motion.p>
-          <motion.p variants={itemVariants} className="text-lg text-primary-foreground/80 italic mb-8">
+          <motion.p
+            variants={itemVariants}
+            className="text-lg text-primary-foreground/80 italic mb-8"
+          >
             Sustainable Energy, Environment, Green Technology & Climate Change
           </motion.p>
 
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-6 mb-8 text-primary-foreground/90">
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap gap-6 mb-8 text-primary-foreground/90"
+          >
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5 text-conference-gold" />
               <span>October 22-24, 2026</span>
@@ -68,12 +83,18 @@ export function Hero() {
           </motion.div>
 
           <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
-            <Button asChild className="bg-conference-gold hover:bg-conference-gold-light text-primary font-semibold">
-              <a href="https://forms.gle/w2xclc8rz1LQvusH7" target="_blank" rel="noopener noreferrer">
+            <Button
+              asChild
+              className="bg-conference-gold hover:bg-conference-gold-light text-primary font-semibold"
+            >
+              <a href="/registration" target="_blank" rel="noopener noreferrer">
                 Register Now
               </a>
             </Button>
-            <Button asChild className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 bg-transparent">
+            <Button
+              asChild
+              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 bg-transparent"
+            >
               <a href="#about">Learn More</a>
             </Button>
           </motion.div>
