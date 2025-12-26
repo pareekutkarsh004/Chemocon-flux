@@ -3,17 +3,14 @@ import {
   Mail,
   Phone,
   MapPin,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Youtube,
 } from "lucide-react";
 
 export function Footer() {
   return (
     <footer className="bg-secondary dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900 text-foreground border-t border-border">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Changed lg:grid-cols-4 to lg:grid-cols-3 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {/* Event Info */}
           <div>
             <h3 className="font-display text-xl font-bold mb-4 text-primary">
@@ -79,22 +76,6 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
-
-          {/* Social */}
-          <div>
-            <h4 className="font-semibold mb-4 text-foreground">Follow Us</h4>
-            <div className="flex gap-3">
-              {[Facebook, Twitter, Linkedin, Youtube].map((Icon, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className="w-10 h-10 rounded-xl bg-muted dark:bg-white/5 border border-border dark:border-white/10 flex items-center justify-center hover:bg-primary/20 hover:border-primary/30 hover:scale-110 transition-all duration-300"
-                >
-                  <Icon className="w-5 h-5 text-muted-foreground hover:text-primary" />
-                </a>
-              ))}
-            </div>
           </div>
         </div>
 

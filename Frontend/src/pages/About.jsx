@@ -408,32 +408,6 @@ const About = () => {
             <p className="text-sm text-muted-foreground mt-4 text-center">
               * All fees include GST
             </p>
-
-            {/* Payment Methods */}
-            <div className="mt-8 bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-border dark:border-white/10 hover:border-primary/30 transition-all duration-300">
-              <div className="flex items-start gap-4">
-                <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <CreditCard className="w-7 h-7 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-display text-xl font-bold mb-3 text-foreground">
-                    Payment Methods
-                  </h3>
-                  <ul className="text-muted-foreground space-y-2">
-                    <li className="flex items-start gap-2">
-                      <span className="w-2 h-2 rounded-full bg-primary mt-2" />
-                      Local Cheque or Demand Draft in favor of{" "}
-                      <strong className="text-primary">"CHEMCONFLUX26"</strong>,
-                      payable at Prayagraj
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-2 h-2 rounded-full bg-primary mt-2" />
-                      Net Banking (visit event website for details)
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
