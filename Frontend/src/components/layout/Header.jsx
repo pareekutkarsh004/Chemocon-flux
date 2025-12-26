@@ -9,7 +9,6 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Committee", path: "/committee" },
-  { name: "Registration", path: "/registration" },
   { name: "Contact", path: "/contact" },
 ];
 
@@ -20,17 +19,10 @@ export function Header() {
   return (
     <header
       className="
-  bg-background 
-  text-foreground 
-  dark:bg-gradient-to-r 
-  dark:from-slate-900 
-  dark:via-slate-800 
-  dark:to-slate-900 
-  fixed top-0 left-0 w-full 
-  z-50 
-  shadow-lg 
-  border-b border-primary/20
-"
+      bg-background text-foreground
+      dark:bg-gradient-to-r dark:from-slate-900 dark:via-slate-800 dark:to-slate-900
+      fixed top-0 left-0 w-full z-50 shadow-lg border-b border-primary/20
+    "
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
@@ -39,32 +31,47 @@ export function Header() {
             <img
               src={mnnitLogo}
               alt="MNNIT Logo"
-              className="w-12 h-12 rounded-full object-contain bg-white group-hover:scale-105 transition-transform"
+              className="w-12 h-12 rounded-full bg-white object-contain group-hover:scale-105 transition"
             />
             <div className="hidden sm:block">
-              <h1 className="font-display text-lg font-bold leading-tight group-hover:text-primary transition-colors">
-                CHEM-CONFLUX²⁶
-              </h1>
+              <h1 className="font-display text-lg font-bold">CHEM-CONFLUX²⁶</h1>
               <p className="text-xs text-muted-foreground">MNNIT Allahabad</p>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-2">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "px-4 py-2 rounded-md text-sm font-medium transition-all duration-300",
+                  "px-4 py-2 rounded-md text-sm font-medium transition",
                   location.pathname === link.path
                     ? "bg-primary/20 text-primary"
-                    : "hover:bg-secondary text-foreground/90 hover:text-primary"
+                    : "hover:bg-secondary"
                 )}
               >
                 {link.name}
               </Link>
             ))}
+
+            {/* 🔥 REGISTRATION CTA */}
+            <Link
+              to="/registration"
+              className="
+                ml-3 px-6 py-2.5 rounded-full text-sm font-semibold
+                text-white
+                bg-gradient-to-r from-orange-500 to-red-500
+                shadow-lg shadow-orange-500/30
+                ring-2 ring-orange-400/60
+                hover:shadow-xl hover:scale-105
+                transition-all duration-300
+              "
+            >
+              Register Now
+            </Link>
+
             <ThemeToggle />
           </nav>
 
@@ -72,37 +79,41 @@ export function Header() {
           <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
             <button
-              className="p-2 hover:bg-secondary rounded-lg transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
+              className="p-2 rounded-lg hover:bg-secondary"
             >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {isMenuOpen ? <X /> : <Menu />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Menu */}
         {isMenuOpen && (
-          <nav className="md:hidden pb-4 animate-fade-in">
+          <nav className="md:hidden pb-4 space-y-2">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
-                className={cn(
-                  "block px-4 py-3 rounded-md text-sm font-medium transition-all duration-300",
-                  location.pathname === link.path
-                    ? "bg-primary/20 text-primary"
-                    : "hover:bg-secondary text-foreground/90"
-                )}
+                className="block px-4 py-3 rounded-md hover:bg-secondary"
               >
                 {link.name}
               </Link>
             ))}
+
+            {/* 🔥 MOBILE REGISTRATION CTA */}
+            <Link
+              to="/registration"
+              onClick={() => setIsMenuOpen(false)}
+              className="
+                block text-center mt-3 px-4 py-3 rounded-xl
+                font-semibold text-white
+                bg-gradient-to-r from-orange-500 to-red-500
+                shadow-md shadow-orange-500/30
+              "
+            >
+              Register Now
+            </Link>
           </nav>
         )}
       </div>

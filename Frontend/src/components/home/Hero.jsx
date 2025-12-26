@@ -6,13 +6,14 @@ import {
   ChevronLeft,
   ChevronRight,
   Sparkles,
+  FileDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import mnnitCampus1 from "@/assets/mnnit-campus-1.jpeg";
 import mnnitCampus2 from "@/assets/mnnit-campus-2.jpeg";
 import mnnitCampus3 from "@/assets/mnnit-campus-3.jpeg";
 
-const campusImages = [mnnitCampus1];
+const campusImages = [mnnitCampus1, mnnitCampus2, mnnitCampus3];
 
 export function Hero() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -61,7 +62,36 @@ export function Hero() {
       </div>
 
       {/* Carousel Controls */}
-  
+      <button
+        onClick={prevImage}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110 group"
+        aria-label="Previous image"
+      >
+        <ChevronLeft className="w-6 h-6 text-white group-hover:-translate-x-0.5 transition-transform" />
+      </button>
+      <button
+        onClick={nextImage}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all duration-300 hover:scale-110 group"
+        aria-label="Next image"
+      >
+        <ChevronRight className="w-6 h-6 text-white group-hover:translate-x-0.5 transition-transform" />
+      </button>
+
+      {/* Carousel Indicators */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+        {campusImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToImage(index)}
+            className={`h-3 rounded-full transition-all duration-300 ${
+              index === currentImage
+                ? "bg-orange-500 w-12"
+                : "bg-white/30 w-3 hover:bg-white/50"
+            }`}
+            aria-label={`Go to image ${index + 1}`}
+          />
+        ))}
+      </div>
 
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
@@ -116,6 +146,17 @@ export function Hero() {
               className="border-white/30 text-white bg-transparent hover:bg-white/10 backdrop-blur-sm hover:scale-105 transition-all duration-300"
             >
               <a href="#about">Learn More</a>
+            </Button>
+            <Button
+              asChild
+              // size="lg"
+              variant="outline"
+              className="border-orange-500/50 text-orange-400 bg-orange-500/10 hover:bg-orange-500/20 backdrop-blur-sm hover:scale-105 transition-all duration-300 group"
+            >
+              <a href="/brochure/Chemconflux26-Brochure.pdf" download>
+                <FileDown className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+                Download Brochure
+              </a>
             </Button>
           </div>
         </div>
