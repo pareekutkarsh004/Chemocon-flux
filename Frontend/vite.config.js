@@ -7,6 +7,10 @@ export default defineConfig({
     host: true,
     allowedHosts: "all",
   },
+  preview: {
+    host: true,
+    allowedHosts: "all",
+  },
   plugins: [react()],
   resolve: {
     alias: {
