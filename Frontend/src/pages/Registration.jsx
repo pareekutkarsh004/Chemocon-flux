@@ -442,82 +442,153 @@ const Registration = () => {
                   </div>
                 </div>
 
-                {/* Payment Instructions */}
-                {selectedCategory && (
-                  <div className="bg-primary/10 rounded-xl p-6 border border-primary/20">
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-                      <div>
-                        <p className="text-primary text-sm font-medium uppercase tracking-wider">
-                          Payment for
-                        </p>
-                        <p className="text-foreground font-semibold">
-                          {selectedCategory.label}
-                        </p>
-                        <p className="text-primary text-lg font-bold mt-1">
-                          Amount: {selectedCategory.amount}
-                        </p>
-                      </div>
-                      <a
-                        href="#registration-fees"
-                        className="text-primary text-sm hover:underline flex items-center gap-1"
-                      >
-                        View all fees <ArrowUp className="w-3 h-3 rotate-180" />
-                      </a>
-                    </div>
-
-                    {selectedCategory.paymentType === "qr" ? (
-                      <div className="text-center">
-                        <div className="inline-block bg-white p-4 rounded-xl mb-4">
-                          <img
-                            src={selectedCategory.qrSrc}
-                            alt="Payment QR"
-                            className="w-48 h-48 object-contain"
-                          />
-                        </div>
-                        <p className="text-muted-foreground text-sm">
-                          Scan this QR to pay. After payment, enter the UTR
-                          number below.
-                        </p>
-                      </div>
-                    ) : (
-                      <div>
-                        <p className="text-muted-foreground text-sm mb-4">
-                          Pay via bank transfer using the details below:
-                        </p>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-                          {[
-                            {
-                              label: "Account Name",
-                              value: BANK_DETAILS.accountName,
-                            },
-                            {
-                              label: "Account Number",
-                              value: BANK_DETAILS.accountNumber,
-                            },
-                            { label: "IFSC Code", value: BANK_DETAILS.ifsc },
-                            { label: "MICR Code", value: BANK_DETAILS.micr },
-                            { label: "Branch", value: BANK_DETAILS.branch },
-                            ...(BANK_DETAILS.swift
-                              ? [{ label: "SWIFT", value: BANK_DETAILS.swift }]
-                              : []),
-                          ].map((item, idx) => (
-                            <div
-                              key={idx}
-                              className="bg-muted dark:bg-slate-800/50 rounded-lg p-3"
-                            >
-                              <p className="text-muted-foreground text-xs">
-                                {item.label}
+              {/* Category-specific payment instructions */}
+              {selectedCategoryKey && (
+                <div className="bg-muted/50 rounded-lg border border-border/60 p-4 space-y-3">
+                  {(() => {
+                    const cat = CATEGORY_OPTIONS.find(
+                      (c) => c.key === selectedCategoryKey
+                    );
+                    if (!cat) return null;
+                    return (
+                      <>
+                        <div className="flex items-center justify-between gap-4 flex-wrap mb-4">
+                          <div>
+                            <p className="text-sm text-muted-foreground">
+                              Payment Details for
+                            </p>
+                            <p className="font-display text-lg font-semibold text-foreground">
+                              {cat.label}
+                            </p>
+                            {cat.amount && (
+                              <p className="text-sm text-muted-foreground">
+                                Amount: {cat.amount}
                               </p>
-                              <p className="text-foreground font-medium">
-                                {item.value}
+                            )}
+                          </div>
+                          <Button
+                            asChild
+                            variant="outline"
+                            className="border-conference-gold text-conference-gold hover:bg-conference-gold/10"
+                          >
+                            <a href="#registration-fees">Check fee details</a>
+                          </Button>
+                        </div>
+
+                        {/* --- ADDED: Pay Online Portal Section --- */}
+                        <div className="bg-background border border-conference-gold/40 rounded-lg p-4 mb-4 shadow-sm">
+                          <h4 className="font-semibold text-foreground flex items-center gap-2 mb-2">
+                             <CreditCard className="w-4 h-4 text-conference-gold" />
+                             Option 1: Pay Online
+                          </h4>
+                          <p className="text-sm text-muted-foreground mb-3">
+                            You can pay the registration fee securely via our online portal.
+                          </p>
+                          <Button 
+                            asChild
+                            className="bg-conference-gold hover:bg-conference-gold/90 text-conference-navy font-bold w-full sm:w-auto"
+                          >
+                            <a 
+                                href="https://www.onlinesbi.sbi/sbicollect/icollecthome.htm?corpID=5483621" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                            >
+                               Proceed to Online Payment <ExternalLink className="ml-2 w-4 h-4" />
+                            </a>
+                          </Button>
+                        </div>
+
+                         <div className="relative flex items-center py-2">
+                            <div className="flex-grow border-t border-border"></div>
+                            <span className="flex-shrink-0 mx-4 text-muted-foreground text-xs uppercase font-bold">OR Pay via {cat.paymentType === "qr" ? "QR Code" : "Bank Transfer"}</span>
+                            <div className="flex-grow border-t border-border"></div>
+                        </div>
+                        {/* ------------------------------------------ */}
+
+                        {cat.paymentType === "qr" ? (
+                          cat.qrSrc ? (
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                              <div className="w-40 h-40 border border-border rounded-lg overflow-hidden bg-white flex items-center justify-center">
+                                <img
+                                  src={cat.qrSrc}
+                                  alt={`${cat.label} payment QR`}
+                                  className="w-full h-full object-contain"
+                                />
+                              </div>
+                              <p className="text-sm text-muted-foreground">
+                                Scan this QR to pay the category fee. After
+                                payment, keep the transaction reference for your
+                                records.
                               </p>
                             </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
+                          ) : (
+                            <p className="text-sm text-muted-foreground">
+                              QR not uploaded yet. Add an image at{" "}
+                              {cat.qrSrc || "/qr/<category>.png"} in
+                              `Frontend/public/qr/`.
+                            </p>
+                          )
+                        ) : (
+                          <div className="space-y-2">
+                            <p className="text-sm text-muted-foreground">
+                              Pay via bank transfer using the details below.
+                              Share your transaction reference after payment.
+                            </p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm bg-card/60 border border-border rounded-lg p-3">
+                              <div>
+                                <p className="text-muted-foreground">
+                                  Account Name
+                                </p>
+                                <p className="font-semibold text-foreground">
+                                  {BANK_DETAILS.accountName}
+                                </p>
+                              </div>
+                              <div>
+                                <p className="text-muted-foreground">
+                                  Account Number
+                                </p>
+                                <p className="font-semibold text-foreground">
+                                  {BANK_DETAILS.accountNumber}
+                                </p>
+                              </div>
+                              <div>
+                                <p className="text-muted-foreground">
+                                  IFSC Code
+                                </p>
+                                <p className="font-semibold text-foreground">
+                                  {BANK_DETAILS.ifsc}
+                                </p>
+                              </div>
+                              <div>
+                                <p className="text-muted-foreground">
+                                  MICR Code
+                                </p>
+                                <p className="font-semibold text-foreground">
+                                  {BANK_DETAILS.micr}
+                                </p>
+                              </div>
+                              <div>
+                                <p className="text-muted-foreground">Branch</p>
+                                <p className="font-semibold text-foreground">
+                                  {BANK_DETAILS.branch}
+                                </p>
+                              </div>
+                              {BANK_DETAILS.swift && (
+                                <div>
+                                  <p className="text-muted-foreground">SWIFT</p>
+                                  <p className="font-semibold text-foreground">
+                                    {BANK_DETAILS.swift}
+                                  </p>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </>
+                    );
+                  })()}
+                </div>
+              )}
 
                 {/* UTR Number */}
                 {selectedCategoryKey && (
@@ -743,38 +814,6 @@ const Registration = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Payment Methods */}
-          <div className="max-w-4xl mx-auto mt-8">
-            <div className="bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-border dark:border-white/10">
-              <div className="flex items-start gap-4">
-                <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <CreditCard className="w-7 h-7 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-display text-xl font-bold mb-3 text-foreground">
-                    Payment Methods
-                  </h3>
-                  <ul className="text-muted-foreground space-y-2">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                      <span>
-                        Local Cheque or DD in favour of{" "}
-                        <strong className="text-primary">
-                          "chemconflux26"
-                        </strong>
-                        , payable at Prayagraj
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                      <span>UPI / Net Banking (scan QR code above)</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
