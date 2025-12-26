@@ -375,10 +375,10 @@ const Registration = () => {
                     if (!cat) return null;
                     return (
                       <>
-                        <div className="flex items-center justify-between gap-4 flex-wrap">
+                        <div className="flex items-center justify-between gap-4 flex-wrap mb-4">
                           <div>
                             <p className="text-sm text-muted-foreground">
-                              Payment QR for
+                              Payment Details for
                             </p>
                             <p className="font-display text-lg font-semibold text-foreground">
                               {cat.label}
@@ -397,6 +397,37 @@ const Registration = () => {
                             <a href="#registration-fees">Check fee details</a>
                           </Button>
                         </div>
+
+                        {/* --- ADDED: Pay Online Portal Section --- */}
+                        <div className="bg-background border border-conference-gold/40 rounded-lg p-4 mb-4 shadow-sm">
+                          <h4 className="font-semibold text-foreground flex items-center gap-2 mb-2">
+                             <CreditCard className="w-4 h-4 text-conference-gold" />
+                             Option 1: Pay Online
+                          </h4>
+                          <p className="text-sm text-muted-foreground mb-3">
+                            You can pay the registration fee securely via our online portal.
+                          </p>
+                          <Button 
+                            asChild
+                            className="bg-conference-gold hover:bg-conference-gold/90 text-conference-navy font-bold w-full sm:w-auto"
+                          >
+                            <a 
+                                href="https://www.onlinesbi.sbi/sbicollect/icollecthome.htm?corpID=5483621" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                            >
+                               Proceed to Online Payment <ExternalLink className="ml-2 w-4 h-4" />
+                            </a>
+                          </Button>
+                        </div>
+
+                         <div className="relative flex items-center py-2">
+                            <div className="flex-grow border-t border-border"></div>
+                            <span className="flex-shrink-0 mx-4 text-muted-foreground text-xs uppercase font-bold">OR Pay via {cat.paymentType === "qr" ? "QR Code" : "Bank Transfer"}</span>
+                            <div className="flex-grow border-t border-border"></div>
+                        </div>
+                        {/* ------------------------------------------ */}
+
                         {cat.paymentType === "qr" ? (
                           cat.qrSrc ? (
                             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -644,60 +675,6 @@ const Registration = () => {
                 ))}
               </tbody>
             </table>
-          </div>
-
-          {/* Payment Methods */}
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-card rounded-lg p-6 border border-border mb-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full gradient-navy flex items-center justify-center flex-shrink-0">
-                  <CreditCard className="w-6 h-6 text-conference-gold" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-display text-lg font-bold mb-3">
-                    Payment Methods
-                  </h3>
-                  <ul className="text-muted-foreground space-y-2">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-conference-gold mt-1 flex-shrink-0" />
-                      <span>
-                        Local Cheque or Demand Draft in favour of{" "}
-                        <strong className="text-foreground">
-                          "chemconflux26"
-                        </strong>
-                        , payable at Prayagraj along with registration form
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-conference-gold mt-1 flex-shrink-0" />
-                      <span>Net Banking / Online Payment (see below)</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Online Payment Button */}
-            <div className="bg-conference-gold/10 rounded-lg p-8 border border-conference-gold/30 text-center">
-              <h3 className="font-display text-xl font-bold mb-3">
-                Pay Online
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                Complete your registration by paying securely through our online
-                payment portal
-              </p>
-              <Button
-                className="bg-conference-gold hover:bg-conference-gold/90 text-conference-navy font-bold"
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              >
-                <ExternalLink className="w-5 h-5 mr-2" />
-                Pay Registration Fee Online
-              </Button>
-
-              <p className="text-xs text-muted-foreground mt-4">
-                You will be redirected to a secure payment gateway
-              </p>
-            </div>
           </div>
         </div>
       </section>
