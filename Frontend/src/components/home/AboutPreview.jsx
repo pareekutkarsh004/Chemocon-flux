@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, Users, Award, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,98 +5,86 @@ import mnnitCampus from "@/assets/mnnit-campus-3.jpeg";
 
 export function AboutPreview() {
   return (
-    <section className="py-20 bg-background" id="about">
+    <section
+      className="py-20 bg-secondary dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-800"
+      id="about"
+    >
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
+          <div className="relative group">
+            <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
             <img
               src={mnnitCampus}
               alt="MNNIT Allahabad Campus"
-              className="rounded-lg shadow-xl"
+              className="relative rounded-2xl shadow-2xl ring-1 ring-white/10 group-hover:scale-[1.02] transition-transform duration-500"
             />
-            <motion.div 
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{ delay: 0.5, type: "spring" }}
-              className="absolute -bottom-6 -right-6 bg-conference-gold text-primary p-6 rounded-lg shadow-lg hidden md:block"
-            >
+            <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-orange-500 to-orange-600 text-white p-6 rounded-xl shadow-lg hidden md:block group-hover:scale-110 transition-transform duration-300">
               <p className="font-display text-3xl font-bold">3</p>
-              <p className="text-sm">Days Conference</p>
-            </motion.div>
-          </motion.div>
+              <p className="text-sm text-white/90">Days Conference</p>
+            </div>
+          </div>
 
           {/* Content */}
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="text-conference-gold font-medium mb-2">ABOUT THE CONFERENCE</p>
+          <div>
+            <p className="text-orange-400 font-medium mb-2 tracking-wider uppercase">
+              About the Conference
+            </p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
               Sustainable Energy & Environment
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              CHEM-CONFLUX²⁶ is a multi-disciplinary international conference covering thrust areas 
-              concerning sustainable development of energy and environment. The conference provides 
-              opportunities for delegates to establish business or research relations and find 
+              CHEM-CONFLUX²⁶ is a multi-disciplinary international conference
+              covering thrust areas concerning sustainable development of energy
+              and environment. The conference provides opportunities for
+              delegates to establish business or research relations and find
               partners for future collaboration.
             </p>
-            
+
             <div className="grid sm:grid-cols-2 gap-4 mb-8">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-conference-gold/10 flex items-center justify-center">
-                  <Users className="w-6 h-6 text-conference-gold" />
+              {[
+                {
+                  icon: Users,
+                  title: "International",
+                  subtitle: "Speakers & Delegates",
+                },
+                { icon: BookOpen, title: "8+", subtitle: "Thrust Areas" },
+                {
+                  icon: FileText,
+                  title: "Paper",
+                  subtitle: "Submissions Welcome",
+                },
+                {
+                  icon: Award,
+                  title: "Certificate",
+                  subtitle: "For All Participants",
+                },
+              ].map((item, index) => (
+                <div key={index} className="flex items-center gap-3 group/item">
+                  <div className="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center group-hover/item:bg-orange-500/30 transition-colors">
+                    <item.icon className="w-6 h-6 text-orange-400" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">
+                      {item.title}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {item.subtitle}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-semibold">International</p>
-                  <p className="text-sm text-muted-foreground">Speakers & Delegates</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-conference-gold/10 flex items-center justify-center">
-                  <BookOpen className="w-6 h-6 text-conference-gold" />
-                </div>
-                <div>
-                  <p className="font-semibold">8+</p>
-                  <p className="text-sm text-muted-foreground">Thrust Areas</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-conference-gold/10 flex items-center justify-center">
-                  <FileText className="w-6 h-6 text-conference-gold" />
-                </div>
-                <div>
-                  <p className="font-semibold">Paper</p>
-                  <p className="text-sm text-muted-foreground">Submissions Welcome</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-conference-gold/10 flex items-center justify-center">
-                  <Award className="w-6 h-6 text-conference-gold" />
-                </div>
-                <div>
-                  <p className="font-semibold">Certificate</p>
-                  <p className="text-sm text-muted-foreground">For All Participants</p>
-                </div>
-              </div>
+              ))}
             </div>
 
-            <motion.div whileHover={{ x: 5 }}>
-              <Button asChild className="bg-primary hover:bg-primary/90">
-                <Link to="/about" className="flex items-center">
-                  Details <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </Button>
-            </motion.div>
-          </motion.div>
+            <Button
+              asChild
+              className="bg-orange-500 hover:bg-orange-600 text-white hover:scale-105 transition-all duration-300"
+            >
+              <Link to="/about">
+                Learn More <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

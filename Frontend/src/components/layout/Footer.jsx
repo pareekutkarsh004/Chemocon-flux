@@ -1,51 +1,80 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Youtube,
+} from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="gradient-navy text-primary-foreground">
+    <footer className="bg-secondary dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900 text-foreground border-t border-border">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Event Info */}
           <div>
-            <h3 className="font-display text-xl font-bold mb-4 text-conference-gold">CHEM-CONFLUX²⁶</h3>
-            <p className="text-sm text-primary-foreground/80 leading-relaxed">
-              International Conference on Sustainable Environment & Energy Innovations
+            <h3 className="font-display text-xl font-bold mb-4 text-primary">
+              CHEM-CONFLUX²⁶
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              International Conference on Sustainable Environment & Energy
+              Innovations
             </p>
-            <p className="text-sm text-primary-foreground/80 mt-2">
+            <p className="text-sm text-muted-foreground mt-2">
               October 22-24, 2026
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <h4 className="font-semibold mb-4 text-foreground">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/" className="hover:text-conference-gold transition-colors">Home</Link></li>
-              <li><Link to="/about" className="hover:text-conference-gold transition-colors">About</Link></li>
-              <li><Link to="/committee" className="hover:text-conference-gold transition-colors">Committee</Link></li>
-              <li><Link to="/registration" className="hover:text-conference-gold transition-colors">Registration</Link></li>
-              <li><Link to="/contact" className="hover:text-conference-gold transition-colors">Contact</Link></li>
+              {[
+                { name: "Home", path: "/" },
+                { name: "About", path: "/about" },
+                { name: "Committee", path: "/committee" },
+                { name: "Registration", path: "/registration" },
+                { name: "Contact", path: "/contact" },
+              ].map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-muted-foreground hover:text-primary transition-colors hover:translate-x-1 inline-block"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold mb-4">Contact Us</h4>
+            <h4 className="font-semibold mb-4 text-foreground">Contact Us</h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 mt-0.5 text-conference-gold flex-shrink-0" />
-                <span className="text-primary-foreground/80">
-                  MNNIT Allahabad, Prayagraj,<br />Uttar Pradesh, India - 211004
+              <li className="flex items-start gap-2 group">
+                <MapPin className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
+                <span className="text-muted-foreground group-hover:text-foreground transition-colors">
+                  MNNIT Allahabad, Prayagraj,
+                  <br />
+                  Uttar Pradesh, India - 211004
                 </span>
               </li>
-              <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-conference-gold" />
-                <span className="text-primary-foreground/80">+91-532-2271581</span>
+              <li className="flex items-center gap-2 group">
+                <Phone className="w-4 h-4 text-primary" />
+                <span className="text-muted-foreground group-hover:text-foreground transition-colors">
+                  +91-532-2271581
+                </span>
               </li>
-              <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-conference-gold" />
-                <a href="mailto:chemconflux26@gmail.com" className="hover:text-conference-gold transition-colors">
+              <li className="flex items-center gap-2 group">
+                <Mail className="w-4 h-4 text-primary" />
+                <a
+                  href="mailto:chemconflux26@gmail.com"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
                   chemconflux26@gmail.com
                 </a>
               </li>
@@ -54,26 +83,26 @@ export function Footer() {
 
           {/* Social */}
           <div>
-            <h4 className="font-semibold mb-4">Follow Us</h4>
+            <h4 className="font-semibold mb-4 text-foreground">Follow Us</h4>
             <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-conference-gold transition-colors">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-conference-gold transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-conference-gold transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-conference-gold transition-colors">
-                <Youtube className="w-5 h-5" />
-              </a>
+              {[Facebook, Twitter, Linkedin, Youtube].map((Icon, index) => (
+                <a
+                  key={index}
+                  href="#"
+                  className="w-10 h-10 rounded-xl bg-muted dark:bg-white/5 border border-border dark:border-white/10 flex items-center justify-center hover:bg-primary/20 hover:border-primary/30 hover:scale-110 transition-all duration-300"
+                >
+                  <Icon className="w-5 h-5 text-muted-foreground hover:text-primary" />
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-sm text-primary-foreground/60">
-          <p>© 2026 CHEM-CONFLUX²⁶ - MNNIT Allahabad | Department of Chemical Engineering</p>
+        <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
+          <p>
+            © 2026 CHEM-CONFLUX²⁶ - MNNIT Allahabad | Department of Chemical
+            Engineering
+          </p>
         </div>
       </div>
     </footer>

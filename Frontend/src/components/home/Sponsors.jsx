@@ -1,156 +1,230 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
-import { Award, BookOpen, Users } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Award, BookOpen, Users, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-// Helper component for the counting animation
-function CountUp({ value }) {
+// Counter animation hook
+function useCountUp(end, duration = 2000, startOnView = true) {
+  const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const [displayValue, setDisplayValue] = useState(0);
-
-  // Extract the number from the string (e.g., "₹4,00,000" -> 400000)
-  const numericValue = parseInt(value.replace(/[₹,]/g, ""), 10);
 
   useEffect(() => {
-    if (isInView) {
-      let start = 0;
-      const end = numericValue;
-      const duration = 2000; // 2 seconds
-      const increment = end / (duration / 16);
-
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= end) {
-          setDisplayValue(end);
-          clearInterval(timer);
-        } else {
-          setDisplayValue(Math.floor(start));
-        }
-      }, 16);
-
-      return () => clearInterval(timer);
+    if (!startOnView) {
+      setHasStarted(true);
     }
-  }, [isInView, numericValue]);
+  }, [startOnView]);
+
+  useEffect(() => {
+    if (!startOnView) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasStarted) {
+          setHasStarted(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasStarted, startOnView]);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    let startTime;
+    let animationFrame;
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(easeOutQuart * end));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [hasStarted, end, duration]);
+
+  return { count, ref };
+}
+
+function AnimatedNumber({ value, suffix = "", prefix = "" }) {
+  // Parse the numeric value
+  const numericValue = parseInt(value.replace(/[^0-9]/g, ""));
+  const { count, ref } = useCountUp(numericValue, 2000);
+
+  // Format with commas
+  const formattedCount = count.toLocaleString("en-IN");
 
   return (
     <span ref={ref}>
-      ₹{displayValue.toLocaleString("en-IN")}
+      {prefix}
+      {formattedCount}
+      {suffix}
     </span>
   );
 }
 
 export function Sponsors() {
   const sponsorshipTiers = [
-    { category: "Platinum", amount: "₹4,00,000", delegates: "04", color: "from-slate-300 to-slate-100" },
-    { category: "Gold", amount: "₹2,00,000", delegates: "03", color: "from-yellow-400 to-yellow-200" },
-    { category: "Silver", amount: "₹1,00,000", delegates: "02", color: "from-gray-400 to-gray-200" },
+    {
+      category: "Platinum",
+      amount: 400000,
+      displayAmount: "₹4,00,000",
+      delegates: "04",
+      gradient: "from-slate-300 to-slate-100",
+    },
+    {
+      category: "Gold",
+      amount: 200000,
+      displayAmount: "₹2,00,000",
+      delegates: "03",
+      gradient: "from-yellow-400 to-yellow-300",
+      featured: true,
+    },
+    {
+      category: "Silver",
+      amount: 100000,
+      displayAmount: "₹1,00,000",
+      delegates: "02",
+      gradient: "from-gray-400 to-gray-300",
+    },
   ];
 
   const souvenirSponsorship = [
-    { type: "Inside Full Page", amount: "₹50,000" },
-    { type: "Inside Half Page", amount: "₹25,000" },
+    { type: "Inside Full Page", amount: 50000, displayAmount: "₹50,000" },
+    { type: "Inside Half Page", amount: 25000, displayAmount: "₹25,000" },
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-muted/30 to-background overflow-hidden">
+    <section className="py-20 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900">
       <div className="container mx-auto px-4">
-        {/* Header Section with Fade-in */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="text-conference-gold font-medium mb-2 tracking-wider text-sm uppercase">Support Us</p>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+        <div className="text-center mb-16">
+          <p className="text-primary font-medium mb-2 tracking-wider uppercase">
+            Support Us
+          </p>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
             Sponsorship Opportunities
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            The organizing committee requests support in the form of sponsorship from Government and private organizations for the success of this mega event.
+            The organizing committee requests support in the form of sponsorship
+            from Government and private organizations for the success of this
+            mega event.
           </p>
-        </motion.div>
+        </div>
 
         {/* Sponsorship Tiers */}
         <div className="mb-16">
           <p className="text-center text-sm font-medium text-muted-foreground mb-8 uppercase tracking-wider">
             Sponsorship Categories
           </p>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {sponsorshipTiers.map((tier, index) => (
-              <motion.div 
-                key={tier.category}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="group bg-card border border-border rounded-2xl p-8 hover:border-conference-gold/50 hover:shadow-xl transition-all duration-300 text-center"
-              >
-                <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${tier.color} flex items-center justify-center mx-auto mb-4 shadow-inner`}>
-                  <Award className="w-8 h-8 text-conference-navy" />
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto items-end">
+            {sponsorshipTiers.map((tier, index) => {
+              const { count, ref } = useCountUp(tier.amount, 2500);
+              const formattedCount = count.toLocaleString("en-IN");
+
+              return (
+                <div
+                  key={tier.category}
+                  ref={ref}
+                  className={`group bg-card dark:bg-white/5 backdrop-blur-sm border rounded-2xl p-8 hover:bg-secondary dark:hover:bg-white/10 transition-all duration-300 text-center hover:-translate-y-2 ${
+                    tier.featured
+                      ? "border-primary/50 scale-105 md:scale-110"
+                      : "border-border dark:border-white/10 hover:border-primary/30"
+                  }`}
+                >
+                  <div
+                    className={`w-16 h-16 rounded-full bg-gradient-to-br ${
+                      tier.gradient
+                    } flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 ${
+                      tier.featured
+                        ? "w-20 h-20 shadow-lg shadow-yellow-500/20"
+                        : ""
+                    }`}
+                  >
+                    <Award
+                      className={`text-slate-800 ${
+                        tier.featured ? "w-10 h-10" : "w-8 h-8"
+                      }`}
+                    />
+                  </div>
+                  <h3 className="font-display text-2xl font-bold text-foreground mb-2">
+                    {tier.category}
+                  </h3>
+                  <p className="text-3xl md:text-4xl font-bold text-primary mb-4">
+                    ₹{formattedCount}
+                  </p>
+                  <div className="flex items-center justify-center gap-2 text-muted-foreground">
+                    <Users className="w-4 h-4" />
+                    <span>{tier.delegates} Free Delegates</span>
+                  </div>
                 </div>
-                <h3 className="font-display text-2xl font-bold text-foreground mb-2">{tier.category}</h3>
-                <p className="text-3xl font-bold text-conference-gold mb-4">
-                  <CountUp value={tier.amount} />
-                </p>
-                <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                  <Users className="w-4 h-4" />
-                  <span>{tier.delegates} Free Delegates</span>
-                </div>
-              </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
         {/* Souvenir Sponsorship */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-        >
+        <div>
           <p className="text-center text-sm font-medium text-muted-foreground mb-8 uppercase tracking-wider">
             Souvenir Sponsorship
           </p>
           <div className="flex flex-wrap justify-center gap-6">
-            {souvenirSponsorship.map((item, index) => (
-              <motion.div 
-                key={item.type}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="group bg-card border border-border rounded-xl p-6 hover:border-conference-gold/50 hover:shadow-lg transition-all duration-300 w-64 text-center"
-              >
-                <div className="w-12 h-12 rounded-full gradient-navy flex items-center justify-center mx-auto mb-3">
-                  <BookOpen className="w-6 h-6 text-conference-gold" />
+            {souvenirSponsorship.map((item) => {
+              const { count, ref } = useCountUp(item.amount, 2000);
+              const formattedCount = count.toLocaleString("en-IN");
+
+              return (
+                <div
+                  key={item.type}
+                  ref={ref}
+                  className="group bg-card dark:bg-white/5 backdrop-blur-sm border border-border dark:border-white/10 rounded-xl p-6 hover:bg-secondary dark:hover:bg-white/10 hover:border-primary/30 transition-all duration-300 w-64 text-center hover:scale-105"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/30 transition-colors">
+                    <BookOpen className="w-6 h-6 text-primary" />
+                  </div>
+                  <p className="text-foreground font-medium mb-2">
+                    {item.type}
+                  </p>
+                  <p className="text-xl font-bold text-primary">
+                    ₹{formattedCount}
+                  </p>
                 </div>
-                <p className="text-foreground font-medium mb-2">{item.type}</p>
-                <p className="text-xl font-bold text-conference-gold">
-                  <CountUp value={item.amount} />
-                </p>
-              </motion.div>
-            ))}
+              );
+            })}
           </div>
-        </motion.div>
+        </div>
 
         {/* Contact for Sponsorship */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.8 }}
-          className="mt-12 text-center"
-        >
-          <p className="text-muted-foreground">
-            For sponsorship inquiries, contact: {" "}
-            <a href="mailto:chemconflux26@gmail.com" className="text-conference-gold hover:underline font-medium">
-              chemconflux26@gmail.com
+        <div className="mt-12 text-center">
+          <Button
+            asChild
+            variant="outline"
+            className="border-orange-500 text-orange-400 bg-transparent hover:bg-orange-500/10"
+          >
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=chemconflux26@gmail.com&su=Sponsorship Inquiry for CHEM-CONFLUX'26"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="flex items-center">
+                <Send className="w-4 h-4 mr-2" />
+                Contact for Sponsorship
+              </span>
             </a>
-          </p>
-        </motion.div>
+          </Button>
+        </div>
       </div>
     </section>
   );

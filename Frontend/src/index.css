@@ -1,99 +1,112 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    /* Warm light theme with better contrast */
+    --background: 40 20% 96%;
+    --foreground: 220 30% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 220 30% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 220 30% 15%;
 
-    --primary: 220 60% 20%;
+    --primary: 24 90% 45%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 35 20% 90%;
+    --secondary-foreground: 220 30% 15%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 35 18% 90%;
+    --muted-foreground: 220 20% 40%;
 
-    --accent: 35 92% 50%;
+    --accent: 24 90% 45%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 220 60% 20%;
+    --border: 35 20% 80%;
+    --input: 35 15% 88%;
+    --ring: 24 90% 45%;
 
     --radius: 0.5rem;
 
-    /* Conference specific colors */
-    --conference-navy: 220 60% 15%;
-    --conference-navy-light: 220 50% 25%;
-    --conference-gold: 35 92% 50%;
-    --conference-gold-light: 45 93% 60%;
-    --conference-cream: 40 33% 96%;
+    /* Conference specific colors - Orange theme */
+    --conference-navy: 35 18% 90%;
+    --conference-navy-light: 35 15% 86%;
+    --conference-gold: 24 90% 45%;
+    --conference-gold-light: 28 95% 50%;
+    --conference-cream: 40 20% 94%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5% 26%;
-    --sidebar-primary: 240 6% 10%;
+    /* Hero gradient colors for light mode - warm cream tones */
+    --hero-from: 35 22% 94%;
+    --hero-via: 35 18% 96%;
+    --hero-to: 35 22% 94%;
+
+    --sidebar-background: 35 20% 94%;
+    --sidebar-foreground: 220 30% 20%;
+    --sidebar-primary: 24 90% 45%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 5% 96%;
-    --sidebar-accent-foreground: 240 6% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-accent: 35 18% 90%;
+    --sidebar-accent-foreground: 220 30% 15%;
+    --sidebar-border: 35 20% 80%;
+    --sidebar-ring: 24 90% 45%;
   }
 
   .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
+    /* Clean Dark Theme with Orange Accents */
+    --background: 220 15% 8%;
+    --foreground: 0 0% 98%;
 
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 15% 12%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 15% 12%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 24 95% 53%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 33% 18%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 12% 18%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 217 33% 18%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 220 12% 18%;
+    --muted-foreground: 220 10% 60%;
 
-    --accent: 35 92% 50%;
+    --accent: 24 95% 53%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 213 27% 84%;
+    --border: 220 12% 22%;
+    --input: 220 12% 22%;
+    --ring: 24 95% 53%;
 
-    --conference-navy: 220 60% 25%;
-    --conference-navy-light: 220 50% 35%;
+    --conference-navy: 220 15% 15%;
+    --conference-navy-light: 220 12% 25%;
+    --conference-gold: 24 95% 53%;
+    --conference-gold-light: 28 95% 58%;
 
-    --sidebar-background: 240 6% 10%;
-    --sidebar-foreground: 240 5% 96%;
-    --sidebar-primary: 224 76% 48%;
+    /* Hero gradient colors for dark mode */
+    --hero-from: 220 15% 8%;
+    --hero-via: 220 12% 12%;
+    --hero-to: 220 15% 8%;
+
+    --sidebar-background: 220 15% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 24 95% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 4% 16%;
-    --sidebar-accent-foreground: 240 5% 96%;
-    --sidebar-border: 240 4% 16%;
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-accent: 220 12% 18%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 12% 22%;
+    --sidebar-ring: 24 95% 53%;
   }
 }
 
@@ -102,16 +115,44 @@
     @apply border-border;
   }
 
+  /* Smooth theme transitions */
+  html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
   body {
     @apply bg-background text-foreground font-sans;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
   }
+
+  /* Theme transition for all elements */
+  .theme-transition,
+  .theme-transition *,
+  header, footer, main, section, div, nav, aside, article,
+  button, a, input, textarea, select,
+  .bg-background, .bg-card, .bg-muted, .bg-secondary, .bg-primary,
+  .text-foreground, .text-muted-foreground, .text-primary {
+    transition: background-color 0.3s ease, 
+                color 0.3s ease, 
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+  }
 }
 
 @layer utilities {
+  /* Hero section background - blue gradient matching navbar */
+  .hero-section-bg {
+    background: linear-gradient(to right, hsl(215, 25%, 27%), hsl(217, 32%, 17%), hsl(215, 25%, 27%));
+  }
+  
+  .dark .hero-section-bg {
+    background: linear-gradient(to right, hsl(217, 32%, 17%), hsl(215, 20%, 25%), hsl(217, 32%, 17%));
+  }
+
   .font-display {
     font-family: 'Playfair Display', serif;
   }
@@ -134,18 +175,170 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-}
-/* Add this to the end of your file */
-html {
-  scroll-behavior: smooth;
+
+  /* Card animations */
+  .card-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .card-glow {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-glow::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      transparent 40%,
+      hsl(var(--conference-gold) / 0.1) 50%,
+      transparent 60%,
+      transparent
+    );
+    animation: shine 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .card-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--conference-gold) / 0.15),
+      transparent
+    );
+    animation: shimmer 2.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .card-pulse-border {
+    position: relative;
+  }
+
+  .card-pulse-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--conference-gold)),
+      hsl(var(--conference-navy-light)),
+      hsl(var(--conference-gold))
+    );
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .card-pulse-border:hover::before {
+    opacity: 1;
+  }
+
+  .avatar-spin:hover {
+    animation: spin-slow 2s linear infinite;
+  }
+
+  .card-tilt {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .card-tilt:hover {
+    transform: rotateY(5deg) rotateX(5deg);
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .rotate-360:hover {
+    transform: rotateY(360deg);
+  }
 }
 
-/* Optional: Subtle fade-in for images when they load */
-img {
-  animation: fadeInImg 1.5s ease;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
-@keyframes fadeInImg {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px hsl(var(--conference-gold) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px hsl(var(--conference-gold) / 0.6), 0 0 30px hsl(var(--conference-gold) / 0.4);
+  }
 }

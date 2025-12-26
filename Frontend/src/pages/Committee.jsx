@@ -1,6 +1,5 @@
-import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Users, Sparkles, Mail, Phone } from "lucide-react";
 
 const committeeData = {
   patron: [
@@ -10,9 +9,21 @@ const committeeData = {
     { name: "Dr. Dipesh S. Patle", role: "Head, ChED, MNNIT Allahabad" },
   ],
   conveners: [
-    { name: "Prof. Sushil Kumar", role: "MNNIT Allahabad", type: "Convener/Technical Chair" },
-    { name: "Dr. Dipesh S. Patle", role: "MNNIT Allahabad", type: "Convener/Technical Chair" },
-    { name: "Dr. Karthick S.", role: "MNNIT Allahabad", type: "Convener/Technical Chair" },
+    {
+      name: "Prof. Sushil Kumar",
+      role: "MNNIT Allahabad",
+      type: "Convener/Technical Chair",
+    },
+    {
+      name: "Dr. Dipesh S. Patle",
+      role: "MNNIT Allahabad",
+      type: "Convener/Technical Chair",
+    },
+    {
+      name: "Dr. Karthick S.",
+      role: "MNNIT Allahabad",
+      type: "Convener/Technical Chair",
+    },
   ],
   organizingSecretaries: [
     { name: "Prof. Sadhana Sachan", role: "MNNIT Allahabad" },
@@ -42,75 +53,88 @@ const committeeData = {
     { name: "Dr. Ajay Kumar", role: "Oklahoma Univ., USA" },
     { name: "Er. Sanjay Kudesia", role: "IFFCO Phulpur" },
   ],
+  technicalSupport: [
+    { name: "Vansh", role: "Technical Support" },
+    { name: "Vivek Kumar Sulaniya", role: "Technical Support" },
+    { name: "Utkarsh Pareek", role: "Technical Support" },
+  ],
 };
 
-const Committee = () => {
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.05, duration: 0.5 }
-    })
+const MemberCard = ({ member, size = "default" }) => {
+  const sizeClasses = {
+    large: "w-20 h-20 text-2xl",
+    default: "w-16 h-16 text-xl",
+    small: "w-12 h-12 text-sm",
+    tiny: "w-10 h-10 text-xs",
   };
 
   return (
+    <div className="group bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-border dark:border-white/10 hover:bg-secondary dark:hover:bg-white/10 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 text-center">
+      <div
+        className={`${sizeClasses[size]} rounded-2xl bg-primary/20 mx-auto mb-4 flex items-center justify-center group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300`}
+      >
+        <span className="font-display font-bold text-primary">
+          {member.name
+            .split(" ")
+            .map((n) => n[0])
+            .join("")}
+        </span>
+      </div>
+      <p className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm">
+        {member.name}
+      </p>
+      <p className="text-muted-foreground text-xs mt-1">{member.role}</p>
+    </div>
+  );
+};
+
+const Committee = () => {
+  return (
     <Layout>
-      <section className="gradient-navy text-primary-foreground py-20">
-        <div className="container mx-auto px-4">
-          <motion.h1 
-            initial={{ opacity: 0, x: -20 }} 
-            animate={{ opacity: 1, x: 0 }} 
-            className="font-display text-4xl md:text-5xl font-bold mb-4"
-          >
+      {/* Hero Header */}
+      <section className="relative hero-section-bg text-white py-24 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 dark:bg-orange-500/10 rounded-full blur-3xl animate-pulse" />
+          <div
+            className="absolute bottom-10 right-10 w-96 h-96 bg-blue-400/5 dark:bg-orange-500/5 rounded-full blur-3xl animate-pulse"
+            style={{ animationDelay: "1s" }}
+          />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex items-center gap-2 mb-4">
+            <Users className="w-5 h-5 text-orange-400" />
+            <p className="text-orange-400 font-semibold tracking-wider uppercase text-sm">
+              Our Team
+            </p>
+          </div>
+          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4 text-white">
             Organizing Committee
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            transition={{ delay: 0.2 }} 
-            className="text-primary-foreground/80 text-lg max-w-2xl"
-          >
-            Meet the organizing team behind CHEM-CONFLUX²⁶
-          </motion.p>
+          </h1>
+          <p className="text-slate-300 text-lg max-w-2xl">
+            Meet the distinguished team behind CHEM-CONFLUX²⁶
+          </p>
         </div>
       </section>
 
-      <section className="py-16 bg-background">
+      {/* Patron & Chairperson */}
+      <section className="py-20 bg-background dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            {/* Patron */}
             <div>
-              <h2 className="font-display text-2xl font-bold mb-6 text-center text-conference-gold">Patron</h2>
-              {committeeData.patron.map((member, i) => (
-                <motion.div key={member.name} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
-                  <Card className="text-center">
-                    <CardHeader>
-                      <div className="w-20 h-20 rounded-full bg-conference-navy/10 mx-auto mb-3 flex items-center justify-center">
-                        <span className="text-2xl font-display font-bold text-conference-navy">{member.name.split(' ').map(n => n[0]).join('')}</span>
-                      </div>
-                      <CardTitle className="text-base">{member.name}</CardTitle>
-                    </CardHeader>
-                    <CardContent><p className="text-muted-foreground text-sm">{member.role}</p></CardContent>
-                  </Card>
-                </motion.div>
+              <h2 className="font-display text-2xl font-bold mb-6 text-center text-primary">
+                Patron
+              </h2>
+              {committeeData.patron.map((member) => (
+                <MemberCard key={member.name} member={member} size="large" />
               ))}
             </div>
-            {/* Chairperson */}
             <div>
-              <h2 className="font-display text-2xl font-bold mb-6 text-center text-conference-gold">Chairperson</h2>
-              {committeeData.chairperson.map((member, i) => (
-                <motion.div key={member.name} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
-                  <Card className="text-center">
-                    <CardHeader>
-                      <div className="w-20 h-20 rounded-full bg-conference-navy/10 mx-auto mb-3 flex items-center justify-center">
-                        <span className="text-2xl font-display font-bold text-conference-navy">{member.name.split(' ').map(n => n[0]).join('')}</span>
-                      </div>
-                      <CardTitle className="text-base">{member.name}</CardTitle>
-                    </CardHeader>
-                    <CardContent><p className="text-muted-foreground text-sm">{member.role}</p></CardContent>
-                  </Card>
-                </motion.div>
+              <h2 className="font-display text-2xl font-bold mb-6 text-center text-primary">
+                Chairperson
+              </h2>
+              {committeeData.chairperson.map((member) => (
+                <MemberCard key={member.name} member={member} size="large" />
               ))}
             </div>
           </div>
@@ -118,72 +142,87 @@ const Committee = () => {
       </section>
 
       {/* Conveners */}
-      <section className="py-16 bg-muted/50">
+      <section className="py-20 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900">
         <div className="container mx-auto px-4">
-          <h2 className="font-display text-2xl font-bold mb-8 text-center text-conference-gold">Conveners / Technical Chairs</h2>
+          <h2 className="font-display text-2xl font-bold mb-8 text-center text-primary">
+            Conveners / Technical Chairs
+          </h2>
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {committeeData.conveners.map((member, i) => (
-              <motion.div key={member.name} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
-                <Card className="text-center">
-                  <CardHeader>
-                    <div className="w-20 h-20 rounded-full bg-muted mx-auto mb-4 flex items-center justify-center">
-                      <span className="text-2xl font-display font-bold text-muted-foreground">{member.name.split(' ').map(n => n[0]).join('')}</span>
-                    </div>
-                    <CardTitle className="text-lg">{member.name}</CardTitle>
-                  </CardHeader>
-                  <CardContent><p className="text-muted-foreground text-sm">{member.role}</p></CardContent>
-                </Card>
-              </motion.div>
+            {committeeData.conveners.map((member) => (
+              <MemberCard key={member.name} member={member} />
             ))}
           </div>
         </div>
       </section>
 
       {/* Organizing Secretaries */}
-      <section className="py-16 bg-background">
+      <section className="py-20 bg-background dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4">
-          <h2 className="font-display text-2xl font-bold mb-8 text-center text-conference-gold">Organizing Secretaries</h2>
+          <h2 className="font-display text-2xl font-bold mb-8 text-center text-primary">
+            Organizing Secretaries
+          </h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {committeeData.organizingSecretaries.map((member, i) => (
-              <motion.div key={member.name} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
-                <Card className="text-center p-4 hover:border-conference-gold transition-colors">
-                  <div className="w-14 h-14 rounded-full bg-conference-navy/10 mx-auto mb-3 flex items-center justify-center">
-                    <span className="text-lg font-display font-bold text-conference-navy">{member.name.split(' ').slice(-1)[0][0]}</span>
-                  </div>
-                  <p className="font-medium text-sm">{member.name}</p>
-                  <p className="text-muted-foreground text-xs">{member.role}</p>
-                </Card>
-              </motion.div>
+            {committeeData.organizingSecretaries.map((member) => (
+              <MemberCard key={member.name} member={member} size="small" />
             ))}
           </div>
         </div>
       </section>
 
       {/* Advisory Committee */}
-      <section className="py-16 bg-muted/50">
+      <section className="py-20 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900">
         <div className="container mx-auto px-4">
-          <h2 className="font-display text-2xl font-bold mb-8 text-center text-conference-gold">Advisory Committee</h2>
+          <h2 className="font-display text-2xl font-bold mb-8 text-center text-primary">
+            Advisory Committee
+          </h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
-            {committeeData.advisory.map((member, i) => (
-              <motion.div key={member.name} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
-                <Card className="text-center p-4 hover:shadow-md transition-shadow">
-                  <p className="font-medium text-sm">{member.name}</p>
-                  <p className="text-muted-foreground text-xs">{member.role}</p>
-                </Card>
-              </motion.div>
+            {committeeData.advisory.map((member) => (
+              <MemberCard key={member.name} member={member} size="tiny" />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Section remains at bottom */}
-      <section className="py-16 bg-background">
+      {/* Technical Support */}
+      <section className="py-20 bg-background dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-800">
+        <div className="container mx-auto px-4">
+          <h2 className="font-display text-2xl font-bold mb-8 text-center text-primary">
+            Technical Support
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            {committeeData.technicalSupport.map((member) => (
+              <MemberCard key={member.name} member={member} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-20 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-display text-2xl font-bold mb-4">Contact</h2>
-          <div className="space-y-2">
-            <a href="mailto:chemconflux26@gmail.com" className="text-conference-gold hover:underline text-lg font-medium block">chemconflux26@gmail.com</a>
-            <p className="text-muted-foreground text-sm">Phone: +91-532-2271581 (O)</p>
-            <p className="text-muted-foreground text-sm">Mobile: +91-9003670402, +91-9455421398, +91-8248954090</p>
+          <h2 className="font-display text-2xl font-bold mb-4 text-foreground">
+            Contact
+          </h2>
+          <p className="text-muted-foreground mb-6">
+            For any queries, please contact:
+          </p>
+          <div className="flex flex-col items-center gap-4">
+            <a
+              href="mailto:chemconflux26@gmail.com"
+              className="inline-flex items-center gap-2 bg-primary/10 hover:bg-primary/20 px-6 py-3 rounded-full border border-primary/30 text-primary font-medium transition-all duration-300 hover:scale-105"
+            >
+              <Mail className="w-4 h-4" />
+              chemconflux26@gmail.com
+            </a>
+            <div className="flex flex-wrap justify-center gap-4 text-muted-foreground text-sm">
+              <span className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-primary" />
+                +91-532-2271581 (O)
+              </span>
+              <span>+91-9003670402</span>
+              <span>+91-9455421398</span>
+              <span>+91-8248954090</span>
+            </div>
           </div>
         </div>
       </section>

@@ -4,16 +4,14 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
-
-import ScrollToTop from "@/components/ScrollToTop"; // <-- ADD THIS
-
+import  ScrollToTop  from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Committee from "./pages/Committee";
 import Contact from "./pages/Contact";
 import Registration from "./pages/Registration";
 import NotFound from "./pages/NotFound";
-
+// import ScrollToTop from "./components/ScrollToTop";
 const queryClient = new QueryClient();
 
 const App = () => (
