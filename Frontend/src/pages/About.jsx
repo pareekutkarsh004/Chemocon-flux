@@ -15,8 +15,8 @@ import {
   MapPin,
 } from "lucide-react";
 import mnnitCampus3 from "@/assets/mnnit-campus-3.jpeg";
-import PrayagrajCarousel from "@/components/about/PrayagrajCarousel";
-import MNNITCarousel from "@/components/about/MNNITCarousel";
+import PrayagrajCarousel from "@/components/about/PrayagrajCarousel.jsx";
+import MNNITCarousel from "@/components/about/MNNITCarousel.jsx";
 
 const objectives = [
   {

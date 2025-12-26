@@ -7,11 +7,14 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: true,
     port: 8080,
-    allowedHosts: ["chemocon-flux.onrender.com"],
+    allowedHosts: [
+      "chemocon-flux.onrender.com"
+    ],
   },
-  plugins: [react(), mode === "development" && componentTagger()].filter(
-    Boolean
-  ),
+  plugins: [
+    react(),
+    mode === "development" && componentTagger(),
+  ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
