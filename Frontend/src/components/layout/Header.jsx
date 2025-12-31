@@ -31,8 +31,9 @@ export function Header() {
             <img
               src={mnnitLogo}
               alt="MNNIT Logo"
-              className="w-12 h-12 rounded-full bg-white object-contain group-hover:scale-105 transition"
+              className="w-12 h-12 object-contain group-hover:scale-105 transition"
             />
+
             <div className="hidden sm:block">
               <h1 className="font-display text-lg font-bold">CHEM-CONFLUX²⁶</h1>
               <p className="text-xs text-muted-foreground">MNNIT Allahabad</p>
