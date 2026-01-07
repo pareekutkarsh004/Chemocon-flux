@@ -5,18 +5,18 @@ import {
   Building,
   Home,
   GraduationCap,
-  FileText,
   CreditCard,
   Users,
-  Send,
   Target,
   Sparkles,
   Calendar,
   MapPin,
+  FileText,
+  Send,
 } from "lucide-react";
 import mnnitCampus3 from "@/assets/mnnit-campus-3.jpeg";
-import PrayagrajCarousel from "@/components/about/PrayagrajCarousel.jsx";
-import MNNITCarousel from "@/components/about/MNNITCarousel.jsx";
+import PrayagrajCarousel from "@/components/about/PrayagrajCarousel";
+import MNNITCarousel from "@/components/about/MNNITCarousel";
 
 const objectives = [
   {
@@ -233,87 +233,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Paper Submission */}
-      <section
-        className="py-20 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900"
-        id="paper-submission"
-      >
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <p className="text-primary font-medium mb-2 tracking-wider uppercase">
-              Submissions
-            </p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-foreground">
-              Paper Submission Guidelines
-            </h2>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-border dark:border-white/10 hover:border-primary/30 transition-all duration-300">
-              <div className="flex flex-col md:flex-row items-start gap-6">
-                <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <FileText className="w-8 h-8 text-primary" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-display text-2xl font-bold mb-4 text-foreground">
-                    Submission Requirements
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    We welcome submissions on original research, reviews and
-                    case studies on topics related to the thrust areas of the
-                    conference.
-                  </p>
-
-                  <div className="bg-muted dark:bg-slate-800/50 rounded-xl p-6 mb-6 border border-border dark:border-white/5">
-                    <h4 className="font-semibold text-foreground mb-4 flex items-center gap-2">
-                      <FileText className="w-5 h-5 text-primary" />
-                      Abstract Format (One Page)
-                    </h4>
-                    <div className="grid md:grid-cols-2 gap-3">
-                      {[
-                        { label: "Page Size", value: "A4 with 1 inch margin" },
-                        {
-                          label: "Font",
-                          value: "Times New Roman, single spacing",
-                        },
-                        { label: "Title", value: "Bold, 14 font size" },
-                        { label: "Author(s)", value: "Bold, 12 font size" },
-                        { label: "Affiliation", value: "12 font size" },
-                        { label: "Keywords", value: "Max 5 (italics)" },
-                      ].map((item, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-center gap-2 text-sm"
-                        >
-                          <span className="w-2 h-2 rounded-full bg-primary" />
-                          <span className="text-muted-foreground">
-                            {item.label}:
-                          </span>
-                          <span className="text-foreground">{item.value}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3 p-4 bg-primary/10 rounded-xl border border-primary/20 group hover:bg-primary/20 transition-all duration-300">
-                    <Send className="w-6 h-6 text-primary group-hover:translate-x-1 transition-transform" />
-                    <p className="text-foreground">
-                      Submit to:{" "}
-                      <a
-                        href="mailto:chemconflux26@gmail.com"
-                        className="text-primary font-semibold hover:underline"
-                      >
-                        chemconflux26@gmail.com
-                      </a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Registration Fees */}
       <section
         className="py-20 bg-background dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-800"
@@ -408,6 +327,32 @@ const About = () => {
             <p className="text-sm text-muted-foreground mt-4 text-center">
               * All fees include GST
             </p>
+
+            {/* Payment Methods */}
+            <div className="mt-8 bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-border dark:border-white/10 hover:border-primary/30 transition-all duration-300">
+              <div className="flex items-start gap-4">
+                <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <CreditCard className="w-7 h-7 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-display text-xl font-bold mb-3 text-foreground">
+                    Payment Methods
+                  </h3>
+                  <ul className="text-muted-foreground space-y-2">
+                    <li className="flex items-start gap-2">
+                      <span className="w-2 h-2 rounded-full bg-primary mt-2" />
+                      Local Cheque or Demand Draft in favor of{" "}
+                      <strong className="text-primary">"CHEMCONFLUX26"</strong>,
+                      payable at Prayagraj
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-2 h-2 rounded-full bg-primary mt-2" />
+                      Net Banking (visit event website for details)
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -474,12 +419,11 @@ const About = () => {
           <MNNITCarousel />
 
           {/* Institution Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 max-w-4xl mx-auto">
+          <div className="grid grid-cols-3 gap-4 mt-12 max-w-3xl mx-auto">
             {[
               { value: "1961", label: "Established" },
-              { value: "Top 10", label: "Among NITs" },
-              { value: "10+", label: "Departments" },
-              { value: "5000+", label: "Students" },
+              { value: "14", label: "Departments" },
+              { value: "8000", label: "Students" },
             ].map((stat, index) => (
               <div
                 key={index}

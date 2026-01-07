@@ -10,8 +10,9 @@ import About from "./pages/About";
 import Committee from "./pages/Committee";
 import Contact from "./pages/Contact";
 import Registration from "./pages/Registration";
+import CallForPaper from "./pages/CallForPaper";
 import NotFound from "./pages/NotFound";
-// import ScrollToTop from "./components/ScrollToTop";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -25,6 +26,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
+            <Route path="/call-for-paper/*" element={<CallForPaper />} />
             <Route path="/committee" element={<Committee />} />
             <Route path="/registration" element={<Registration />} />
             <Route path="/contact" element={<Contact />} />
