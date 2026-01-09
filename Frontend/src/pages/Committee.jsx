@@ -54,6 +54,7 @@ const committeeData = {
     { name: "Er. Sanjay Kudesia", role: "IFFCO Phulpur" },
   ],
   technicalSupport: [
+    { name: "Mr Abdul Rehman", role: "Technical Support" },
     { name: "Vansh", role: "Technical Support" },
     { name: "Vivek Kumar Sulaniya", role: "Technical Support" },
     { name: "Utkarsh Pareek", role: "Technical Support" },
@@ -189,7 +190,8 @@ const Committee = () => {
           <h2 className="font-display text-2xl font-bold mb-8 text-center text-primary">
             Technical Support
           </h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+
+          <div className="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {committeeData.technicalSupport.map((member) => (
               <MemberCard key={member.name} member={member} />
             ))}
