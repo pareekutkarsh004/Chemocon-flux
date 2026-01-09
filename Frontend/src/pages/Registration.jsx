@@ -20,6 +20,8 @@ import {
   Hash,
   Sparkles,
   ArrowUp,
+  HelpCircle,
+  IdCard,
 } from "lucide-react";
 
 const STORAGE_KEY = "chemconflux26-registration-form";
@@ -113,6 +115,8 @@ const GOOGLE_FORM_ENTRIES = {
   paperTitle: "entry.26866841",
   abstract: "entry.850816242",
   utrNo: "entry.764707765",
+  // TODO: Replace this with your actual Google Form Entry ID for Applicant ID
+  applicantId: "entry.APPLICANT_ID_PLACEHOLDER", 
 };
 
 const getInitialFormData = () => {
@@ -127,6 +131,7 @@ const getInitialFormData = () => {
     paperTitle: "",
     abstract: "",
     utrNo: "",
+    applicantId: "", // Added Applicant ID
   };
 
   try {
@@ -156,6 +161,10 @@ const getInitialCategoryKey = () => {
 
 const Registration = () => {
   const hiddenIframeRef = useRef(null);
+
+  // null = not selected yet (hides form), 'yes' = submitting paper, 'no' = not submitting
+  const [submittingPaper, setSubmittingPaper] = useState(null);
+
   const [selectedCategoryKey, setSelectedCategoryKey] = useState(
     getInitialCategoryKey
   );
@@ -252,8 +261,10 @@ const Registration = () => {
         paperTitle: "",
         abstract: "",
         utrNo: "",
+        applicantId: "",
       });
       setSelectedCategoryKey("");
+      setSubmittingPaper(null); // Reset toggle
     }, 1500);
   };
 
@@ -317,369 +328,448 @@ const Registration = () => {
               />
 
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="fullName"
-                      className="flex items-center gap-2 text-muted-foreground"
+                
+                {/* --- ADDED: Required Paper Submission Question --- */}
+                <div className="p-5 rounded-lg border border-primary/20 bg-primary/5 mb-6">
+                  <Label className="flex items-center gap-2 text-lg font-semibold text-foreground mb-4">
+                    <HelpCircle className="w-5 h-5 text-primary" />
+                    Are you submitting a paper? <span className="text-destructive">*</span>
+                  </Label>
+                  <div className="flex gap-4">
+                    <Button
+                      type="button"
+                      variant={submittingPaper === "yes" ? "default" : "outline"}
+                      className={`min-w-[100px] ${submittingPaper === "yes" ? "bg-primary text-primary-foreground" : "bg-background"}`}
+                      onClick={() => setSubmittingPaper("yes")}
                     >
-                      <User className="w-4 h-4 text-primary" />
-                      Full Name <span className="text-destructive">*</span>
-                    </Label>
-                    <Input
-                      id="fullName"
-                      value={formData.fullName}
-                      onChange={handleChange("fullName")}
-                      placeholder="Enter your full name"
-                      required
-                      className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="email"
-                      className="flex items-center gap-2 text-muted-foreground"
+                      Yes
+                    </Button>
+                    <Button
+                      type="button"
+                      variant={submittingPaper === "no" ? "default" : "outline"}
+                       className={`min-w-[100px] ${submittingPaper === "no" ? "bg-primary text-primary-foreground" : "bg-background"}`}
+                      onClick={() => setSubmittingPaper("no")}
                     >
-                      <Mail className="w-4 h-4 text-primary" />
-                      Email <span className="text-destructive">*</span>
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange("email")}
-                      placeholder="your.email@example.com"
-                      required
-                      className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="phone"
-                      className="flex items-center gap-2 text-muted-foreground"
-                    >
-                      <Phone className="w-4 h-4 text-primary" />
-                      Phone <span className="text-destructive">*</span>
-                    </Label>
-                    <Input
-                      id="phone"
-                      value={formData.phone}
-                      onChange={handleChange("phone")}
-                      placeholder="+91 XXXXX XXXXX"
-                      required
-                      className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="affiliation"
-                      className="flex items-center gap-2 text-muted-foreground"
-                    >
-                      <Building className="w-4 h-4 text-primary" />
-                      Affiliation / Organization
-                    </Label>
-                    <Input
-                      id="affiliation"
-                      value={formData.affiliation}
-                      onChange={handleChange("affiliation")}
-                      placeholder="Your organization"
-                      className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="designation"
-                      className="flex items-center gap-2 text-muted-foreground"
-                    >
-                      <GraduationCap className="w-4 h-4 text-primary" />
-                      Designation
-                    </Label>
-                    <Input
-                      id="designation"
-                      value={formData.designation}
-                      onChange={handleChange("designation")}
-                      placeholder="Your designation"
-                      className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="category"
-                      className="flex items-center gap-2 text-muted-foreground"
-                    >
-                      <Hash className="w-4 h-4 text-primary" />
-                      Registration Category{" "}
-                      <span className="text-destructive">*</span>
-                    </Label>
-                    <select
-                      id="category"
-                      value={selectedCategoryKey}
-                      onChange={handleCategoryChange}
-                      required
-                      className="w-full h-10 px-3 rounded-md bg-muted dark:bg-white/5 border border-border dark:border-white/10 text-foreground focus:border-primary/50 focus:outline-none"
-                    >
-                      <option
-                        value=""
-                        className="bg-background dark:bg-slate-800"
-                      >
-                        Select category
-                      </option>
-                      {CATEGORY_OPTIONS.map((c) => (
-                        <option
-                          key={c.key}
-                          value={c.key}
-                          className="bg-background dark:bg-slate-800"
-                        >
-                          {c.label}
-                        </option>
-                      ))}
-                    </select>
+                      No
+                    </Button>
                   </div>
                 </div>
 
-              {/* Category-specific payment instructions */}
-              {selectedCategoryKey && (
-                <div className="bg-muted/50 rounded-lg border border-border/60 p-4 space-y-3">
-                  {(() => {
-                    const cat = CATEGORY_OPTIONS.find(
-                      (c) => c.key === selectedCategoryKey
-                    );
-                    if (!cat) return null;
-                    return (
-                      <>
-                        <div className="flex items-center justify-between gap-4 flex-wrap mb-4">
-                          <div>
-                            <p className="text-sm text-muted-foreground">
-                              Payment Details for
-                            </p>
-                            <p className="font-display text-lg font-semibold text-foreground">
-                              {cat.label}
-                            </p>
-                            {cat.amount && (
-                              <p className="text-sm text-muted-foreground">
-                                Amount: {cat.amount}
-                              </p>
-                            )}
-                          </div>
-                          <Button
-                            asChild
-                            variant="outline"
-                            className="border-conference-gold text-conference-gold hover:bg-conference-gold/10"
-                          >
-                            <a href="#registration-fees">Check fee details</a>
-                          </Button>
-                        </div>
+                {/* --- SHOW FORM ONLY AFTER SELECTION --- */}
+                {submittingPaper !== null && (
+                  <>
+                    {/* --- LOGIC: If YES -> Show CMT Link & Applicant ID --- */}
+                    {submittingPaper === "yes" && (
+                       <div className="bg-muted/30 border-2 border-dashed border-primary/30 rounded-xl p-6 mb-8">
+                         
+                         {/* CMT Link */}
+                         <div className="flex items-start gap-4 mb-6">
+                           <div className="p-3 rounded-full bg-primary/10 text-primary">
+                             <ExternalLink className="w-6 h-6" />
+                           </div>
+                           <div>
+                             <h3 className="text-lg font-bold text-foreground mb-1">Paper Submission Required</h3>
+                             <p className="text-muted-foreground text-sm mb-3">
+                               Please ensure you have submitted your paper via the Microsoft CMT portal before proceeding.
+                             </p>
+                             <a 
+                               href="https://cmt3.research.microsoft.com/" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               className="inline-flex items-center text-primary font-semibold hover:underline"
+                             >
+                               Go to Microsoft CMT Portal <ExternalLink className="ml-1 w-3 h-3" />
+                             </a>
+                           </div>
+                         </div>
 
-                        {/* --- ADDED: Pay Online Portal Section --- */}
-                        <div className="bg-background border border-conference-gold/40 rounded-lg p-4 mb-4 shadow-sm">
-                          <h4 className="font-semibold text-foreground flex items-center gap-2 mb-2">
-                             <CreditCard className="w-4 h-4 text-conference-gold" />
-                             Option 1: Pay Online
-                          </h4>
-                          <p className="text-sm text-muted-foreground mb-3">
-                            You can pay the registration fee securely via our online portal.
-                          </p>
-                          <Button 
-                            asChild
-                            className="bg-conference-gold hover:bg-conference-gold/90 text-conference-navy font-bold w-full sm:w-auto"
-                          >
-                            <a 
-                                href="https://www.onlinesbi.sbi/sbicollect/icollecthome.htm?corpID=5483621" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
+                         {/* Applicant ID Field (Required for Yes) */}
+                         <div className="space-y-2">
+                            <Label
+                              htmlFor="applicantId"
+                              className="flex items-center gap-2 text-muted-foreground"
                             >
-                               Proceed to Online Payment <ExternalLink className="ml-2 w-4 h-4" />
-                            </a>
-                          </Button>
-                        </div>
+                              <IdCard className="w-4 h-4 text-primary" />
+                              Applicant ID (from CMT) <span className="text-destructive">*</span>
+                            </Label>
+                            <Input
+                              id="applicantId"
+                              value={formData.applicantId}
+                              onChange={handleChange("applicantId")}
+                              placeholder="Enter your CMT Applicant ID"
+                              required
+                              className="bg-background border-border text-foreground focus:border-primary/50"
+                            />
+                         </div>
+                       </div>
+                    )}
 
-                         <div className="relative flex items-center py-2">
-                            <div className="flex-grow border-t border-border"></div>
-                            <span className="flex-shrink-0 mx-4 text-muted-foreground text-xs uppercase font-bold">OR Pay via {cat.paymentType === "qr" ? "QR Code" : "Bank Transfer"}</span>
-                            <div className="flex-grow border-t border-border"></div>
-                        </div>
-                        {/* ------------------------------------------ */}
+                    {/* --- STANDARD FORM (Rest all things same) --- */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label
+                          htmlFor="fullName"
+                          className="flex items-center gap-2 text-muted-foreground"
+                        >
+                          <User className="w-4 h-4 text-primary" />
+                          Full Name <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="fullName"
+                          value={formData.fullName}
+                          onChange={handleChange("fullName")}
+                          placeholder="Enter your full name"
+                          required
+                          className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
+                        />
+                      </div>
 
-                        {cat.paymentType === "qr" ? (
-                          cat.qrSrc ? (
-                            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                              <div className="w-40 h-40 border border-border rounded-lg overflow-hidden bg-white flex items-center justify-center">
-                                <img
-                                  src={cat.qrSrc}
-                                  alt={`${cat.label} payment QR`}
-                                  className="w-full h-full object-contain"
-                                />
-                              </div>
-                              <p className="text-sm text-muted-foreground">
-                                Scan this QR to pay the category fee. After
-                                payment, keep the transaction reference for your
-                                records.
-                              </p>
-                            </div>
-                          ) : (
-                            <p className="text-sm text-muted-foreground">
-                              QR not uploaded yet. Add an image at{" "}
-                              {cat.qrSrc || "/qr/<category>.png"} in
-                              `Frontend/public/qr/`.
-                            </p>
-                          )
-                        ) : (
-                          <div className="space-y-2">
-                            <p className="text-sm text-muted-foreground">
-                              Pay via bank transfer using the details below.
-                              Share your transaction reference after payment.
-                            </p>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm bg-card/60 border border-border rounded-lg p-3">
-                              <div>
-                                <p className="text-muted-foreground">
-                                  Account Name
-                                </p>
-                                <p className="font-semibold text-foreground">
-                                  {BANK_DETAILS.accountName}
-                                </p>
-                              </div>
-                              <div>
-                                <p className="text-muted-foreground">
-                                  Account Number
-                                </p>
-                                <p className="font-semibold text-foreground">
-                                  {BANK_DETAILS.accountNumber}
-                                </p>
-                              </div>
-                              <div>
-                                <p className="text-muted-foreground">
-                                  IFSC Code
-                                </p>
-                                <p className="font-semibold text-foreground">
-                                  {BANK_DETAILS.ifsc}
-                                </p>
-                              </div>
-                              <div>
-                                <p className="text-muted-foreground">
-                                  MICR Code
-                                </p>
-                                <p className="font-semibold text-foreground">
-                                  {BANK_DETAILS.micr}
-                                </p>
-                              </div>
-                              <div>
-                                <p className="text-muted-foreground">Branch</p>
-                                <p className="font-semibold text-foreground">
-                                  {BANK_DETAILS.branch}
-                                </p>
-                              </div>
-                              {BANK_DETAILS.swift && (
+                      <div className="space-y-2">
+                        <Label
+                          htmlFor="email"
+                          className="flex items-center gap-2 text-muted-foreground"
+                        >
+                          <Mail className="w-4 h-4 text-primary" />
+                          Email <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleChange("email")}
+                          placeholder="your.email@example.com"
+                          required
+                          className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label
+                          htmlFor="phone"
+                          className="flex items-center gap-2 text-muted-foreground"
+                        >
+                          <Phone className="w-4 h-4 text-primary" />
+                          Phone <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="phone"
+                          value={formData.phone}
+                          onChange={handleChange("phone")}
+                          placeholder="+91 XXXXX XXXXX"
+                          required
+                          className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label
+                          htmlFor="affiliation"
+                          className="flex items-center gap-2 text-muted-foreground"
+                        >
+                          <Building className="w-4 h-4 text-primary" />
+                          Affiliation / Organization
+                        </Label>
+                        <Input
+                          id="affiliation"
+                          value={formData.affiliation}
+                          onChange={handleChange("affiliation")}
+                          placeholder="Your organization"
+                          className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label
+                          htmlFor="designation"
+                          className="flex items-center gap-2 text-muted-foreground"
+                        >
+                          <GraduationCap className="w-4 h-4 text-primary" />
+                          Designation
+                        </Label>
+                        <Input
+                          id="designation"
+                          value={formData.designation}
+                          onChange={handleChange("designation")}
+                          placeholder="Your designation"
+                          className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label
+                          htmlFor="category"
+                          className="flex items-center gap-2 text-muted-foreground"
+                        >
+                          <Hash className="w-4 h-4 text-primary" />
+                          Registration Category{" "}
+                          <span className="text-destructive">*</span>
+                        </Label>
+                        <select
+                          id="category"
+                          value={selectedCategoryKey}
+                          onChange={handleCategoryChange}
+                          required
+                          className="w-full h-10 px-3 rounded-md bg-muted dark:bg-white/5 border border-border dark:border-white/10 text-foreground focus:border-primary/50 focus:outline-none"
+                        >
+                          <option
+                            value=""
+                            className="bg-background dark:bg-slate-800"
+                          >
+                            Select category
+                          </option>
+                          {CATEGORY_OPTIONS.map((c) => (
+                            <option
+                              key={c.key}
+                              value={c.key}
+                              className="bg-background dark:bg-slate-800"
+                            >
+                              {c.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Category-specific payment instructions */}
+                    {selectedCategoryKey && (
+                      <div className="bg-muted/50 rounded-lg border border-border/60 p-4 space-y-3">
+                        {(() => {
+                          const cat = CATEGORY_OPTIONS.find(
+                            (c) => c.key === selectedCategoryKey
+                          );
+                          if (!cat) return null;
+                          return (
+                            <>
+                              <div className="flex items-center justify-between gap-4 flex-wrap mb-4">
                                 <div>
-                                  <p className="text-muted-foreground">SWIFT</p>
-                                  <p className="font-semibold text-foreground">
-                                    {BANK_DETAILS.swift}
+                                  <p className="text-sm text-muted-foreground">
+                                    Payment Details for
                                   </p>
+                                  <p className="font-display text-lg font-semibold text-foreground">
+                                    {cat.label}
+                                  </p>
+                                  {cat.amount && (
+                                    <p className="text-sm text-muted-foreground">
+                                      Amount: {cat.amount}
+                                    </p>
+                                  )}
+                                </div>
+                                <Button
+                                  asChild
+                                  variant="outline"
+                                  className="border-conference-gold text-conference-gold hover:bg-conference-gold/10"
+                                >
+                                  <a href="#registration-fees">Check fee details</a>
+                                </Button>
+                              </div>
+
+                              {/* --- ADDED: Pay Online Portal Section --- */}
+                              <div className="bg-background border border-conference-gold/40 rounded-lg p-4 mb-4 shadow-sm">
+                                <h4 className="font-semibold text-foreground flex items-center gap-2 mb-2">
+                                  <CreditCard className="w-4 h-4 text-conference-gold" />
+                                  Option 1: Pay Online
+                                </h4>
+                                <p className="text-sm text-muted-foreground mb-3">
+                                  You can pay the registration fee securely via our online portal.
+                                </p>
+                                <Button 
+                                  asChild
+                                  className="bg-conference-gold hover:bg-conference-gold/90 text-conference-navy font-bold w-full sm:w-auto"
+                                >
+                                  <a 
+                                      href="https://www.onlinesbi.sbi/sbicollect/icollecthome.htm?corpID=5483621" 
+                                      target="_blank" 
+                                      rel="noopener noreferrer"
+                                  >
+                                    Proceed to Online Payment <ExternalLink className="ml-2 w-4 h-4" />
+                                  </a>
+                                </Button>
+                              </div>
+
+                              <div className="relative flex items-center py-2">
+                                  <div className="flex-grow border-t border-border"></div>
+                                  <span className="flex-shrink-0 mx-4 text-muted-foreground text-xs uppercase font-bold">OR Pay via {cat.paymentType === "qr" ? "QR Code" : "Bank Transfer"}</span>
+                                  <div className="flex-grow border-t border-border"></div>
+                              </div>
+                              {/* ------------------------------------------ */}
+
+                              {cat.paymentType === "qr" ? (
+                                cat.qrSrc ? (
+                                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                                    <div className="w-40 h-40 border border-border rounded-lg overflow-hidden bg-white flex items-center justify-center">
+                                      <img
+                                        src={cat.qrSrc}
+                                        alt={`${cat.label} payment QR`}
+                                        className="w-full h-full object-contain"
+                                      />
+                                    </div>
+                                    <p className="text-sm text-muted-foreground">
+                                      Scan this QR to pay the category fee. After
+                                      payment, keep the transaction reference for your
+                                      records.
+                                    </p>
+                                  </div>
+                                ) : (
+                                  <p className="text-sm text-muted-foreground">
+                                    QR not uploaded yet. Add an image at{" "}
+                                    {cat.qrSrc || "/qr/<category>.png"} in
+                                    `Frontend/public/qr/`.
+                                  </p>
+                                )
+                              ) : (
+                                <div className="space-y-2">
+                                  <p className="text-sm text-muted-foreground">
+                                    Pay via bank transfer using the details below.
+                                    Share your transaction reference after payment.
+                                  </p>
+                                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm bg-card/60 border border-border rounded-lg p-3">
+                                    <div>
+                                      <p className="text-muted-foreground">
+                                        Account Name
+                                      </p>
+                                      <p className="font-semibold text-foreground">
+                                        {BANK_DETAILS.accountName}
+                                      </p>
+                                    </div>
+                                    <div>
+                                      <p className="text-muted-foreground">
+                                        Account Number
+                                      </p>
+                                      <p className="font-semibold text-foreground">
+                                        {BANK_DETAILS.accountNumber}
+                                      </p>
+                                    </div>
+                                    <div>
+                                      <p className="text-muted-foreground">
+                                        IFSC Code
+                                      </p>
+                                      <p className="font-semibold text-foreground">
+                                        {BANK_DETAILS.ifsc}
+                                      </p>
+                                    </div>
+                                    <div>
+                                      <p className="text-muted-foreground">
+                                        MICR Code
+                                      </p>
+                                      <p className="font-semibold text-foreground">
+                                        {BANK_DETAILS.micr}
+                                      </p>
+                                    </div>
+                                    <div>
+                                      <p className="text-muted-foreground">Branch</p>
+                                      <p className="font-semibold text-foreground">
+                                        {BANK_DETAILS.branch}
+                                      </p>
+                                    </div>
+                                    {BANK_DETAILS.swift && (
+                                      <div>
+                                        <p className="text-muted-foreground">SWIFT</p>
+                                        <p className="font-semibold text-foreground">
+                                          {BANK_DETAILS.swift}
+                                        </p>
+                                      </div>
+                                    )}
+                                  </div>
                                 </div>
                               )}
-                            </div>
-                          </div>
-                        )}
-                      </>
-                    );
-                  })()}
-                </div>
-              )}
+                            </>
+                          );
+                        })()}
+                      </div>
+                    )}
 
-                {/* UTR Number */}
-                {selectedCategoryKey && (
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="utrNo"
-                      className="flex items-center gap-2 text-muted-foreground"
-                    >
-                      <Hash className="w-4 h-4 text-primary" />
-                      UTR / Transaction Number{" "}
-                      <span className="text-destructive">*</span>
-                    </Label>
-                    <Input
-                      id="utrNo"
-                      value={formData.utrNo}
-                      onChange={handleChange("utrNo")}
-                      placeholder="Enter UTR number from your payment"
-                      required
-                      className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
-                    />
-                    <p className="text-muted-foreground text-xs">
-                      Enter the UTR number from your payment transaction
-                    </p>
-                  </div>
+                    {/* UTR Number */}
+                    {selectedCategoryKey && (
+                      <div className="space-y-2">
+                        <Label
+                          htmlFor="utrNo"
+                          className="flex items-center gap-2 text-muted-foreground"
+                        >
+                          <Hash className="w-4 h-4 text-primary" />
+                          UTR / Transaction Number{" "}
+                          <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="utrNo"
+                          value={formData.utrNo}
+                          onChange={handleChange("utrNo")}
+                          placeholder="Enter UTR number from your payment"
+                          required
+                          className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
+                        />
+                        <p className="text-muted-foreground text-xs">
+                          Enter the UTR number from your payment transaction
+                        </p>
+                      </div>
+                    )}
+
+                    <div className="space-y-2">
+                      <Label
+                        htmlFor="address"
+                        className="flex items-center gap-2 text-muted-foreground"
+                      >
+                        <MapPin className="w-4 h-4 text-primary" />
+                        Address
+                      </Label>
+                      <Textarea
+                        id="address"
+                        value={formData.address}
+                        onChange={handleChange("address")}
+                        placeholder="Your complete address"
+                        rows={2}
+                        className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label
+                        htmlFor="paperTitle"
+                        className="flex items-center gap-2 text-muted-foreground"
+                      >
+                        <FileText className="w-4 h-4 text-primary" />
+                        Paper Title (if submitting)
+                      </Label>
+                      <Input
+                        id="paperTitle"
+                        value={formData.paperTitle}
+                        onChange={handleChange("paperTitle")}
+                        placeholder="Your paper title"
+                        className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label
+                        htmlFor="abstract"
+                        className="flex items-center gap-2 text-muted-foreground"
+                      >
+                        <Send className="w-4 h-4 text-primary" />
+                        Abstract (optional)
+                      </Label>
+                      <Textarea
+                        id="abstract"
+                        value={formData.abstract}
+                        onChange={handleChange("abstract")}
+                        placeholder="Paste your abstract here"
+                        rows={4}
+                        className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
+                      />
+                    </div>
+
+                    <div className="flex items-center justify-between gap-4 flex-wrap pt-4">
+                      <p className="text-sm text-muted-foreground">
+                        Please fill all required fields marked with *
+                      </p>
+                      <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 hover:scale-105 transition-all duration-300"
+                      >
+                        {isSubmitting ? "Submitting..." : "Submit Registration"}
+                      </Button>
+                    </div>
+                  </>
                 )}
-
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="address"
-                    className="flex items-center gap-2 text-muted-foreground"
-                  >
-                    <MapPin className="w-4 h-4 text-primary" />
-                    Address
-                  </Label>
-                  <Textarea
-                    id="address"
-                    value={formData.address}
-                    onChange={handleChange("address")}
-                    placeholder="Your complete address"
-                    rows={2}
-                    className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="paperTitle"
-                    className="flex items-center gap-2 text-muted-foreground"
-                  >
-                    <FileText className="w-4 h-4 text-primary" />
-                    Paper Title (if submitting)
-                  </Label>
-                  <Input
-                    id="paperTitle"
-                    value={formData.paperTitle}
-                    onChange={handleChange("paperTitle")}
-                    placeholder="Your paper title"
-                    className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="abstract"
-                    className="flex items-center gap-2 text-muted-foreground"
-                  >
-                    <Send className="w-4 h-4 text-primary" />
-                    Abstract (optional)
-                  </Label>
-                  <Textarea
-                    id="abstract"
-                    value={formData.abstract}
-                    onChange={handleChange("abstract")}
-                    placeholder="Paste your abstract here"
-                    rows={4}
-                    className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
-                  />
-                </div>
-
-                <div className="flex items-center justify-between gap-4 flex-wrap pt-4">
-                  <p className="text-sm text-muted-foreground">
-                    Please fill all required fields marked with *
-                  </p>
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 hover:scale-105 transition-all duration-300"
-                  >
-                    {isSubmitting ? "Submitting..." : "Submit Registration"}
-                  </Button>
-                </div>
               </form>
             </div>
           </div>
