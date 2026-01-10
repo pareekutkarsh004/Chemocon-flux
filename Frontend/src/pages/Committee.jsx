@@ -3,17 +3,17 @@ import { Users, Sparkles, Mail, Phone } from "lucide-react";
 
 const committeeData = {
   patron: [
-    { 
-      name: "Prof. Rama Shanker Verma", 
+    {
+      name: "Prof. Rama Shanker Verma",
       role: "Director, MNNIT Allahabad",
-      image: "/Committes Image/dir_img_250423.jpeg"
+      image: "/Committes Image/dir_img_250423.jpeg",
     },
   ],
   chairperson: [
-    { 
-      name: "Dr. Dipesh S. Patle", 
+    {
+      name: "Dr. Dipesh S. Patle",
       role: "Head, ChED, MNNIT Allahabad",
-      image: "/Committes Image/Dipesh-210x300.jpg"
+      image: "/Committes Image/Dipesh-210x300.jpg",
     },
   ],
   conveners: [
@@ -21,54 +21,166 @@ const committeeData = {
       name: "Prof. Sushil Kumar",
       role: "MNNIT Allahabad",
       type: "Convener/Technical Chair",
-      image: "/Committes Image/drSushilkumar-chemicalengineering.jpg"
+      image: "/Committes Image/drSushilkumar-chemicalengineering.jpg",
     },
     {
       name: "Dr. Dipesh S. Patle",
       role: "MNNIT Allahabad",
       type: "Convener/Technical Chair",
-      image: "/Committes Image/Dipesh-210x300.jpg"  
+      image: "/Committes Image/Dipesh-210x300.jpg",
     },
     {
       name: "Dr. Karthick S.",
       role: "MNNIT Allahabad",
       type: "Convener/Technical Chair",
-      image: "/Committes Image/karthick_-2-1.jpg" 
+      image: "/Committes Image/karthick_-2-1.jpg",
     },
   ],
   organizingSecretaries: [
-    { name: "Prof. Sadhana Sachan", role: "MNNIT Allahabad", image: "/Committes Image/HOD_Chemical_Deptt._pic.jpg" }, 
-    { name: "Prof. M. Siraj Alam", role: "MNNIT Allahabad", image: "/Committes Image/med_ce_sa.jpg" }, 
-    { name: "Dr. Ashish N. Sawarkar", role: "MNNIT Allahabad", image: "/Committes Image/drashishsawarkar.jpg" }, 
-    { name: "Dr. Suantak Kamsonlian", role: "MNNIT Allahabad", image: "/Committes Image/Suantak.jpg" },
-    { name: "Dr. Shabih Ul Hasan", role: "MNNIT Allahabad", image: "/Committes Image/Dr._Shabih_Ul_Hasan.jpg" },
-    { name: "Dr. Parul Katiyar", role: "MNNIT Allahabad", image: "/Committes Image/DSC_3365-crop.jpeg" }, 
-    { name: "Dr. Manju Verma", role: "MNNIT Allahabad", image: "/Committes Image/mv_photo.jpg" }, 
-    { name: "Dr. Dheeraj Ahuja", role: "MNNIT Allahabad", image: "/Committes Image/ahuja_chem.jpg" }, 
-    { name: "Dr. Anand Mohan Verma", role: "MNNIT Allahabad", image: "/Committes Image/90317-20230430_120334 - Copy (1).jpg" }, 
+    {
+      name: "Prof. Sadhana Sachan",
+      role: "MNNIT Allahabad",
+      image: "/Committes Image/HOD_Chemical_Deptt._pic.jpg",
+    },
+    {
+      name: "Prof. M. Siraj Alam",
+      role: "MNNIT Allahabad",
+      image: "/Committes Image/med_ce_sa.jpg",
+    },
+    {
+      name: "Dr. Ashish N. Sawarkar",
+      role: "MNNIT Allahabad",
+      image: "/Committes Image/drashishsawarkar.jpg",
+    },
+    {
+      name: "Dr. Suantak Kamsonlian",
+      role: "MNNIT Allahabad",
+      image: "/Committes Image/Suantak.jpg",
+    },
+    {
+      name: "Dr. Shabih Ul Hasan",
+      role: "MNNIT Allahabad",
+      image: "/Committes Image/Dr._Shabih_Ul_Hasan.jpg",
+    },
+    {
+      name: "Dr. Parul Katiyar",
+      role: "MNNIT Allahabad",
+      image: "/Committes Image/DSC_3365-crop.jpeg",
+    },
+    {
+      name: "Dr. Manju Verma",
+      role: "MNNIT Allahabad",
+      image: "/Committes Image/mv_photo.jpg",
+    },
+    {
+      name: "Dr. Dheeraj Ahuja",
+      role: "MNNIT Allahabad",
+      image: "/Committes Image/ahuja_chem.jpg",
+    },
+    {
+      name: "Dr. Anand Mohan Verma",
+      role: "MNNIT Allahabad",
+      image: "/Committes Image/90317-20230430_120334 - Copy (1).jpg",
+    },
   ],
   advisory: [
-    { name: "Prof. A.B. Pandit", role: "ICT Mumbai", image: "/assets/advisory/img1.jpg" }, // CHANGE THIS
-    { name: "Prof. B. N. Thorat", role: "ICT Mumbai", image: "/assets/advisory/img2.jpg" }, // CHANGE THIS
-    { name: "Prof. Shishir Sinha", role: "DG, CIPET Chennai", image: "/assets/advisory/img3.jpg" }, // CHANGE THIS
-    { name: "Prof. Davide Manca", role: "Polimi, Italy", image: "/assets/advisory/img4.jpg" }, // CHANGE THIS
-    { name: "Prof. G.P. Rangaiah", role: "NUS Singapore", image: "/assets/advisory/img5.jpg" }, // CHANGE THIS
-    { name: "Prof. Hasan Uslu", role: "Beykent Univ., Turkey", image: "/assets/advisory/img6.jpg" }, // CHANGE THIS
-    { name: "Prof. K.K. Pant", role: "Director, IIT Roorkee", image: "/assets/advisory/img7.jpg" }, // CHANGE THIS
-    { name: "Prof. Nishith Verma", role: "IIT Kanpur", image: "/assets/advisory/img8.jpg" }, // CHANGE THIS
-    { name: "Prof. P.K. Mishra", role: "IIT BHU", image: "/assets/advisory/img9.jpg" }, // CHANGE THIS
-    { name: "Prof. R. S. Singh", role: "IIT BHU", image: "/assets/advisory/img10.jpg" }, // CHANGE THIS
-    { name: "Prof. Anil Verma", role: "IIT Delhi", image: "/assets/advisory/img11.jpg" }, // CHANGE THIS
-    { name: "Prof. Vimal Katiyar", role: "IIT Guwahati", image: "/assets/advisory/img12.jpg" }, // CHANGE THIS
-    { name: "Prof. Zainal Ahmad", role: "USM, Malaysia", image: "/assets/advisory/img13.jpg" }, // CHANGE THIS
-    { name: "Dr. Ajay Kumar", role: "Oklahoma Univ., USA", image: "/assets/advisory/img14.jpg" }, // CHANGE THIS
-    { name: "Er. Sanjay Kudesia", role: "IFFCO Phulpur", image: "/assets/advisory/img15.jpg" }, // CHANGE THIS
+    {
+      name: "Prof. A.B. Pandit",
+      role: "ICT Mumbai",
+      image: "/assets/advisory/img1.jpg",
+    }, // CHANGE THIS
+    {
+      name: "Prof. B. N. Thorat",
+      role: "ICT Mumbai",
+      image: "/assets/advisory/img2.jpg",
+    }, // CHANGE THIS
+    {
+      name: "Prof. Shishir Sinha",
+      role: "DG, CIPET Chennai",
+      image: "/assets/advisory/img3.jpg",
+    }, // CHANGE THIS
+    {
+      name: "Prof. Davide Manca",
+      role: "Polimi, Italy",
+      image: "/assets/advisory/img4.jpg",
+    }, // CHANGE THIS
+    {
+      name: "Prof. G.P. Rangaiah",
+      role: "NUS Singapore",
+      image: "/assets/advisory/img5.jpg",
+    }, // CHANGE THIS
+    {
+      name: "Prof. Hasan Uslu",
+      role: "Beykent Univ., Turkey",
+      image: "/assets/advisory/img6.jpg",
+    }, // CHANGE THIS
+    {
+      name: "Prof. K.K. Pant",
+      role: "Director, IIT Roorkee",
+      image: "/assets/advisory/img7.jpg",
+    }, // CHANGE THIS
+    {
+      name: "Prof. Nishith Verma",
+      role: "IIT Kanpur",
+      image: "/assets/advisory/img8.jpg",
+    }, // CHANGE THIS
+    {
+      name: "Prof. P.K. Mishra",
+      role: "IIT BHU",
+      image: "/assets/advisory/img9.jpg",
+    }, // CHANGE THIS
+    {
+      name: "Prof. R. S. Singh",
+      role: "IIT BHU",
+      image: "/assets/advisory/img10.jpg",
+    }, // CHANGE THIS
+    {
+      name: "Prof. Anil Verma",
+      role: "IIT Delhi",
+      image: "/assets/advisory/img11.jpg",
+    }, // CHANGE THIS
+    {
+      name: "Prof. Vimal Katiyar",
+      role: "IIT Guwahati",
+      image: "/assets/advisory/img12.jpg",
+    }, // CHANGE THIS
+    {
+      name: "Prof. Zainal Ahmad",
+      role: "USM, Malaysia",
+      image: "/assets/advisory/img13.jpg",
+    }, // CHANGE THIS
+    {
+      name: "Dr. Ajay Kumar",
+      role: "Oklahoma Univ., USA",
+      image: "/assets/advisory/img14.jpg",
+    }, // CHANGE THIS
+    {
+      name: "Er. Sanjay Kudesia",
+      role: "IFFCO Phulpur",
+      image: "/assets/advisory/img15.jpg",
+    }, // CHANGE THIS
   ],
   technicalSupport: [
-    { name: "Mr Abdul Rehman", role: "Technical Support", image: "/assets/tech/abdul.jpg" }, // CHANGE THIS
-    { name: "Vansh", role: "Technical Support", image: "/Committes Image/WhatsApp Image 2026-01-10 at 14.16.42.jpeg" }, // CHANGE THIS
-    { name: "Vivek Kumar Sulaniya", role: "Technical Support", image: "/assets/tech/vivek.jpg" }, // CHANGE THIS
-    { name: "Utkarsh Pareek", role: "Technical Support", image: "/Committes Image/20240707_191341-1.jpg" }, // CHANGE THIS
+    {
+      name: "Mr Abdul Rehman",
+      role: "Technical Support",
+      image: "/assets/tech/abdul.jpg",
+    }, // CHANGE THIS
+    {
+      name: "Vansh",
+      role: "Technical Support",
+      image: "/Committes Image/WhatsApp Image 2026-01-10 at 14.16.42.jpeg",
+    }, // CHANGE THIS
+    {
+      name: "Vivek Kumar Sulaniya",
+      role: "Technical Support",
+      image: "/Committes Image/vivek.jpeg",
+    }, // CHANGE THIS
+    {
+      name: "Utkarsh Pareek",
+      role: "Technical Support",
+      image: "/Committes Image/20240707_191341-1.jpg",
+    }, // CHANGE THIS
   ],
 };
 
