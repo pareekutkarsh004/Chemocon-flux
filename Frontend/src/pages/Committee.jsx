@@ -73,29 +73,37 @@ const committeeData = {
 };
 
 const MemberCard = ({ member, size = "default" }) => {
-  const sizeClasses = {
-    large: "w-20 h-20 text-2xl",
-    default: "w-16 h-16 text-xl",
-    small: "w-12 h-12 text-sm",
-    tiny: "w-10 h-10 text-xs",
+  // These classes control the height of the card based on the 'size' prop
+  // This ensures the photo has enough vertical space to be seen
+  const heightClasses = {
+    large: "h-96",   // Taller for Patron/Chairperson
+    default: "h-80", // Standard size
+    small: "h-64",   // Smaller for secretaries
+    tiny: "h-56",    // Smallest for advisory
   };
 
   return (
-    <div className="group bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-border dark:border-white/10 hover:bg-secondary dark:hover:bg-white/10 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 text-center">
-      <div
-        className={`${sizeClasses[size]} rounded-2xl bg-primary/20 mx-auto mb-4 flex items-center justify-center group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300 overflow-hidden relative`}
-      >
-        {/* CHANGED: Removed abbreviation logic, replaced with Image tag */}
+    <div 
+      className={`group relative bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl border border-border dark:border-white/10 overflow-hidden transition-all duration-300 hover:-translate-y-1 ${heightClasses[size] || "h-80"}`}
+    >
+      {/* 1. Full Background Image */}
+      <div className="absolute inset-0 w-full h-full">
         <img 
             src={member.image} 
             alt={member.name} 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
+        {/* 2. Gradient Overlay: Makes text readable on top of photos */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-90" />
       </div>
-      <p className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm">
-        {member.name}
-      </p>
-      <p className="text-muted-foreground text-xs mt-1">{member.role}</p>
+
+      {/* 3. Text Content: Pushed to the bottom, White text color */}
+      <div className="absolute inset-0 p-6 flex flex-col justify-end text-center z-10">
+        <p className="font-semibold text-white text-lg group-hover:text-primary transition-colors drop-shadow-md">
+          {member.name}
+        </p>
+        <p className="text-gray-200 text-sm mt-1 drop-shadow-md">{member.role}</p>
+      </div>
     </div>
   );
 };
