@@ -116,7 +116,7 @@ const GOOGLE_FORM_ENTRIES = {
   abstract: "entry.850816242",
   utrNo: "entry.764707765",
   // TODO: Replace this with your actual Google Form Entry ID for Applicant ID
-  applicantId: "entry.APPLICANT_ID_PLACEHOLDER", 
+  applicantId: "entry.1500057321", 
 };
 
 const getInitialFormData = () => {
