@@ -79,7 +79,9 @@ export function Header() {
               Register Now
             </Link>
 
-            <ThemeToggle />
+            <div className="text-slate-700 dark:text-white hover:text-orange-400 transition-colors">
+              <ThemeToggle />
+            </div>
           </nav>
 
           {/* Mobile Actions */}
