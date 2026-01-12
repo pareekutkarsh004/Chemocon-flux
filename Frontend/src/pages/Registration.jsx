@@ -102,21 +102,21 @@ const importantDates = [
 ];
 
 const GOOGLE_FORM_RESPONSE_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeDQQTmndmPkEo3NoORwrensrXW7eeYoWfa30Sjdkx7A4taJg/formResponse";
+  "https://docs.google.com/forms/d/e/1FAIpQLSfOci0F3Qo8KBkE0sFcRyPMtZlCuG-TKBP1E-R42gNVG4jAfw/viewform?usp=header";
 
 const GOOGLE_FORM_ENTRIES = {
-  fullName: "entry.82591335",
-  email: "entry.875258813",
-  phone: "entry.1219509344",
-  affiliation: "entry.1014504476",
-  designation: "entry.1428949176",
-  address: "entry.597901852",
-  category: "entry.262280136",
-  paperTitle: "entry.26866841",
-  abstract: "entry.850816242",
-  utrNo: "entry.764707765",
+  fullName: "entry.2111203769",
+  email: "entry.166206430",
+  phone: "entry.1057242179",
+  affiliation: "entry.849349972",
+  designation: "entry.1938379852",
+  address: "entry.556004646",
+  category: "entry.1244283262",
+  paperTitle: "entry.1077930342",
+  abstract: "entry.1045790084",
+  utrNo: "entry.1680864150",
   // TODO: Replace this with your actual Google Form Entry ID for Applicant ID
-  applicantId: "entry.1500057321", 
+  applicantId: "entry.484512564", 
 };
 
 const getInitialFormData = () => {
