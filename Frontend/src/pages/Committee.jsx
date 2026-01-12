@@ -164,7 +164,7 @@ const committeeData = {
     {
       name: "Mr Abdul Rehman",
       role: "Technical Support",
-      image: "/assets/tech/abdul.jpg",
+      image: "/Committes Image/abdul.jpeg",
     }, // CHANGE THIS
     {
       name: "Vansh",
