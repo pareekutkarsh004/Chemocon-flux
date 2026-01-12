@@ -62,10 +62,8 @@ export function Hero() {
       </div>
 
       {/* Carousel Controls */}
-      
 
       {/* Carousel Indicators */}
-    
 
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
@@ -127,7 +125,11 @@ export function Hero() {
               variant="outline"
               className="border-orange-500/50 text-orange-400 bg-orange-500/10 hover:bg-orange-500/20 backdrop-blur-sm hover:scale-105 transition-all duration-300 group"
             >
-              <a href="/brochure/Chemconflux26-Brochure.pdf" download>
+              <a
+                href="/brochure/Chemconflux26-Brochure.pdf"
+                download
+                className="group inline-flex items-center"
+              >
                 <FileDown className="w-5 h-5 mr-2 group-hover:animate-bounce" />
                 Download Brochure
               </a>
