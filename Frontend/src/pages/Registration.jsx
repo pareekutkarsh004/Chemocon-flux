@@ -102,7 +102,7 @@ const importantDates = [
 ];
 
 const GOOGLE_FORM_RESPONSE_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSfOci0F3Qo8KBkE0sFcRyPMtZlCuG-TKBP1E-R42gNVG4jAfw/viewform?usp=header";
+  "https://docs.google.com/forms/d/e/1FAIpQLSfOci0F3Qo8KBkE0sFcRyPMtZlCuG-TKBP1E-R42gNVG4jAfw/viewform?usp=dialog";
 
 const GOOGLE_FORM_ENTRIES = {
   fullName: "entry.2111203769",
