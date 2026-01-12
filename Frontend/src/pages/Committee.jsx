@@ -84,82 +84,83 @@ const committeeData = {
     },
   ],
   advisory: [
-    {
-      name: "Prof. A.B. Pandit",
-      role: "ICT Mumbai",
-      image: "/assets/advisory/img1.jpg",
-    }, // CHANGE THIS
-    {
-      name: "Prof. B. N. Thorat",
-      role: "ICT Mumbai",
-      image: "/assets/advisory/img2.jpg",
-    }, // CHANGE THIS
-    {
-      name: "Prof. Shishir Sinha",
-      role: "DG, CIPET Chennai",
-      image: "/assets/advisory/img3.jpg",
-    }, // CHANGE THIS
-    {
-      name: "Prof. Davide Manca",
-      role: "Polimi, Italy",
-      image: "/assets/advisory/img4.jpg",
-    }, // CHANGE THIS
-    {
-      name: "Prof. G.P. Rangaiah",
-      role: "NUS Singapore",
-      image: "/assets/advisory/img5.jpg",
-    }, // CHANGE THIS
-    {
-      name: "Prof. Hasan Uslu",
-      role: "Beykent Univ., Turkey",
-      image: "/assets/advisory/img6.jpg",
-    }, // CHANGE THIS
-    {
-      name: "Prof. K.K. Pant",
-      role: "Director, IIT Roorkee",
-      image: "/assets/advisory/img7.jpg",
-    }, // CHANGE THIS
-    {
-      name: "Prof. Nishith Verma",
-      role: "IIT Kanpur",
-      image: "/assets/advisory/img8.jpg",
-    }, // CHANGE THIS
-    {
-      name: "Prof. P.K. Mishra",
-      role: "IIT BHU",
-      image: "/assets/advisory/img9.jpg",
-    }, // CHANGE THIS
-    {
-      name: "Prof. R. S. Singh",
-      role: "IIT BHU",
-      image: "/assets/advisory/img10.jpg",
-    }, // CHANGE THIS
-    {
-      name: "Prof. Anil Verma",
-      role: "IIT Delhi",
-      image: "/assets/advisory/img11.jpg",
-    }, // CHANGE THIS
-    {
-      name: "Prof. Vimal Katiyar",
-      role: "IIT Guwahati",
-      image: "/assets/advisory/img12.jpg",
-    }, // CHANGE THIS
-    {
-      name: "Prof. Zainal Ahmad",
-      role: "USM, Malaysia",
-      image: "/assets/advisory/img13.jpg",
-    }, // CHANGE THIS
-    {
-      name: "Dr. Ajay Kumar",
-      role: "Oklahoma Univ., USA",
-      image: "/assets/advisory/img14.jpg",
-    }, // CHANGE THIS
-    {
-      name: "Er. Sanjay Kudesia",
-      role: "IFFCO Phulpur",
-      image: "/assets/advisory/img15.jpg",
-    }, // CHANGE THIS
-  ],
+  {
+    name: "Prof. Aniruddha Bhalchandra Pandit",
+    role: "Vice Chancellor & UGC Professor, ICT Mumbai",
+    image: "/advisory/pandit.jpg",
+  },
+  {
+    name: "Prof. Bhaskar Narayan Thorat",
+    role: "Professor, Chemical Engineering, ICT Mumbai",
+    image: "/advisory/thorat.jpg",
+  },
+  {
+    name: "Prof. Shishir Sinha",
+    role: "Director General, CIPET, Govt. of India",
+    image: "/advisory/sinha.jpg",
+  },
+  {
+    name: "Prof. Davide Manca",
+    role: "Professor, Process Systems Engineering, Politecnico di Milano, Italy",
+    image: "/advisory/manca.jpg",
+  },
+  {
+    name: "Prof. G. P. Rangaiah",
+    role: "Emeritus Professor, National University of Singapore",
+    image: "/advisory/rangaiah.jpg",
+  },
+  {
+    name: "Prof. Hasan Uslu",
+    role: "Professor, Nigde Omer Halisdemir University, Turkey",
+    image: "/advisory/uslu.jpg",
+  },
+  {
+    name: "Prof. K. K. Pant",
+    role: "Professor, Chemical Engineering, IIT Roorkee",
+    image: "/advisory/kkpant.jpg",
+  },
+  {
+    name: "Prof. Nishith Verma",
+    role: "Chevron Chair Professor, Chemical Engineering, IIT Kanpur",
+    image: "/advisory/nishith.jpg",
+  },
+  {
+    name: "Prof. P. K. Mishra",
+    role: "Professor (HAG), Chemical Engineering, IIT (BHU) Varanasi",
+    image: "/advisory/pkmishra.jpg",
+  },
+  {
+    name: "Prof. R. S. Singh",
+    role: "Professor (HAG), Chemical Engineering, IIT (BHU) Varanasi",
+    image: "/advisory/rssingh.jpg",
+  },
+  {
+    name: "Prof. Anil Verma",
+    role: "Professor, Chemical Engineering, IIT Delhi",
+    image: "/advisory/anilverma.jpg",
+  },
+  {
+    name: "Prof. Vimal Katiyar",
+    role: "Professor, Chemical Engineering, IIT Guwahati",
+    image: "/advisory/vkatiyar.jpg",
+  },
+  {
+    name: "Prof. Zainal Ahmad",
+    role: "Professor, Chemical Engineering, Universiti Sains Malaysia",
+    image: "/advisory/zainal.jpg",
+  },
+  {
+    name: "Dr. Ajay Kumar",
+    role: "Professor, Oklahoma State University, USA",
+    image: "/advisory/ajaykumar.jpg",
+  },
+  {
+    name: "Er. Sanjay Kudesia",
+    role: "Managing Director, IFFCO Phulpur",
+    image: "/advisory/kudesia.jpg",
+  },
+],
+
   technicalSupport: [
     {
       name: "Mr Abdul Rehman",
