@@ -19,10 +19,10 @@ export function AboutPreview() {
               alt="MNNIT Allahabad Campus"
               className="relative rounded-2xl shadow-2xl ring-1 ring-white/10 group-hover:scale-[1.02] transition-transform duration-500"
             />
-            <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-orange-500 to-orange-600 text-white p-6 rounded-xl shadow-lg hidden md:block group-hover:scale-110 transition-transform duration-300">
+            {/* <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-orange-500 to-orange-600 text-white p-6 rounded-xl shadow-lg hidden md:block group-hover:scale-110 transition-transform duration-300">
               <p className="font-display text-3xl font-bold">3</p>
               <p className="text-sm text-white/90">Days Conference</p>
-            </div>
+            </div> */}
           </div>
 
           {/* Content */}
