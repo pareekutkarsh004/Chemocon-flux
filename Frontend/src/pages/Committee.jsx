@@ -84,82 +84,82 @@ const committeeData = {
     },
   ],
   advisory: [
-  {
-    name: "Prof. Aniruddha Bhalchandra Pandit",
-    role: "Vice Chancellor & UGC Professor, ICT Mumbai",
-    image: "/advisory/pandit.jpg",
-  },
-  {
-    name: "Prof. Bhaskar Narayan Thorat",
-    role: "Professor, Chemical Engineering, ICT Mumbai",
-    image: "/advisory/thorat.jpg",
-  },
-  {
-    name: "Prof. Shishir Sinha",
-    role: "Director General, CIPET, Govt. of India",
-    image: "/advisory/sinha.jpg",
-  },
-  {
-    name: "Prof. Davide Manca",
-    role: "Professor, Process Systems Engineering, Politecnico di Milano, Italy",
-    image: "/advisory/manca.jpg",
-  },
-  {
-    name: "Prof. G. P. Rangaiah",
-    role: "Emeritus Professor, National University of Singapore",
-    image: "/advisory/rangaiah.jpg",
-  },
-  {
-    name: "Prof. Hasan Uslu",
-    role: "Professor, Nigde Omer Halisdemir University, Turkey",
-    image: "/advisory/uslu.jpg",
-  },
-  {
-    name: "Prof. K. K. Pant",
-    role: "Professor, Chemical Engineering, IIT Roorkee",
-    image: "/advisory/kkpant.jpg",
-  },
-  {
-    name: "Prof. Nishith Verma",
-    role: "Chevron Chair Professor, Chemical Engineering, IIT Kanpur",
-    image: "/advisory/nishith.jpg",
-  },
-  {
-    name: "Prof. P. K. Mishra",
-    role: "Professor (HAG), Chemical Engineering, IIT (BHU) Varanasi",
-    image: "/advisory/pkmishra.jpg",
-  },
-  {
-    name: "Prof. R. S. Singh",
-    role: "Professor (HAG), Chemical Engineering, IIT (BHU) Varanasi",
-    image: "/advisory/rssingh.jpg",
-  },
-  {
-    name: "Prof. Anil Verma",
-    role: "Professor, Chemical Engineering, IIT Delhi",
-    image: "/advisory/anilverma.jpg",
-  },
-  {
-    name: "Prof. Vimal Katiyar",
-    role: "Professor, Chemical Engineering, IIT Guwahati",
-    image: "/advisory/vkatiyar.jpg",
-  },
-  {
-    name: "Prof. Zainal Ahmad",
-    role: "Professor, Chemical Engineering, Universiti Sains Malaysia",
-    image: "/advisory/zainal.jpg",
-  },
-  {
-    name: "Dr. Ajay Kumar",
-    role: "Professor, Oklahoma State University, USA",
-    image: "/advisory/ajaykumar.jpg",
-  },
-  {
-    name: "Er. Sanjay Kudesia",
-    role: "Managing Director, IFFCO Phulpur",
-    image: "/advisory/kudesia.jpg",
-  },
-],
+    {
+      name: "Prof. Aniruddha Bhalchandra Pandit",
+      role: "Vice Chancellor & UGC Professor, ICT Mumbai",
+      image: "/advisory/pandit.jpg",
+    },
+    {
+      name: "Prof. Bhaskar Narayan Thorat",
+      role: "Professor, Chemical Engineering, ICT Mumbai",
+      image: "/advisory/thorat.jpg",
+    },
+    {
+      name: "Prof. Shishir Sinha",
+      role: "Director General, CIPET, Govt. of India",
+      image: "/advisory/sinha.jpg",
+    },
+    {
+      name: "Prof. Davide Manca",
+      role: "Professor, Process Systems Engineering, Politecnico di Milano, Italy",
+      image: "/advisory/manca.jpg",
+    },
+    {
+      name: "Prof. G. P. Rangaiah",
+      role: "Emeritus Professor, National University of Singapore",
+      image: "/advisory/rangaiah.jpg",
+    },
+    {
+      name: "Prof. Hasan Uslu",
+      role: "Professor, Nigde Omer Halisdemir University, Turkey",
+      image: "/advisory/uslu.jpg",
+    },
+    {
+      name: "Prof. K. K. Pant",
+      role: "Professor, Chemical Engineering, IIT Roorkee",
+      image: "/advisory/kkpant.jpg",
+    },
+    {
+      name: "Prof. Nishith Verma",
+      role: "Chevron Chair Professor, Chemical Engineering, IIT Kanpur",
+      image: "/advisory/nishith.jpg",
+    },
+    {
+      name: "Prof. P. K. Mishra",
+      role: "Professor (HAG), Chemical Engineering, IIT (BHU) Varanasi",
+      image: "/advisory/pkmishra.jpg",
+    },
+    {
+      name: "Prof. R. S. Singh",
+      role: "Professor (HAG), Chemical Engineering, IIT (BHU) Varanasi",
+      image: "/advisory/rssingh.jpg",
+    },
+    {
+      name: "Prof. Anil Verma",
+      role: "Professor, Chemical Engineering, IIT Delhi",
+      image: "/advisory/anilverma.jpg",
+    },
+    {
+      name: "Prof. Vimal Katiyar",
+      role: "Professor, Chemical Engineering, IIT Guwahati",
+      image: "/advisory/vkatiyar.jpg",
+    },
+    {
+      name: "Prof. Zainal Ahmad",
+      role: "Professor, Chemical Engineering, Universiti Sains Malaysia",
+      image: "/advisory/zainal.jpg",
+    },
+    {
+      name: "Dr. Ajay Kumar",
+      role: "Professor, Oklahoma State University, USA",
+      image: "/advisory/ajaykumar.jpg",
+    },
+    {
+      name: "Er. Sanjay Kudesia",
+      role: "Managing Director, IFFCO Phulpur",
+      image: "/advisory/kudesia.jpg",
+    },
+  ],
 
   technicalSupport: [
     {
@@ -189,22 +189,24 @@ const MemberCard = ({ member, size = "default" }) => {
   // These classes control the height of the card based on the 'size' prop
   // This ensures the photo has enough vertical space to be seen
   const heightClasses = {
-    large: "h-96",   // Taller for Patron/Chairperson
+    large: "h-96", // Taller for Patron/Chairperson
     default: "h-80", // Standard size
-    small: "h-64",   // Smaller for secretaries
-    tiny: "h-56",    // Smallest for advisory
+    small: "h-64", // Smaller for secretaries
+    tiny: "h-56", // Smallest for advisory
   };
 
   return (
-    <div 
-      className={`group relative bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl border border-border dark:border-white/10 overflow-hidden transition-all duration-300 hover:-translate-y-1 ${heightClasses[size] || "h-80"}`}
+    <div
+      className={`group relative bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl border border-border dark:border-white/10 overflow-hidden transition-all duration-300 hover:-translate-y-1 ${
+        heightClasses[size] || "h-80"
+      }`}
     >
       {/* 1. Full Background Image */}
       <div className="absolute inset-0 w-full h-full">
-        <img 
-            src={member.image} 
-            alt={member.name} 
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        <img
+          src={member.image}
+          alt={member.name}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
         {/* 2. Gradient Overlay: Makes text readable on top of photos */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-90" />
@@ -215,7 +217,9 @@ const MemberCard = ({ member, size = "default" }) => {
         <p className="font-semibold text-white text-lg group-hover:text-primary transition-colors drop-shadow-md">
           {member.name}
         </p>
-        <p className="text-gray-200 text-sm mt-1 drop-shadow-md">{member.role}</p>
+        <p className="text-gray-200 text-sm mt-1 drop-shadow-md">
+          {member.role}
+        </p>
       </div>
     </div>
   );
