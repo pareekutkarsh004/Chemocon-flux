@@ -90,9 +90,9 @@ const committeeData = {
       image: "/advisory/pandit.jpg",
     },
     {
-      name: "Prof. Bhaskar Narayan Thorat",
-      role: "Professor, Chemical Engineering, ICT Mumbai",
-      image: "/advisory/thorat.jpg",
+      name: "Prof. Meenesh R. Singh",
+      role: "Professor, Chemical Engineering, University of Illinios Chicago",
+      image: "/advisory/Meenesh-Singh-157x180.jpg.avif",
     },
     {
       name: "Prof. Shishir Sinha",
@@ -110,9 +110,9 @@ const committeeData = {
       image: "/advisory/rangaiah.jpg",
     },
     {
-      name: "Prof. Hasan Uslu",
-      role: "Professor, Nigde Omer Halisdemir University, Turkey",
-      image: "/advisory/uslu.jpg",
+      name: "Prof. P.R. Gogate",
+      role: "Professor,ICT Mumbai",
+      image: "/advisory/ImageGenerator.aspx.jpeg",
     },
     {
       name: "Prof. K. K. Pant",
@@ -154,11 +154,11 @@ const committeeData = {
       role: "Professor, Oklahoma State University, USA",
       image: "/advisory/ajaykumar.jpg",
     },
-    {
-      name: "Er. Sanjay Kudesia",
-      role: "Managing Director, IFFCO Phulpur",
-      image: "/advisory/kudesia.jpg",
-    },
+    // {
+    //   name: "Er. Sanjay Kudesia",
+    //   role: "Managing Director, IFFCO Phulpur",
+    //   image: "/advisory/kudesia.jpg",
+    // },
   ],
 
   technicalSupport: [
@@ -355,11 +355,11 @@ const Committee = () => {
             <div className="flex flex-wrap justify-center gap-4 text-muted-foreground text-sm">
               <span className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-primary" />
-                +91-532-2271581 (O)
+                {/* +91-532-2271581 (O) */}
               </span>
-              <span>+91-9003670402</span>
+              {/* <span>+91-9003670402</span>
               <span>+91-9455421398</span>
-              <span>+91-8248954090</span>
+              <span>+91-8248954090</span> */}
             </div>
           </div>
         </div>

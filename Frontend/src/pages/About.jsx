@@ -250,6 +250,7 @@ const About = () => {
               <Calendar className="w-4 h-4 text-primary" />
               <span className="text-primary text-sm font-medium">
                 Early Bird deadline: August 30, 2026
+                After Deadline Standard Fee will be Applicable
               </span>
             </div>
           </div>

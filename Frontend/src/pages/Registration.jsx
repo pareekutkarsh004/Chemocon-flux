@@ -825,6 +825,7 @@ const Registration = () => {
               <Calendar className="w-4 h-4 text-primary" />
               <span className="text-primary text-sm font-medium">
                 Early Bird till August 30, 2026
+                After Deadline Standard Fee will be Applicable
               </span>
             </div>
           </div>
@@ -842,7 +843,7 @@ const Registration = () => {
                       Early Bird
                       <br />
                       <span className="text-xs font-normal opacity-80">
-                        (till Aug 30)
+                        (incl. GST)
                       </span>
                     </th>
                     <th className="p-5 text-center text-primary-foreground font-semibold">
@@ -904,6 +905,7 @@ const Registration = () => {
                 </div>
               </div>
             ))}
+            
           </div>
         </div>
       </section>
@@ -1028,7 +1030,7 @@ const Registration = () => {
               href="tel:+919003670402"
               className="text-foreground font-medium hover:text-primary transition-colors py-3"
             >
-              +91-9003670402
+              {/* +91-9003670402 */}
             </a>
           </div>
         </div>

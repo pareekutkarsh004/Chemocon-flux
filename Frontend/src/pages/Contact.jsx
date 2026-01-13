@@ -148,13 +148,13 @@ const Contact = () => {
                     title: "Phone",
                     content: (
                       <>
-                        Office: +91-532-2271581
+                        Office: +91-532-2271581 Office
                         <br />
-                        Mobile: +91-9003670402
+                        Mobile: +91-9003670402 Dr. Dipesh S. Patle
                         <br />
-                        Mobile: +91-9455421398
+                        Mobile: +91-9455421398 Prof. Sushil Kumar
                         <br />
-                        Mobile: +91-8248954090
+                        Mobile: +91-8248954090 Dr. Karthick S.
                       </>
                     ),
                   },
