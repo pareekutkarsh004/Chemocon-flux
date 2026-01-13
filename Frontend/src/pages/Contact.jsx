@@ -70,7 +70,7 @@ const Contact = () => {
                       First Name
                     </label>
                     <Input
-                      placeholder="John"
+                      placeholder=""
                       className="bg-card dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
                     />
                   </div>
@@ -79,7 +79,7 @@ const Contact = () => {
                       Last Name
                     </label>
                     <Input
-                      placeholder="Doe"
+                      placeholder=""
                       className="bg-card dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
                     />
                   </div>
@@ -90,7 +90,7 @@ const Contact = () => {
                   </label>
                   <Input
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder=""
                     className="bg-card dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
                   />
                 </div>

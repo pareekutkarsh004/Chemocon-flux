@@ -13,7 +13,7 @@ const committeeData = {
     {
       name: "Dr. Dipesh S. Patle",
       role: "Head, ChED, MNNIT Allahabad",
-      image: "/Committes Image/Dipesh-210x300.jpg",
+      image: "/Committes Image/Dipesh_Photo_MNNIT.jpg",
     },
   ],
   conveners: [
