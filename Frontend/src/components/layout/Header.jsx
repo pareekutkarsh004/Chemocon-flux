@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import mnnitLogo from "@/assets/Chem-Conflux20_Logo.png";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import logo from "@/assets/logo.png"
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -20,15 +21,15 @@ export function Header() {
   return (
     <header
       className="
-      fixed top-0 left-0 w-full z-50
-      bg-gradient-to-r from-slate-800 via-slate-900 to-slate-800
-      dark:from-slate-900 dark:via-slate-800 dark:to-slate-900
-      text-white shadow-lg border-b border-orange-500/20
-    "
+        fixed top-0 left-0 w-full z-50
+        bg-gradient-to-r from-slate-800 via-slate-900 to-slate-800
+        dark:from-slate-900 dark:via-slate-800 dark:to-slate-900
+        text-white shadow-lg border-b border-orange-500/20
+      "
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
-          {/* Logo */}
+          {/* LEFT: Main Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <img
               src={mnnitLogo}
@@ -37,17 +38,14 @@ export function Header() {
                          group-hover:scale-105 transition-transform"
             />
             <div className="hidden sm:block">
-              <h1
-                className="font-display text-lg font-bold
-                             group-hover:text-orange-400 transition-colors"
-              >
+              <h1 className="font-display text-lg font-bold group-hover:text-orange-400 transition-colors">
                 CHEM-CONFLUX²⁶
               </h1>
               <p className="text-xs text-slate-300">MNNIT Allahabad</p>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* CENTER: Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2">
             {navLinks.map((link) => (
               <Link
@@ -79,14 +77,36 @@ export function Header() {
               Register Now
             </Link>
 
-            <div className="text-slate-700 dark:text-white hover:text-orange-400 transition-colors">
-              <ThemeToggle />
+            {/* Theme Toggle + Right Logo */}
+            <div className="flex items-center gap-3 ml-2">
+              <div className="hover:text-orange-400 transition-colors">
+                <ThemeToggle />
+              </div>
+
+              {/* RIGHT: MNNIT Logo */}
+              <img
+                src={logo}
+                alt="MNNIT Logo"
+                className="
+                  w-9 h-9 rounded-full  object-contain
+                  
+                  hover:scale-105 transition-transform
+                "
+              />
             </div>
           </nav>
 
-          {/* Mobile Actions */}
+          {/* MOBILE ACTIONS */}
           <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
+
+            {/* Mobile Right Logo */}
+            <img
+              src={mnnitLogo}
+              alt="MNNIT Logo"
+              className="w-8 h-8 rounded-full bg-white object-contain"
+            />
+
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-lg hover:bg-white/10 transition"
@@ -97,7 +117,7 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* MOBILE MENU */}
         {isMenuOpen && (
           <nav className="md:hidden pb-4 space-y-2 animate-fade-in">
             {navLinks.map((link) => (
@@ -116,7 +136,6 @@ export function Header() {
               </Link>
             ))}
 
-            {/* Mobile Register CTA */}
             <Link
               to="/registration"
               onClick={() => setIsMenuOpen(false)}
