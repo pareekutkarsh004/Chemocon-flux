@@ -27,7 +27,7 @@ const committeeData = {
       name: "Dr. Dipesh S. Patle",
       role: "MNNIT Allahabad",
       type: "Convener/Technical Chair",
-      image: "/Committes Image/Dipesh-210x300.jpg",
+      image: "/Committes Image/Dipesh_Photo_MNNIT.jpg",
     },
     {
       name: "Dr. Karthick S.",
