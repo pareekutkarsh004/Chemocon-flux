@@ -1,13 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {
-  Calendar,
-  MapPin,
-  ChevronLeft,
-  ChevronRight,
-  Sparkles,
-  FileDown,
-} from "lucide-react";
+import { Calendar, MapPin, Sparkles, FileDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import mnnitCampus1 from "@/assets/mnnit-campus-1.jpeg";
 import mnnitCampus2 from "@/assets/mnnit-campus-2.jpeg";
@@ -25,14 +18,6 @@ export function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  const goToImage = (index) => setCurrentImage(index);
-  const prevImage = () =>
-    setCurrentImage(
-      (prev) => (prev - 1 + campusImages.length) % campusImages.length
-    );
-  const nextImage = () =>
-    setCurrentImage((prev) => (prev + 1) % campusImages.length);
-
   return (
     <section className="relative min-h-[700px] flex items-center overflow-hidden">
       {/* Background Image Carousel */}
@@ -48,8 +33,10 @@ export function Hero() {
             style={{ backgroundImage: `url('${img}')` }}
           />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-slate-900/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+
+        {/* 🔹 LIGHTER GRADIENT OVERLAYS */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/50 to-slate-900/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
       </div>
 
       {/* Animated Background Elements */}
@@ -60,10 +47,6 @@ export function Hero() {
           style={{ animationDelay: "1s" }}
         />
       </div>
-
-      {/* Carousel Controls */}
-
-      {/* Carousel Indicators */}
 
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
@@ -89,7 +72,7 @@ export function Hero() {
           <div className="flex flex-wrap gap-4 mb-8">
             <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
               <Calendar className="w-5 h-5 text-orange-400" />
-              <span className="text-slate-200">October 22-24, 2026</span>
+              <span className="text-slate-200">October 22–24, 2026</span>
             </div>
             <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
               <MapPin className="w-5 h-5 text-orange-400" />
@@ -106,29 +89,28 @@ export function Hero() {
           <div className="flex flex-wrap gap-4">
             <Button
               asChild
-              // size="lg"
               className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 hover:scale-105 transition-all duration-300"
             >
               <Link to="/registration">Register Now</Link>
             </Button>
+
             <Button
               asChild
-              // size="lg"
               variant="outline"
               className="border-white/30 text-white bg-transparent hover:bg-white/10 backdrop-blur-sm hover:scale-105 transition-all duration-300"
             >
               <a href="#about">Learn More</a>
             </Button>
+
             <Button
               asChild
-              // size="lg"
               variant="outline"
               className="border-orange-500/50 text-orange-400 bg-orange-500/10 hover:bg-orange-500/20 backdrop-blur-sm hover:scale-105 transition-all duration-300 group"
             >
               <a
                 href="/brochure/Chemconflux26-Brochure.pdf"
                 download
-                className="group inline-flex items-center"
+                className="inline-flex items-center"
               >
                 <FileDown className="w-5 h-5 mr-2 group-hover:animate-bounce" />
                 Download Brochure

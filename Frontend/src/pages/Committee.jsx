@@ -21,7 +21,7 @@ const committeeData = {
       name: "Prof. Sushil Kumar",
       role: "MNNIT Allahabad",
       type: "Convener/Technical Chair",
-      image: "/Committes Image/drSushilkumar-chemicalengineering.jpg",
+      image: "/Committes Image/sushil.jpeg",
     },
     {
       name: "Dr. Dipesh S. Patle",
@@ -154,11 +154,11 @@ const committeeData = {
       role: "Professor, Oklahoma State University, USA",
       image: "/advisory/ajaykumar.jpg",
     },
-    // {
-    //   name: "Er. Sanjay Kudesia",
-    //   role: "Managing Director, IFFCO Phulpur",
-    //   image: "/advisory/kudesia.jpg",
-    // },
+    {
+      name: "Mr. Raj Tiwari",
+      role: " Director, UPL LIMITED",
+      image: "/advisory/Raj_Tiwari.jpg",
+    },
   ],
 
   technicalSupport: [

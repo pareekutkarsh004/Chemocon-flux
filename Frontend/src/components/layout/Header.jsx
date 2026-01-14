@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import mnnitLogo from "@/assets/Chem-Conflux20_Logo.png";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import logo from "@/assets/logo.png"
+import logo from "@/assets/logo.jpg";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -28,14 +28,18 @@ export function Header() {
       "
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between py-4">
+        {/* HEADER HEIGHT CONTROLLED HERE */}
+        <div className="flex items-center justify-between h-20">
           {/* LEFT: Main Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <img
               src={mnnitLogo}
               alt="MNNIT Logo"
-              className="w-12 h-12 rounded-full bg-white object-contain
-                         group-hover:scale-105 transition-transform"
+              className="
+                h-14 w-14
+                rounded-full bg-white object-contain
+                group-hover:scale-105 transition-transform
+              "
             />
             <div className="hidden sm:block">
               <h1 className="font-display text-lg font-bold group-hover:text-orange-400 transition-colors">
@@ -77,21 +81,25 @@ export function Header() {
               Register Now
             </Link>
 
-            {/* Theme Toggle + Right Logo */}
-            <div className="flex items-center gap-3 ml-2">
+            {/* Theme Toggle + RIGHT BIG LOGO */}
+            <div className="flex items-center gap-3 ml-3 h-full">
               <div className="hover:text-orange-400 transition-colors">
                 <ThemeToggle />
               </div>
 
-              {/* RIGHT: MNNIT Logo */}
+              {/* RIGHT LOGO – FULL HEADER HEIGHT */}
               <img
                 src={logo}
                 alt="MNNIT Logo"
                 className="
-    w-16 h-16
-    rounded-full object-contain
-    hover:scale-105 transition-transform
-  "
+                  h-full
+                  max-h-20
+                  aspect-square
+                  rounded-full
+                  object-contain
+                  
+                  transition-transform
+                "
               />
             </div>
           </nav>
@@ -100,11 +108,10 @@ export function Header() {
           <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
 
-            {/* Mobile Right Logo */}
             <img
               src={mnnitLogo}
               alt="MNNIT Logo"
-              className="w-8 h-8 rounded-full bg-white object-contain"
+              className="h-8 w-8 rounded-full bg-white object-contain"
             />
 
             <button
