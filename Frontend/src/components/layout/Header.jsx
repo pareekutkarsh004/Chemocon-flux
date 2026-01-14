@@ -97,7 +97,7 @@ export function Header() {
                   aspect-square
                   rounded-full
                   // bg-white
-                  object-contain
+                  // object-contain
                   // p-0.5
                   transition-transform
                 "
