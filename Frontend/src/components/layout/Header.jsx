@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import mnnitLogo from "@/assets/Final Logo.png";
+import mnnitLogo from "@/assets/MNNIT Logo New (1)-Photoroom.png";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import logo from "@/assets/logo.jpg";
 
@@ -96,9 +96,9 @@ export function Header() {
                   max-h-20
                   aspect-square
                   rounded-full
-                  bg-white
+                  // bg-white
                   object-contain
-                  p-0.5
+                  // p-0.5
                   transition-transform
                 "
               />
