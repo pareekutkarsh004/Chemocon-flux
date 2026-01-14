@@ -148,13 +148,13 @@ const Contact = () => {
                     title: "Phone",
                     content: (
                       <>
-                        Office: +91-532-2271581 Office
+                        Office (MNNIT Allahabad), Ph No – 532-2271581
                         <br />
-                        Mobile: +91-9003670402 Dr. Dipesh S. Patle
+                        Dr. Dipesh S. Patle, Ph No – 9003670402
                         <br />
-                        Mobile: +91-9455421398 Prof. Sushil Kumar
+                        Prof. Sushil Kumar, Ph No – 9455421398
                         <br />
-                        Mobile: +91-8248954090 Dr. Karthick S.
+                        Dr. Karthick S., Ph No – 8248954090
                       </>
                     ),
                   },

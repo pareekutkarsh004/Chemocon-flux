@@ -344,6 +344,7 @@ const Committee = () => {
           <p className="text-muted-foreground mb-6">
             For any queries, please contact:
           </p>
+
           <div className="flex flex-col items-center gap-4">
             <a
               href="mailto:chemconflux26@gmail.com"
@@ -352,15 +353,6 @@ const Committee = () => {
               <Mail className="w-4 h-4" />
               chemconflux26@gmail.com
             </a>
-            <div className="flex flex-wrap justify-center gap-4 text-muted-foreground text-sm">
-              <span className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-primary" />
-                {/* +91-532-2271581 (O) */}
-              </span>
-              {/* <span>+91-9003670402</span>
-              <span>+91-9455421398</span>
-              <span>+91-8248954090</span> */}
-            </div>
           </div>
         </div>
       </section>

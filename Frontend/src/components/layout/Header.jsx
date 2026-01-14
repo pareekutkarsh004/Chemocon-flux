@@ -88,10 +88,10 @@ export function Header() {
                 src={logo}
                 alt="MNNIT Logo"
                 className="
-                  w-9 h-9 rounded-full  object-contain
-                  
-                  hover:scale-105 transition-transform
-                "
+    w-16 h-16
+    rounded-full object-contain
+    hover:scale-105 transition-transform
+  "
               />
             </div>
           </nav>
