@@ -96,8 +96,9 @@ export function Header() {
                   max-h-20
                   aspect-square
                   rounded-full
-                  object-contain
                   bg-white
+                  object-contain
+                  p-0.5
                   transition-transform
                 "
               />
