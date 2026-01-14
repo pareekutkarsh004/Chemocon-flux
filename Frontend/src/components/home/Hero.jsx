@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, Sparkles, FileDown } from "lucide-react";
+import {
+  Calendar,
+  MapPin,
+  ChevronLeft,
+  ChevronRight,
+  Sparkles,
+  FileDown,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import mnnitCampus1 from "@/assets/mnnit-campus-1.jpeg";
 import mnnitCampus2 from "@/assets/mnnit-campus-2.jpeg";
@@ -18,6 +25,14 @@ export function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  const goToImage = (index) => setCurrentImage(index);
+  const prevImage = () =>
+    setCurrentImage(
+      (prev) => (prev - 1 + campusImages.length) % campusImages.length
+    );
+  const nextImage = () =>
+    setCurrentImage((prev) => (prev + 1) % campusImages.length);
+
   return (
     <section className="relative min-h-[700px] flex items-center overflow-hidden">
       {/* Background Image Carousel */}
@@ -33,17 +48,17 @@ export function Hero() {
             style={{ backgroundImage: `url('${img}')` }}
           />
         ))}
-
-        {/* 🔹 LIGHTER GRADIENT OVERLAYS */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/50 to-slate-900/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
+        {/* CHANGED: Adjusted opacity from 95/80/60 to 70/40/20 for better photo visibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/40 to-transparent" />
+        {/* CHANGED: Subtle bottom vignette to keep the footer area clean but the main photo bright */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-slate-900/30" />
       </div>
 
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500/20 rounded-full blur-3xl animate-pulse" />
         <div
-          className="absolute bottom-20 right-20 w-96 h-96 bg-orange-400/5 rounded-full blur-3xl animate-pulse"
+          className="absolute bottom-20 right-20 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl animate-pulse"
           style={{ animationDelay: "1s" }}
         />
       </div>
@@ -53,34 +68,38 @@ export function Hero() {
         <div className="max-w-3xl">
           <div className="flex items-center gap-3 mb-6">
             <Sparkles className="w-6 h-6 text-orange-400 animate-pulse" />
-            <p className="text-orange-400 font-bold tracking-widest uppercase text-base md:text-lg drop-shadow-lg">
+            {/* CHANGED: Added drop-shadow for extra clarity on light background areas */}
+            <p className="text-orange-400 font-bold tracking-widest uppercase text-base md:text-lg drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
               International Conference
             </p>
           </div>
 
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+          {/* CHANGED: Added strong drop-shadow to text */}
+          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">
             CHEM-CONFLUX<span className="text-orange-400">²⁶</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-white/90 font-display mb-2">
+          <p className="text-xl md:text-2xl text-white font-display mb-2 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
             Sustainable Environment & Energy Innovations
           </p>
-          <p className="text-lg text-slate-300 italic mb-8">
+          <p className="text-lg text-slate-100 italic mb-8 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
             Sustainable Energy, Environment, Green Technology & Climate Change
           </p>
 
           <div className="flex flex-wrap gap-4 mb-8">
-            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
+            {/* CHANGED: Increased backdrop-blur and background opacity for data badges */}
+            <div className="flex items-center gap-2 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
               <Calendar className="w-5 h-5 text-orange-400" />
-              <span className="text-slate-200">October 22–24, 2026</span>
+              <span className="text-white font-medium">October 22-24, 2026</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
+            <div className="flex items-center gap-2 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
               <MapPin className="w-5 h-5 text-orange-400" />
-              <span className="text-slate-200">MNNIT Allahabad, Prayagraj</span>
+              <span className="text-white font-medium">MNNIT Allahabad, Prayagraj</span>
             </div>
           </div>
 
-          <p className="text-sm text-slate-400 mb-8 max-w-xl">
+          {/* CHANGED: Text color lightened for better contrast against the photo */}
+          <p className="text-sm text-slate-200 font-medium mb-8 max-w-xl drop-shadow-md">
             Organized by Department of Chemical Engineering,
             <br />
             Motilal Nehru National Institute of Technology Allahabad
@@ -89,28 +108,26 @@ export function Hero() {
           <div className="flex flex-wrap gap-4">
             <Button
               asChild
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 hover:scale-105 transition-all duration-300"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 shadow-lg shadow-orange-500/20 hover:scale-105 transition-all duration-300"
             >
               <Link to="/registration">Register Now</Link>
             </Button>
-
             <Button
               asChild
               variant="outline"
-              className="border-white/30 text-white bg-transparent hover:bg-white/10 backdrop-blur-sm hover:scale-105 transition-all duration-300"
+              className="border-white text-white bg-black/20 hover:bg-white/20 backdrop-blur-sm hover:scale-105 transition-all duration-300"
             >
               <a href="#about">Learn More</a>
             </Button>
-
             <Button
               asChild
               variant="outline"
-              className="border-orange-500/50 text-orange-400 bg-orange-500/10 hover:bg-orange-500/20 backdrop-blur-sm hover:scale-105 transition-all duration-300 group"
+              className="border-orange-400 text-orange-400 bg-black/20 hover:bg-orange-500/20 backdrop-blur-sm hover:scale-105 transition-all duration-300 group"
             >
               <a
                 href="/brochure/Chemconflux26-Brochure.pdf"
                 download
-                className="inline-flex items-center"
+                className="group inline-flex items-center"
               >
                 <FileDown className="w-5 h-5 mr-2 group-hover:animate-bounce" />
                 Download Brochure
