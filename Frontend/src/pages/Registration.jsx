@@ -328,18 +328,24 @@ const Registration = () => {
               />
 
               <form onSubmit={handleSubmit} className="space-y-6">
-                
                 {/* --- ADDED: Required Paper Submission Question --- */}
                 <div className="p-5 rounded-lg border border-primary/20 bg-primary/5 mb-6">
                   <Label className="flex items-center gap-2 text-lg font-semibold text-foreground mb-4">
                     <HelpCircle className="w-5 h-5 text-primary" />
-                    Are you submitting a paper? <span className="text-destructive">*</span>
+                    Are you submitting a paper?{" "}
+                    <span className="text-destructive">*</span>
                   </Label>
                   <div className="flex gap-4">
                     <Button
                       type="button"
-                      variant={submittingPaper === "yes" ? "default" : "outline"}
-                      className={`min-w-[100px] ${submittingPaper === "yes" ? "bg-primary text-primary-foreground" : "bg-background"}`}
+                      variant={
+                        submittingPaper === "yes" ? "default" : "outline"
+                      }
+                      className={`min-w-[100px] ${
+                        submittingPaper === "yes"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-background"
+                      }`}
                       onClick={() => setSubmittingPaper("yes")}
                     >
                       Yes
@@ -347,7 +353,11 @@ const Registration = () => {
                     <Button
                       type="button"
                       variant={submittingPaper === "no" ? "default" : "outline"}
-                       className={`min-w-[100px] ${submittingPaper === "no" ? "bg-primary text-primary-foreground" : "bg-background"}`}
+                      className={`min-w-[100px] ${
+                        submittingPaper === "no"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-background"
+                      }`}
                       onClick={() => setSubmittingPaper("no")}
                     >
                       No
@@ -360,48 +370,52 @@ const Registration = () => {
                   <>
                     {/* --- LOGIC: If YES -> Show CMT Link & Applicant ID --- */}
                     {submittingPaper === "yes" && (
-                       <div className="bg-muted/30 border-2 border-dashed border-primary/30 rounded-xl p-6 mb-8">
-                         
-                         {/* CMT Link */}
-                         <div className="flex items-start gap-4 mb-6">
-                           <div className="p-3 rounded-full bg-primary/10 text-primary">
-                             <ExternalLink className="w-6 h-6" />
-                           </div>
-                           <div>
-                             <h3 className="text-lg font-bold text-foreground mb-1">Paper Submission Required</h3>
-                             <p className="text-muted-foreground text-sm mb-3">
-                               Please ensure you have submitted your paper via the Microsoft CMT portal before proceeding.
-                             </p>
-                             <a 
-                               href="https://cmt3.research.microsoft.com/" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               className="inline-flex items-center text-primary font-semibold hover:underline"
-                             >
-                               Go to Microsoft CMT Portal <ExternalLink className="ml-1 w-3 h-3" />
-                             </a>
-                           </div>
-                         </div>
-
-                         {/* Applicant ID Field (Required for Yes) */}
-                         <div className="space-y-2">
-                            <Label
-                              htmlFor="applicantId"
-                              className="flex items-center gap-2 text-muted-foreground"
+                      <div className="bg-muted/30 border-2 border-dashed border-primary/30 rounded-xl p-6 mb-8">
+                        {/* CMT Link */}
+                        <div className="flex items-start gap-4 mb-6">
+                          <div className="p-3 rounded-full bg-primary/10 text-primary">
+                            <ExternalLink className="w-6 h-6" />
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-bold text-foreground mb-1">
+                              Paper Submission Required
+                            </h3>
+                            <p className="text-muted-foreground text-sm mb-3">
+                              Please ensure you have submitted your paper via
+                              the Microsoft CMT portal before proceeding.
+                            </p>
+                            <a
+                              href="https://cmt3.research.microsoft.com/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center text-primary font-semibold hover:underline"
                             >
-                              <IdCard className="w-4 h-4 text-primary" />
-                              Applicant ID (from CMT) <span className="text-destructive">*</span>
-                            </Label>
-                            <Input
-                              id="applicantId"
-                              value={formData.applicantId}
-                              onChange={handleChange("applicantId")}
-                              placeholder="Enter your CMT Applicant ID"
-                              required
-                              className="bg-background border-border text-foreground focus:border-primary/50"
-                            />
-                         </div>
-                       </div>
+                              Go to Microsoft CMT Portal{" "}
+                              <ExternalLink className="ml-1 w-3 h-3" />
+                            </a>
+                          </div>
+                        </div>
+
+                        {/* Applicant ID Field (Required for Yes) */}
+                        <div className="space-y-2">
+                          <Label
+                            htmlFor="applicantId"
+                            className="flex items-center gap-2 text-muted-foreground"
+                          >
+                            <IdCard className="w-4 h-4 text-primary" />
+                            Applicant ID (from CMT){" "}
+                            <span className="text-destructive">*</span>
+                          </Label>
+                          <Input
+                            id="applicantId"
+                            value={formData.applicantId}
+                            onChange={handleChange("applicantId")}
+                            placeholder="Enter your CMT Applicant ID"
+                            required
+                            className="bg-background border-border text-foreground focus:border-primary/50"
+                          />
+                        </div>
+                      </div>
                     )}
 
                     {/* --- STANDARD FORM (Rest all things same) --- */}
@@ -559,7 +573,9 @@ const Registration = () => {
                                   variant="outline"
                                   className="border-conference-gold text-conference-gold hover:bg-conference-gold/10"
                                 >
-                                  <a href="#registration-fees">Check fee details</a>
+                                  <a href="#registration-fees">
+                                    Check fee details
+                                  </a>
                                 </Button>
                               </div>
 
@@ -570,26 +586,33 @@ const Registration = () => {
                                   Option 1: Pay Online
                                 </h4>
                                 <p className="text-sm text-muted-foreground mb-3">
-                                  You can pay the registration fee securely via our online portal.
+                                  You can pay the registration fee securely via
+                                  our online portal.
                                 </p>
-                                <Button 
+                                <Button
                                   asChild
                                   className="bg-conference-gold hover:bg-conference-gold/90 text-conference-navy font-bold w-full sm:w-auto"
                                 >
-                                  <a 
-                                      href="https://www.onlinesbi.sbi/sbicollect/icollecthome.htm?corpID=5483621" 
-                                      target="_blank" 
-                                      rel="noopener noreferrer"
+                                  <a
+                                    href="https://www.onlinesbi.sbi/sbicollect/icollecthome.htm?corpID=5483621"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                   >
-                                    Proceed to Online Payment <ExternalLink className="ml-2 w-4 h-4" />
+                                    Proceed to Online Payment{" "}
+                                    <ExternalLink className="ml-2 w-4 h-4" />
                                   </a>
                                 </Button>
                               </div>
 
                               <div className="relative flex items-center py-2">
-                                  <div className="flex-grow border-t border-border"></div>
-                                  <span className="flex-shrink-0 mx-4 text-muted-foreground text-xs uppercase font-bold">OR Pay via {cat.paymentType === "qr" ? "QR Code" : "Bank Transfer"}</span>
-                                  <div className="flex-grow border-t border-border"></div>
+                                <div className="flex-grow border-t border-border"></div>
+                                <span className="flex-shrink-0 mx-4 text-muted-foreground text-xs uppercase font-bold">
+                                  OR Pay via{" "}
+                                  {cat.paymentType === "qr"
+                                    ? "QR Code"
+                                    : "Bank Transfer"}
+                                </span>
+                                <div className="flex-grow border-t border-border"></div>
                               </div>
                               {/* ------------------------------------------ */}
 
@@ -604,9 +627,9 @@ const Registration = () => {
                                       />
                                     </div>
                                     <p className="text-sm text-muted-foreground">
-                                      Scan this QR to pay the category fee. After
-                                      payment, keep the transaction reference for your
-                                      records.
+                                      Scan this QR to pay the category fee.
+                                      After payment, keep the transaction
+                                      reference for your records.
                                     </p>
                                   </div>
                                 ) : (
@@ -619,8 +642,9 @@ const Registration = () => {
                               ) : (
                                 <div className="space-y-2">
                                   <p className="text-sm text-muted-foreground">
-                                    Pay via bank transfer using the details below.
-                                    Share your transaction reference after payment.
+                                    Pay via bank transfer using the details
+                                    below. Share your transaction reference
+                                    after payment.
                                   </p>
                                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm bg-card/60 border border-border rounded-lg p-3">
                                     <div>
@@ -656,14 +680,18 @@ const Registration = () => {
                                       </p>
                                     </div>
                                     <div>
-                                      <p className="text-muted-foreground">Branch</p>
+                                      <p className="text-muted-foreground">
+                                        Branch
+                                      </p>
                                       <p className="font-semibold text-foreground">
                                         {BANK_DETAILS.branch}
                                       </p>
                                     </div>
                                     {BANK_DETAILS.swift && (
                                       <div>
-                                        <p className="text-muted-foreground">SWIFT</p>
+                                        <p className="text-muted-foreground">
+                                          SWIFT
+                                        </p>
                                         <p className="font-semibold text-foreground">
                                           {BANK_DETAILS.swift}
                                         </p>
@@ -824,8 +852,8 @@ const Registration = () => {
             <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full border border-primary/20 mt-4">
               <Calendar className="w-4 h-4 text-primary" />
               <span className="text-primary text-sm font-medium">
-                Early Bird till August 30, 2026
-                After Deadline Standard Fee will be Applicable
+                Early Bird till August 30, 2026 After Deadline Standard Fee will
+                be Applicable
               </span>
             </div>
           </div>
@@ -905,7 +933,6 @@ const Registration = () => {
                 </div>
               </div>
             ))}
-            
           </div>
         </div>
       </section>
@@ -999,6 +1026,44 @@ const Registration = () => {
           </div>
         </div>
       </section>
+      {/* <section className="py-12 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900 border-t border-border">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto bg-card dark:bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-border dark:border-white/10">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
+                <CheckCircle className="w-5 h-5 text-primary" />
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                <span className="font-semibold text-foreground">
+                  Microsoft CMT Acknowledgement:
+                </span>{" "}
+                The Microsoft CMT service was used for managing the
+                peer-reviewing process for this conference. This service was
+                provided free of charge by Microsoft, who bore all associated
+                expenses, including costs for Azure cloud services as well as
+                software development and support.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section> */}
+      {/* <section className="py-12 bg-muted border-t">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="bg-card p-6 rounded-xl border">
+            <div className="flex gap-4">
+              <CheckCircle className="text-primary mt-1" />
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                <strong>Microsoft CMT Acknowledgement:</strong> The Microsoft
+                CMT service was used for managing the peer-reviewing process for
+                this conference. This service was provided free of charge by
+                Microsoft, who bore all associated expenses, including costs for
+                Azure cloud services as well as software development and
+                support.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section> */}
 
       {/* Contact */}
       <section className="py-20 bg-background dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-800">
