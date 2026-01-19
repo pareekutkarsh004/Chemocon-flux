@@ -21,7 +21,8 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        {/* 👇 THIS IS THE CRITICAL FIX */}
+        <BrowserRouter basename="/chemconflux26">
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />

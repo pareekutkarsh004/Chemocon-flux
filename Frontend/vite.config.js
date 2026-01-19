@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig({
-  base: "/chemconflux26/",  // <--- Updated to your specific route
+  base: "./", // <--- CHANGE THIS (safest option for assets)
   server: {
     host: true,
     allowedHosts: "all",
