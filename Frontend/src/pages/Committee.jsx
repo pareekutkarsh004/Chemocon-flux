@@ -1,20 +1,60 @@
 import { Layout } from "@/components/layout/Layout";
 import { Users, Mail } from "lucide-react";
 
+/* ===================== IMAGE IMPORTS ===================== */
+/* Committees Image */
+import dirImg from "@/assets/Committes Image/dir_img_250423.jpeg";
+import dipeshImg from "@/assets/Committes Image/Dipesh_Photo_MNNIT.jpg";
+import sushilImg from "@/assets/Committes Image/sushil.jpeg";
+import karthickImg from "@/assets/Committes Image/karthick_-2-1.jpg";
+import sadhanaImg from "@/assets/Committes Image/HOD_Chemical_Deptt._pic.jpg";
+import sirajImg from "@/assets/Committes Image/med_ce_sa.jpg";
+import ashishImg from "@/assets/Committes Image/drashishsawarkar.jpg";
+import suantakImg from "@/assets/Committes Image/Suantak.jpg";
+import shabihImg from "@/assets/Committes Image/Dr._Shabih_Ul_Hasan.jpg";
+import parulImg from "@/assets/Committes Image/DSC_3365-crop.jpeg";
+import manjuImg from "@/assets/Committes Image/mv_photo.jpg";
+import dheerajImg from "@/assets/Committes Image/ahuja_chem.jpg";
+import anandImg from "@/assets/Committes Image/90317-20230430_120334 - Copy (1).jpg";
+import abdulImg from "@/assets/Committes Image/abdul.jpeg";
+import vanshImg from "@/assets/Committes Image/WhatsApp Image 2026-01-10 at 14.16.42.jpeg";
+import vivekImg from "@/assets/Committes Image/vivek.jpeg";
+import utkarshImg from "@/assets/Committes Image/20240707_191341-1.jpg";
+
+/* Advisory */
+import panditImg from "@/assets/advisory/pandit.jpg";
+import meeneshImg from "@/assets/advisory/Meenesh-Singh-157x180.jpg.avif";
+import sinhaImg from "@/assets/advisory/sinha.jpg";
+import mancaImg from "@/assets/advisory/manca.jpg";
+import rangaiahImg from "@/assets/advisory/rangaiah.jpg";
+import gogateImg from "@/assets/advisory/ImageGenerator.aspx.jpeg";
+import kkpantImg from "@/assets/advisory/kkpant.jpg";
+import nishithImg from "@/assets/advisory/nishith.jpg";
+import pkmishraImg from "@/assets/advisory/pkmishra.jpg";
+import rssinghImg from "@/assets/advisory/rssingh.jpg";
+import anilvermaImg from "@/assets/advisory/anilverma.jpg";
+import vkatiyarImg from "@/assets/advisory/vkatiyar.jpg";
+import zainalImg from "@/assets/advisory/zainal.jpg";
+import ajayImg from "@/assets/advisory/ajaykumar.jpg";
+import rajImg from "@/assets/advisory/Raj_Tiwari.jpg";
+
+/* ===================== DATA ===================== */
+
 const committeeData = {
   patron: [
     {
       name: "Prof. Rama Shanker Verma",
       role: "Director, MNNIT Allahabad",
-      image: "@/assets/Committes Image/dir_img_250423.jpeg",
-      profileUrl: "https://www.mnnit.ac.in/index.php/institute/administration/director",
+      image: dirImg,
+      profileUrl:
+        "https://www.mnnit.ac.in/index.php/institute/administration/director",
     },
   ],
   chairperson: [
     {
       name: "Dr. Dipesh S. Patle",
       role: "Head, ChED, MNNIT Allahabad",
-      image: "@/assets/Committes Image/Dipesh_Photo_MNNIT.jpg",
+      image: dipeshImg,
       profileUrl: "http://mnnit.ac.in/profile/dipesh-patle",
     },
   ],
@@ -22,22 +62,19 @@ const committeeData = {
     {
       name: "Prof. Sushil Kumar",
       role: "MNNIT Allahabad",
-      type: "Convener/Technical Chair",
-      image: "@/assets/Committes Image/sushil.jpeg",
+      image: sushilImg,
       profileUrl: "http://mnnit.ac.in/profile/sushilk",
     },
     {
       name: "Dr. Dipesh S. Patle",
       role: "MNNIT Allahabad",
-      type: "Convener/Technical Chair",
-      image: "@/assets/Committes Image/Dipesh_Photo_MNNIT.jpg",
+      image: dipeshImg,
       profileUrl: "http://mnnit.ac.in/profile/dipesh-patle",
     },
     {
       name: "Dr. Karthick S.",
       role: "MNNIT Allahabad",
-      type: "Convener/Technical Chair",
-      image: "@/assets/Committes Image/karthick_-2-1.jpg",
+      image: karthickImg,
       profileUrl: "http://mnnit.ac.in/profile/karthicks",
     },
   ],
@@ -45,159 +82,57 @@ const committeeData = {
     {
       name: "Prof. Sadhana Sachan",
       role: "MNNIT Allahabad",
-      image: "@/assets/Committes Image/HOD_Chemical_Deptt._pic.jpg",
-      profileUrl: "http://mnnit.ac.in/profile/sadhanas",
+      image: sadhanaImg,
     },
-    {
-      name: "Prof. M. Siraj Alam",
-      role: "MNNIT Allahabad",
-      image: "@/assets/Committes Image/med_ce_sa.jpg",
-      profileUrl: "http://mnnit.ac.in/profile/msalam",
-    },
+    { name: "Prof. M. Siraj Alam", role: "MNNIT Allahabad", image: sirajImg },
     {
       name: "Dr. Ashish N. Sawarkar",
       role: "MNNIT Allahabad",
-      image: "@/assets/Committes Image/drashishsawarkar.jpg",
-      profileUrl: "http://mnnit.ac.in/profile/ansawarkar",
+      image: ashishImg,
     },
     {
       name: "Dr. Suantak Kamsonlian",
       role: "MNNIT Allahabad",
-      image: "@/assets/Committes Image/Suantak.jpg",
-      profileUrl: "http://mnnit.ac.in/profile/suantakk",
+      image: suantakImg,
     },
-    {
-      name: "Dr. Shabih Ul Hasan",
-      role: "MNNIT Allahabad",
-      image: "@/assets/Committes Image/Dr._Shabih_Ul_Hasan.jpg",
-      profileUrl: "http://mnnit.ac.in/profile/shasan",
-    },
-    {
-      name: "Dr. Parul Katiyar",
-      role: "MNNIT Allahabad",
-      image: "@/assets/Committes Image/DSC_3365-crop.jpeg",
-      profileUrl: "http://mnnit.ac.in/profile/parulk",
-    },
-    {
-      name: "Dr. Manju Verma",
-      role: "MNNIT Allahabad",
-      image: "@/assets/Committes Image/mv_photo.jpg",
-      profileUrl: "http://mnnit.ac.in/profile/manju",
-    },
-    {
-      name: "Dr. Dheeraj Ahuja",
-      role: "MNNIT Allahabad",
-      image: "@/assets/Committes Image/ahuja_chem.jpg",
-      profileUrl: "http://mnnit.ac.in/profile/dheerajahuja",
-    },
-    {
-      name: "Dr. Anand Mohan Verma",
-      role: "MNNIT Allahabad",
-      image: "@/assets/Committes Image/90317-20230430_120334 - Copy (1).jpg",
-      profileUrl: "http://mnnit.ac.in/profile/amverma",
-    },
+    { name: "Dr. Shabih Ul Hasan", role: "MNNIT Allahabad", image: shabihImg },
+    { name: "Dr. Parul Katiyar", role: "MNNIT Allahabad", image: parulImg },
+    { name: "Dr. Manju Verma", role: "MNNIT Allahabad", image: manjuImg },
+    { name: "Dr. Dheeraj Ahuja", role: "MNNIT Allahabad", image: dheerajImg },
+    { name: "Dr. Anand Mohan Verma", role: "MNNIT Allahabad", image: anandImg },
   ],
   advisory: [
-    {
-      name: "Prof. Aniruddha Bhalchandra Pandit",
-      role: "Vice Chancellor & UGC Professor, ICT Mumbai",
-      image: "@/assets/advisory/pandit.jpg",
-    },
-    {
-      name: "Prof. Meenesh R. Singh",
-      role: "Professor, Chemical Engineering, University of Illinios Chicago",
-      image: "@/assets/advisory/Meenesh-Singh-157x180.jpg.avif",
-    },
-    {
-      name: "Prof. Shishir Sinha",
-      role: "Director General, CIPET, Govt. of India",
-      image: "@/assets/advisory/sinha.jpg",
-    },
+    { name: "Prof. A. B. Pandit", role: "ICT Mumbai", image: panditImg },
+    { name: "Prof. Meenesh R. Singh", role: "UIC, USA", image: meeneshImg },
+    { name: "Prof. Shishir Sinha", role: "CIPET", image: sinhaImg },
     {
       name: "Prof. Davide Manca",
-      role: "Professor, Process Systems Engineering, Politecnico di Milano, Italy",
-      image: "@/assets/advisory/manca.jpg",
+      role: "Politecnico di Milano",
+      image: mancaImg,
     },
-    {
-      name: "Prof. G. P. Rangaiah",
-      role: "Emeritus Professor, National University of Singapore",
-      image: "@/assets/advisory/rangaiah.jpg",
-    },
-    {
-      name: "Prof. P.R. Gogate",
-      role: "Professor,ICT Mumbai",
-      image: "@/assets/advisory/ImageGenerator.aspx.jpeg",
-    },
-    {
-      name: "Prof. K. K. Pant",
-      role: "Professor, Chemical Engineering, IIT Roorkee",
-      image: "/@/assetsadvisory/kkpant.jpg",
-    },
-    {
-      name: "Prof. Nishith Verma",
-      role: "Chevron Chair Professor, Chemical Engineering, IIT Kanpur",
-      image: "@/assets/advisory/nishith.jpg",
-    },
-    {
-      name: "Prof. P. K. Mishra",
-      role: "Professor (HAG), Chemical Engineering, IIT (BHU) Varanasi",
-      image: "@/assets/advisory/pkmishra.jpg",
-    },
-    {
-      name: "Prof. R. S. Singh",
-      role: "Professor (HAG), Chemical Engineering, IIT (BHU) Varanasi",
-      image: "@/assets/advisory/rssingh.jpg",
-    },
-    {
-      name: "Prof. Anil Verma",
-      role: "Professor, Chemical Engineering, IIT Delhi",
-      image: "@/assets/advisory/anilverma.jpg",
-    },
-    {
-      name: "Prof. Vimal Katiyar",
-      role: "Professor, Chemical Engineering, IIT Guwahati",
-      image: "@/assets/advisory/vkatiyar.jpg",
-    },
-    {
-      name: "Prof. Zainal Ahmad",
-      role: "Professor, Chemical Engineering, Universiti Sains Malaysia",
-      image: "@/assets/advisory/zainal.jpg",
-    },
-    {
-      name: "Dr. Ajay Kumar",
-      role: "Professor, Oklahoma State University, USA",
-      image: "@/assets/advisory/ajaykumar.jpg",
-    },
-    {
-      name: "Mr. Raj Tiwari",
-      role: " Director, UPL LIMITED",
-      image: "@/assets/advisory/Raj_Tiwari.jpg",
-    },
+    { name: "Prof. G. P. Rangaiah", role: "NUS", image: rangaiahImg },
+    { name: "Prof. P. R. Gogate", role: "ICT Mumbai", image: gogateImg },
+    { name: "Prof. K. K. Pant", role: "IIT Roorkee", image: kkpantImg },
+    { name: "Prof. Nishith Verma", role: "IIT Kanpur", image: nishithImg },
+    { name: "Prof. P. K. Mishra", role: "IIT BHU", image: pkmishraImg },
+    { name: "Prof. R. S. Singh", role: "IIT BHU", image: rssinghImg },
+    { name: "Prof. Anil Verma", role: "IIT Delhi", image: anilvermaImg },
+    { name: "Prof. Vimal Katiyar", role: "IIT Guwahati", image: vkatiyarImg },
+    { name: "Prof. Zainal Ahmad", role: "USM Malaysia", image: zainalImg },
+    { name: "Dr. Ajay Kumar", role: "Oklahoma State Univ.", image: ajayImg },
+    { name: "Mr. Raj Tiwari", role: "UPL Limited", image: rajImg },
   ],
   technicalSupport: [
-    {
-      name: "Mr Abdul Rehman",
-      role: "Technical Support",
-      image: "@/assets/Committes Image/abdul.jpeg",
-    },
-    {
-      name: "Vansh",
-      role: "Technical Support",
-      image: "@/assets/Committes Image/WhatsApp Image 2026-01-10 at 14.16.42.jpeg",
-    },
+    { name: "Mr Abdul Rehman", role: "Technical Support", image: abdulImg },
+    { name: "Vansh", role: "Technical Support", image: vanshImg },
     {
       name: "Vivek Kumar Sulaniya",
       role: "Technical Support",
-      image: "@/assets/Committes Image/vivek.jpeg",
+      image: vivekImg,
     },
-    {
-      name: "Utkarsh Pareek",
-      role: "Technical Support",
-      image: "@/assets/Committes Image/20240707_191341-1.jpg",
-    },
+    { name: "Utkarsh Pareek", role: "Technical Support", image: utkarshImg },
   ],
 };
-
 const MemberCard = ({ member, size = "default" }) => {
   const heightClasses = {
     large: "h-96",
@@ -242,10 +177,10 @@ const MemberCard = ({ member, size = "default" }) => {
 
   if (member.profileUrl) {
     return (
-      <a 
-        href={member.profileUrl} 
-        target="_blank" 
-        rel="noopener noreferrer" 
+      <a
+        href={member.profileUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         className={`${containerClasses} block cursor-pointer`}
       >
         {CardContent}
@@ -288,7 +223,6 @@ const Committee = () => {
       <section className="py-20 bg-background dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center gap-12">
-            
             {/* Patron Section */}
             <div className="w-full max-w-md">
               <h2 className="font-display text-2xl font-bold mb-6 text-center text-primary">
@@ -308,7 +242,6 @@ const Committee = () => {
                 <MemberCard key={member.name} member={member} size="large" />
               ))}
             </div>
-
           </div>
         </div>
       </section>
