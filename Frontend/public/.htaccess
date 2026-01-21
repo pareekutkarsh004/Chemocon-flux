@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # 👇 This MUST match your subfolder name exactly
+  RewriteBase /chemconflux26/
+
+  # If the requested file is index.html, serve it directly
+  RewriteRule ^index\.html$ - [L]
+
+  # If the requested file/folder does NOT exist on the server...
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # ...then redirect everything to index.html (or index.php if you prefer)
+  RewriteRule . /chemconflux26/index.html [L]
+</IfModule>

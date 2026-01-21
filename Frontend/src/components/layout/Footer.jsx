@@ -9,35 +9,13 @@ import {
 export function Footer() {
   return (
     <footer className="bg-secondary dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900 text-foreground border-t border-border">
-      
       {/* ================= CMT ACKNOWLEDGEMENT (TOP) ================= */}
-      <section className="py-12 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900 border-b border-border">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto bg-card dark:bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-border dark:border-white/10">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
-                <CheckCircle className="w-5 h-5 text-primary" />
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                <span className="font-semibold text-foreground">
-                  Microsoft CMT Acknowledgement:
-                </span>{" "}
-                The Microsoft CMT service was used for managing the
-                peer-reviewing process for this conference. This service was
-                provided free of charge by Microsoft, who bore all associated
-                expenses, including costs for Azure cloud services as well as
-                software development and support.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+
       {/* ================= END CMT ACKNOWLEDGEMENT ================= */}
 
       <div className="container mx-auto px-4 py-12">
         {/* Changed lg:grid-cols-4 to lg:grid-cols-3 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          
           {/* Event Info */}
           <div>
             <h3 className="font-display text-xl font-bold mb-4 text-primary">
@@ -114,6 +92,17 @@ export function Footer() {
           </p>
         </div>
       </div>
+      <section className="w-full py-12 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900 border-b border-border">
+        <div className="w-full px-4">
+          <div className="w-full bg-card dark:bg-white/5 backdrop-blur-sm rounded-none p-6 border border-border dark:border-white/10">
+            <div className="flex items-start gap-4">
+              <p className="text-sm text-muted-foreground leading-relaxed">
+              The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </footer>
   );
 }
