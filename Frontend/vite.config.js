@@ -3,14 +3,14 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig({
-  base: "./", // <--- CHANGE THIS (safest option for assets)
+  base: "./",
   server: {
     host: true,
-    allowedHosts: "all",
+    allowedHosts: ["chemocon-flux.onrender.com"],
   },
   preview: {
     host: true,
-    allowedHosts: "all",
+    allowedHosts: ["chemocon-flux.onrender.com"],
   },
   plugins: [react()],
   resolve: {
