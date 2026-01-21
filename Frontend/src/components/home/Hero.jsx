@@ -12,6 +12,8 @@ import { Button } from "@/components/ui/button";
 import mnnitCampus1 from "@/assets/mnnit-campus-1.jpeg";
 import mnnitCampus2 from "@/assets/mnnit-campus-2.jpeg";
 import mnnitCampus3 from "@/assets/mnnit-campus-3.jpeg";
+import brochurePdf from "@/assets/brochure/CHEMCONFLUX-26-Brochure.pdf";
+
 
 const campusImages = [mnnitCampus1];
 
@@ -90,11 +92,15 @@ export function Hero() {
             {/* CHANGED: Increased backdrop-blur and background opacity for data badges */}
             <div className="flex items-center gap-2 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
               <Calendar className="w-5 h-5 text-orange-400" />
-              <span className="text-white font-medium">October 22-24, 2026</span>
+              <span className="text-white font-medium">
+                October 22-24, 2026
+              </span>
             </div>
             <div className="flex items-center gap-2 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
               <MapPin className="w-5 h-5 text-orange-400" />
-              <span className="text-white font-medium">MNNIT Allahabad, Prayagraj</span>
+              <span className="text-white font-medium">
+                MNNIT Allahabad, Prayagraj
+              </span>
             </div>
           </div>
 
@@ -125,7 +131,7 @@ export function Hero() {
               className="border-orange-400 text-orange-400 bg-black/20 hover:bg-orange-500/20 backdrop-blur-sm hover:scale-105 transition-all duration-300 group"
             >
               <a
-                href="@/assets/brochure/CHEMCONFLUX 26-Brochure-Chemical Department.pdf"
+                href={brochurePdf}
                 download
                 className="group inline-flex items-center"
               >
