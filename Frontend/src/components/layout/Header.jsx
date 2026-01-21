@@ -58,11 +58,9 @@ export function Header() {
                   to={link.path}
                   className={cn(
                     "px-4 py-2 text-sm font-medium rounded-lg transition-all",
-                    link.name === "Call for Paper"
-                      ? "bg-orange-500/20 text-orange-400"
-                      : isActive
-                        ? "text-orange-400"
-                        : "text-slate-200 hover:text-orange-400",
+                    isActive
+                      ? "text-orange-400"
+                      : "text-slate-200 hover:text-orange-400",
                   )}
                 >
                   {link.name}
