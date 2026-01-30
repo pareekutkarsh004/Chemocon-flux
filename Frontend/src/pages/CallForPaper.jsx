@@ -160,13 +160,16 @@ function CallForPaper() {
 
                   <div className="flex items-center gap-3 p-4 bg-primary/10 rounded-xl border border-primary/20 group hover:bg-primary/20 transition-all duration-300">
                     <Send className="w-6 h-6 text-primary group-hover:translate-x-1 transition-transform" />
+
                     <p className="text-foreground">
-                      Submit to:{" "}
+                      Submit via CMT:&nbsp;
                       <a
-                        href="mailto:chemconflux26@gmail.com"
+                        href="https://cmt3.research.microsoft.com/CHEMCONFLUX2026"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-primary font-semibold hover:underline"
                       >
-                        chemconflux26@gmail.com
+                        CMT LINK
                       </a>
                     </p>
                   </div>
