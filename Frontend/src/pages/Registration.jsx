@@ -22,6 +22,7 @@ import {
   QrCode,
   CreditCard
 } from "lucide-react";
+import qrCode from "@/assets/Committes Image/qrcode.png"
 const STORAGE_KEY = "chemconflux26-registration-form";
 
 const registrationFees = [
@@ -558,7 +559,7 @@ const Registration = () => {
                       <div className="bg-muted/50 rounded-lg border border-border/60 p-4 space-y-3">
                         {(() => {
                           const cat = CATEGORY_OPTIONS.find(
-                            (c) => c.key === selectedCategoryKey
+                            (c) => c.key === selectedCategoryKey,
                           );
                           if (!cat) return null;
                           return (
@@ -591,7 +592,8 @@ const Registration = () => {
                                     </div>
                                     <p className="text-sm text-muted-foreground">
                                       Scan this QR to pay the category fee.
-                                      After payment, please enter the UTR/Reference number below.
+                                      After payment, please enter the
+                                      UTR/Reference number below.
                                     </p>
                                   </div>
                                 ) : (
@@ -690,13 +692,14 @@ const Registration = () => {
                           />
                         </div>
 
-                         <div className="space-y-2">
+                        <div className="space-y-2">
                           <Label
                             htmlFor="transactionDate"
                             className="flex items-center gap-2 text-muted-foreground"
                           >
                             <Calendar className="w-4 h-4 text-primary" />
-                            Transaction Date <span className="text-destructive">*</span>
+                            Transaction Date{" "}
+                            <span className="text-destructive">*</span>
                           </Label>
                           <Input
                             id="transactionDate"
@@ -900,69 +903,90 @@ const Registration = () => {
           <div className="mt-12 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Left: QR Code Details */}
             <div className="bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-border dark:border-white/10 flex flex-col items-center justify-center text-center">
-                <div className="flex items-center gap-2 mb-4">
-                  <QrCode className="w-5 h-5 text-primary" />
-                  <h3 className="font-display text-xl font-bold text-foreground">Scan to Pay</h3>
-                </div>
-                
-                {/* QR Image Container */}
-                <div className="w-48 h-48 bg-white p-2 rounded-xl mb-4 border border-border shadow-sm">
-                   {/* Using the same path logic as the form options */}
-                   <img src="@/assets/Committes Image/qrcode.png" alt="Payment QR Code" className="w-full h-full object-contain" />
-                </div>
-                
-                <p className="text-sm text-muted-foreground mb-3 max-w-xs">
-                  Scan this QR code using any UPI app.
-                  <br/>
-                  <span className="text-xs opacity-80">(Valid for UG / PG Students & Indian Delegates)</span>
-                </p>
-                
-                <div className="px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
-                    <span className="text-primary font-mono font-medium text-sm">
-                      UPI ID: {10424975574}@sbi
-                    </span>
-                </div>
+              <div className="flex items-center gap-2 mb-4">
+                <QrCode className="w-5 h-5 text-primary" />
+                <h3 className="font-display text-xl font-bold text-foreground">
+                  Scan to Pay
+                </h3>
+              </div>
+
+              {/* QR Image Container */}
+              <div className="w-48 h-48 bg-white p-2 rounded-xl mb-4 border border-border shadow-sm">
+                {/* Using the same path logic as the form options */}
+                <img
+                  src={qrCode}
+                  alt="Payment QR Code"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+
+              <p className="text-sm text-muted-foreground mb-3 max-w-xs">
+                Scan this QR code using any UPI app.
+                <br />
+                <span className="text-xs opacity-80">
+                  (Valid for UG / PG Students & Indian Delegates)
+                </span>
+              </p>
+
+              <div className="px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
+                <span className="text-primary font-mono font-medium text-sm">
+                  UPI ID: {10424975574}@sbi
+                </span>
+              </div>
             </div>
 
             {/* Right: Bank Transfer Details */}
             <div className="bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-border dark:border-white/10">
-                <h3 className="font-display text-xl font-bold mb-6 text-foreground flex items-center gap-2">
-                    <Building className="w-5 h-5 text-primary" />
-                    Bank Transfer Details
-                </h3>
-                
-                <div className="space-y-4">
-                    <div className="grid grid-cols-1 gap-y-3 text-sm">
-                        <div className="flex justify-between items-center border-b border-border/50 pb-2 border-dashed">
-                            <span className="text-muted-foreground">Account Name</span>
-                            <span className="font-semibold text-right text-foreground">{BANK_DETAILS.accountName}</span>
-                        </div>
-                        <div className="flex justify-between items-center border-b border-border/50 pb-2 border-dashed">
-                            <span className="text-muted-foreground">Account Number</span>
-                            <span className="font-semibold text-right text-foreground">{BANK_DETAILS.accountNumber}</span>
-                        </div>
-                        <div className="flex justify-between items-center border-b border-border/50 pb-2 border-dashed">
-                            <span className="text-muted-foreground">IFSC Code</span>
-                            <span className="font-semibold text-right text-foreground">{BANK_DETAILS.ifsc}</span>
-                        </div>
-                        <div className="flex justify-between items-center border-b border-border/50 pb-2 border-dashed">
-                            <span className="text-muted-foreground">Branch</span>
-                            <span className="font-semibold text-right text-foreground">{BANK_DETAILS.branch}</span>
-                        </div>
-                        <div className="flex justify-between items-center border-b border-border/50 pb-2 border-dashed">
-                            <span className="text-muted-foreground">MICR Code</span>
-                            <span className="font-semibold text-right text-foreground">{BANK_DETAILS.micr}</span>
-                        </div>
-                         <div className="flex justify-between items-center pt-1">
-                            <span className="text-muted-foreground">SWIFT</span>
-                            <span className="font-semibold text-right text-foreground">{BANK_DETAILS.swift}</span>
-                        </div>
-                    </div>
+              <h3 className="font-display text-xl font-bold mb-6 text-foreground flex items-center gap-2">
+                <Building className="w-5 h-5 text-primary" />
+                Bank Transfer Details
+              </h3>
+
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 gap-y-3 text-sm">
+                  <div className="flex justify-between items-center border-b border-border/50 pb-2 border-dashed">
+                    <span className="text-muted-foreground">Account Name</span>
+                    <span className="font-semibold text-right text-foreground">
+                      {BANK_DETAILS.accountName}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-border/50 pb-2 border-dashed">
+                    <span className="text-muted-foreground">
+                      Account Number
+                    </span>
+                    <span className="font-semibold text-right text-foreground">
+                      {BANK_DETAILS.accountNumber}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-border/50 pb-2 border-dashed">
+                    <span className="text-muted-foreground">IFSC Code</span>
+                    <span className="font-semibold text-right text-foreground">
+                      {BANK_DETAILS.ifsc}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-border/50 pb-2 border-dashed">
+                    <span className="text-muted-foreground">Branch</span>
+                    <span className="font-semibold text-right text-foreground">
+                      {BANK_DETAILS.branch}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center border-b border-border/50 pb-2 border-dashed">
+                    <span className="text-muted-foreground">MICR Code</span>
+                    <span className="font-semibold text-right text-foreground">
+                      {BANK_DETAILS.micr}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center pt-1">
+                    <span className="text-muted-foreground">SWIFT</span>
+                    <span className="font-semibold text-right text-foreground">
+                      {BANK_DETAILS.swift}
+                    </span>
+                  </div>
                 </div>
+              </div>
             </div>
           </div>
           {/* ------------------------------------------------------------------ */}
-          
         </div>
       </section>
 
