@@ -6,11 +6,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import {
   FileText,
-  CreditCard,
   Send,
   Calendar,
   ExternalLink,
-  CheckCircle,
   User,
   Mail,
   Phone,
@@ -19,9 +17,10 @@ import {
   MapPin,
   Hash,
   Sparkles,
-  ArrowUp,
   HelpCircle,
   IdCard,
+  QrCode,
+  CreditCard
 } from "lucide-react";
 
 const STORAGE_KEY = "chemconflux26-registration-form";
@@ -54,34 +53,39 @@ const CATEGORY_OPTIONS = [
   {
     key: "delegates",
     label: "Delegates from academics/Industries/Govt. org",
-    amount: "₹ 7080/- (standard)",
+    amount: "7080",
+    amountDisplay: "₹ 7080/- (standard)",
     paymentType: "qr",
-    qrSrc: "@/assets/image.png",
+    qrSrc: "@/assets/brochure/qrcode.png",
   },
   {
     key: "pg",
     label: "PG Students/Research Scholars",
-    amount: "₹ 4130/- (standard)",
+    amount: "4130",
+    amountDisplay: "₹ 4130/- (standard)",
     paymentType: "qr",
-    qrSrc: "@/assets/image.png",
+    qrSrc: "@/assets/brochure/qrcode.png",
   },
   {
     key: "ug",
     label: "UG students",
-    amount: "₹ 2360/- (standard)",
+    amount: "2360",
+    amountDisplay: "₹ 2360/- (standard)",
     paymentType: "qr",
-    qrSrc: "@/assets/image.png",
+    qrSrc: "@/assets/brochure/qrcode.png",
   },
   {
     key: "foreign",
     label: "Foreign Delegates/participants",
-    amount: "$ 354/- (standard)",
+    amount: "354 USD",
+    amountDisplay: "$ 354/- (standard)",
     paymentType: "bank",
   },
   {
     key: "accompanying",
     label: "Foreign accompanying person",
-    amount: "$ 118/-",
+    amount: "118 USD",
+    amountDisplay: "$ 118/-",
     paymentType: "bank",
   },
 ];
@@ -105,18 +109,18 @@ const GOOGLE_FORM_RESPONSE_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSfOci0F3Qo8KBkE0sFcRyPMtZlCuG-TKBP1E-R42gNVG4jAfw/formResponse";
 
 const GOOGLE_FORM_ENTRIES = {
-  fullName: "entry.2111203769",
-  email: "entry.166206430",
-  phone: "entry.1057242179",
-  affiliation: "entry.849349972",
-  designation: "entry.1938379852",
-  address: "entry.556004646",
-  category: "entry.1244283262",
-  paperTitle: "entry.1077930342",
-  abstract: "entry.1045790084",
-  utrNo: "entry.1680864150",
-  // TODO: Replace this with your actual Google Form Entry ID for Applicant ID
-  applicantId: "entry.484512564", 
+  NAME: "entry.2111203769",
+  EMAIL: "entry.166206430",
+  PHONE: "entry.1057242179",
+  AFFILIATION: "entry.849349972",
+  DESIGNATION: "entry.1938379852",
+  ADDRESS: "entry.556004646",
+  CATEGORY: "entry.1244283262",
+  PAPER_ID: "entry.1077930342",
+  DATE: "entry.2011207996",
+  PAYMENT_INFO: "entry.1529861587", 
+  ACCOMMODATION: "entry.1332109183",
+  AMOUNT: "entry.159586696" 
 };
 
 const getInitialFormData = () => {
@@ -129,9 +133,9 @@ const getInitialFormData = () => {
     address: "",
     category: "",
     paperTitle: "",
-    abstract: "",
     utrNo: "",
-    applicantId: "", // Added Applicant ID
+    transactionDate: "",
+    applicantId: "",
   };
 
   try {
@@ -161,17 +165,11 @@ const getInitialCategoryKey = () => {
 
 const Registration = () => {
   const hiddenIframeRef = useRef(null);
-
-  // null = not selected yet (hides form), 'yes' = submitting paper, 'no' = not submitting
   const [submittingPaper, setSubmittingPaper] = useState(null);
-
-  const [selectedCategoryKey, setSelectedCategoryKey] = useState(
-    getInitialCategoryKey
-  );
+  const [selectedCategoryKey, setSelectedCategoryKey] = useState(getInitialCategoryKey);
   const [formData, setFormData] = useState(getInitialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Save to localStorage whenever form data changes
   useEffect(() => {
     try {
       localStorage.setItem(
@@ -215,9 +213,28 @@ const Registration = () => {
     tempForm.target = "hidden-google-form-frame";
     tempForm.style.display = "none";
 
+    const dataMap = {
+      NAME: formData.fullName,
+      EMAIL: formData.email,
+      PHONE: formData.phone,
+      AFFILIATION: formData.affiliation,
+      DESIGNATION: formData.designation,
+      ADDRESS: formData.address,
+      CATEGORY: formData.category,
+      PAPER_ID: formData.applicantId || formData.paperTitle,
+      DATE: formData.transactionDate,
+      PAYMENT_INFO: formData.utrNo,
+      ACCOMMODATION: "No",
+    };
+
+    const selectedCat = CATEGORY_OPTIONS.find(c => c.key === selectedCategoryKey);
+    if (selectedCat) {
+      dataMap['AMOUNT'] = selectedCat.amount;
+    }
+
     Object.entries(GOOGLE_FORM_ENTRIES).forEach(([key, entryId]) => {
-      const value = formData[key];
-      if (value && entryId.startsWith("entry.")) {
+      const value = dataMap[key];
+      if (value !== undefined && entryId.startsWith("entry.")) {
         const input = document.createElement("input");
         input.type = "hidden";
         input.name = entryId;
@@ -246,10 +263,7 @@ const Registration = () => {
 
       setIsSubmitting(false);
       alert("Registration submitted! We received your details.");
-
-      // Clear saved data after successful submission
       clearSavedData();
-
       setFormData({
         fullName: "",
         email: "",
@@ -259,18 +273,14 @@ const Registration = () => {
         address: "",
         category: "",
         paperTitle: "",
-        abstract: "",
+        transactionDate: "",
         utrNo: "",
         applicantId: "",
       });
       setSelectedCategoryKey("");
-      setSubmittingPaper(null); // Reset toggle
+      setSubmittingPaper(null); 
     }, 1500);
   };
-
-  const selectedCategory = CATEGORY_OPTIONS.find(
-    (c) => c.key === selectedCategoryKey
-  );
 
   return (
     <Layout>
@@ -328,7 +338,7 @@ const Registration = () => {
               />
 
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* --- ADDED: Required Paper Submission Question --- */}
+                {/* --- Required Paper Submission Question --- */}
                 <div className="p-5 rounded-lg border border-primary/20 bg-primary/5 mb-6">
                   <Label className="flex items-center gap-2 text-lg font-semibold text-foreground mb-4">
                     <HelpCircle className="w-5 h-5 text-primary" />
@@ -368,7 +378,7 @@ const Registration = () => {
                 {/* --- SHOW FORM ONLY AFTER SELECTION --- */}
                 {submittingPaper !== null && (
                   <>
-                    {/* --- LOGIC: If YES -> Show CMT Link & Applicant ID --- */}
+                    {/* --- If YES -> Show CMT Link & Applicant ID --- */}
                     {submittingPaper === "yes" && (
                       <div className="bg-muted/30 border-2 border-dashed border-primary/30 rounded-xl p-6 mb-8">
                         {/* CMT Link */}
@@ -385,7 +395,7 @@ const Registration = () => {
                               the Microsoft CMT portal before proceeding.
                             </p>
                             <a
-                              href="https://cmt3.research.microsoft.com/"
+                              href="https://cmt3.research.microsoft.com/CHEMCONFLUX2026"
                               target="_blank"
                               rel="noopener noreferrer"
                               className="inline-flex items-center text-primary font-semibold hover:underline"
@@ -418,7 +428,7 @@ const Registration = () => {
                       </div>
                     )}
 
-                    {/* --- STANDARD FORM (Rest all things same) --- */}
+                    {/* --- STANDARD FORM --- */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label
@@ -562,59 +572,13 @@ const Registration = () => {
                                   <p className="font-display text-lg font-semibold text-foreground">
                                     {cat.label}
                                   </p>
-                                  {cat.amount && (
+                                  {cat.amountDisplay && (
                                     <p className="text-sm text-muted-foreground">
-                                      Amount: {cat.amount}
+                                      Amount: {cat.amountDisplay}
                                     </p>
                                   )}
                                 </div>
-                                <Button
-                                  asChild
-                                  variant="outline"
-                                  className="border-conference-gold text-conference-gold hover:bg-conference-gold/10"
-                                >
-                                  <a href="#registration-fees">
-                                    Check fee details
-                                  </a>
-                                </Button>
                               </div>
-
-                              {/* --- ADDED: Pay Online Portal Section --- */}
-                              <div className="bg-background border border-conference-gold/40 rounded-lg p-4 mb-4 shadow-sm">
-                                <h4 className="font-semibold text-foreground flex items-center gap-2 mb-2">
-                                  <CreditCard className="w-4 h-4 text-conference-gold" />
-                                  Option 1: Pay Online
-                                </h4>
-                                <p className="text-sm text-muted-foreground mb-3">
-                                  You can pay the registration fee securely via
-                                  our online portal.
-                                </p>
-                                <Button
-                                  asChild
-                                  className="bg-conference-gold hover:bg-conference-gold/90 text-conference-navy font-bold w-full sm:w-auto"
-                                >
-                                  <a
-                                    href="https://www.onlinesbi.sbi/sbicollect/icollecthome.htm?corpID=5483621"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                  >
-                                    Proceed to Online Payment{" "}
-                                    <ExternalLink className="ml-2 w-4 h-4" />
-                                  </a>
-                                </Button>
-                              </div>
-
-                              <div className="relative flex items-center py-2">
-                                <div className="flex-grow border-t border-border"></div>
-                                <span className="flex-shrink-0 mx-4 text-muted-foreground text-xs uppercase font-bold">
-                                  OR Pay via{" "}
-                                  {cat.paymentType === "qr"
-                                    ? "QR Code"
-                                    : "Bank Transfer"}
-                                </span>
-                                <div className="flex-grow border-t border-border"></div>
-                              </div>
-                              {/* ------------------------------------------ */}
 
                               {cat.paymentType === "qr" ? (
                                 cat.qrSrc ? (
@@ -628,8 +592,7 @@ const Registration = () => {
                                     </div>
                                     <p className="text-sm text-muted-foreground">
                                       Scan this QR to pay the category fee.
-                                      After payment, keep the transaction
-                                      reference for your records.
+                                      After payment, please enter the UTR/Reference number below.
                                     </p>
                                   </div>
                                 ) : (
@@ -706,28 +669,45 @@ const Registration = () => {
                       </div>
                     )}
 
-                    {/* UTR Number */}
+                    {/* Transaction Details (UTR & Date) */}
                     {selectedCategoryKey && (
-                      <div className="space-y-2">
-                        <Label
-                          htmlFor="utrNo"
-                          className="flex items-center gap-2 text-muted-foreground"
-                        >
-                          <Hash className="w-4 h-4 text-primary" />
-                          UTR / Transaction Number{" "}
-                          <span className="text-destructive">*</span>
-                        </Label>
-                        <Input
-                          id="utrNo"
-                          value={formData.utrNo}
-                          onChange={handleChange("utrNo")}
-                          placeholder="Enter UTR number from your payment"
-                          required
-                          className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
-                        />
-                        <p className="text-muted-foreground text-xs">
-                          Enter the UTR number from your payment transaction
-                        </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label
+                            htmlFor="utrNo"
+                            className="flex items-center gap-2 text-muted-foreground"
+                          >
+                            <Hash className="w-4 h-4 text-primary" />
+                            UTR / Transaction Number{" "}
+                            <span className="text-destructive">*</span>
+                          </Label>
+                          <Input
+                            id="utrNo"
+                            value={formData.utrNo}
+                            onChange={handleChange("utrNo")}
+                            placeholder="Enter UTR number from your payment"
+                            required
+                            className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
+                          />
+                        </div>
+
+                         <div className="space-y-2">
+                          <Label
+                            htmlFor="transactionDate"
+                            className="flex items-center gap-2 text-muted-foreground"
+                          >
+                            <Calendar className="w-4 h-4 text-primary" />
+                            Transaction Date <span className="text-destructive">*</span>
+                          </Label>
+                          <Input
+                            id="transactionDate"
+                            type="date"
+                            value={formData.transactionDate}
+                            onChange={handleChange("transactionDate")}
+                            required
+                            className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
+                          />
+                        </div>
                       </div>
                     )}
 
@@ -762,24 +742,6 @@ const Registration = () => {
                         value={formData.paperTitle}
                         onChange={handleChange("paperTitle")}
                         placeholder="Your paper title"
-                        className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label
-                        htmlFor="abstract"
-                        className="flex items-center gap-2 text-muted-foreground"
-                      >
-                        <Send className="w-4 h-4 text-primary" />
-                        Abstract (optional)
-                      </Label>
-                      <Textarea
-                        id="abstract"
-                        value={formData.abstract}
-                        onChange={handleChange("abstract")}
-                        placeholder="Paste your abstract here"
-                        rows={4}
                         className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
                       />
                     </div>
@@ -934,6 +896,74 @@ const Registration = () => {
               </div>
             ))}
           </div>
+
+          {/* --- NEW SECTION: Payment Details (QR & Bank) for easy viewing --- */}
+          <div className="mt-12 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Left: QR Code Details */}
+            <div className="bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-border dark:border-white/10 flex flex-col items-center justify-center text-center">
+                <div className="flex items-center gap-2 mb-4">
+                  <QrCode className="w-5 h-5 text-primary" />
+                  <h3 className="font-display text-xl font-bold text-foreground">Scan to Pay</h3>
+                </div>
+                
+                {/* QR Image Container */}
+                <div className="w-48 h-48 bg-white p-2 rounded-xl mb-4 border border-border shadow-sm">
+                   {/* Using the same path logic as the form options */}
+                   <img src="/assets/brochure/qrcode.png" alt="Payment QR Code" className="w-full h-full object-contain" />
+                </div>
+                
+                <p className="text-sm text-muted-foreground mb-3 max-w-xs">
+                  Scan this QR code using any UPI app.
+                  <br/>
+                  <span className="text-xs opacity-80">(Valid for UG / PG Students & Indian Delegates)</span>
+                </p>
+                
+                <div className="px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
+                    <span className="text-primary font-mono font-medium text-sm">
+                      UPI ID: {BANK_DETAILS.accountName.split(' ')[0].toLowerCase()}@sbi
+                    </span>
+                </div>
+            </div>
+
+            {/* Right: Bank Transfer Details */}
+            <div className="bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-border dark:border-white/10">
+                <h3 className="font-display text-xl font-bold mb-6 text-foreground flex items-center gap-2">
+                    <Building className="w-5 h-5 text-primary" />
+                    Bank Transfer Details
+                </h3>
+                
+                <div className="space-y-4">
+                    <div className="grid grid-cols-1 gap-y-3 text-sm">
+                        <div className="flex justify-between items-center border-b border-border/50 pb-2 border-dashed">
+                            <span className="text-muted-foreground">Account Name</span>
+                            <span className="font-semibold text-right text-foreground">{BANK_DETAILS.accountName}</span>
+                        </div>
+                        <div className="flex justify-between items-center border-b border-border/50 pb-2 border-dashed">
+                            <span className="text-muted-foreground">Account Number</span>
+                            <span className="font-semibold text-right text-foreground">{BANK_DETAILS.accountNumber}</span>
+                        </div>
+                        <div className="flex justify-between items-center border-b border-border/50 pb-2 border-dashed">
+                            <span className="text-muted-foreground">IFSC Code</span>
+                            <span className="font-semibold text-right text-foreground">{BANK_DETAILS.ifsc}</span>
+                        </div>
+                        <div className="flex justify-between items-center border-b border-border/50 pb-2 border-dashed">
+                            <span className="text-muted-foreground">Branch</span>
+                            <span className="font-semibold text-right text-foreground">{BANK_DETAILS.branch}</span>
+                        </div>
+                        <div className="flex justify-between items-center border-b border-border/50 pb-2 border-dashed">
+                            <span className="text-muted-foreground">MICR Code</span>
+                            <span className="font-semibold text-right text-foreground">{BANK_DETAILS.micr}</span>
+                        </div>
+                         <div className="flex justify-between items-center pt-1">
+                            <span className="text-muted-foreground">SWIFT</span>
+                            <span className="font-semibold text-right text-foreground">{BANK_DETAILS.swift}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          {/* ------------------------------------------------------------------ */}
+          
         </div>
       </section>
 
@@ -1026,44 +1056,6 @@ const Registration = () => {
           </div>
         </div>
       </section>
-      {/* <section className="py-12 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900 border-t border-border">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto bg-card dark:bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-border dark:border-white/10">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
-                <CheckCircle className="w-5 h-5 text-primary" />
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                <span className="font-semibold text-foreground">
-                  Microsoft CMT Acknowledgement:
-                </span>{" "}
-                The Microsoft CMT service was used for managing the
-                peer-reviewing process for this conference. This service was
-                provided free of charge by Microsoft, who bore all associated
-                expenses, including costs for Azure cloud services as well as
-                software development and support.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section> */}
-      {/* <section className="py-12 bg-muted border-t">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="bg-card p-6 rounded-xl border">
-            <div className="flex gap-4">
-              <CheckCircle className="text-primary mt-1" />
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                <strong>Microsoft CMT Acknowledgement:</strong> The Microsoft
-                CMT service was used for managing the peer-reviewing process for
-                this conference. This service was provided free of charge by
-                Microsoft, who bore all associated expenses, including costs for
-                Azure cloud services as well as software development and
-                support.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       {/* Contact */}
       <section className="py-20 bg-background dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-800">
