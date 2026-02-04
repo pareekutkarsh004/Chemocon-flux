@@ -22,7 +22,10 @@ import {
   QrCode,
   CreditCard
 } from "lucide-react";
-import qrCode from "@/assets/Committes Image/qrcode.png"
+
+// The import is correct here
+import qrCode from "@/assets/Committes Image/qrcode.png";
+
 const STORAGE_KEY = "chemconflux26-registration-form";
 
 const registrationFees = [
@@ -56,7 +59,7 @@ const CATEGORY_OPTIONS = [
     amount: "7080",
     amountDisplay: "₹ 7080/- (standard)",
     paymentType: "qr",
-    qrSrc: "@/assets/Committes Image/qrcode.png",
+    qrSrc: qrCode, // UPDATED: Using the imported variable
   },
   {
     key: "pg",
@@ -64,7 +67,7 @@ const CATEGORY_OPTIONS = [
     amount: "4130",
     amountDisplay: "₹ 4130/- (standard)",
     paymentType: "qr",
-    qrSrc: "@/assets/Committes Image/qrcode.png",
+    qrSrc: qrCode, // UPDATED: Using the imported variable
   },
   {
     key: "ug",
@@ -72,7 +75,7 @@ const CATEGORY_OPTIONS = [
     amount: "2360",
     amountDisplay: "₹ 2360/- (standard)",
     paymentType: "qr",
-    qrSrc: "@/assets/Committes Image/qrcode.png",
+    qrSrc: qrCode, // UPDATED: Using the imported variable
   },
   {
     key: "foreign",
