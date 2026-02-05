@@ -302,7 +302,7 @@ const About = () => {
             {[
               { value: "1961", label: "Established" },
               { value: "14", label: "Departments" },
-              { value: "8000", label: "Students" },
+              { value: "8000+", label: "Students" },
             ].map((stat, index) => (
               <div
                 key={index}

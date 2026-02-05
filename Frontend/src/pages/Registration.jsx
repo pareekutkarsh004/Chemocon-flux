@@ -281,11 +281,11 @@ const Registration = () => {
                       <p><span className="text-muted-foreground">Keywords:</span> Max 5</p>
                     </div>
                   </div>
-                  <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg">
+                  {/* <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg">
                     <a href="https://cmt3.research.microsoft.com/CHEMCONFLUX2026" target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="w-4 h-4 mr-2" /> Submit via CMT Portal
                     </a>
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </div>

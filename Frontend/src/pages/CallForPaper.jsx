@@ -158,7 +158,7 @@ function CallForPaper() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 p-4 bg-primary/10 rounded-xl border border-primary/20 group hover:bg-primary/20 transition-all duration-300">
+                  {/* <div className="flex items-center gap-3 p-4 bg-primary/10 rounded-xl border border-primary/20 group hover:bg-primary/20 transition-all duration-300">
                     <Send className="w-6 h-6 text-primary group-hover:translate-x-1 transition-transform" />
 
                     <p className="text-foreground">
@@ -172,7 +172,7 @@ function CallForPaper() {
                         CMT LINK
                       </a>
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
