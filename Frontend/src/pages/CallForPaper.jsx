@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { 
   FileText, 
@@ -50,11 +52,13 @@ function CallForPaper() {
             <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
               Call for <span className="text-orange-400">Papers</span>
             </h1>
-            <p className="text-slate-300 text-lg md:text-xl max-w-2xl leading-relaxed">
+            <p className="text-slate-300 text-lg md:text-xl max-w-2xl leading-relaxed mb-8">
               Submit your original contributions on Sustainable Environment &
               Energy Innovations. The conference welcomes research findings,
               technological advances, and practical applications.
             </p>
+
+      
           </div>
         </div>
       </section>
@@ -157,22 +161,6 @@ function CallForPaper() {
                       ))}
                     </div>
                   </div>
-
-                  {/* <div className="flex items-center gap-3 p-4 bg-primary/10 rounded-xl border border-primary/20 group hover:bg-primary/20 transition-all duration-300">
-                    <Send className="w-6 h-6 text-primary group-hover:translate-x-1 transition-transform" />
-
-                    <p className="text-foreground">
-                      Submit via CMT:&nbsp;
-                      <a
-                        href="https://cmt3.research.microsoft.com/CHEMCONFLUX2026"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary font-semibold hover:underline"
-                      >
-                        CMT LINK
-                      </a>
-                    </p>
-                  </div> */}
                 </div>
               </div>
             </div>
@@ -203,10 +191,29 @@ function CallForPaper() {
                       Best Paper Awards and Best Poster Awards will also be
                       presented.
                     </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-2 h-2 rounded-full bg-primary mt-2" />
+                      Details regarding publications and journal indexing will be announced shortly. Kindly check this page periodically for the latest updates.
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
+
+            {/* --- NEW BUTTON: Proceed to Registration Form --- */}
+            <div className="mt-16 flex justify-center pb-8">
+              <Button
+                asChild
+                size="lg"
+                className="bg-orange-600 hover:bg-orange-600 text-white font-bold text-lg px-10 py-8 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              >
+                <Link to="/registration">
+                  Submit Now <Send className="w-6 h-6 ml-2" />
+                </Link>
+              </Button>
+            </div>
+            {/* ------------------------------------------------ */}
+
           </div>
         </div>
       </section>

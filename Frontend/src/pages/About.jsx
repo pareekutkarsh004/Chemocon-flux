@@ -92,7 +92,7 @@ const About = () => {
           <div className="max-w-4xl">
             <p className="text-orange-400 font-semibold mb-4 tracking-wider uppercase flex items-center gap-2">
               <Sparkles className="w-5 h-5" />
-              International Conference
+              <span className="lowercase">3rd</span> International Conference
             </p>
             <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
               About <span className="text-orange-400">CHEM-CONFLUX</span>²⁶

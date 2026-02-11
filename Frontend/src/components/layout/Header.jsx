@@ -11,6 +11,7 @@ const navLinks = [
   { name: "About", path: "/about" },
   { name: "Call for Paper", path: "/call-for-paper" },
   { name: "Committee", path: "/committee" },
+  { name: "Past Events", path: "/past-events" }, // Added New Link
   { name: "Contact", path: "/contact" },
 ];
 
@@ -52,7 +53,7 @@ export function Header() {
           {/* CENTER: Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2">
             {navLinks.map((link) => (
-              link.name!=="Contact" &&
+              link.name !== "Contact" && // Keep Contact separate if you wish, or remove this condition to include it in the main loop
               <Link
                 key={link.path}
                 to={link.path}
@@ -79,19 +80,21 @@ export function Header() {
                 transition-all duration-300
               "
             >
-              Register Now
+              Registration
             </Link>
+            
             <Link
-    to="/contact"
-    className={cn(
-      "px-4 py-2 rounded-md text-sm font-medium transition-all ml-1",
-      location.pathname === "/contact"
-        ? "bg-orange-500/20 text-orange-400"
-        : "text-slate-200 hover:bg-white/10 hover:text-orange-400"
-    )}
-  >
-    Contact
-  </Link>
+              to="/contact"
+              className={cn(
+                "px-4 py-2 rounded-md text-sm font-medium transition-all ml-1",
+                location.pathname === "/contact"
+                  ? "bg-orange-500/20 text-orange-400"
+                  : "text-slate-200 hover:bg-white/10 hover:text-orange-400"
+              )}
+            >
+              Contact
+            </Link>
+
             {/* Theme Toggle + RIGHT BIG LOGO */}
             <div className="flex items-center gap-3 ml-3 h-full">
               <div className="hover:text-orange-400 transition-colors">
@@ -108,7 +111,6 @@ export function Header() {
                   aspect-square
                   rounded-full
                   object-contain
-                  
                   transition-transform
                 "
               />

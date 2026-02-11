@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import mnnitCampus1 from "@/assets/mnnit-campus-1.jpeg";
 import mnnitCampus2 from "@/assets/mnnit-campus-2.jpeg";
 import mnnitCampus3 from "@/assets/mnnit-campus-3.jpeg";
-import brochurePdf from "@/assets/brochure/CHEMCONFLUX-26-Brochure.pdf";
+import brochurePdf from "@/assets/brochure/CHEMCONFLUX 26-Brochure-Chemical Department (1).pdf";
 
 
 const campusImages = [mnnitCampus1];
@@ -72,7 +72,7 @@ export function Hero() {
             <Sparkles className="w-6 h-6 text-orange-400 animate-pulse" />
             {/* CHANGED: Added drop-shadow for extra clarity on light background areas */}
             <p className="text-orange-400 font-bold tracking-widest uppercase text-base md:text-lg drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
-              International Conference
+            3<span className="lowercase">rd</span>  International Conference
             </p>
           </div>
 

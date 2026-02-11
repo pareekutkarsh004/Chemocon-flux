@@ -12,6 +12,8 @@ import {
   Sparkles,
   HelpCircle,
   QrCode,
+  AlertTriangle, // Added Icon for warning
+  CheckCircle2   // Added Icon for success
 } from "lucide-react";
 
 import qrCode from "@/assets/Committes Image/qrcode.png";
@@ -84,7 +86,7 @@ const Registration = () => {
         </div>
       </section>
 
-      {/* Simplified Selection Section */}
+      {/* Selection Section */}
       <section className="pt-20 pb-0 bg-background dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-800">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
@@ -99,7 +101,7 @@ const Registration = () => {
                 </div>
               </div>
 
-              {/* Step 1: Paper Question */}
+              {/* Question */}
               <div className="p-6 rounded-xl border border-primary/20 bg-primary/5 mb-8">
                 <Label className="flex items-center gap-2 text-lg font-semibold text-foreground mb-4">
                   <HelpCircle className="w-5 h-5 text-primary" />
@@ -125,19 +127,36 @@ const Registration = () => {
                 </div>
               </div>
 
-              {/* Step Logic for "YES" Selection */}
+              {/* --- LOGIC FOR YES (PAPER SUBMISSION) --- */}
               {submittingPaper === "yes" && (
                 <div className="space-y-6 animate-in fade-in slide-in-from-top-4 duration-500">
-                  {/* Step 1 Content */}
+                  
+                  {/* --- NEW CLOSURE / WARNING SECTION --- */}
+                  {/* <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-5 flex items-start gap-4"> */}
+                    {/* <div className="p-2 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 mt-1"> */}
+                      {/* <AlertTriangle className="w-6 h-6" /> */}
+                    {/* </div> */}
+                    {/* <div> */}
+                      {/* <h3 className="text-lg font-bold text-amber-700 dark:text-amber-400 mb-1"> */}
+                        {/* Please Wait for Acceptance! */}
+                      {/* </h3> */}
+                      {/* <p className="text-sm text-muted-foreground leading-relaxed"> */}
+                        {/* If you have submitted a paper, please <strong>DO NOT register or make payment</strong> until you receive the official <strong>Acceptance Mail</strong> for your paper. */}
+                      {/* </p> */}
+                    {/* </div> */}
+                  {/* </div> */}
+                  {/* ----------------------------------- */}
+
+                  {/* Step 1: CMT */}
                   <div className="bg-muted/30 border-2 border-dashed border-primary/30 rounded-xl p-6">
                     <div className="flex items-start gap-4">
                       <div className="p-3 rounded-full bg-primary/10 text-primary">
                         <ExternalLink className="w-6 h-6" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-bold text-foreground mb-1">Step 1: Paper Submission Required</h3>
+                        <h3 className="text-lg font-bold text-foreground mb-1">Step 1: Submit Paper</h3>
                         <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                          Please ensure you have submitted your paper via the Microsoft CMT portal and received your <strong>Applicant ID</strong> before filling the registration form.
+                           Submit your paper via the Microsoft CMT portal and wait for the review process.
                         </p>
                         <Button asChild variant="link" className="p-0 h-auto text-primary font-bold text-base hover:no-underline">
                           <a href="https://cmt3.research.microsoft.com/CHEMCONFLUX2026" target="_blank" rel="noopener noreferrer">
@@ -147,17 +166,31 @@ const Registration = () => {
                       </div>
                     </div>
                   </div>
-
-                  {/* Step 2 Content */}
+                 {/* --- NEW CLOSURE / WARNING SECTION --- */}
+                 <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-5 flex items-start gap-4">
+                    <div className="p-2 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 mt-1">
+                      <AlertTriangle className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-amber-700 dark:text-amber-400 mb-1">
+                        Important!
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                    Authors are requested to proceed to Step 2: Registration and Payment only after receiving the official paper acceptance email and confirmation.
+                      </p>
+                    </div>
+                  </div>
+                  {/*
+                  {/* Step 2: Register (Conditional Text) */}
                   <div className="bg-muted/30 border-2 border-dashed border-primary/30 rounded-xl p-6">
                     <div className="flex items-start gap-4">
                       <div className="p-3 rounded-full bg-primary/10 text-primary">
                         <Send className="w-6 h-6" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-bold text-foreground mb-1">Step 2: Complete Registration</h3>
+                        <h3 className="text-lg font-bold text-foreground mb-1">Step 2: Register (After Acceptance)</h3>
                         <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                          Once you have your CMT ID, please proceed to fill the official Google Form to complete your registration process.
+                          <strong>Only after you have received the acceptance mail</strong> and your Applicant ID, proceed to fill the registration form.
                         </p>
                         <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg hover:scale-105 transition-all">
                           <a href={EXTERNAL_GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer">
@@ -170,19 +203,22 @@ const Registration = () => {
                 </div>
               )}
 
-              {/* Layout for "NO" Selection (No Steps, just the direct button) */}
+              {/* --- LOGIC FOR NO (NON-PAPER) --- */}
               {submittingPaper === "no" && (
-                <div className="text-center pt-4 border-t border-border/50 animate-in zoom-in duration-300">
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Please click the button below to proceed to the official Google Form and complete your registration.
-                  </p>
-                  <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 py-6 text-lg rounded-full shadow-lg hover:scale-105 transition-all">
-                    <a href={EXTERNAL_GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer">
-                      Fill Registration Form <Send className="ml-2 w-5 h-5" />
-                    </a>
-                  </Button>
+                <div className="space-y-6 animate-in fade-in slide-in-from-top-4 duration-500">
+                  
+      
+
+                  <div className="text-center pt-4">
+                    <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 py-6 text-lg rounded-full shadow-lg hover:scale-105 transition-all w-full md:w-auto">
+                      <a href={EXTERNAL_GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer">
+                        Proceed to Registration Form <Send className="ml-2 w-5 h-5" />
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               )}
+
             </div>
           </div>
         </div>
@@ -281,11 +317,6 @@ const Registration = () => {
                       <p><span className="text-muted-foreground">Keywords:</span> Max 5</p>
                     </div>
                   </div>
-                  {/* <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg">
-                    <a href="https://cmt3.research.microsoft.com/CHEMCONFLUX2026" target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4 mr-2" /> Submit via CMT Portal
-                    </a>
-                  </Button> */}
                 </div>
               </div>
             </div>
