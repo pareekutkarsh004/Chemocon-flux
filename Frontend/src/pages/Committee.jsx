@@ -35,7 +35,7 @@ import rssinghImg from "@/assets/advisory/rssingh.jpg";
 import anilvermaImg from "@/assets/advisory/anilverma.jpg";
 import vkatiyarImg from "@/assets/advisory/vkatiyar.jpeg";
 import zainalImg from "@/assets/advisory/zainal.jpg";
-import ajayImg from "@/assets/advisory/ajaykumar.jpg";
+import ajayImg from "@/assets/advisory/ajaykumar.jpeg";
 import rajImg from "@/assets/advisory/Raj_Tiwari.jpg";
 
 /* ===================== DATA ===================== */
