@@ -4,13 +4,8 @@ import path from "path";
 
 export default defineConfig({
   base: "/chemconflux26/",
-  server: {
-    host: true,
-    allowedHosts: ["chemocon-flux.onrender.com"],
-  },
-  preview: {
-    host: true,
-    allowedHosts: ["chemocon-flux.onrender.com"],
+  build: {
+    outDir: "dist/chemconflux26",
   },
   plugins: [react()],
   resolve: {
