@@ -172,9 +172,10 @@ const Registration = () => {
                       <AlertTriangle className="w-6 h-6" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-amber-700 dark:text-amber-400 mb-1">
-                        Important!
-                      </h3>
+                    <h3 className="text-lg font-bold text-primary mb-1">
+  Important!
+</h3>
+
                       <p className="text-sm text-muted-foreground leading-relaxed">
                     Authors are requested to proceed to Step 2: Registration and Payment only after receiving the official paper acceptance email and confirmation.
                       </p>
@@ -192,11 +193,20 @@ const Registration = () => {
                         <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                           <strong>Only after you have received the acceptance mail</strong> and your Applicant ID, proceed to fill the registration form.
                         </p>
-                        <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg hover:scale-105 transition-all">
-                          <a href={EXTERNAL_GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer">
-                            Fill Registration Form <ExternalLink className="ml-2 w-4 h-4" />
-                          </a>
-                        </Button>
+                        <Button 
+                       asChild 
+                          variant="link" 
+                               className="p-0 h-auto text-primary font-bold text-base hover:no-underline"
+>
+                                  <a 
+                                    href={EXTERNAL_GOOGLE_FORM_URL} 
+                                      target="_blank" 
+                                      rel="noopener noreferrer"
+  >
+                                     Fill Registration Form <ExternalLink className="ml-2 w-4 h-4" />
+                                     </a>
+                          </Button>
+
                       </div>
                     </div>
                   </div>

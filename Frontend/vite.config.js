@@ -8,6 +8,7 @@ export default defineConfig({
     outDir: "dist/chemconflux26",
   },
   plugins: [react()],
+  assetsInclude: ['**/*.docx'],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

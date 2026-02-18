@@ -2,18 +2,13 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { 
-  FileText, 
-  Send, 
-  Sparkles, 
-  Sun, 
-  Zap, 
-  Factory, 
-  Leaf, 
-  Beaker, 
-  Droplets, 
-  Wind, 
-  Recycle 
+  FileText, Send, Sparkles, Sun, Zap, Factory, Leaf, Beaker, 
+  Droplets, Wind, Recycle, FileDown 
 } from "lucide-react";
+
+// 👇 THE MAGIC FIX: Add "?url" at the end.
+// This works on ANY server (PHP, Apache, Nginx) automatically.
+import abstractFileUrl from "@/assets/brochure/Abstract_Template_CHEMCONFLUX26.docx?url"; 
 
 const thrustAreas = [
   { icon: Sun, title: "Sustainable Alternative Energies", description: "Bioenergy, Solar, Wind etc." },
@@ -37,10 +32,7 @@ function CallForPaper() {
       <section className="relative hero-section-bg text-white py-24 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 dark:bg-orange-500/10 rounded-full blur-3xl animate-pulse" />
-          <div
-            className="absolute bottom-10 right-10 w-96 h-96 bg-blue-400/5 dark:bg-orange-500/5 rounded-full blur-3xl animate-pulse"
-            style={{ animationDelay: "1s" }}
-          />
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-400/5 dark:bg-orange-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -57,8 +49,6 @@ function CallForPaper() {
               Energy Innovations. The conference welcomes research findings,
               technological advances, and practical applications.
             </p>
-
-      
           </div>
         </div>
       </section>
@@ -83,19 +73,12 @@ function CallForPaper() {
             {thrustAreas.map((area, index) => {
               const Icon = area.icon;
               return (
-                <div
-                  key={index}
-                  className="group bg-card dark:bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-border dark:border-white/10 hover:bg-secondary dark:hover:bg-white/10 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1"
-                >
+                <div key={index} className="group bg-card dark:bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-border dark:border-white/10 hover:bg-secondary dark:hover:bg-white/10 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
                   <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
                     <Icon className="w-6 h-6 text-primary" />
                   </div>
-                  <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-                    {area.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {area.description}
-                  </p>
+                  <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">{area.title}</h3>
+                  <p className="text-sm text-muted-foreground">{area.description}</p>
                 </div>
               );
             })}
@@ -103,7 +86,7 @@ function CallForPaper() {
         </div>
       </section>
 
-      {/* Paper Submission Guidelines */}
+      {/* Guidelines Section */}
       <section className="py-20 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -121,10 +104,25 @@ function CallForPaper() {
                 <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center flex-shrink-0">
                   <FileText className="w-8 h-8 text-primary" />
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-display text-2xl font-bold mb-4 text-foreground">
-                    Submission Requirements
+                <div className="flex-1 w-full">
+                  
+                  {/* --- LINK AREA --- */}
+                  <h3 className="font-display text-2xl font-bold text-foreground mb-4">
+                    Submission Requirements{" "}
+                    <span className="text-lg font-normal text-muted-foreground ml-1">
+                      (
+                      <a 
+                        href={abstractFileUrl} // Works perfectly now
+                        download="Abstract_Template_CHEMCONFLUX26.docx"
+                        className="text-orange-500 hover:text-orange-600 hover:underline cursor-pointer transition-colors inline-flex items-center gap-1"
+                      >
+                        Sample Abstract <FileDown className="w-4 h-4" />
+                      </a>
+                      )
+                    </span>
                   </h3>
+                  {/* ----------------- */}
+
                   <p className="text-muted-foreground leading-relaxed mb-6">
                     We welcome submissions on original research, reviews and
                     case studies on topics related to the thrust areas of the
@@ -139,23 +137,15 @@ function CallForPaper() {
                     <div className="grid md:grid-cols-2 gap-3">
                       {[
                         { label: "Page Size", value: "A4 with 1 inch margin" },
-                        {
-                          label: "Font",
-                          value: "Times New Roman, single spacing",
-                        },
+                        { label: "Font", value: "Times New Roman, single spacing" },
                         { label: "Font Size", value: "12 font size" },
                         { label: "Title", value: "Bold, 14 font size" },
                         { label: "Author(s)", value: "Bold, 12 font size" },
                         { label: "Keywords", value: "Max 5 (italics)" },
                       ].map((item, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-center gap-2 text-sm"
-                        >
+                        <div key={idx} className="flex items-center gap-2 text-sm">
                           <span className="w-2 h-2 rounded-full bg-primary" />
-                          <span className="text-muted-foreground">
-                            {item.label}:
-                          </span>
+                          <span className="text-muted-foreground">{item.label}:</span>
                           <span className="text-foreground">{item.value}</span>
                         </div>
                       ))}
@@ -165,7 +155,6 @@ function CallForPaper() {
               </div>
             </div>
 
-            {/* Publications Info */}
             <div className="mt-8 bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-border dark:border-white/10 hover:border-primary/30 transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
@@ -178,18 +167,15 @@ function CallForPaper() {
                   <ul className="text-muted-foreground space-y-2">
                     <li className="flex items-start gap-2">
                       <span className="w-2 h-2 rounded-full bg-primary mt-2" />
-                      Accepted abstracts will be published in conference
-                      proceedings with Scopus/ISBN no.
+                      Accepted abstracts will be published in conference proceedings with Scopus/ISBN no.
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-2 h-2 rounded-full bg-primary mt-2" />
-                      Selected papers will be considered for publication in
-                      special issues of renowned SCI/Scopus-indexed journals.
+                      Selected papers will be considered for publication in special issues of renowned SCI/Scopus-indexed journals.
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-2 h-2 rounded-full bg-primary mt-2" />
-                      Best Paper Awards and Best Poster Awards will also be
-                      presented.
+                      Best Paper Awards and Best Poster Awards will also be presented.
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-2 h-2 rounded-full bg-primary mt-2" />
@@ -200,20 +186,13 @@ function CallForPaper() {
               </div>
             </div>
 
-            {/* --- NEW BUTTON: Proceed to Registration Form --- */}
             <div className="mt-16 flex justify-center pb-8">
-              <Button
-                asChild
-                size="lg"
-                className="bg-orange-600 hover:bg-orange-600 text-white font-bold text-lg px-10 py-8 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2"
-              >
+              <Button asChild size="lg" className="bg-orange-600 hover:bg-orange-600 text-white font-bold text-lg px-10 py-8 rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2">
                 <Link to="/registration">
                   Submit Now <Send className="w-6 h-6 ml-2" />
                 </Link>
               </Button>
             </div>
-            {/* ------------------------------------------------ */}
-
           </div>
         </div>
       </section>

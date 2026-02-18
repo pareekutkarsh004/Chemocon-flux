@@ -17,7 +17,7 @@ import manjuImg from "@/assets/Committes Image/mv_photo.jpg";
 import dheerajImg from "@/assets/Committes Image/ahuja_chem.jpg";
 import anandImg from "@/assets/Committes Image/90317-20230430_120334 - Copy (1).jpg";
 import abdulImg from "@/assets/Committes Image/abdul.jpeg";
-import vanshImg from "@/assets/Committes Image/WhatsApp Image 2026-01-10 at 14.16.42.jpeg";
+import vanshImg from "@/assets/Committes Image/Vansh.jpeg";
 import vivekImg from "@/assets/Committes Image/vivek.jpeg";
 import utkarshImg from "@/assets/Committes Image/20240707_191341-1.jpg";
 

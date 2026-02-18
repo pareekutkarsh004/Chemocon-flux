@@ -72,7 +72,7 @@ export function Hero() {
             <Sparkles className="w-6 h-6 text-orange-400 animate-pulse" />
             {/* CHANGED: Added drop-shadow for extra clarity on light background areas */}
             <p className="text-orange-400 font-bold tracking-widest uppercase text-base md:text-lg drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
-            3<span className="lowercase">rd</span>  International Conference
+            3ʳᵈ<span className="lowercase"></span>  International Conference
             </p>
           </div>
 

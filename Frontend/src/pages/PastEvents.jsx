@@ -9,18 +9,18 @@ import {
 import { Button } from "@/components/ui/button";
 
 // --- IMAGE IMPORTS (Correct relative path for src/pages/) ---
-import img1 from "../assets/pastphotos/Picture1.png";
-import img2 from "../assets/pastphotos/Picture2.png";
-import img3 from "../assets/pastphotos/Picture3.png";
-import img4 from "../assets/pastphotos/EQva2bbU0AE3XIO.jpg";
-import img5 from "../assets/pastphotos/Picture5.png";
-import img6 from "../assets/pastphotos/Picture6.png";
-import img7 from "../assets/pastphotos/Picture7.png";
-import img8 from "../assets/pastphotos/Picture8.png";
-import img9 from "../assets/pastphotos/Picture9.png";
-import img10 from "../assets/pastphotos/Picture10.png";
-import img11 from "../assets/pastphotos/Picture11.png";
-import img12 from "../assets/pastphotos/Picture12.png";
+import img1 from "@/assets/pastphotos/Picture1.png";
+import img2 from "@/assets/pastphotos/Picture2.png";
+import img3 from "@/assets/pastphotos/Picture3.png";
+import img4 from "@/assets/pastphotos/EQva2bbU0AE3XIO.jpg";
+import img5 from "@/assets/pastphotos/Picture5.png";
+import img6 from "@/assets/pastphotos/Picture6.png";
+import img7 from "@/assets/pastphotos/Picture7.png";
+import img8 from "@/assets/pastphotos/Picture8.png";
+import img9 from "@/assets/pastphotos/Picture9.png";
+import img10 from "@/assets/pastphotos/Picture10.png";
+import img11 from "@/assets/pastphotos/Picture11.png";
+import img12 from "@/assets/pastphotos/Picture12.png";
 
 // --- DATA GROUPING ---
 const sections = [
