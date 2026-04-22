@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import mnnitCampus1 from "@/assets/mnnit-campus-1.jpeg";
 import mnnitCampus2 from "@/assets/mnnit-campus-2.jpeg";
 import mnnitCampus3 from "@/assets/mnnit-campus-3.jpeg";
-import brochurePdf from "@/assets/brochure/CHEMCONFLUX 26-Brochure-Chemical Department (1)-I6R0Xjj2.pdf";
+import brochurePdf from "@/assets/brochure/CHEMCONFLUX 26-Brochure-Chemical Department-MNNIT (1).pdf";
 
 
 const campusImages = [mnnitCampus1];
