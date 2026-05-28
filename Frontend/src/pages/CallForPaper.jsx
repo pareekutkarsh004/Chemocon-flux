@@ -160,13 +160,14 @@ function CallForPaper() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row items-start gap-4 mt-6">
-                    <Button asChild size="lg" className="w-full sm:w-auto font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                      <Link to="/registration">
-                        Register Now
-                        <Send className="w-4 h-4 ml-2" />
-                      </Link>
-                    </Button>
+                  <div className="mt-6">
+                    <Link 
+                      to="/registration" 
+                      className="flex items-center justify-center gap-3 p-4 bg-primary text-primary-foreground rounded-xl shadow-lg hover:shadow-xl hover:bg-primary/90 transition-all duration-300 hover:-translate-y-1 group"
+                    >
+                      <span className="font-semibold text-lg">Register Now</span>
+                      <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
 
                   {/* <div className="flex items-center gap-3 p-4 bg-primary/10 rounded-xl border border-primary/20 group hover:bg-primary/20 transition-all duration-300">
