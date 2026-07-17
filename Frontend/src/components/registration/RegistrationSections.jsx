@@ -1,5 +1,5 @@
 // components/registration/RegistrationSections.jsx
-import { Sparkles, Calendar, Building, QrCode, FileText, Send, ExternalLink } from "lucide-react";
+import { Sparkles, Calendar, Building, QrCode, FileText, Send, ExternalLink, FileDown, AlertCircle, CheckCircle2, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { registrationFees, importantDates, BANK_DETAILS } from "./registration-data"; // Import from data file
 import qrCodeImg from "@/assets/brochure/qrcode.png"; // Adjust path
@@ -149,18 +149,119 @@ export const PaperSubmissionSection = () => (
             <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center flex-shrink-0"><FileText className="w-8 h-8 text-primary" /></div>
             <div className="flex-1">
               <p className="text-muted-foreground leading-relaxed mb-6">We welcome submissions on original research, reviews and case studies on topics related to the thrust areas of the conference.</p>
-              <div className="bg-muted dark:bg-slate-800/50 rounded-xl p-6 mb-6 border border-border dark:border-white/5">
-                <h4 className="font-display font-bold text-foreground mb-4 flex items-center gap-2"><FileText className="w-5 h-5 text-primary" />Abstract Format (One Page)</h4>
-                <div className="grid md:grid-cols-2 gap-3">
-                  {[{ label: "Page Size", value: "A4, 1 inch margin" }, { label: "Font", value: "Times New Roman, 12pt" }, { label: "Title", value: "Bold, 14pt" }, { label: "Authors", value: "Bold, 12pt" }, { label: "Affiliation", value: "12pt" }, { label: "Keywords", value: "Max 5 (italics)" }].map((item, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-sm"><span className="w-2 h-2 rounded-full bg-primary" /><span className="text-muted-foreground">{item.label}:</span><span className="text-foreground">{item.value}</span></div>
-                  ))}
+              <div className="bg-card dark:bg-slate-900/60 rounded-2xl border border-border dark:border-white/10 shadow-xl overflow-hidden mb-8">
+                {/* Header Bar */}
+                <div className="bg-gradient-to-r from-primary/15 via-primary/5 to-transparent px-6 py-5 border-b border-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-primary/20 text-primary flex items-center justify-center shadow-inner">
+                      <FileText className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-display font-bold text-lg text-foreground">
+                        Abstract Format & Guidelines
+                      </h4>
+                      <p className="text-xs text-muted-foreground">
+                        Official formatting criteria for one-page submissions
+                      </p>
+                    </div>
+                  </div>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20 w-fit">
+                    One-Page A4 Requirement
+                  </span>
+                </div>
+
+                <div className="p-6 space-y-6">
+                  {/* Top Specifications Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div className="bg-muted/60 dark:bg-slate-800/40 p-3.5 rounded-xl border border-border/60 flex flex-col gap-1">
+                      <span className="text-xs text-muted-foreground font-semibold uppercase tracking-wider">Page Setup</span>
+                      <span className="text-sm font-bold text-foreground">A4 with 1 inch margin</span>
+                    </div>
+                    <div className="bg-muted/60 dark:bg-slate-800/40 p-3.5 rounded-xl border border-border/60 flex flex-col gap-1">
+                      <span className="text-xs text-muted-foreground font-semibold uppercase tracking-wider">Font Style</span>
+                      <span className="text-sm font-bold text-foreground">Times New Roman, Single Spaced</span>
+                    </div>
+                    <div className="bg-muted/60 dark:bg-slate-800/40 p-3.5 rounded-xl border border-border/60 flex flex-col gap-1">
+                      <span className="text-xs text-muted-foreground font-semibold uppercase tracking-wider">Keywords</span>
+                      <span className="text-sm font-bold text-foreground">Max 5 keywords <span className="italic font-normal text-muted-foreground">(Italics)</span></span>
+                    </div>
+                  </div>
+
+                  {/* Section-by-Section Formatting Table */}
+                  <div>
+                    <h5 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3">Section Typography Rules</h5>
+                    <div className="divide-y divide-border/60 rounded-xl border border-border/80 bg-background/50 dark:bg-slate-900/40 overflow-hidden">
+                      <div className="p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-sm hover:bg-muted/30 transition-colors">
+                        <span className="font-semibold text-foreground min-w-[140px]">Paper Title</span>
+                        <span className="text-muted-foreground sm:text-right font-medium">Bold, <strong className="text-foreground">12 pt font size</strong></span>
+                      </div>
+                      <div className="p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-sm hover:bg-muted/30 transition-colors">
+                        <span className="font-semibold text-foreground min-w-[140px]">Author Name(s)</span>
+                        <span className="text-muted-foreground sm:text-right font-medium">Bold, <strong className="text-foreground">12 pt font size</strong> <span className="text-xs opacity-80">(Superscript numbers ¹, ² for affiliation)</span></span>
+                      </div>
+                      <div className="p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-sm hover:bg-muted/30 transition-colors">
+                        <span className="font-semibold text-foreground min-w-[140px]">Affiliation & Email</span>
+                        <span className="text-muted-foreground sm:text-right font-medium">Regular, <strong className="text-foreground">10 pt font size</strong> <span className="text-xs opacity-80">(Single spacing, include corresponding email*)</span></span>
+                      </div>
+                      <div className="p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-sm hover:bg-muted/30 transition-colors">
+                        <span className="font-semibold text-foreground min-w-[140px]">Abstract Heading</span>
+                        <span className="text-muted-foreground sm:text-right font-medium">Bold, <strong className="text-foreground">10 pt font size</strong></span>
+                      </div>
+                      <div className="p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-sm hover:bg-muted/30 transition-colors">
+                        <span className="font-semibold text-foreground min-w-[140px]">Abstract Body</span>
+                        <span className="text-muted-foreground sm:text-right font-medium">Regular <strong className="text-foreground">12 pt font size</strong> <span className="text-xs opacity-80">(Not bold, single spacing, max 250 words)</span></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Important Policies Callout Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                    <div className="bg-amber-500/10 dark:bg-amber-500/5 border border-amber-500/30 rounded-xl p-4 text-xs sm:text-sm">
+                      <div className="flex items-center gap-1.5 font-bold text-amber-700 dark:text-amber-400 mb-1.5">
+                        <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                        <span>Formatting Rule</span>
+                      </div>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Title, Author Names, Abstract Heading, and Keywords Title must be <strong className="text-foreground">bold format only</strong>. Whole abstract body shall be regular text.
+                      </p>
+                    </div>
+
+                    <div className="bg-blue-500/10 dark:bg-blue-500/5 border border-blue-500/30 rounded-xl p-4 text-xs sm:text-sm">
+                      <div className="flex items-center gap-1.5 font-bold text-blue-700 dark:text-blue-400 mb-1.5">
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+                        <span>Plagiarism Policy</span>
+                      </div>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Please check similarity before submitting. Submission confirms agreement that similarity check has been done and work is <strong className="text-foreground">plagiarism-free</strong>.
+                      </p>
+                    </div>
+
+                    <div className="bg-emerald-500/10 dark:bg-emerald-500/5 border border-emerald-500/30 rounded-xl p-4 text-xs sm:text-sm">
+                      <div className="flex items-center gap-1.5 font-bold text-emerald-700 dark:text-emerald-400 mb-1.5">
+                        <Users className="w-4 h-4 flex-shrink-0" />
+                        <span>Registration Rule</span>
+                      </div>
+                      <p className="text-muted-foreground leading-relaxed">
+                        At least <strong className="text-foreground">one of the authors</strong> shall register formally in the conference for presentation and certificate.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4">
                 <Button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg hover:shadow-xl hover:shadow-primary/25 transition-all duration-300"><ExternalLink className="w-4 h-4 mr-2" />Submit via Online Portal</Button>
                 <Button asChild variant="outline" className="border-2 border-primary/40 text-primary bg-primary/5 hover:bg-primary/15 hover:border-primary font-semibold shadow-sm hover:shadow-md transition-all duration-300">
                   <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chemconflux26@gmail.com&su=Paper Submission for CHEM-CONFLUX'26" target="_blank" rel="noopener noreferrer"><span className="flex items-center"><Send className="w-4 h-4 mr-2" />Email to chemconflux26@gmail.com</span></a>
+                </Button>
+                <Button asChild variant="outline" className="border-primary text-primary bg-primary/10 hover:bg-primary hover:text-primary-foreground font-bold shadow-md hover:scale-105 transition-all duration-300 group">
+                  <a href={`${import.meta.env.BASE_URL}Updated Abstract Template CHEMCONFLUX26.docx`} download="Updated Abstract Template CHEMCONFLUX26.docx" className="inline-flex items-center">
+                    <FileDown className="w-4 h-4 mr-2 group-hover:animate-bounce" />Download Abstract Template (.docx)
+                  </a>
+                </Button>
+                <Button asChild variant="outline" className="border-orange-500/50 text-orange-500 dark:text-orange-400 bg-orange-500/5 hover:bg-orange-500 hover:text-white font-semibold shadow-sm hover:scale-105 transition-all duration-300 group">
+                  <a href={`${import.meta.env.BASE_URL}CHEMCONFLUX 26-Brochure-Chemical Department-MNNIT.pdf`} download="CHEMCONFLUX 26-Brochure-Chemical Department-MNNIT.pdf" className="inline-flex items-center">
+                    <FileDown className="w-4 h-4 mr-2 group-hover:animate-bounce" />Download Brochure (.pdf)
+                  </a>
                 </Button>
               </div>
             </div>

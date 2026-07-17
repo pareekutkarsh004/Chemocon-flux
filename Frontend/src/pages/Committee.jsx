@@ -3,7 +3,7 @@ import { Users, Mail } from "lucide-react";
 
 /* ===================== IMAGE IMPORTS ===================== */
 /* Committees Image */
-import dirImg from "@/assets/Committes Image/dir_img_250423.jpeg";
+import dirImg from "@/assets/Committes Image/director_umamaheshwar.png";
 import dipeshImg from "@/assets/Committes Image/Dipesh_Photo_MNNIT.jpg";
 import sushilImg from "@/assets/Committes Image/sushil.jpeg";
 import karthickImg from "@/assets/Committes Image/karthick_-2-1.jpg";
@@ -16,6 +16,12 @@ import parulImg from "@/assets/Committes Image/DSC_3365-crop.jpeg";
 import manjuImg from "@/assets/Committes Image/mv_photo.jpg";
 import dheerajImg from "@/assets/Committes Image/ahuja_chem.jpg";
 import anandImg from "@/assets/Committes Image/90317-20230430_120334 - Copy (1).jpg";
+import asmitaImg from "@/assets/Committes Image/asmita.png";
+import ankitImg from "@/assets/Committes Image/ankit.png";
+import snehaImg from "@/assets/Committes Image/snehapuri.jpeg";
+import kruthiImg from "@/assets/Committes Image/kruthi.png";
+import ankurImg from "@/assets/Committes Image/Dr._Ankur_Gaur_Chemical_Engineering.jpg";
+import harinderImg from "@/assets/Committes Image/harinderpassport.jpg";
 import abdulImg from "@/assets/Committes Image/abdul.jpeg";
 import vanshImg from "@/assets/Committes Image/WhatsApp Image 2026-01-10 at 14.16.42.jpeg";
 import vivekImg from "@/assets/Committes Image/vivek.jpeg";
@@ -43,7 +49,7 @@ import rajImg from "@/assets/advisory/Raj_Tiwari.jpg";
 const committeeData = {
   patron: [
     {
-      name: "Prof. Rama Shanker Verma",
+      name: "Prof. Umamaheshwar Rao Karanam",
       role: "Director, MNNIT Allahabad",
       image: dirImg,
       profileUrl:
@@ -83,23 +89,92 @@ const committeeData = {
       name: "Prof. Sadhana Sachan",
       role: "MNNIT Allahabad",
       image: sadhanaImg,
+      profileUrl: "http://mnnit.ac.in/profile/sadhanas",
     },
-    { name: "Prof. M. Siraj Alam", role: "MNNIT Allahabad", image: sirajImg },
+    {
+      name: "Prof. M. Siraj Alam",
+      role: "MNNIT Allahabad",
+      image: sirajImg,
+      profileUrl: "http://mnnit.ac.in/profile/msalam",
+    },
     {
       name: "Dr. Ashish N. Sawarkar",
       role: "MNNIT Allahabad",
       image: ashishImg,
+      profileUrl: "http://mnnit.ac.in/profile/ashishsawarkar",
     },
     {
       name: "Dr. Suantak Kamsonlian",
       role: "MNNIT Allahabad",
       image: suantakImg,
+      profileUrl: "http://mnnit.ac.in/profile/suantak",
     },
-    { name: "Dr. Shabih Ul Hasan", role: "MNNIT Allahabad", image: shabihImg },
-    { name: "Dr. Parul Katiyar", role: "MNNIT Allahabad", image: parulImg },
-    { name: "Dr. Manju Verma", role: "MNNIT Allahabad", image: manjuImg },
-    { name: "Dr. Dheeraj Ahuja", role: "MNNIT Allahabad", image: dheerajImg },
-    { name: "Dr. Anand Mohan Verma", role: "MNNIT Allahabad", image: anandImg },
+    {
+      name: "Dr. Shabih Ul Hasan",
+      role: "MNNIT Allahabad",
+      image: shabihImg,
+      profileUrl: "http://mnnit.ac.in/profile/shabihul",
+    },
+    {
+      name: "Dr. Parul Katiyar",
+      role: "MNNIT Allahabad",
+      image: parulImg,
+      profileUrl: "http://mnnit.ac.in/profile/parulkatiyar",
+    },
+    {
+      name: "Dr. Manju Verma",
+      role: "MNNIT Allahabad",
+      image: manjuImg,
+      profileUrl: "http://mnnit.ac.in/profile/manjuverma",
+    },
+    {
+      name: "Dr. Dheeraj Ahuja",
+      role: "MNNIT Allahabad",
+      image: dheerajImg,
+      profileUrl: "http://mnnit.ac.in/profile/dheerajahuja",
+    },
+    {
+      name: "Dr. Anand Mohan Verma",
+      role: "MNNIT Allahabad",
+      image: anandImg,
+      profileUrl: "http://mnnit.ac.in/profile/anandverma",
+    },
+    {
+      name: "Dr. Asmita Mishra",
+      role: "MNNIT Allahabad",
+      image: asmitaImg,
+      profileUrl: "http://mnnit.ac.in/profile/asmitamishra",
+    },
+    {
+      name: "Dr. Ankit Agarwalla",
+      role: "MNNIT Allahabad",
+      image: ankitImg,
+      profileUrl: "http://mnnit.ac.in/profile/ankitagarwalla",
+    },
+    {
+      name: "Dr. Sneha Satish Puri",
+      role: "MNNIT Allahabad",
+      image: snehaImg,
+      profileUrl: "http://mnnit.ac.in/profile/snehapuri",
+    },
+    {
+      name: "Dr. Kruthi Doriya",
+      role: "MNNIT Allahabad",
+      image: kruthiImg,
+      profileUrl: "http://mnnit.ac.in/profile/kruthidoriya",
+    },
+    {
+      name: "Dr. Ankur Gaur",
+      role: "MNNIT Allahabad",
+      image: ankurImg,
+      profileUrl: "http://mnnit.ac.in/profile/ankurgaur",
+    },
+    {
+      name: "Dr. Harinder Singh",
+      role: "MNNIT Allahabad",
+      image: harinderImg,
+      profileUrl: "http://mnnit.ac.in/profile/harindersingh",
+    },
   ],
   advisory: [
     { name: "Prof. A. B. Pandit", role: "ICT Mumbai", image: panditImg },
