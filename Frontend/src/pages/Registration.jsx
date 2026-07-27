@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -42,7 +43,8 @@ const importantDates = [
 const EXTERNAL_GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfOci0F3Qo8KBkE0sFcRyPMtZlCuG-TKBP1E-R42gNVG4jAfw/viewform";
 
 const Registration = () => {
-  const [submittingPaper, setSubmittingPaper] = useState(null);
+  const location = useLocation();
+  const [submittingPaper, setSubmittingPaper] = useState(location.state?.submittingPaper || null);
 
   return (
     <Layout>
@@ -63,7 +65,7 @@ const Registration = () => {
           </p>
         </div>
       </section>
-       
+
       {/* Important Dates */}
       <section className="py-12 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900">
         <div className="container mx-auto px-4">
@@ -139,7 +141,7 @@ const Registration = () => {
                         <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                           Please ensure you have submitted your paper via the Microsoft CMT portal and received your <strong>Applicant ID</strong> before filling the registration form.
                         </p>
-                        <Button asChild variant="link" className="p-0 h-auto text-primary font-bold text-base hover:no-underline">
+                        <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-md hover:scale-105 transition-all mt-2">
                           <a href="https://cmt3.research.microsoft.com/CHEMCONFLUX2026" target="_blank" rel="noopener noreferrer">
                             Go to Microsoft CMT Portal <ExternalLink className="ml-2 w-4 h-4" />
                           </a>
@@ -148,8 +150,14 @@ const Registration = () => {
                     </div>
                   </div>
 
+                  <div className="py-4 text-center border-y border-dashed border-primary/20 my-4">
+                    <p className="font-display font-bold text-orange-500 dark:text-orange-400 text-xs sm:text-sm tracking-widest uppercase">
+                      REGISTRATION FORM WILL BE ACTIVE AFTER AUGUST 15 ( AFTER ABSTRACT ACCEPTANCE)
+                    </p>
+                  </div>
+
                   {/* Step 2 Content */}
-                  <div className="bg-muted/30 border-2 border-dashed border-primary/30 rounded-xl p-6">
+                  <div className="bg-muted/30 border-2 border-dashed border-primary/30 rounded-xl p-6 opacity-60">
                     <div className="flex items-start gap-4">
                       <div className="p-3 rounded-full bg-primary/10 text-primary">
                         <Send className="w-6 h-6" />
@@ -157,12 +165,10 @@ const Registration = () => {
                       <div>
                         <h3 className="text-lg font-bold text-foreground mb-1">Step 2: Complete Registration</h3>
                         <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                          Once you have your CMT ID, please proceed to fill the official Google Form to complete your registration process.
+                          After abstract acceptance and confirmation, kindly fill the google form
                         </p>
-                        <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg hover:scale-105 transition-all">
-                          <a href={EXTERNAL_GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer">
-                            Fill Registration Form <ExternalLink className="ml-2 w-4 h-4" />
-                          </a>
+                        <Button disabled size="lg" className="bg-slate-400 dark:bg-slate-700 text-slate-200 dark:text-slate-400 font-bold shadow-lg cursor-not-allowed">
+                          Fill Registration Form (Available after 15 August) <ExternalLink className="ml-2 w-4 h-4" />
                         </Button>
                       </div>
                     </div>
@@ -176,10 +182,8 @@ const Registration = () => {
                   <p className="text-sm text-muted-foreground mb-4">
                     Please click the button below to proceed to the official Google Form and complete your registration.
                   </p>
-                  <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 py-6 text-lg rounded-full shadow-lg hover:scale-105 transition-all">
-                    <a href={EXTERNAL_GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer">
-                      Fill Registration Form <Send className="ml-2 w-5 h-5" />
-                    </a>
+                  <Button disabled size="lg" className="bg-slate-400 dark:bg-slate-700 text-slate-200 dark:text-slate-400 font-bold px-10 py-6 text-lg rounded-full shadow-lg cursor-not-allowed">
+                    Fill Registration Form (Available after 15 August) <Send className="ml-2 w-5 h-5" />
                   </Button>
                 </div>
               )}

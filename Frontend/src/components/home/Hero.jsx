@@ -12,7 +12,6 @@ import { Button } from "@/components/ui/button";
 import mnnitCampus1 from "@/assets/mnnit-campus-1.jpeg";
 import mnnitCampus2 from "@/assets/mnnit-campus-2.jpeg";
 import mnnitCampus3 from "@/assets/mnnit-campus-3.jpeg";
-import brochurePdf from "@/assets/brochure/CHEMCONFLUX 26-Brochure-Chemical Department-MNNIT.pdf";
 
 
 const campusImages = [mnnitCampus1];
@@ -131,7 +130,7 @@ export function Hero() {
               className="border-orange-400 text-orange-400 bg-black/20 hover:bg-orange-500/20 backdrop-blur-sm hover:scale-105 transition-all duration-300 group"
             >
               <a
-                href={brochurePdf}
+                href={`${import.meta.env.BASE_URL}CHEMCONFLUX 26-Brochure-Chemical Department-MNNIT-UPDATED.pdf`}
                 download
                 className="group inline-flex items-center"
               >

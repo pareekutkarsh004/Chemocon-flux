@@ -25,6 +25,8 @@ import abdulImg from "@/assets/Committes Image/abdul.jpeg";
 import vanshImg from "@/assets/Committes Image/WhatsApp Image 2026-01-10 at 14.16.42.jpeg";
 import vivekImg from "@/assets/Committes Image/vivek.jpeg";
 import utkarshImg from "@/assets/Committes Image/20240707_191341-1.jpg";
+import vpSinghImg from "@/assets/Committes Image/vp_singh.jpeg";
+import nekramImg from "@/assets/Committes Image/nekram_rawal.jpg";
 
 /* Advisory */
 import panditImg from "@/assets/advisory/pandit.jpg";
@@ -138,7 +140,7 @@ const committeeData = {
       image: anandImg,
       profileUrl: "http://mnnit.ac.in/profile/anandverma",
     },
-    {
+    /* {
       name: "Dr. Asmita Mishra",
       role: "MNNIT Allahabad",
       image: asmitaImg,
@@ -161,9 +163,23 @@ const committeeData = {
       role: "MNNIT Allahabad",
       image: kruthiImg,
       profileUrl: "http://mnnit.ac.in/profile/kruthidoriya",
-    },
+    }, */
 
   ],
+  /* coOrganizingSecretaries: [
+    {
+      name: "Dr. V. P. Singh",
+      role: "MNNIT Allahabad",
+      image: vpSinghImg,
+      profileUrl: "https://mnnit.ac.in/profile/vps15783",
+    },
+    {
+      name: "Prof. Nekram Rawal",
+      role: "MNNIT Allahabad",
+      image: nekramImg,
+      profileUrl: "https://mnnit.ac.in/profile/previewa.php?id=1603",
+    },
+  ], */
   advisory: [
     { name: "Prof. A. B. Pandit", role: "ICT Mumbai", image: panditImg },
     { name: "Prof. Meenesh R. Singh", role: "UIC, USA", image: meeneshImg },
@@ -334,6 +350,21 @@ const Committee = () => {
           </div>
         </div>
       </section>
+
+      {/* <section className="py-20 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900">
+        <div className="container mx-auto px-4">
+          <h2 className="font-display text-2xl font-bold mb-8 text-center text-primary">
+            Co-Organizing Secretaries
+          </h2>
+          <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
+            {committeeData.coOrganizingSecretaries.map((member) => (
+              <div key={member.name} className="w-full sm:w-[240px]">
+                <MemberCard member={member} size="small" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section> */}
 
       <section className="py-20 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900">
         <div className="container mx-auto px-4">
