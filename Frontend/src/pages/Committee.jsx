@@ -20,8 +20,7 @@ import asmitaImg from "@/assets/Committes Image/asmita.png";
 import ankitImg from "@/assets/Committes Image/ankit.png";
 import snehaImg from "@/assets/Committes Image/snehapuri.jpeg";
 import kruthiImg from "@/assets/Committes Image/kruthi.png";
-import ankurImg from "@/assets/Committes Image/Dr._Ankur_Gaur_Chemical_Engineering.jpg";
-import harinderImg from "@/assets/Committes Image/harinderpassport.jpg";
+
 import abdulImg from "@/assets/Committes Image/abdul.jpeg";
 import vanshImg from "@/assets/Committes Image/WhatsApp Image 2026-01-10 at 14.16.42.jpeg";
 import vivekImg from "@/assets/Committes Image/vivek.jpeg";
@@ -163,18 +162,7 @@ const committeeData = {
       image: kruthiImg,
       profileUrl: "http://mnnit.ac.in/profile/kruthidoriya",
     },
-    {
-      name: "Dr. Ankur Gaur",
-      role: "MNNIT Allahabad",
-      image: ankurImg,
-      profileUrl: "http://mnnit.ac.in/profile/ankurgaur",
-    },
-    {
-      name: "Dr. Harinder Singh",
-      role: "MNNIT Allahabad",
-      image: harinderImg,
-      profileUrl: "http://mnnit.ac.in/profile/harindersingh",
-    },
+
   ],
   advisory: [
     { name: "Prof. A. B. Pandit", role: "ICT Mumbai", image: panditImg },
