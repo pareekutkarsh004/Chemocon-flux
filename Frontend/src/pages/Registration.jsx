@@ -13,9 +13,12 @@ import {
   Sparkles,
   HelpCircle,
   QrCode,
+  BookOpen,
+  AlertCircle,
 } from "lucide-react";
 
 import qrCode from "@/assets/Committes Image/qrcode.png";
+import cppmBook from "@/assets/cppm-degruyter.png";
 
 const registrationFees = [
   { category: "Delegates from academics/Industries/Govt. org", earlyBird: "₹ 5900/-", standard: "₹ 7080/-" },
@@ -35,9 +38,9 @@ const BANK_DETAILS = {
 };
 
 const importantDates = [
-  { event: "Submission of Abstract", date: "August 15, 2026" },
-  { event: "Intimation of Acceptance", date: "August 30, 2026" },
-  { event: "Registration Deadline", date: "September 25, 2026" },
+  { event: "Submission of Abstract", date: "September 15, 2026", extended: true },
+  { event: "Intimation of Acceptance", date: "September 20, 2026", extended: true },
+  { event: "Registration Deadline", date: "October 10, 2026", extended: true },
 ];
 
 const EXTERNAL_GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfOci0F3Qo8KBkE0sFcRyPMtZlCuG-TKBP1E-R42gNVG4jAfw/viewform";
@@ -66,6 +69,29 @@ const Registration = () => {
         </div>
       </section>
 
+      {/* Deadline Extended Ticker */}
+      <section className="bg-gradient-to-r from-orange-500 via-red-500 to-orange-500 dark:from-orange-600 dark:via-red-600 dark:to-orange-600 overflow-hidden">
+        <div className="ticker-wrapper py-2">
+          <div className="ticker-content">
+            {[...Array(4)].map((_, i) => (
+              <span key={i} className="inline-flex items-center gap-8 mx-8 text-white font-semibold text-sm tracking-wide whitespace-nowrap">
+                <span className="inline-flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  DEADLINE EXTENDED
+                </span>
+                <span>•</span>
+                <span>Submission of Abstract — 15 September 2026</span>
+                <span>•</span>
+                <span>Intimation of Acceptance — 20 September 2026</span>
+                <span>•</span>
+                <span>Registration Deadline — 10 October 2026</span>
+                <span>•</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Important Dates */}
       <section className="py-12 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900">
         <div className="container mx-auto px-4">
@@ -79,6 +105,12 @@ const Registration = () => {
                 <div>
                   <p className="text-sm text-primary font-medium">{item.event}</p>
                   <p className="font-bold text-lg text-foreground">{item.date}</p>
+                  {item.extended && (
+                    <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400 text-xs font-semibold">
+                      <AlertCircle className="w-3 h-3" />
+                      Deadline Extended
+                    </span>
+                  )}
                 </div>
               </div>
             ))}
@@ -290,6 +322,55 @@ const Registration = () => {
                       <ExternalLink className="w-4 h-4 mr-2" /> Submit via CMT Portal
                     </a>
                   </Button> */}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Publication Section */}
+      <section className="py-20 bg-background dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-800" id="publication">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-primary font-medium mb-2 tracking-wider uppercase">Publication Opportunities</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-foreground">Publication</h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Accepted abstracts will be published in conference proceedings with ISBN number. Selected submissions will be considered for publication in special/regular issues of SCI/Scopus-indexed journals and book series.
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            {/* Journal Card */}
+            <div className="bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-border dark:border-white/10 hover:border-primary/30 transition-all duration-300 shadow-lg">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                {/* Book Cover Image */}
+                <div className="flex-shrink-0 w-48 md:w-56 rounded-xl overflow-hidden shadow-2xl border border-border dark:border-white/10 hover:scale-105 transition-transform duration-300">
+                  <img
+                    src={cppmBook}
+                    alt="Chemical Products and Process Modeling - De Gruyter"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+
+                {/* Journal Details */}
+                <div className="flex-1 text-center md:text-left">
+                  <div className="flex items-center gap-2 justify-center md:justify-start mb-3">
+                    <BookOpen className="w-6 h-6 text-primary" />
+                    <h3 className="font-display text-xl font-bold text-foreground">Chemical Products and Process Modeling</h3>
+                  </div>
+                  <p className="text-muted-foreground text-sm mb-2">(De Gruyter)</p>
+                  <div className="w-16 h-1 bg-primary/40 rounded-full mb-4 mx-auto md:mx-0" />
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    Selected high-quality submissions will be considered for publication in this prestigious Scopus-indexed journal by De Gruyter, covering chemical process modeling and product engineering.
+                  </p>
+
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-500/15 border border-orange-200 dark:border-orange-500/30">
+                    <Sparkles className="w-4 h-4 text-orange-500" />
+                    <span className="text-orange-700 dark:text-orange-400 text-sm font-medium">
+                      More Journals/Books to be included (visit the website for updates)
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

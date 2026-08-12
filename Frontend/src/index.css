@@ -342,3 +342,24 @@
     box-shadow: 0 0 20px hsl(var(--conference-gold) / 0.6), 0 0 30px hsl(var(--conference-gold) / 0.4);
   }
 }
+
+/* Running Ticker / Marquee for Deadline Extended */
+.ticker-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-content {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: ticker-scroll 25s linear infinite;
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

@@ -11,6 +11,7 @@ import Committee from "./pages/Committee";
 import Contact from "./pages/Contact";
 import Registration from "./pages/Registration";
 import CallForPaper from "./pages/CallForPaper";
+import Publication from "./pages/Publication";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/call-for-paper/*" element={<CallForPaper />} />
+            <Route path="/publication" element={<Publication />} />
             <Route path="/committee" element={<Committee />} />
             <Route path="/registration" element={<Registration />} />
             <Route path="/contact" element={<Contact />} />

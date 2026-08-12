@@ -8,7 +8,8 @@ const routes = [
   'committee',
   'contact',
   'registration',
-  'call-for-paper'
+  'call-for-paper',
+  'publication'
 ];
 
 // Setup paths

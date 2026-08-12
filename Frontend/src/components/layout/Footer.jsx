@@ -34,6 +34,7 @@ export function Footer() {
                 { name: "About", path: "/about" },
                 { name: "Committee", path: "/committee" },
                 { name: "Call for Paper", path: "/call-for-paper" },
+                { name: "Publication", path: "/publication" },
                 { name: "Contact", path: "/contact" },
                 { name: "Registration", path: "/registration" },
               ].map((link) => (
