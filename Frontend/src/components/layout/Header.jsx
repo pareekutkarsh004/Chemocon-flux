@@ -70,7 +70,7 @@ export function Header() {
 
             {/* Submit Abstract CTA */}
             <Link
-              to="/abstract-submission"
+              to="/registration"
               className="
                 ml-2 px-5 py-2 rounded-full text-xs xl:text-sm font-semibold whitespace-nowrap
                 text-white bg-gradient-to-r from-orange-500 to-red-500
@@ -80,7 +80,7 @@ export function Header() {
                 transition-all duration-300
               "
             >
-              Submit Abstract
+              Register Now
             </Link>
 
             {/* Theme Toggle + RIGHT BIG LOGO */}
