@@ -9,7 +9,8 @@ import logo from "@/assets/MNNIT Logo New (1)-Photoroom.png";
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
-  { name: "Call for Paper", path: "/call-for-paper" },
+  { name: "Important Dates", path: "/important-dates" },
+  { name: "Abstract Submission", path: "/abstract-submission" },
   { name: "Publication", path: "/publication" },
   { name: "Committee", path: "/committee" },
   { name: "Contact", path: "/contact" },
@@ -51,15 +52,14 @@ export function Header() {
           </Link>
 
           {/* CENTER: Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-2">
+          <nav className="hidden lg:flex items-center gap-1.5">
             {navLinks.map((link) => (
-              link.name!=="Contact" &&
               <Link
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "px-4 py-2 rounded-md text-sm font-medium transition-all",
-                  location.pathname === link.path
+                  "px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all whitespace-nowrap",
+                  location.pathname === link.path || (link.path === "/important-dates" && location.pathname === "/registration")
                     ? "bg-orange-500/20 text-orange-400"
                     : "text-slate-200 hover:bg-white/10 hover:text-orange-400"
                 )}
@@ -68,11 +68,11 @@ export function Header() {
               </Link>
             ))}
 
-            {/* Register CTA */}
+            {/* Submit Abstract CTA */}
             <Link
-              to="/registration"
+              to="/abstract-submission"
               className="
-                ml-3 px-6 py-2.5 rounded-full text-sm font-semibold
+                ml-2 px-5 py-2 rounded-full text-xs xl:text-sm font-semibold whitespace-nowrap
                 text-white bg-gradient-to-r from-orange-500 to-red-500
                 shadow-lg shadow-orange-500/30
                 ring-2 ring-orange-400/60
@@ -80,21 +80,11 @@ export function Header() {
                 transition-all duration-300
               "
             >
-              Register Now
+              Submit Abstract
             </Link>
-            <Link
-    to="/contact"
-    className={cn(
-      "px-4 py-2 rounded-md text-sm font-medium transition-all ml-1",
-      location.pathname === "/contact"
-        ? "bg-orange-500/20 text-orange-400"
-        : "text-slate-200 hover:bg-white/10 hover:text-orange-400"
-    )}
-  >
-    Contact
-  </Link>
+
             {/* Theme Toggle + RIGHT BIG LOGO */}
-            <div className="flex items-center gap-3 ml-3 h-full">
+            <div className="flex items-center gap-3 ml-2 h-full">
               <div className="hover:text-orange-400 transition-colors">
                 <ThemeToggle />
               </div>
@@ -109,7 +99,6 @@ export function Header() {
                   aspect-square
                   rounded-full
                   object-contain
-                  
                   transition-transform
                 "
               />
@@ -117,7 +106,7 @@ export function Header() {
           </nav>
 
           {/* MOBILE ACTIONS */}
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
             <ThemeToggle />
 
             <img
@@ -138,7 +127,7 @@ export function Header() {
 
         {/* MOBILE MENU */}
         {isMenuOpen && (
-          <nav className="md:hidden pb-4 space-y-2 animate-fade-in">
+          <nav className="lg:hidden pb-4 space-y-2 animate-fade-in">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -146,7 +135,7 @@ export function Header() {
                 onClick={() => setIsMenuOpen(false)}
                 className={cn(
                   "block px-4 py-3 rounded-md text-sm font-medium transition",
-                  location.pathname === link.path
+                  location.pathname === link.path || (link.path === "/important-dates" && location.pathname === "/registration")
                     ? "bg-orange-500/20 text-orange-400"
                     : "text-slate-200 hover:bg-white/10"
                 )}
@@ -156,7 +145,7 @@ export function Header() {
             ))}
 
             <Link
-              to="/registration"
+              to="/abstract-submission"
               onClick={() => setIsMenuOpen(false)}
               className="
                 block text-center mt-3 px-4 py-3 rounded-xl
@@ -165,7 +154,7 @@ export function Header() {
                 shadow-md shadow-orange-500/30
               "
             >
-              Register Now
+              Submit Abstract
             </Link>
           </nav>
         )}

@@ -87,15 +87,22 @@ export function Hero() {
             Sustainable Energy, Environment, Green Technology & Climate Change
           </p>
 
-          <div className="flex flex-wrap gap-4 mb-8">
-            {/* CHANGED: Increased backdrop-blur and background opacity for data badges */}
-            <div className="flex items-center gap-2 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-              <Calendar className="w-5 h-5 text-orange-400" />
-              <span className="text-white font-medium">
-                October 22-24, 2026
-              </span>
+          <div className="flex flex-wrap items-center gap-4 mb-8">
+            {/* Highlighted Professional Conference Date Badge */}
+            <div className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-500 via-amber-500 to-red-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse" />
+              <div className="relative flex items-center gap-2.5 bg-slate-900/90 backdrop-blur-md px-5 py-2.5 rounded-full border border-orange-400/60 text-white shadow-lg shadow-orange-500/25">
+                <Calendar className="w-5 h-5 text-orange-400 animate-bounce" />
+                <span className="font-bold text-base md:text-lg tracking-wide text-white">
+                  October 22-24, 2026
+                </span>
+                <span className="ml-1 text-[11px] uppercase font-bold tracking-wider bg-orange-500/30 text-orange-300 px-2.5 py-0.5 rounded-full border border-orange-400/40">
+                  Conference Dates
+                </span>
+              </div>
             </div>
-            <div className="flex items-center gap-2 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+
+            <div className="flex items-center gap-2 bg-slate-900/60 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/20">
               <MapPin className="w-5 h-5 text-orange-400" />
               <span className="text-white font-medium">
                 MNNIT Allahabad, Prayagraj
@@ -115,7 +122,7 @@ export function Hero() {
               asChild
               className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 shadow-lg shadow-orange-500/20 hover:scale-105 transition-all duration-300"
             >
-              <Link to="/registration">Register Now</Link>
+              <Link to="/abstract-submission">Submit Abstract</Link>
             </Button>
             <Button
               asChild

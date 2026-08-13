@@ -28,13 +28,13 @@ const thrustAreas = [
   { icon: Droplets, title: "Water and Wastewater Treatment", description: "Treatment technologies" },
   { icon: Wind, title: "Climate Change Mitigation", description: "Sustainability solutions" },
   { icon: Recycle, title: "Air Pollution and Health", description: "Environmental health" },
-  { icon: Factory, title: "Solid Waste Treatment", description: "Treatment and utilization" },
+  { icon: Factory, title: "Solid Waste Treatment", description: "Solid waste treatment and utilization" },
   { icon: Beaker, title: "Green and Environmental Chemistry", description: "Sustainable chemistry" },
   { icon: Zap, title: "Systems Engineering", description: "For Energy and Environmental Technologies" },
   { icon: Sparkles, title: "Contemporary Areas", description: "Any other area relevant to theme" },
 ];
 
-function CallForPaper() {
+function AbstractSubmission() {
   return (
     <Layout>
       {/* Hero Header */}
@@ -54,7 +54,7 @@ function CallForPaper() {
               Submissions Open
             </p>
             <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
-              Call for <span className="text-orange-400">Papers</span>
+              Call for <span className="text-orange-400">Abstracts</span>
             </h1>
             <p className="text-slate-300 text-lg md:text-xl max-w-2xl leading-relaxed">
               Submit your original contributions on Sustainable Environment &
@@ -105,7 +105,7 @@ function CallForPaper() {
         </div>
       </section>
 
-      {/* Paper Submission Guidelines */}
+      {/* Abstract Submission Guidelines */}
       <section className="py-20 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -113,7 +113,7 @@ function CallForPaper() {
               Guidelines
             </p>
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-foreground">
-              Paper Submission
+              Abstract Submission
             </h2>
           </div>
 
@@ -137,7 +137,7 @@ function CallForPaper() {
                       asChild
                       className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 shadow-lg shadow-orange-500/20 hover:scale-105 transition-all duration-300"
                     >
-                      <Link to="/registration" state={{ submittingPaper: "yes" }}>
+                      <Link to="/registration" state={{ submittingAbstract: "yes" }}>
                         Register Now
                         <Send className="w-4 h-4 ml-2" />
                       </Link>
@@ -157,22 +157,6 @@ function CallForPaper() {
                       </a>
                     </Button>
                   </div>
-
-                  {/* <div className="flex items-center gap-3 p-4 bg-primary/10 rounded-xl border border-primary/20 group hover:bg-primary/20 transition-all duration-300">
-                    <Send className="w-6 h-6 text-primary group-hover:translate-x-1 transition-transform" />
-
-                    <p className="text-foreground">
-                      Submit via CMT:&nbsp;
-                      <a
-                        href="https://cmt3.research.microsoft.com/CHEMCONFLUX2026"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary font-semibold hover:underline"
-                      >
-                        CMT LINK
-                      </a>
-                    </p>
-                  </div> */}
                 </div>
               </div>
             </div>
@@ -195,12 +179,12 @@ function CallForPaper() {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-2 h-2 rounded-full bg-primary mt-2" />
-                      Selected papers will be considered for publication in
+                      Selected papers/abstracts will be considered for publication in
                       special issues of renowned SCI/Scopus-indexed journals.
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-2 h-2 rounded-full bg-primary mt-2" />
-                      Best Paper Awards and Best Poster Awards will also be
+                      Best Abstract Awards and Best Poster Awards will also be
                       presented.
                     </li>
                   </ul>
@@ -212,6 +196,6 @@ function CallForPaper() {
       </section>
     </Layout>
   );
-};
+}
 
-export default CallForPaper;
+export default AbstractSubmission;

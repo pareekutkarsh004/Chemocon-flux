@@ -8,7 +8,8 @@ const routes = [
   'committee',
   'contact',
   'registration',
-  'call-for-paper',
+  'important-dates',
+  'abstract-submission',
   'publication'
 ];
 

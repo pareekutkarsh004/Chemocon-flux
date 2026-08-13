@@ -51,7 +51,7 @@ export function AboutPreview() {
                 { icon: BookOpen, title: "8+", subtitle: "Thrust Areas" },
                 {
                   icon: FileText,
-                  title: "Paper",
+                  title: "Abstract",
                   subtitle: "Submissions Welcome",
                 },
                 {

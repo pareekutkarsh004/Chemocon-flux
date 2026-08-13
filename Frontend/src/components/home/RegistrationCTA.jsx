@@ -37,10 +37,10 @@ export function RegistrationCTA() {
             <Button
               asChild
             //   size="lg"
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 hover:scale-105 transition-all duration-300 text-lg"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 hover:scale-105 transition-all duration-300 text-lg shadow-lg shadow-orange-500/20"
             >
-              <Link to="/registration">
-                Register Now <ArrowRight className="w-5 h-5 ml-2" />
+              <Link to="/abstract-submission">
+                Submit Abstract <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>
             <Button

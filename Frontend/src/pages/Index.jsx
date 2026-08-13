@@ -18,17 +18,11 @@ const Index = () => {
         <div className="ticker-wrapper py-2">
           <div className="ticker-content">
             {[...Array(4)].map((_, i) => (
-              <span key={i} className="inline-flex items-center gap-8 mx-8 text-white font-semibold text-sm tracking-wide whitespace-nowrap">
+              <span key={i} className="inline-flex items-center gap-4 mx-8 text-white font-semibold text-sm tracking-wide whitespace-nowrap">
                 <span className="inline-flex items-center gap-2">
                   <AlertCircle className="w-4 h-4" />
-                  DEADLINE EXTENDED
+                  ABSTRACT SUBMISSION DEADLINE EXTENDED — Submission of Abstract: 15 September 2026
                 </span>
-                <span>•</span>
-                <span>Submission of Abstract — 15 September 2026</span>
-                <span>•</span>
-                <span>Intimation of Acceptance — 20 September 2026</span>
-                <span>•</span>
-                <span>Registration Deadline — 10 October 2026</span>
                 <span>•</span>
               </span>
             ))}

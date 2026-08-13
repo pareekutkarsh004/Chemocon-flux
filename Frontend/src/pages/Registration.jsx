@@ -38,16 +38,16 @@ const BANK_DETAILS = {
 };
 
 const importantDates = [
-  { event: "Submission of Abstract", date: "September 15, 2026", extended: true },
-  { event: "Intimation of Acceptance", date: "September 20, 2026", extended: true },
-  { event: "Registration Deadline", date: "October 10, 2026", extended: true },
+  { event: "Submission of Abstract", originalDate: "August 15, 2026", newDate: "September 15, 2026" },
+  { event: "Intimation of Acceptance", originalDate: "August 30, 2026", newDate: "September 20, 2026" },
+  { event: "Registration Deadline", originalDate: "September 25, 2026", newDate: "October 10, 2026" },
 ];
 
 const EXTERNAL_GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfOci0F3Qo8KBkE0sFcRyPMtZlCuG-TKBP1E-R42gNVG4jAfw/viewform";
 
 const Registration = () => {
   const location = useLocation();
-  const [submittingPaper, setSubmittingPaper] = useState(location.state?.submittingPaper || null);
+  const [submittingAbstract, setSubmittingAbstract] = useState(location.state?.submittingAbstract || null);
 
   return (
     <Layout>
@@ -74,17 +74,11 @@ const Registration = () => {
         <div className="ticker-wrapper py-2">
           <div className="ticker-content">
             {[...Array(4)].map((_, i) => (
-              <span key={i} className="inline-flex items-center gap-8 mx-8 text-white font-semibold text-sm tracking-wide whitespace-nowrap">
+              <span key={i} className="inline-flex items-center gap-4 mx-8 text-white font-semibold text-sm tracking-wide whitespace-nowrap">
                 <span className="inline-flex items-center gap-2">
                   <AlertCircle className="w-4 h-4" />
-                  DEADLINE EXTENDED
+                  ABSTRACT SUBMISSION DEADLINE EXTENDED — Submission of Abstract: 15 September 2026
                 </span>
-                <span>•</span>
-                <span>Submission of Abstract — 15 September 2026</span>
-                <span>•</span>
-                <span>Intimation of Acceptance — 20 September 2026</span>
-                <span>•</span>
-                <span>Registration Deadline — 10 October 2026</span>
                 <span>•</span>
               </span>
             ))}
@@ -92,28 +86,79 @@ const Registration = () => {
         </div>
       </section>
 
-      {/* Important Dates */}
-      <section className="py-12 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900">
+      {/* Important Dates Timeline */}
+      <section className="py-16 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900">
         <div className="container mx-auto px-4">
-          <h2 className="font-display text-2xl font-bold mb-6 text-center text-foreground">Important Dates</h2>
-          <div className="flex flex-wrap justify-center gap-6">
-            {importantDates.map((item, index) => (
-              <div key={index} className="group relative flex items-center gap-4 bg-card dark:bg-white/5 backdrop-blur-sm px-6 py-4 rounded-xl border-2 border-primary/20 dark:border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-105 shadow-md">
-                <div className="relative w-12 h-12 rounded-xl bg-primary/15 dark:bg-primary/20 flex items-center justify-center group-hover:bg-primary/25 transition-colors duration-300">
-                  <Calendar className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <p className="text-sm text-primary font-medium">{item.event}</p>
-                  <p className="font-bold text-lg text-foreground">{item.date}</p>
-                  {item.extended && (
-                    <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-full bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400 text-xs font-semibold">
-                      <AlertCircle className="w-3 h-3" />
-                      Deadline Extended
-                    </span>
-                  )}
-                </div>
+          <h2 className="font-display text-2xl font-bold mb-2 text-center text-foreground">Important Dates</h2>
+          <p className="text-center font-semibold text-orange-500 mb-12 flex items-center justify-center gap-2 text-md sm:text-lg">
+            <span>📢</span> IMPORTANT UPDATE — DEADLINES EXTENDED
+          </p>
+          
+          <div className="max-w-5xl mx-auto px-4">
+            {/* Desktop Timeline (Alternating Horizontal) */}
+            <div className="hidden md:block relative py-28">
+              {/* Horizontal line */}
+              <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
+              
+              <div className="grid grid-cols-3 gap-8 relative z-10">
+                {importantDates.map((item, index) => {
+                  const isAbove = index % 2 === 0;
+                  return (
+                    <div key={index} className="relative flex flex-col items-center">
+                      
+                      {/* Node on the line */}
+                      <div className="absolute top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-primary/20 border-4 border-primary flex items-center justify-center shadow-md bg-card">
+                        <div className="w-2.5 h-2.5 rounded-full bg-primary" />
+                      </div>
+
+                      {/* Content Box */}
+                      <div 
+                        className={`
+                          absolute bg-card dark:bg-white/5 border-2 border-primary/20 dark:border-white/10 rounded-xl p-5 w-64 shadow-md text-center hover:border-primary/50 transition-all duration-300 hover:scale-105
+                          ${isAbove ? "bottom-[calc(50%+24px)]" : "top-[calc(50%+24px)]"}
+                        `}
+                      >
+                        {/* Connecting Line */}
+                        <div 
+                          className={`
+                            absolute left-1/2 -translate-x-1/2 w-0.5 h-6 bg-primary/55
+                            ${isAbove ? "top-full" : "bottom-full"}
+                          `} 
+                        />
+                        
+                        <p className="text-xs font-bold text-primary uppercase tracking-wider mb-2">{item.event}</p>
+                        <div className="flex items-center justify-center gap-2 mb-1">
+                          <span className="text-xs text-muted-foreground line-through">{item.originalDate}</span>
+                          <span className="text-[10px] bg-orange-500/10 text-orange-500 font-semibold px-1.5 py-0.5 rounded border border-orange-500/20">Extended</span>
+                        </div>
+                        <p className="text-base font-bold text-foreground">{item.newDate}</p>
+                      </div>
+
+                    </div>
+                  );
+                })}
               </div>
-            ))}
+            </div>
+
+            {/* Mobile Timeline (Vertical Stack) */}
+            <div className="md:hidden space-y-6">
+              {importantDates.map((item, index) => (
+                <div key={index} className="flex gap-4 items-start bg-card dark:bg-white/5 border border-primary/25 rounded-xl p-5 shadow-sm">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 text-primary">
+                    <Calendar className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">{item.event}</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xs text-muted-foreground line-through">{item.originalDate}</span>
+                      <span className="text-[10px] bg-orange-500/10 text-orange-500 font-semibold px-1.5 py-0.5 rounded border border-orange-500/20">Extended</span>
+                    </div>
+                    <p className="text-base font-bold text-foreground">{item.newDate}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
           </div>
         </div>
       </section>
@@ -133,26 +178,26 @@ const Registration = () => {
                 </div>
               </div>
 
-              {/* Step 1: Paper Question */}
+              {/* Step 1: Abstract Question */}
               <div className="p-6 rounded-xl border border-primary/20 bg-primary/5 mb-8">
                 <Label className="flex items-center gap-2 text-lg font-semibold text-foreground mb-4">
                   <HelpCircle className="w-5 h-5 text-primary" />
-                  Are you submitting a paper? <span className="text-destructive">*</span>
+                  Are you submitting an abstract? <span className="text-destructive">*</span>
                 </Label>
                 <div className="flex gap-4">
                   <Button
                     type="button"
-                    variant={submittingPaper === "yes" ? "default" : "outline"}
+                    variant={submittingAbstract === "yes" ? "default" : "outline"}
                     className="min-w-[120px] font-bold transition-all"
-                    onClick={() => setSubmittingPaper("yes")}
+                    onClick={() => setSubmittingAbstract("yes")}
                   >
                     Yes
                   </Button>
                   <Button
                     type="button"
-                    variant={submittingPaper === "no" ? "default" : "outline"}
+                    variant={submittingAbstract === "no" ? "default" : "outline"}
                     className="min-w-[120px] font-bold transition-all"
-                    onClick={() => setSubmittingPaper("no")}
+                    onClick={() => setSubmittingAbstract("no")}
                   >
                     No
                   </Button>
@@ -160,7 +205,7 @@ const Registration = () => {
               </div>
 
               {/* Step Logic for "YES" Selection */}
-              {submittingPaper === "yes" && (
+              {submittingAbstract === "yes" && (
                 <div className="space-y-6 animate-in fade-in slide-in-from-top-4 duration-500">
                   {/* Step 1 Content */}
                   <div className="bg-muted/30 border-2 border-dashed border-primary/30 rounded-xl p-6">
@@ -169,9 +214,9 @@ const Registration = () => {
                         <ExternalLink className="w-6 h-6" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-bold text-foreground mb-1">Step 1: Paper Submission Required</h3>
+                        <h3 className="text-lg font-bold text-foreground mb-1">Step 1: Abstract Submission Required</h3>
                         <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                          Please ensure you have submitted your paper via the Microsoft CMT portal and received your <strong>Applicant ID</strong> before filling the registration form.
+                          Please ensure you have submitted your abstract via the Microsoft CMT portal and received your <strong>Applicant ID</strong> before filling the registration form.
                         </p>
                         <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-md hover:scale-105 transition-all mt-2">
                           <a href="https://cmt3.research.microsoft.com/CHEMCONFLUX2026" target="_blank" rel="noopener noreferrer">
@@ -209,7 +254,7 @@ const Registration = () => {
               )}
 
               {/* Layout for "NO" Selection (No Steps, just the direct button) */}
-              {submittingPaper === "no" && (
+              {submittingAbstract === "no" && (
                 <div className="text-center pt-4 border-t border-border/50 animate-in zoom-in duration-300">
                   <p className="text-sm text-muted-foreground mb-4">
                     Please click the button below to proceed to the official Google Form and complete your registration.
@@ -291,12 +336,12 @@ const Registration = () => {
         </div>
       </section>
 
-      {/* Paper Submission Info */}
-      <section className="py-20 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900" id="paper-submission">
+      {/* Abstract Submission Info */}
+      <section className="py-20 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900" id="abstract-submission">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <p className="text-primary font-medium mb-2 tracking-wider uppercase">Paper Submission</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">Submit Your Research</h2>
+            <p className="text-primary font-medium mb-2 tracking-wider uppercase">Abstract Submission</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">Submit Your Abstract</h2>
           </div>
           <div className="max-w-4xl mx-auto">
             <div className="bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-border dark:border-white/10">

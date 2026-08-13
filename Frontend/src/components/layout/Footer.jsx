@@ -32,11 +32,11 @@ export function Footer() {
               {[
                 { name: "Home", path: "/" },
                 { name: "About", path: "/about" },
+                { name: "Important Dates", path: "/important-dates" },
                 { name: "Committee", path: "/committee" },
-                { name: "Call for Paper", path: "/call-for-paper" },
+                { name: "Abstract Submission", path: "/abstract-submission" },
                 { name: "Publication", path: "/publication" },
                 { name: "Contact", path: "/contact" },
-                { name: "Registration", path: "/registration" },
               ].map((link) => (
                 <li key={link.path}>
                   <Link

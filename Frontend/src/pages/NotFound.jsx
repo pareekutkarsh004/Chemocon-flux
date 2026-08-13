@@ -2,13 +2,15 @@ import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Home } from "lucide-react";
-import CallForPaper from "./CallForPaper";
+import AbstractSubmission from "./AbstractSubmission";
 
 const NotFound = () => {
   const location = useLocation();
   const isCallForPaper =
     location.pathname === "/call-for-paper" ||
-    location.pathname.startsWith("/call-for-paper/");
+    location.pathname.startsWith("/call-for-paper/") ||
+    location.pathname === "/abstract-submission" ||
+    location.pathname.startsWith("/abstract-submission/");
 
   useEffect(() => {
     if (isCallForPaper) return;
@@ -19,7 +21,7 @@ const NotFound = () => {
   }, [isCallForPaper, location.pathname]);
 
   if (isCallForPaper) {
-    return <CallForPaper />;
+    return <AbstractSubmission />;
   }
 
   return (

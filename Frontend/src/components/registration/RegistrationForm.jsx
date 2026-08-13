@@ -47,7 +47,7 @@ const getInitialFormData = () => {
     designation: "",
     address: "",
     category: "",
-    paperTitle: "",
+    abstractTitle: "",
     utrNo: "",
     transactionDate: "",
     applicantId: "",
@@ -80,7 +80,7 @@ const getInitialCategoryKey = () => {
 
 const RegistrationForm = () => {
   const hiddenIframeRef = useRef(null);
-  const [submittingPaper, setSubmittingPaper] = useState(null);
+  const [submittingAbstract, setSubmittingAbstract] = useState(null);
   const [selectedCategoryKey, setSelectedCategoryKey] = useState(
     getInitialCategoryKey,
   );
@@ -141,7 +141,7 @@ const RegistrationForm = () => {
       DESIGNATION: formData.designation,
       ADDRESS: formData.address,
       CATEGORY: formData.category,
-      PAPER_ID: formData.applicantId || formData.paperTitle,
+      PAPER_ID: formData.applicantId || formData.abstractTitle,
       DATE: formData.transactionDate,
       PAYMENT_INFO: formData.utrNo,
       ACCOMMODATION: "No",
@@ -195,7 +195,7 @@ const RegistrationForm = () => {
       clearSavedData();
       setFormData(getInitialFormData());
       setSelectedCategoryKey("");
-      setSubmittingPaper(null);
+      setSubmittingAbstract(null);
       setIsSubmitting(false);
     }, 1200);
   };
@@ -227,45 +227,45 @@ const RegistrationForm = () => {
             />
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Paper Submission Toggle */}
+              {/* Abstract Submission Toggle */}
               <div className="p-5 rounded-lg border border-primary/20 bg-primary/5 mb-6">
                 <Label className="flex items-center gap-2 text-lg font-semibold text-foreground mb-4">
                   <HelpCircle className="w-5 h-5 text-primary" />
-                  Are you submitting a paper?{" "}
+                  Are you submitting an abstract?{" "}
                   <span className="text-destructive">*</span>
                 </Label>
                 <div className="flex gap-4">
                   <Button
                     type="button"
-                    variant={submittingPaper === "yes" ? "default" : "outline"}
+                    variant={submittingAbstract === "yes" ? "default" : "outline"}
                     className={`min-w-[100px] ${
-                      submittingPaper === "yes"
+                      submittingAbstract === "yes"
                         ? "bg-primary text-primary-foreground"
                         : "bg-background"
                     }`}
-                    onClick={() => setSubmittingPaper("yes")}
+                    onClick={() => setSubmittingAbstract("yes")}
                   >
                     Yes
                   </Button>
                   <Button
                     type="button"
-                    variant={submittingPaper === "no" ? "default" : "outline"}
+                    variant={submittingAbstract === "no" ? "default" : "outline"}
                     className={`min-w-[100px] ${
-                      submittingPaper === "no"
+                      submittingAbstract === "no"
                         ? "bg-primary text-primary-foreground"
                         : "bg-background"
                     }`}
-                    onClick={() => setSubmittingPaper("no")}
+                    onClick={() => setSubmittingAbstract("no")}
                   >
                     No
                   </Button>
                 </div>
               </div>
 
-              {submittingPaper !== null && (
+              {submittingAbstract !== null && (
                 <>
                   {/* CMT Link & Applicant ID */}
-                  {submittingPaper === "yes" && (
+                  {submittingAbstract === "yes" && (
                     <div className="bg-muted/30 border-2 border-dashed border-primary/30 rounded-xl p-6 mb-8">
                       <div className="flex items-start gap-4 mb-6">
                         <div className="p-3 rounded-full bg-primary/10 text-primary">
@@ -273,10 +273,10 @@ const RegistrationForm = () => {
                         </div>
                         <div>
                           <h3 className="text-lg font-bold text-foreground mb-1">
-                            Paper Submission Required
+                            Abstract Submission Required
                           </h3>
                           <p className="text-muted-foreground text-sm mb-3">
-                            Please ensure you have submitted your paper via the
+                            Please ensure you have submitted your abstract via the
                             Microsoft CMT portal before proceeding.
                           </p>
                           <a
@@ -636,17 +636,17 @@ const RegistrationForm = () => {
 
                   <div className="space-y-2">
                     <Label
-                      htmlFor="paperTitle"
+                      htmlFor="abstractTitle"
                       className="flex items-center gap-2 text-muted-foreground"
                     >
                       <FileText className="w-4 h-4 text-primary" />
-                      Paper Title (if submitting)
+                      Abstract Title (if submitting)
                     </Label>
                     <Input
-                      id="paperTitle"
-                      value={formData.paperTitle}
-                      onChange={handleChange("paperTitle")}
-                      placeholder="Your paper title"
+                      id="abstractTitle"
+                      value={formData.abstractTitle}
+                      onChange={handleChange("abstractTitle")}
+                      placeholder="Your abstract title"
                       className="bg-muted dark:bg-white/5 border-border dark:border-white/10 text-foreground placeholder:text-muted-foreground focus:border-primary/50"
                     />
                   </div>
