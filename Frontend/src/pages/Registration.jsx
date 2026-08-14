@@ -220,7 +220,7 @@ const Registration = () => {
 
                   <div className="py-4 text-center border-y border-dashed border-primary/20 my-4">
                     <p className="font-display font-bold text-orange-500 dark:text-orange-400 text-xs sm:text-sm tracking-widest uppercase">
-                      REGISTRATION FORM WILL BE ACTIVE AFTER AUGUST 15 ( AFTER ABSTRACT ACCEPTANCE)
+                      REGISTRATION FORM WILL BE ACTIVE Shortly ( AFTER ABSTRACT ACCEPTANCE)
                     </p>
                   </div>
 
@@ -236,7 +236,7 @@ const Registration = () => {
                           After abstract acceptance and confirmation, kindly fill the google form
                         </p>
                         <Button disabled size="lg" className="bg-slate-400 dark:bg-slate-700 text-slate-200 dark:text-slate-400 font-bold shadow-lg cursor-not-allowed">
-                          Fill Registration Form (Available after 15 August) <ExternalLink className="ml-2 w-4 h-4" />
+                          Fill Registration Form (Available Shortly) <ExternalLink className="ml-2 w-4 h-4" />
                         </Button>
                       </div>
                     </div>
@@ -251,7 +251,7 @@ const Registration = () => {
                     Please click the button below to proceed to the official Google Form and complete your registration.
                   </p>
                   <Button disabled size="lg" className="bg-slate-400 dark:bg-slate-700 text-slate-200 dark:text-slate-400 font-bold px-10 py-6 text-lg rounded-full shadow-lg cursor-not-allowed">
-                    Fill Registration Form (Available after 15 August) <Send className="ml-2 w-5 h-5" />
+                    Fill Registration Form (Available Shortly) <Send className="ml-2 w-5 h-5" />
                   </Button>
                 </div>
               )}
@@ -268,7 +268,7 @@ const Registration = () => {
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-2 text-foreground">Conference Registration</h2>
             <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full border border-primary/20 mt-4">
               <Calendar className="w-4 h-4 text-primary" />
-              <span className="text-primary text-sm font-medium">Early Bird till August 30, 2026</span>
+              <span className="text-primary text-sm font-medium">Early Bird till October 10, 2026</span>
             </div>
           </div>
 
