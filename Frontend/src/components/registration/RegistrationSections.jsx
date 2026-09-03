@@ -259,7 +259,7 @@ export const PaperSubmissionSection = () => (
                   </a>
                 </Button>
                 <Button asChild variant="outline" className="border-orange-500/50 text-orange-500 dark:text-orange-400 bg-orange-500/5 hover:bg-orange-500 hover:text-white font-semibold shadow-sm hover:scale-105 transition-all duration-300 group">
-                  <a href={`${import.meta.env.BASE_URL}CHEMCONFLUX 26-Brochure-Chemical Department-MNNIT.pdf`} download="CHEMCONFLUX 26-Brochure-Chemical Department-MNNIT.pdf" className="inline-flex items-center">
+                  <a href={`${import.meta.env.BASE_URL}CHEMCONFLUX 26-Brochure-Chemical Department-MNNIT (All Date Extended).pdf`} download="CHEMCONFLUX 26-Brochure-Chemical Department-MNNIT (All Date Extended).pdf" className="inline-flex items-center">
                     <FileDown className="w-4 h-4 mr-2 group-hover:animate-bounce" />Download Brochure (.pdf)
                   </a>
                 </Button>

@@ -137,7 +137,7 @@ export function Hero() {
               className="border-orange-400 text-orange-400 bg-black/20 hover:bg-orange-500/20 backdrop-blur-sm hover:scale-105 transition-all duration-300 group"
             >
               <a
-                href={`${import.meta.env.BASE_URL}CHEMCONFLUX 26-Brochure-Chemical Department-MNNIT-UPDATED.pdf`}
+                href={`${import.meta.env.BASE_URL}CHEMCONFLUX 26-Brochure-Chemical Department-MNNIT (All Date Extended).pdf`}
                 download
                 className="group inline-flex items-center"
               >
