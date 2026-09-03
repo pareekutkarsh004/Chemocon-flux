@@ -140,7 +140,7 @@ const committeeData = {
       image: anandImg,
       profileUrl: "http://mnnit.ac.in/profile/anandverma",
     },
-    /* {
+    {
       name: "Dr. Asmita Mishra",
       role: "MNNIT Allahabad",
       image: asmitaImg,
@@ -163,7 +163,7 @@ const committeeData = {
       role: "MNNIT Allahabad",
       image: kruthiImg,
       profileUrl: "http://mnnit.ac.in/profile/kruthidoriya",
-    }, */
+    },
 
   ],
   /* coOrganizingSecretaries: [
