@@ -140,6 +140,8 @@ const committeeData = {
       image: anandImg,
       profileUrl: "http://mnnit.ac.in/profile/anandverma",
     },
+  ],
+  programManagementCommittee: [
     {
       name: "Dr. Asmita Mishra",
       role: "MNNIT Allahabad",
@@ -164,7 +166,6 @@ const committeeData = {
       image: kruthiImg,
       profileUrl: "http://mnnit.ac.in/profile/kruthidoriya",
     },
-
   ],
   /* coOrganizingSecretaries: [
     {
@@ -345,6 +346,19 @@ const Committee = () => {
           </h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
             {committeeData.organizingSecretaries.map((member) => (
+              <MemberCard key={member.name} member={member} size="small" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-muted dark:bg-gradient-to-b dark:from-slate-800 dark:to-slate-900">
+        <div className="container mx-auto px-4">
+          <h2 className="font-display text-2xl font-bold mb-8 text-center text-primary">
+            Program Management Committee
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            {committeeData.programManagementCommittee.map((member) => (
               <MemberCard key={member.name} member={member} size="small" />
             ))}
           </div>
