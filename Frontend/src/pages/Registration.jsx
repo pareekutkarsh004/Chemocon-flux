@@ -220,7 +220,7 @@ const Registration = () => {
 
                   <div className="py-4 text-center border-y border-dashed border-primary/20 my-4">
                     <p className="font-display font-bold text-orange-500 dark:text-orange-400 text-xs sm:text-sm tracking-widest uppercase">
-                      REGISTRATION FORM WILL BE ACTIVE Shortly ( AFTER ABSTRACT ACCEPTANCE)
+                      Fill the registration form
                     </p>
                   </div>
 
@@ -270,7 +270,7 @@ const Registration = () => {
                     Please click the button below to proceed to the official Google Form and complete your registration.
                   </p>
                   <Button disabled size="lg" className="bg-slate-400 dark:bg-slate-700 text-slate-200 dark:text-slate-400 font-bold px-10 py-6 text-lg rounded-full shadow-lg ">
-                    Fill Registration Form (Available Shortly) <Send className="ml-2 w-5 h-5" />
+                    Fill Registration Form <Send className="ml-2 w-5 h-5" />
                   </Button>
                 </div>
               )}
