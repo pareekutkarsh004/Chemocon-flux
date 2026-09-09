@@ -225,18 +225,37 @@ const Registration = () => {
                   </div>
 
                   {/* Step 2 Content */}
-                  <div className="bg-muted/30 border-2 border-dashed border-primary/30 rounded-xl p-6 opacity-60">
+                  {/* Step 2 Content */}
+                  <div className="bg-muted/30 border-2 border-dashed border-primary/30 rounded-xl p-6">
                     <div className="flex items-start gap-4">
                       <div className="p-3 rounded-full bg-primary/10 text-primary">
                         <Send className="w-6 h-6" />
                       </div>
+
                       <div>
-                        <h3 className="text-lg font-bold text-foreground mb-1">Step 2: Complete Registration</h3>
+                        <h3 className="text-lg font-bold text-foreground mb-1">
+                          Step 2: Complete Registration
+                        </h3>
+
                         <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                          After abstract acceptance and confirmation, kindly fill the google form
+                          After abstract acceptance and confirmation, kindly fill out the Google Form.
                         </p>
-                        <Button disabled size="lg" className="bg-slate-400 dark:bg-slate-700 text-slate-200 dark:text-slate-400 font-bold shadow-lg cursor-not-allowed">
-                          Fill Registration Form (Available Shortly) <ExternalLink className="ml-2 w-4 h-4" />
+
+                        <Button
+                          asChild
+                          size="lg"
+                          className="px-6 py-3 text-sm sm:text-base font-bold rounded-full shadow-lg
+                   bg-primary text-primary-foreground
+                   hover:bg-primary/90 transition-all duration-200"
+                        >
+                          <a
+                            href={EXTERNAL_GOOGLE_FORM_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Fill Registration Form
+                            <ExternalLink className="ml-2 w-4 h-4 shrink-0" />
+                          </a>
                         </Button>
                       </div>
                     </div>
@@ -250,7 +269,7 @@ const Registration = () => {
                   <p className="text-sm text-muted-foreground mb-4">
                     Please click the button below to proceed to the official Google Form and complete your registration.
                   </p>
-                  <Button disabled size="lg" className="bg-slate-400 dark:bg-slate-700 text-slate-200 dark:text-slate-400 font-bold px-10 py-6 text-lg rounded-full shadow-lg cursor-not-allowed">
+                  <Button disabled size="lg" className="bg-slate-400 dark:bg-slate-700 text-slate-200 dark:text-slate-400 font-bold px-10 py-6 text-lg rounded-full shadow-lg ">
                     Fill Registration Form (Available Shortly) <Send className="ml-2 w-5 h-5" />
                   </Button>
                 </div>
