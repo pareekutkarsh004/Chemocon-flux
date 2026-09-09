@@ -269,8 +269,19 @@ const Registration = () => {
                   <p className="text-sm text-muted-foreground mb-4">
                     Please click the button below to proceed to the official Google Form and complete your registration.
                   </p>
-                  <Button disabled size="lg" className="bg-slate-400 dark:bg-slate-700 text-slate-200 dark:text-slate-400 font-bold px-10 py-6 text-lg rounded-full shadow-lg ">
-                    Fill Registration Form <Send className="ml-2 w-5 h-5" />
+                  <Button
+                    asChild
+                    size="lg"
+                    className="px-8 py-6 text-lg font-bold rounded-full shadow-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200"
+                  >
+                    <a
+                      href={EXTERNAL_GOOGLE_FORM_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Fill Registration Form
+                      <ExternalLink className="ml-2 w-5 h-5 shrink-0" />
+                    </a>
                   </Button>
                 </div>
               )}
