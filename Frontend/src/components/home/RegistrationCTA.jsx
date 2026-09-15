@@ -30,7 +30,7 @@ export function RegistrationCTA() {
           <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
             Register now for the International Conference on Sustainable
             Environment & Energy Innovations. Early bird registration closes on
-            August 30, 2026.
+            October 10, 2026.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

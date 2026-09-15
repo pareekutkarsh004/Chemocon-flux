@@ -21,7 +21,7 @@ const Index = () => {
               <span key={i} className="inline-flex items-center gap-4 mx-8 text-white font-semibold text-sm tracking-wide whitespace-nowrap">
                 <span className="inline-flex items-center gap-2">
                   <AlertCircle className="w-4 h-4" />
-                  ABSTRACT SUBMISSION DEADLINE EXTENDED — Submission of Abstract: 15 September 2026
+                  ABSTRACT SUBMISSION DEADLINE EXTENDED — Submission of Abstract: 30 September 2026
                 </span>
                 <span>•</span>
               </span>

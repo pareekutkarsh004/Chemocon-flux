@@ -53,7 +53,7 @@ export const FeesSection = () => (
         <h2 className="font-display text-3xl md:text-4xl font-bold mb-2 text-foreground">Conference Registration</h2>
         <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full border border-primary/20 mt-4">
           <Calendar className="w-4 h-4 text-primary" />
-          <span className="text-primary text-sm font-medium">Early Bird till August 30, 2026 After Deadline Standard Fee will be Applicable</span>
+          <span className="text-primary text-sm font-medium">Early Bird till October 10, 2026. After Deadline Standard Fee will be Applicable (Including GST)</span>
         </div>
       </div>
 
@@ -64,8 +64,8 @@ export const FeesSection = () => (
             <thead>
               <tr className="bg-gradient-to-r from-primary to-primary/80">
                 <th className="p-5 text-left text-primary-foreground font-semibold">Delegates</th>
-                <th className="p-5 text-center text-primary-foreground font-semibold">Early Bird<br /><span className="text-xs font-normal opacity-80">(incl. GST)</span></th>
-                <th className="p-5 text-center text-primary-foreground font-semibold">Standard<br /><span className="text-xs font-normal opacity-80">(incl. GST)</span></th>
+                <th className="p-5 text-center text-primary-foreground font-semibold">Early Bird<br /><span className="text-xs font-normal opacity-80">(Including GST)</span></th>
+                <th className="p-5 text-center text-primary-foreground font-semibold">Standard<br /><span className="text-xs font-normal opacity-80">(Including GST)</span></th>
               </tr>
             </thead>
             <tbody>
@@ -87,8 +87,8 @@ export const FeesSection = () => (
           <div key={index} className="bg-card dark:bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-border dark:border-white/10">
             <p className="text-foreground font-medium mb-3">{fee.category}</p>
             <div className="flex justify-between">
-              <div><p className="text-xs text-muted-foreground uppercase">Early Bird</p><p className="text-primary font-bold text-lg">{fee.earlyBird}</p></div>
-              <div className="text-right"><p className="text-xs text-muted-foreground uppercase">Standard</p><p className="text-muted-foreground">{fee.standard}</p></div>
+              <div><p className="text-xs text-muted-foreground uppercase">Early Bird (incl. GST)</p><p className="text-primary font-bold text-lg">{fee.earlyBird}</p></div>
+              <div className="text-right"><p className="text-xs text-muted-foreground uppercase">Standard (incl. GST)</p><p className="text-muted-foreground">{fee.standard}</p></div>
             </div>
           </div>
         ))}

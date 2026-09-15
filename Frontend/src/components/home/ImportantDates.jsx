@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { Calendar, CheckCircle, Clock, Users } from "lucide-react";
 
 const dates = [
-  { icon: Calendar, oldDate: "August 15, 2026", newDate: "September 15, 2026", event: "Submission of Abstract", extended: true },
+  { icon: Calendar, oldDate: "September 15, 2026", newDate: "September 30, 2026", event: "Submission of Abstract", extended: true },
   {
     icon: CheckCircle,
-    oldDate: "August 30, 2026",
-    newDate: "September 20, 2026",
+    oldDate: "September 20, 2026",
+    newDate: "October 3, 2026",
     event: "Intimation of Acceptance",
     extended: true,
   },

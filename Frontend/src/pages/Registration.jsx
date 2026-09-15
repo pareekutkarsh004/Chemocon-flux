@@ -41,8 +41,8 @@ const BANK_DETAILS = {
 };
 
 const importantDates = [
-  { event: "Submission of Abstract", oldDate: "August 15, 2026", newDate: "September 15, 2026", extended: true, icon: Calendar },
-  { event: "Intimation of Acceptance", oldDate: "August 30, 2026", newDate: "September 20, 2026", extended: true, icon: CheckCircle },
+  { event: "Submission of Abstract", oldDate: "September 15, 2026", newDate: "September 30, 2026", extended: true, icon: Calendar },
+  { event: "Intimation of Acceptance", oldDate: "September 20, 2026", newDate: "October 3, 2026", extended: true, icon: CheckCircle },
   { event: "Registration Deadline", oldDate: "September 25, 2026", newDate: "October 10, 2026", extended: true, icon: Clock },
   { event: "CHEM-CONFLUX²⁶ Conference", date: "October 22-24, 2026", extended: false, highlight: true, icon: Users },
 ];
@@ -81,7 +81,7 @@ const Registration = () => {
               <span key={i} className="inline-flex items-center gap-4 mx-8 text-white font-semibold text-sm tracking-wide whitespace-nowrap">
                 <span className="inline-flex items-center gap-2">
                   <AlertCircle className="w-4 h-4" />
-                  ABSTRACT SUBMISSION DEADLINE EXTENDED — Submission of Abstract: 15 September 2026
+                  ABSTRACT SUBMISSION DEADLINE EXTENDED — Submission of Abstract: 30 September 2026
                 </span>
                 <span>•</span>
               </span>
@@ -278,8 +278,8 @@ const Registration = () => {
                 <thead>
                   <tr className="bg-gradient-to-r from-primary to-primary/80">
                     <th className="p-5 text-left text-primary-foreground font-semibold">Delegates</th>
-                    <th className="p-5 text-center text-primary-foreground font-semibold">Early Bird</th>
-                    <th className="p-5 text-center text-primary-foreground font-semibold">Standard</th>
+                    <th className="p-5 text-center text-primary-foreground font-semibold">Early Bird<br /><span className="text-xs font-normal opacity-80">(Including GST)</span></th>
+                    <th className="p-5 text-center text-primary-foreground font-semibold">Standard<br /><span className="text-xs font-normal opacity-80">(Including GST)</span></th>
                   </tr>
                 </thead>
                 <tbody>

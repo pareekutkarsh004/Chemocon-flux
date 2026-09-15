@@ -47,7 +47,7 @@ export const BANK_DETAILS = {
 };
 
 export const importantDates = [
-  { event: "Submission of Abstract", date: "August 15, 2026" },
-  { event: "Intimation of Acceptance", date: "August 30, 2026" },
-  { event: "Registration Deadline", date: "September 25, 2026" },
+  { event: "Submission of Abstract", date: "September 30, 2026" },
+  { event: "Intimation of Acceptance", date: "October 3, 2026" },
+  { event: "Registration Deadline", date: "October 10, 2026" },
 ];

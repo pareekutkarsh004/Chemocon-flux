@@ -59,15 +59,15 @@ The conference is open to:
 ## 📅 Important Dates
 | Event | Date |
 |-----|------|
-| Submission of Abstract | August 15, 2026 |
-| Intimation of Acceptance | August 30, 2026 |
-| Registration Deadline | September 25, 2026 |
+| Submission of Abstract | September 30, 2026 |
+| Intimation of Acceptance | October 3, 2026 |
+| Registration Deadline | October 10, 2026 |
 
 ---
 
 ## 💰 Registration Fees (Including GST)
 
-| Category | Early Bird (till Aug 30, 2026) | Standard |
+| Category | Early Bird (till Oct 10, 2026) | Standard |
 |--------|-------------------------------|----------|
 | Delegates (Academics / Industry / Govt.) | ₹ 5900 | ₹ 7080 |
 | PG Students / Research Scholars | ₹ 3540 | ₹ 4130 |
