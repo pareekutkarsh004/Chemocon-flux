@@ -296,28 +296,43 @@ const Registration = () => {
           <div className="text-center mb-10">
             <p className="text-primary font-medium mb-2 tracking-wider uppercase">Registration Fee</p>
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-2 text-foreground">Conference Registration</h2>
-            <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full border border-primary/20 mt-4">
-              <Calendar className="w-4 h-4 text-primary" />
-              <span className="text-primary text-sm font-medium">Early Bird till October 10, 2026</span>
-            </div>
           </div>
 
-          <div className="max-w-4xl mx-auto hidden md:block mb-12">
-            <div className="overflow-hidden rounded-2xl border border-border dark:border-white/10">
+          <div className="max-w-4xl mx-auto mb-12">
+            <div className="overflow-x-auto rounded-2xl border border-border dark:border-white/10 shadow-sm">
               <table className="w-full">
                 <thead>
                   <tr className="bg-gradient-to-r from-primary to-primary/80">
                     <th className="p-5 text-left text-primary-foreground font-semibold">Delegates</th>
-                    <th className="p-5 text-center text-primary-foreground font-semibold">Early Bird<br /><span className="text-xs font-normal opacity-80">(Including GST)</span></th>
-                    <th className="p-5 text-center text-primary-foreground font-semibold">Standard<br /><span className="text-xs font-normal opacity-80">(Including GST)</span></th>
+                    <th className="p-5 text-center text-primary-foreground font-semibold min-w-[150px]">
+                      <div>Early Bird</div>
+                      <div className="text-xs font-normal opacity-80">(Including GST)</div>
+                      <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-500 text-white uppercase tracking-wider shadow-sm">
+                        Closed
+                      </span>
+                    </th>
+                    <th className="p-5 text-center text-primary-foreground font-semibold min-w-[150px]">
+                      <div>Standard</div>
+                      <div className="text-xs font-normal opacity-80">(Including GST)</div>
+                      <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500 text-white uppercase tracking-wider shadow-sm">
+                        Active
+                      </span>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {registrationFees.map((fee, index) => (
-                    <tr key={index} className="border-t border-border dark:border-white/5 hover:bg-muted dark:hover:bg-white/5 transition-colors">
-                      <td className="p-5 text-muted-foreground">{fee.category}</td>
-                      <td className="p-5 text-center font-bold text-primary text-lg">{fee.earlyBird}</td>
-                      <td className="p-5 text-center text-muted-foreground">{fee.standard}</td>
+                    <tr key={index} className="border-t border-border dark:border-white/5 hover:bg-muted/50 dark:hover:bg-white/5 transition-colors">
+                      <td className="p-5 text-foreground font-medium">{fee.category}</td>
+                      <td className="p-5 text-center">
+                        <div className="inline-flex flex-col items-center">
+                          <span className="line-through text-muted-foreground/60 font-semibold text-base">{fee.earlyBird}</span>
+                          <span className="text-[11px] font-semibold text-rose-500 dark:text-rose-400 bg-rose-500/10 dark:bg-rose-500/20 px-2.5 py-0.5 rounded-full mt-1 border border-rose-500/20">
+                            Closed
+                          </span>
+                        </div>
+                      </td>
+                      <td className="p-5 text-center font-bold text-primary text-lg">{fee.standard}</td>
                     </tr>
                   ))}
                 </tbody>

@@ -51,29 +51,44 @@ export const FeesSection = () => (
       <div className="text-center mb-10">
         <p className="text-primary font-medium mb-2 tracking-wider uppercase">Registration Fee</p>
         <h2 className="font-display text-3xl md:text-4xl font-bold mb-2 text-foreground">Conference Registration</h2>
-        <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full border border-primary/20 mt-4">
-          <Calendar className="w-4 h-4 text-primary" />
-          <span className="text-primary text-sm font-medium">Early Bird till October 10, 2026. After Deadline Standard Fee will be Applicable (Including GST)</span>
-        </div>
       </div>
 
       {/* Desktop Table */}
       <div className="max-w-4xl mx-auto hidden md:block">
-        <div className="overflow-hidden rounded-2xl border border-border dark:border-white/10">
+        <div className="overflow-hidden rounded-2xl border border-border dark:border-white/10 shadow-sm">
           <table className="w-full">
             <thead>
               <tr className="bg-gradient-to-r from-primary to-primary/80">
                 <th className="p-5 text-left text-primary-foreground font-semibold">Delegates</th>
-                <th className="p-5 text-center text-primary-foreground font-semibold">Early Bird<br /><span className="text-xs font-normal opacity-80">(Including GST)</span></th>
-                <th className="p-5 text-center text-primary-foreground font-semibold">Standard<br /><span className="text-xs font-normal opacity-80">(Including GST)</span></th>
+                <th className="p-5 text-center text-primary-foreground font-semibold min-w-[150px]">
+                  <div>Early Bird</div>
+                  <div className="text-xs font-normal opacity-80">(Including GST)</div>
+                  <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-500 text-white uppercase tracking-wider shadow-sm">
+                    Closed
+                  </span>
+                </th>
+                <th className="p-5 text-center text-primary-foreground font-semibold min-w-[150px]">
+                  <div>Standard</div>
+                  <div className="text-xs font-normal opacity-80">(Including GST)</div>
+                  <span className="inline-block mt-2 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500 text-white uppercase tracking-wider shadow-sm">
+                    Active
+                  </span>
+                </th>
               </tr>
             </thead>
             <tbody>
               {registrationFees.map((fee, index) => (
-                <tr key={index} className="border-t border-border dark:border-white/5 hover:bg-muted dark:hover:bg-white/5 transition-colors">
-                  <td className="p-5 text-muted-foreground">{fee.category}</td>
-                  <td className="p-5 text-center font-bold text-primary text-lg">{fee.earlyBird}</td>
-                  <td className="p-5 text-center text-muted-foreground">{fee.standard}</td>
+                <tr key={index} className="border-t border-border dark:border-white/5 hover:bg-muted/50 dark:hover:bg-white/5 transition-colors">
+                  <td className="p-5 text-foreground font-medium">{fee.category}</td>
+                  <td className="p-5 text-center">
+                    <div className="inline-flex flex-col items-center">
+                      <span className="line-through text-muted-foreground/60 font-semibold text-base">{fee.earlyBird}</span>
+                      <span className="text-[11px] font-semibold text-rose-500 dark:text-rose-400 bg-rose-500/10 dark:bg-rose-500/20 px-2.5 py-0.5 rounded-full mt-1 border border-rose-500/20">
+                        Closed
+                      </span>
+                    </div>
+                  </td>
+                  <td className="p-5 text-center font-bold text-primary text-lg">{fee.standard}</td>
                 </tr>
               ))}
             </tbody>
@@ -86,9 +101,18 @@ export const FeesSection = () => (
         {registrationFees.map((fee, index) => (
           <div key={index} className="bg-card dark:bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-border dark:border-white/10">
             <p className="text-foreground font-medium mb-3">{fee.category}</p>
-            <div className="flex justify-between">
-              <div><p className="text-xs text-muted-foreground uppercase">Early Bird (incl. GST)</p><p className="text-primary font-bold text-lg">{fee.earlyBird}</p></div>
-              <div className="text-right"><p className="text-xs text-muted-foreground uppercase">Standard (incl. GST)</p><p className="text-muted-foreground">{fee.standard}</p></div>
+            <div className="flex justify-between items-center">
+              <div>
+                <p className="text-xs text-muted-foreground uppercase">Early Bird (incl. GST)</p>
+                <div className="flex items-center gap-1.5 mt-0.5">
+                  <span className="line-through text-muted-foreground/60 font-semibold text-sm">{fee.earlyBird}</span>
+                  <span className="text-[10px] font-bold text-rose-500 bg-rose-500/10 px-1.5 py-0.5 rounded">Closed</span>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-xs text-muted-foreground uppercase">Standard (incl. GST)</p>
+                <p className="text-primary font-bold text-lg">{fee.standard}</p>
+              </div>
             </div>
           </div>
         ))}
@@ -249,7 +273,11 @@ export const PaperSubmissionSection = () => (
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-                <Button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg hover:shadow-xl hover:shadow-primary/25 transition-all duration-300"><ExternalLink className="w-4 h-4 mr-2" />Submit via Online Portal</Button>
+                <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg hover:shadow-xl hover:shadow-primary/25 transition-all duration-300">
+                  <a href="https://cmt3.research.microsoft.com/CHEMCONFLUX2026" target="_blank" rel="noopener noreferrer" className="inline-flex items-center">
+                    <ExternalLink className="w-4 h-4 mr-2" />Submit via Online CMT Portal
+                  </a>
+                </Button>
                 <Button asChild variant="outline" className="border-2 border-primary/40 text-primary bg-primary/5 hover:bg-primary/15 hover:border-primary font-semibold shadow-sm hover:shadow-md transition-all duration-300">
                   <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chemconflux26@gmail.com&su=Paper Submission for CHEM-CONFLUX'26" target="_blank" rel="noopener noreferrer"><span className="flex items-center"><Send className="w-4 h-4 mr-2" />Email to chemconflux26@gmail.com</span></a>
                 </Button>
@@ -259,7 +287,7 @@ export const PaperSubmissionSection = () => (
                   </a>
                 </Button>
                 <Button asChild variant="outline" className="border-orange-500/50 text-orange-500 dark:text-orange-400 bg-orange-500/5 hover:bg-orange-500 hover:text-white font-semibold shadow-sm hover:scale-105 transition-all duration-300 group">
-                  <a href={`${import.meta.env.BASE_URL}CHEMCONFLUX 26-Brochure-Chemical Department-MNNIT (All Date Extended).pdf`} download="CHEMCONFLUX 26-Brochure-Chemical Department-MNNIT (All Date Extended).pdf" className="inline-flex items-center">
+                  <a href={encodeURI(`${import.meta.env.BASE_URL}CHEMCONFLUX_26_Brochure.pdf`)} download="CHEMCONFLUX 26-Brochure-Chemical Department-MNNIT.pdf" className="inline-flex items-center">
                     <FileDown className="w-4 h-4 mr-2 group-hover:animate-bounce" />Download Brochure (.pdf)
                   </a>
                 </Button>

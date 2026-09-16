@@ -22,64 +22,92 @@ const tracks = [
   {
     icon: Sun,
     title: "Sustainable Alternative Energies",
-    description: "Bioenergy, Solar, Wind and other renewable sources",
+    description: "Bioenergy, Solar, Wind & renewable sources",
     details:
       "This track covers the latest advancements in renewable energy technologies including solar photovoltaics, wind power systems, bioenergy production, geothermal energy, and ocean energy. Topics include energy storage solutions, grid integration, and sustainable energy policy frameworks.",
   },
   {
     icon: Zap,
     title: "Hydrogen Energy & Fuel Cells",
-    description: "Clean energy technologies and hydrogen economy",
+    description: "Clean hydrogen technologies and fuel cells",
     details:
       "Explore cutting-edge research in hydrogen production, storage, and utilization. This track includes fuel cell technologies, electrolyzers, hydrogen infrastructure, and the role of hydrogen in decarbonizing transportation and industry sectors.",
   },
   {
     icon: Factory,
-    title: "Energy Conservation",
-    description: "Innovative technologies for energy management",
+    title: "Energy Conservation & Management",
+    description: "Innovative technologies for energy conservation",
     details:
       "Focus on energy efficiency improvements in buildings, industrial processes, and transportation. Topics include smart grid technologies, energy auditing, demand-side management, and innovative approaches to reduce energy consumption across sectors.",
   },
   {
     icon: Leaf,
     title: "Biological Interventions",
-    description: "Clean energy and environment through biotechnology",
+    description: "For Clean Energy and Environment",
     details:
       "This track explores biotechnological solutions for environmental challenges including bioremediation, microbial fuel cells, algae-based biofuels, enzymatic processes for pollution control, and synthetic biology applications for sustainable development.",
   },
   {
     icon: Beaker,
     title: "Innovative Materials",
-    description: "Advanced materials for energy and environment",
+    description: "Materials for Energy and Environment",
     details:
       "Discover breakthroughs in nanomaterials, catalysts, membranes, and smart materials for energy applications. Topics include materials for solar cells, batteries, supercapacitors, and environmental remediation technologies.",
   },
   {
     icon: Droplets,
-    title: "Water Treatment",
-    description: "Water and wastewater treatment technologies",
+    title: "Water & Wastewater Treatment",
+    description: "Advanced water treatment technologies",
     details:
       "Comprehensive coverage of water purification, desalination, wastewater treatment, and water recycling technologies. Includes membrane processes, advanced oxidation, biological treatment systems, and sustainable water management practices.",
   },
   {
     icon: Wind,
-    title: "Climate Change",
-    description: "Mitigation strategies and sustainability solutions",
+    title: "Climate Change Mitigation",
+    description: "Sustainability & mitigation strategies",
     details:
       "Address climate change through carbon capture and storage, greenhouse gas reduction strategies, climate modeling, adaptation technologies, and policy frameworks for achieving net-zero emissions targets.",
   },
   {
+    icon: Wind,
+    title: "Air Pollution & Health",
+    description: "Air quality monitoring & health impacts",
+    details:
+      "Research focused on monitoring ambient and indoor air pollution, emission control technologies, particulate matter assessment, and health risk analysis for cleaner air solutions.",
+  },
+  {
     icon: Recycle,
-    title: "Waste Management",
-    description: "Solid waste treatment and utilization",
+    title: "Solid Waste Treatment & Utilization",
+    description: "Waste-to-energy & circular economy",
     details:
       "Explore waste-to-energy technologies, recycling innovations, circular economy approaches, plastic waste management, e-waste handling, and sustainable disposal methods for industrial and municipal waste streams.",
+  },
+  {
+    icon: Beaker,
+    title: "Green & Environmental Chemistry",
+    description: "Sustainable chemical synthesis & processes",
+    details:
+      "Focus on green chemical pathways, eco-friendly synthesis methods, toxic release reduction, bio-based chemical processing, and sustainable catalysis for green manufacturing.",
+  },
+  {
+    icon: Factory,
+    title: "Systems Engineering",
+    description: "For Energy & Environmental Technologies",
+    details:
+      "Systems optimization, process modeling, life cycle analysis (LCA), techno-economic analysis, and computational engineering applied to energy and environmental applications.",
+  },
+  {
+    icon: Leaf,
+    title: "Contemporary Themes",
+    description: "Any other contemporary area relevant to theme",
+    details:
+      "Open to novel multidisciplinary research topics, emerging clean technology trends, environmental policy, and innovative interdisciplinary solutions supporting energy and sustainability.",
   },
 ];
 
 // Split tracks into two rows
-const topRow = tracks.slice(0, 4);
-const bottomRow = tracks.slice(4, 8);
+const topRow = tracks.slice(0, 6);
+const bottomRow = tracks.slice(6, 12);
 
 function TrackCard({ track, onClick }) {
   const handleClick = (e) => {

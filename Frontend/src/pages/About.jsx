@@ -104,7 +104,7 @@ const About = () => {
             <div className="flex flex-wrap gap-4 mt-8">
               <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
                 <Calendar className="w-4 h-4 text-orange-400" />
-                <span className="text-slate-300 text-sm">September 2026</span>
+                <span className="text-slate-300 text-sm">October 22-24, 2026</span>
               </div>
               <div className="flex items-center gap-2 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
                 <MapPin className="w-4 h-4 text-orange-400" />

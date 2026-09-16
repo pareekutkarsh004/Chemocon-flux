@@ -16,7 +16,8 @@ import {
   FileDown,
   AlertCircle,
   CheckCircle2,
-  Users
+  Users,
+  ExternalLink
 } from "lucide-react";
 
 const thrustAreas = [
@@ -135,7 +136,21 @@ function AbstractSubmission() {
                   <div className="flex flex-wrap gap-4 mt-6">
                     <Button
                       asChild
-                      className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 shadow-lg shadow-orange-500/20 hover:scale-105 transition-all duration-300"
+                      className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                    >
+                      <a
+                        href="https://cmt3.research.microsoft.com/CHEMCONFLUX2026"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center"
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Submit via CMT Portal
+                      </a>
+                    </Button>
+                    <Button
+                      asChild
+                      className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 shadow-lg shadow-orange-500/20 hover:scale-105 transition-all duration-300"
                     >
                       <Link to="/registration" state={{ submittingAbstract: "yes" }}>
                         Register Now
@@ -154,6 +169,20 @@ function AbstractSubmission() {
                       >
                         <FileDown className="w-4 h-4 mr-2 group-hover:animate-bounce" />
                         Download Abstract Template (.docx)
+                      </a>
+                    </Button>
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="border-orange-500/50 text-orange-500 dark:text-orange-400 bg-orange-500/5 hover:bg-orange-500 hover:text-white font-semibold px-6 shadow-sm hover:scale-105 transition-all duration-300 group"
+                    >
+                      <a
+                        href={encodeURI(`${import.meta.env.BASE_URL}CHEMCONFLUX_26_Brochure.pdf`)}
+                        download="CHEMCONFLUX 26-Brochure-Chemical Department-MNNIT.pdf"
+                        className="inline-flex items-center"
+                      >
+                        <FileDown className="w-4 h-4 mr-2 group-hover:animate-bounce" />
+                        Download Brochure (.pdf)
                       </a>
                     </Button>
                   </div>
