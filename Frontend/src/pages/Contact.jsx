@@ -159,33 +159,6 @@ const Contact = () => {
                     ),
                   },
                   {
-                    icon: PhoneCall,
-                    title: "Section Contacts (Office Hours: 9:00 AM–5:00 PM)",
-                    content: (
-                      <div className="space-y-3">
-                        <div>
-                          <p className="font-semibold text-foreground text-sm">Accommodation and Travel</p>
-                          <p className="text-xs sm:text-sm mt-1">
-                            ✉ <a href="mailto:ansawarkar@mnnit.ac.in" className="text-primary hover:underline">ansawarkar@mnnit.ac.in</a> | <a href="mailto:shasan@mnnit.ac.in" className="text-primary hover:underline">shasan@mnnit.ac.in</a>
-                          </p>
-                          <p className="text-xs sm:text-sm mt-0.5">
-                            ☎ <a href="tel:+918795291646" className="text-primary hover:underline">+91-8795291646</a> | <a href="tel:+918090803400" className="text-primary hover:underline">+91-8090803400</a>
-                          </p>
-                        </div>
-
-                        <div className="border-t border-border/40 pt-2">
-                          <p className="font-semibold text-foreground text-sm">Registration and Technical Sessions</p>
-                          <p className="text-xs sm:text-sm mt-1">
-                            ✉ <a href="mailto:manju@mnnit.ac.in" className="text-primary hover:underline">manju@mnnit.ac.in</a> | <a href="mailto:parulk@mnnit.ac.in" className="text-primary hover:underline">parulk@mnnit.ac.in</a>
-                          </p>
-                          <p className="text-xs sm:text-sm mt-0.5">
-                            ☎ <a href="tel:+919434136977" className="text-primary hover:underline">+91-9434136977</a> | <a href="tel:+918887735436" className="text-primary hover:underline">+91-8887735436</a>
-                          </p>
-                        </div>
-                      </div>
-                    ),
-                  },
-                  {
                     icon: Mail,
                     title: "Email",
                     content: (
@@ -209,6 +182,113 @@ const Contact = () => {
                           </a>
                         </span>
                       </>
+                    ),
+                  },
+                  {
+                    icon: PhoneCall,
+                    title: "Section Contacts (Office Hours: 9:00 AM–5:00 PM)",
+                    content: (
+                      <div className="space-y-3">
+                        <div>
+                          <p className="font-semibold text-foreground text-sm">
+                            Accommodation and Travel
+                          </p>
+                          <div className="space-y-2 mt-2">
+                            <div>
+                              <p className="font-medium text-foreground text-xs sm:text-sm">
+                                Dr. Ashish N. Sawarkar
+                              </p>
+                              <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                                ✉{" "}
+                                <a
+                                  href="mailto:ansawarkar@mnnit.ac.in"
+                                  className="text-primary hover:underline"
+                                >
+                                  ansawarkar@mnnit.ac.in
+                                </a>{" "}
+                                | ☎{" "}
+                                <a
+                                  href="tel:+918795291646"
+                                  className="text-primary hover:underline"
+                                >
+                                  +91-8795291646
+                                </a>
+                              </p>
+                            </div>
+                            <div>
+                              <p className="font-medium text-foreground text-xs sm:text-sm">
+                                Dr. Shabih Ul Hasan
+                              </p>
+                              <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                                ✉{" "}
+                                <a
+                                  href="mailto:shasan@mnnit.ac.in"
+                                  className="text-primary hover:underline"
+                                >
+                                  shasan@mnnit.ac.in
+                                </a>{" "}
+                                | ☎{" "}
+                                <a
+                                  href="tel:+918090803400"
+                                  className="text-primary hover:underline"
+                                >
+                                  +91-8090803400
+                                </a>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="border-t border-border/40 pt-3">
+                          <p className="font-semibold text-foreground text-sm">
+                            Registration and Technical Sessions
+                          </p>
+                          <div className="space-y-2 mt-2">
+                            <div>
+                              <p className="font-medium text-foreground text-xs sm:text-sm">
+                                Dr. Manju Verma
+                              </p>
+                              <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                                ✉{" "}
+                                <a
+                                  href="mailto:manju@mnnit.ac.in"
+                                  className="text-primary hover:underline"
+                                >
+                                  manju@mnnit.ac.in
+                                </a>{" "}
+                                | ☎{" "}
+                                <a
+                                  href="tel:+919434136977"
+                                  className="text-primary hover:underline"
+                                >
+                                  +91-9434136977
+                                </a>
+                              </p>
+                            </div>
+                            <div>
+                              <p className="font-medium text-foreground text-xs sm:text-sm">
+                                Dr. Parul Katiyar
+                              </p>
+                              <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                                ✉{" "}
+                                <a
+                                  href="mailto:parulk@mnnit.ac.in"
+                                  className="text-primary hover:underline"
+                                >
+                                  parulk@mnnit.ac.in
+                                </a>{" "}
+                                | ☎{" "}
+                                <a
+                                  href="tel:+918887735436"
+                                  className="text-primary hover:underline"
+                                >
+                                  +91-8887735436
+                                </a>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     ),
                   },
                   {
