@@ -22,6 +22,7 @@ import {
 
 import qrCode from "@/assets/Committes Image/qrcode.png";
 import cppmBook from "@/assets/cppm-degruyter.png";
+import fuelBook from "@/assets/fuel-elsevier.jpg";
 
 const registrationFees = [
   { category: "Delegates from academics/Industries/Govt. org", earlyBird: "₹ 5900/-", standard: "₹ 7080/-" },
@@ -421,8 +422,8 @@ const Registration = () => {
             </p>
           </div>
 
-          <div className="max-w-5xl mx-auto">
-            {/* Journal Card */}
+          <div className="max-w-5xl mx-auto space-y-8">
+            {/* Journal Card 1 - Chemical Products and Process Modeling */}
             <div className="bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-border dark:border-white/10 hover:border-primary/30 transition-all duration-300 shadow-lg">
               <div className="flex flex-col md:flex-row items-center gap-8">
                 {/* Book Cover Image */}
@@ -445,14 +446,43 @@ const Registration = () => {
                   <p className="text-muted-foreground leading-relaxed mb-6">
                     Selected high-quality submissions will be considered for publication in this prestigious Scopus-indexed journal by De Gruyter, covering chemical process modeling and product engineering.
                   </p>
-
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-500/15 border border-orange-200 dark:border-orange-500/30">
-                    <Sparkles className="w-4 h-4 text-orange-500" />
-                    <span className="text-orange-700 dark:text-orange-400 text-sm font-medium">
-                      More Journals/Books to be included (visit the website for updates)
-                    </span>
-                  </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Journal Card 2 - Fuel */}
+            <div className="bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-border dark:border-white/10 hover:border-primary/30 transition-all duration-300 shadow-lg">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                {/* Book Cover Image */}
+                <div className="flex-shrink-0 w-48 md:w-56 rounded-xl overflow-hidden shadow-2xl border border-border dark:border-white/10 hover:scale-105 transition-transform duration-300">
+                  <img
+                    src={fuelBook}
+                    alt="Fuel - Elsevier"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+
+                {/* Journal Details */}
+                <div className="flex-1 text-center md:text-left">
+                  <div className="flex items-center gap-2 justify-center md:justify-start mb-3">
+                    <BookOpen className="w-6 h-6 text-primary" />
+                    <h3 className="font-display text-xl font-bold text-foreground">Fuel</h3>
+                  </div>
+                  <p className="text-muted-foreground text-sm mb-2">(Elsevier)</p>
+                  <div className="w-16 h-1 bg-primary/40 rounded-full mb-4 mx-auto md:mx-0" />
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    Selected high-quality submissions will be considered for publication in this prestigious SCI/Scopus-indexed journal by Elsevier, covering the science and technology of fuel and energy.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="text-center pt-2">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 dark:bg-orange-500/15 border border-orange-200 dark:border-orange-500/30">
+                <Sparkles className="w-4 h-4 text-orange-500" />
+                <span className="text-orange-700 dark:text-orange-400 text-sm font-medium">
+                  More Journals/Books to be included (visit the website for updates)
+                </span>
               </div>
             </div>
           </div>

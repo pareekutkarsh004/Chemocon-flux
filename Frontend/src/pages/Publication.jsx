@@ -1,6 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { BookOpen, Sparkles, Award, FileText } from "lucide-react";
 import cppmBook from "@/assets/cppm-degruyter.png";
+import fuelBook from "@/assets/fuel-elsevier.jpg";
 
 function Publication() {
   return (
@@ -40,37 +41,75 @@ function Publication() {
               <p className="text-primary font-medium mb-2 tracking-wider uppercase">Journals & Proceedings</p>
             </div>
 
-            {/* Journal Card - Chemical Products and Process Modeling */}
-            <div className="bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-border dark:border-white/10 hover:border-primary/30 transition-all duration-300 shadow-lg mb-8">
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                {/* Book Cover Image */}
-                <div className="flex-shrink-0 w-52 md:w-60 rounded-xl overflow-hidden shadow-2xl border border-border dark:border-white/10 hover:scale-105 transition-transform duration-300">
-                  <img
-                    src={cppmBook}
-                    alt="Chemical Products and Process Modeling - De Gruyter"
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-
-                {/* Journal Details */}
-                <div className="flex-1 text-center md:text-left">
-                  <div className="flex items-center gap-2 justify-center md:justify-start mb-3">
-                    <BookOpen className="w-6 h-6 text-primary" />
-                    <h3 className="font-display text-2xl font-bold text-foreground">Chemical Products and Process Modeling</h3>
+            <div className="space-y-8 mb-8">
+              {/* Journal Card - Chemical Products and Process Modeling */}
+              <div className="bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-border dark:border-white/10 hover:border-primary/30 transition-all duration-300 shadow-lg">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  {/* Book Cover Image */}
+                  <div className="flex-shrink-0 w-52 md:w-60 rounded-xl overflow-hidden shadow-2xl border border-border dark:border-white/10 hover:scale-105 transition-transform duration-300">
+                    <img
+                      src={cppmBook}
+                      alt="Chemical Products and Process Modeling - De Gruyter"
+                      className="w-full h-auto object-cover"
+                    />
                   </div>
-                  <p className="text-muted-foreground text-sm mb-4">(De Gruyter)</p>
-                  <div className="w-16 h-1 bg-primary/40 rounded-full mb-4 mx-auto md:mx-0" />
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    Selected high-quality submissions will be considered for publication in this prestigious Scopus-indexed journal by De Gruyter, covering chemical process modeling and product engineering.
-                  </p>
 
-                  <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-500/15 text-blue-700 dark:text-blue-400 text-xs font-semibold border border-blue-200 dark:border-blue-500/30">
-                      <Award className="w-3.5 h-3.5" /> Scopus Indexed
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-100 dark:bg-green-500/15 text-green-700 dark:text-green-400 text-xs font-semibold border border-green-200 dark:border-green-500/30">
-                      <FileText className="w-3.5 h-3.5" /> Peer Reviewed
-                    </span>
+                  {/* Journal Details */}
+                  <div className="flex-1 text-center md:text-left">
+                    <div className="flex items-center gap-2 justify-center md:justify-start mb-3">
+                      <BookOpen className="w-6 h-6 text-primary" />
+                      <h3 className="font-display text-2xl font-bold text-foreground">Chemical Products and Process Modeling</h3>
+                    </div>
+                    <p className="text-muted-foreground text-sm mb-4">(De Gruyter)</p>
+                    <div className="w-16 h-1 bg-primary/40 rounded-full mb-4 mx-auto md:mx-0" />
+                    <p className="text-muted-foreground leading-relaxed mb-6">
+                      Selected high-quality submissions will be considered for publication in this prestigious Scopus-indexed journal by De Gruyter, covering chemical process modeling and product engineering.
+                    </p>
+
+                    <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-500/15 text-blue-700 dark:text-blue-400 text-xs font-semibold border border-blue-200 dark:border-blue-500/30">
+                        <Award className="w-3.5 h-3.5" /> Scopus Indexed
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-100 dark:bg-green-500/15 text-green-700 dark:text-green-400 text-xs font-semibold border border-green-200 dark:border-green-500/30">
+                        <FileText className="w-3.5 h-3.5" /> Peer Reviewed
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Journal Card - Fuel */}
+              <div className="bg-card dark:bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-border dark:border-white/10 hover:border-primary/30 transition-all duration-300 shadow-lg">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  {/* Book Cover Image */}
+                  <div className="flex-shrink-0 w-52 md:w-60 rounded-xl overflow-hidden shadow-2xl border border-border dark:border-white/10 hover:scale-105 transition-transform duration-300">
+                    <img
+                      src={fuelBook}
+                      alt="Fuel - Elsevier"
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+
+                  {/* Journal Details */}
+                  <div className="flex-1 text-center md:text-left">
+                    <div className="flex items-center gap-2 justify-center md:justify-start mb-3">
+                      <BookOpen className="w-6 h-6 text-primary" />
+                      <h3 className="font-display text-2xl font-bold text-foreground">Fuel</h3>
+                    </div>
+                    <p className="text-muted-foreground text-sm mb-4">(Elsevier)</p>
+                    <div className="w-16 h-1 bg-primary/40 rounded-full mb-4 mx-auto md:mx-0" />
+                    <p className="text-muted-foreground leading-relaxed mb-6">
+                      Selected high-quality submissions will be considered for publication in this prestigious SCI/Scopus-indexed journal by Elsevier, covering the science and technology of fuel and energy.
+                    </p>
+
+                    <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-500/15 text-blue-700 dark:text-blue-400 text-xs font-semibold border border-blue-200 dark:border-blue-500/30">
+                        <Award className="w-3.5 h-3.5" /> Scopus Indexed
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-100 dark:bg-green-500/15 text-green-700 dark:text-green-400 text-xs font-semibold border border-green-200 dark:border-green-500/30">
+                        <FileText className="w-3.5 h-3.5" /> Peer Reviewed
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
