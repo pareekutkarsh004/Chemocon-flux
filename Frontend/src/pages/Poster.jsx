@@ -32,8 +32,8 @@ const Poster = () => {
             
             {/* PPT Template Download Card */}
             <a 
-              href="/chemconflux26/CHEMCONFLUX26%20Oral%20Ppt%20template.pptx" 
-              download 
+              href={encodeURI(`${import.meta.env.BASE_URL}CHEMCONFLUX26 Oral Ppt template.pptx`)} 
+              download="CHEMCONFLUX26 Oral Ppt template.pptx" 
               className="group flex flex-col items-center justify-center p-12 bg-card dark:bg-white/5 border border-border dark:border-white/10 rounded-3xl shadow-lg hover:shadow-xl hover:border-blue-500/50 transition-all duration-300"
             >
               <div className="w-20 h-20 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -53,8 +53,8 @@ const Poster = () => {
 
             {/* Poster Template Download Card */}
             <a 
-              href="/chemconflux26/CHEMCONFLUX26%20Poster%20template.pptx" 
-              download 
+              href={encodeURI(`${import.meta.env.BASE_URL}CHEMCONFLUX26 Poster template.pptx`)} 
+              download="CHEMCONFLUX26 Poster template.pptx" 
               className="group flex flex-col items-center justify-center p-12 bg-card dark:bg-white/5 border border-border dark:border-white/10 rounded-3xl shadow-lg hover:shadow-xl hover:border-purple-500/50 transition-all duration-300"
             >
               <div className="w-20 h-20 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
