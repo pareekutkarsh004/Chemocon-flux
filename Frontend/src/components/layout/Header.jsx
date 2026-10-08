@@ -14,6 +14,8 @@ const navLinks = [
   { name: "Publication", path: "/publication" },
   { name: "Committee", path: "/committee" },
   { name: "Contact", path: "/contact" },
+  { name: "Accommodation/Food", path: "/accommodation" },
+  { name: "Poster/PPT", path: "/poster" },
 ];
 
 export function Header() {
@@ -33,32 +35,32 @@ export function Header() {
         {/* HEADER HEIGHT CONTROLLED HERE */}
         <div className="flex items-center justify-between h-20">
           {/* LEFT: Main Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center gap-2 xl:gap-3 group">
             <img
               src={mnnitLogo}
               alt="MNNIT Logo"
               className="
-                h-14 w-14
+                h-10 w-10 xl:h-14 xl:w-14
                 rounded-full bg-white object-contain
                 group-hover:scale-105 transition-transform
               "
             />
             <div className="hidden sm:block">
-              <h1 className="font-display text-lg font-bold group-hover:text-orange-400 transition-colors">
+              <h1 className="font-display text-sm xl:text-lg font-bold group-hover:text-orange-400 transition-colors whitespace-nowrap">
                 CHEM-CONFLUX²⁶
               </h1>
-              <p className="text-xs text-slate-300">MNNIT Allahabad</p>
+              <p className="text-[10px] xl:text-xs text-slate-300 whitespace-nowrap">MNNIT Allahabad</p>
             </div>
           </Link>
 
           {/* CENTER: Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1.5">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all whitespace-nowrap",
+                  "px-1.5 xl:px-3 py-1.5 xl:py-2 rounded-md text-[11px] xl:text-xs 2xl:text-sm font-medium transition-all whitespace-nowrap",
                   location.pathname === link.path || (link.path === "/important-dates" && location.pathname === "/registration")
                     ? "bg-orange-500/20 text-orange-400"
                     : "text-slate-200 hover:bg-white/10 hover:text-orange-400"
@@ -72,7 +74,7 @@ export function Header() {
             <Link
               to="/registration"
               className="
-                ml-2 px-5 py-2 rounded-full text-xs xl:text-sm font-semibold whitespace-nowrap
+                ml-1 xl:ml-2 px-3 xl:px-5 py-1.5 xl:py-2 rounded-full text-[11px] xl:text-xs 2xl:text-sm font-semibold whitespace-nowrap
                 text-white bg-gradient-to-r from-orange-500 to-red-500
                 shadow-lg shadow-orange-500/30
                 ring-2 ring-orange-400/60
@@ -84,8 +86,8 @@ export function Header() {
             </Link>
 
             {/* Theme Toggle + RIGHT BIG LOGO */}
-            <div className="flex items-center gap-3 ml-2 h-full">
-              <div className="hover:text-orange-400 transition-colors">
+            <div className="flex items-center gap-2 xl:gap-3 ml-1 xl:ml-2 h-full">
+              <div className="hover:text-orange-400 transition-colors transform scale-90 xl:scale-100">
                 <ThemeToggle />
               </div>
 
@@ -95,7 +97,7 @@ export function Header() {
                 alt="MNNIT Logo"
                 className="
                   h-full
-                  max-h-20
+                  max-h-12 xl:max-h-16 2xl:max-h-20
                   aspect-square
                   rounded-full
                   object-contain

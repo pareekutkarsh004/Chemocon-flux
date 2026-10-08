@@ -14,6 +14,8 @@ import AbstractSubmission from "./pages/AbstractSubmission";
 import Publication from "./pages/Publication";
 import ImportantDatesPage from "./pages/ImportantDatesPage";
 import NotFound from "./pages/NotFound";
+import Accommodation from "./pages/Accommodation";
+import Poster from "./pages/Poster";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +38,8 @@ const App = () => (
             <Route path="/important-dates" element={<ImportantDatesPage />} />
             <Route path="/registration" element={<Registration />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/accommodation" element={<Accommodation />} />
+            <Route path="/poster" element={<Poster />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
