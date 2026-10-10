@@ -26,7 +26,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         {/* 👇 THIS IS THE CRITICAL FIX */}
-        <BrowserRouter basename="/chemconflux26">
+        <BrowserRouter basename={import.meta.env.BASE_URL || "/"}>
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />

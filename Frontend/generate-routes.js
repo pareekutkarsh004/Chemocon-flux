@@ -10,7 +10,9 @@ const routes = [
   'registration',
   'important-dates',
   'abstract-submission',
-  'publication'
+  'publication',
+  'accommodation',
+  'poster'
 ];
 
 // Setup paths
@@ -27,6 +29,11 @@ if (!fs.existsSync(distDir)) {
 
 // 2. The magic PHP file content
 const phpContent = `<?php include __DIR__ . '/../index.html'; ?>`;
+const rootPhpContent = `<?php include __DIR__ . '/index.html'; ?>`;
+
+// Write root index.php file
+fs.writeFileSync(path.join(distDir, 'index.php'), rootPhpContent);
+console.log(' Created root index.php');
 
 // 3. Create a folder and index.php for each route
 routes.forEach(route => {

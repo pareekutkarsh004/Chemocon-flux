@@ -3,9 +3,9 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig({
-  base: "/chemconflux26/",
+  base: "/",
   build: {
-    outDir: "dist/chemconflux26",
+    outDir: "dist",
   },
   plugins: [react()],
   resolve: {

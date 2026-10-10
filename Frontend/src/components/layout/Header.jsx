@@ -61,7 +61,7 @@ export function Header() {
                 to={link.path}
                 className={cn(
                   "px-1.5 xl:px-3 py-1.5 xl:py-2 rounded-md text-[11px] xl:text-xs 2xl:text-sm font-medium transition-all whitespace-nowrap",
-                  location.pathname === link.path || (link.path === "/important-dates" && location.pathname === "/registration")
+                  location.pathname === link.path
                     ? "bg-orange-500/20 text-orange-400"
                     : "text-slate-200 hover:bg-white/10 hover:text-orange-400"
                 )}
@@ -70,17 +70,13 @@ export function Header() {
               </Link>
             ))}
 
-            {/* Submit Abstract CTA */}
+            {/* Register Now CTA */}
             <Link
               to="/registration"
-              className="
-                ml-1 xl:ml-2 px-3 xl:px-5 py-1.5 xl:py-2 rounded-full text-[11px] xl:text-xs 2xl:text-sm font-semibold whitespace-nowrap
-                text-white bg-gradient-to-r from-orange-500 to-red-500
-                shadow-lg shadow-orange-500/30
-                ring-2 ring-orange-400/60
-                hover:scale-105 hover:shadow-xl
-                transition-all duration-300
-              "
+              className={cn(
+                "ml-1 xl:ml-2 px-3 xl:px-5 py-1.5 xl:py-2 rounded-full text-[11px] xl:text-xs 2xl:text-sm font-semibold whitespace-nowrap text-white bg-gradient-to-r from-orange-500 to-red-500 shadow-lg shadow-orange-500/30 ring-2 ring-orange-400/60 hover:scale-105 hover:shadow-xl transition-all duration-300",
+                location.pathname === "/registration" && "ring-4 ring-orange-400 font-bold scale-105"
+              )}
             >
               Register Now
             </Link>
@@ -112,9 +108,9 @@ export function Header() {
             <ThemeToggle />
 
             <img
-              src={mnnitLogo}
+              src={logo}
               alt="MNNIT Logo"
-              className="h-8 w-8 rounded-full bg-white object-contain"
+              className="h-9 w-9 rounded-full bg-white object-contain p-0.5"
             />
 
             <button
@@ -137,8 +133,8 @@ export function Header() {
                 onClick={() => setIsMenuOpen(false)}
                 className={cn(
                   "block px-4 py-3 rounded-md text-sm font-medium transition",
-                  location.pathname === link.path || (link.path === "/important-dates" && location.pathname === "/registration")
-                    ? "bg-orange-500/20 text-orange-400"
+                  location.pathname === link.path
+                    ? "bg-orange-500/20 text-orange-400 font-semibold"
                     : "text-slate-200 hover:bg-white/10"
                 )}
               >
@@ -147,16 +143,14 @@ export function Header() {
             ))}
 
             <Link
-              to="/abstract-submission"
+              to="/registration"
               onClick={() => setIsMenuOpen(false)}
-              className="
-                block text-center mt-3 px-4 py-3 rounded-xl
-                font-semibold text-white
-                bg-gradient-to-r from-orange-500 to-red-500
-                shadow-md shadow-orange-500/30
-              "
+              className={cn(
+                "block text-center mt-3 px-4 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-orange-500 to-red-500 shadow-md shadow-orange-500/30 transition",
+                location.pathname === "/registration" && "ring-2 ring-orange-400"
+              )}
             >
-              Submit Abstract
+              Register Now
             </Link>
           </nav>
         )}
